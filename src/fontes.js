@@ -81,6 +81,8 @@ function situacao(fonte, artigo) {
   if (/^\(?\s*revogad[oa]\s*(?:[.\d()]|pel[oa]s?\b|$)/i.test(corpo)) return 'revogado';
   return 'vigente';
 }
+/** Remove marcas de nota de rodapé coladas ao fim de frase ("mandados.3" -> "mandados."). Aplica-se a fonte e a citação. */
+const limparNotas = (s) => String(s).replace(/([.;:!?])\d{1,2}(?=\s|$)/g, '$1').replace(/[ \t]+\n/g, '\n');
 /** A citação é literal? Procura `trecho` (normalizado) no artigo indicado. */
 function conferirCitacao(fonte, artigo, trecho) {
   const art = fonte.artigos[artigo];
@@ -88,9 +90,9 @@ function conferirCitacao(fonte, artigo, trecho) {
   const sit = situacao(fonte, artigo);
   if (sit !== 'vigente') return { ok: false, motivo: 'artigo ' + artigo + ' está ' + sit + ': não pode embasar questão' };
   if (!trecho || normalizar(trecho).length < 12) return { ok: false, motivo: 'trecho curto demais para ser prova' };
-  return normalizar(art).includes(normalizar(trecho)) ? { ok: true } : { ok: false, motivo: 'o trecho não aparece literalmente no artigo ' + artigo };
+  return normalizar(limparNotas(art)).includes(normalizar(limparNotas(trecho))) ? { ok: true } : { ok: false, motivo: 'o trecho não aparece literalmente no artigo ' + artigo };
 }
 /** O trecho ocorre em algum ponto da fonte inteira? (usado para provar que uma versão ALTERADA não existe no texto oficial) */
-const ocorreEmQualquerLugar = (fonte, trecho) => normalizar(fonte.texto).includes(normalizar(trecho));
+const ocorreEmQualquerLugar = (fonte, trecho) => normalizar(limparNotas(fonte.texto)).includes(normalizar(limparNotas(trecho)));
 
-module.exports = { extrairArtigosArtPonto, situacao, htmlParaTexto, extrairArtigos, normalizar, carregarIndice, lerFonte, conferirCitacao, ocorreEmQualquerLugar };
+module.exports = { limparNotas, extrairArtigosArtPonto, situacao, htmlParaTexto, extrairArtigos, normalizar, carregarIndice, lerFonte, conferirCitacao, ocorreEmQualquerLugar };

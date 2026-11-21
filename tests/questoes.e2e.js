@@ -95,7 +95,7 @@ const sobreposicao = (page) => page.evaluate(() => document.documentElement.scro
 
 const DIA = 86400000;
 const Q = require('../src/questoes.js');
-require('../src/questoes-mat.js'); require('../src/questoes-mat2.js'); require('../src/questoes-rl.js'); require('../src/questoes-rl2.js');
+require('../src/questoes-mat.js'); require('../src/questoes-mat2.js'); require('../src/questoes-rl.js'); require('../src/questoes-rl2.js'); require('../src/questoes-dir.js');
 const Aprendizagem = require('../src/aprendizagem.js');
 
 const qidAtual = (page) => page.getAttribute('#card-questao', 'data-qid');
@@ -126,7 +126,7 @@ const pctTxt = (x) => (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%';
     const { ctx, page } = await abrir(browser, 'ok', { hash: '#questoes' });
     await esperarSalvo(page);
     check('K1: cinco abas, Questões é a atual', (await page.$$('nav.abas a')).length === 5 && (await page.getAttribute('nav.abas a[aria-current="page"]', 'data-aba')) === 'questoes');
-    check('K1: tela inicial honesta sobre o que não existe', /Direito, Língua Portuguesa, Informática ou Atualidades/.test(await txt(page, '#card-q-limites')) && /não vou inventar/.test(await txt(page, '#card-q-limites')));
+    check('K1: tela inicial honesta sobre o que não existe', /só 3 dos 14 diplomas/.test(await txt(page, '#card-q-limites')) && /não testam interpretação nem jurisprudência/.test(await txt(page, '#card-q-limites')) && /Português, Informática e Atualidades/.test(await txt(page, '#card-q-limites')));
     check('K1: sem questões respondidas, desempenho vazio', /Nenhuma questão respondida ainda/.test(await txt(page, '#card-q-desempenho')));
     check('K1: botão Começar habilitado', !(await page.isDisabled('#btn-q-comecar')));
     await configurar(page, { n: 5, assunto: '', nivel: 'auto' });
@@ -155,7 +155,7 @@ const pctTxt = (x) => (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%';
     check('K1: a alternativa certa fica destacada e rotulada', (await page.getAttribute('button.alt.certa', 'data-letra')) === q1.gabarito && /Correta/.test(await txt(page, 'button.alt.certa')));
     check('K1: cada alternativa mostra seu comentário', (await page.$$eval('button.alt .com', (e) => e.length)) === 5);
     check('K1: a explicação e a pegadinha aparecem', /Explicação:/.test(await txt(page, '#q-feedback')) && /Atenção:/.test(await txt(page, '#q-feedback')));
-    check('K1: avisa que não é questão da banca', /Não é questão de prova da VUNESP/.test(await txt(page, '#q-feedback')));
+    check('K1: avisa que não é questão da banca', /não é questão de prova da VUNESP/i.test(await txt(page, '#q-feedback')));
     check('K1: acerto não pergunta o motivo', (await page.$('#q-motivo')) === null);
     await esperarSalvo(page);
     let ev = await itens(page, 'eventos');
@@ -282,10 +282,10 @@ const pctTxt = (x) => (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%';
     const linhas = await page.$$eval('[data-questoes]', (els) => els.map((e) => [e.dataset.questoes, e.textContent]));
     const somaTela = linhas.reduce((s, [, t]) => { const m = /Questões: (\d+) distintas/.exec(t); return s + (m ? Number(m[1]) : 0); }, 0);
     check('K10: aba Edital mostra a contagem de questões distintas igual à do motor sem o motivo', somaTela === semMotivo.topicos.reduce((s, t) => s + t.questoesDistintas, 0) && somaTela === 5, 'tela=' + somaTela);
-    check('K10: tópicos sem questões não ganham linha de questões', (await page.$$('[data-questoes]')).length === 14);
+    check('K10: tópicos sem questões não ganham linha de questões', (await page.$$('[data-questoes]')).length === 24);
     await aba(page, 'painel');
-    check('K10: Painel declara o teto atual por falta de questões', /14 dos 198 tópicos/.test(await txt(page, '#texto-teto')) && /teto atual do progresso geral é/.test(await txt(page, '#texto-teto')), await txt(page, '#texto-teto'));
-    const tetoEsperado = (() => { const com = new Set(Q.CATALOGO.map((t) => t.topicId)); let a = 0; let b = 0; for (const t of matriz.topicos) { a += t.esforco_min; b += t.esforco_min * (com.has(t.id) ? 1 : 0.4); } return b / a; })();
+    check('K10: Painel declara o teto atual por falta de questões', /24 dos 198 tópicos/.test(await txt(page, '#texto-teto')) && /teto atual do progresso geral é/.test(await txt(page, '#texto-teto')), await txt(page, '#texto-teto'));
+    const tetoEsperado = (() => { const com = new Set(Q.ativos().flatMap((t) => Q.topicosDe(t))); let a = 0; let b = 0; for (const t of matriz.topicos) { a += t.esforco_min; b += t.esforco_min * (com.has(t.id) ? 1 : 0.4); } return b / a; })();
     check('K10: teto exibido bate com o cálculo independente (' + pctTxt(tetoEsperado) + ')', (await txt(page, '#texto-teto')).includes(pctTxt(tetoEsperado)));
 
     // K4: revisão espaçada no dia seguinte
@@ -432,6 +432,52 @@ const pctTxt = (x) => (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%';
     await ctx.close();
   }
 
+  // ===== K13: menu completo do edital e questão de Direito de ponta a ponta =====
+  {
+    const { ctx, page } = await abrir(browser, 'ok', { hash: '#questoes' });
+    await esperarSalvo(page);
+    await page.waitForFunction(() => /questões em preparo/.test(document.getElementById('q-assunto').textContent), null, { timeout: 8000 }).catch(() => {});
+    const matriz = JSON.parse(MATRIZ);
+    const ops = await page.$$eval('#q-assunto option', (o) => o.map((x) => ({ v: x.value, t: x.textContent, d: x.disabled })));
+    const topicosOps = ops.filter((o) => /^OJ26-/.test(o.v));
+    check('K13: o menu lista os ' + matriz.topicos.length + ' tópicos do edital, todos', topicosOps.length === matriz.topicos.length, topicosOps.length + ' de ' + matriz.topicos.length);
+    check('K13: 12 disciplinas em grupos', (await page.$$('#q-assunto optgroup')).length === 12);
+    check('K13: 24 tópicos habilitados e o resto desabilitado', topicosOps.filter((o) => !o.d).length === 24 && topicosOps.filter((o) => o.d).length === matriz.topicos.length - 24);
+    const rot = (id) => (ops.find((o) => o.v === id) || {}).t || '';
+    check('K13: Direito Penal aparece esmaecido com o motivo "fonte oficial pendente"', /fonte oficial pendente/.test(rot('OJ26-DPEN-CP-01')) && ops.find((o) => o.v === 'OJ26-DPEN-CP-01').d);
+    check('K13: Língua Portuguesa aparece esmaecida com o motivo "sem fonte aprovada"', /sem fonte aprovada/.test(rot('OJ26-LP-01')));
+    check('K13: Estatuto (fonte ingerida, sem trecho gerável) aparece como "questões em preparo"', /questões em preparo/.test(rot('OJ26-DADM-L10261-01')), rot('OJ26-DADM-L10261-01'));
+    check('K13: tópico com questão de Direito está habilitado', !ops.find((o) => o.v === 'OJ26-LESP-L11608-01').d);
+    check('K13: opção "Toda a disciplina" só onde há questões', ops.filter((o) => /^disc:/.test(o.v)).map((o) => o.v).sort().join() === 'disc:DADM,disc:LESP,disc:MAT,disc:RLOG');
+    check('K13: aviso de cobertura: 24 de 198', /24 de 198 tópicos do edital já têm questões/.test(await txt(page, '#q-cobertura')));
+    await configurar(page, { n: 10, assunto: 'disc:LESP', nivel: 'auto' });
+    await page.click('#btn-q-comecar');
+    const tops = new Set(); let alvos = 0;
+    for (let i = 0; i < 10; i++) {
+      const qid = await qidAtual(page); const q = alvoCorreto(qid); tops.add(q.topicId);
+      if (q.confianca === 'A') alvos++;
+      check('K13: questão ' + (i + 1) + ' mostra o enunciado e as alternativas exatos do gerador', (await txt(page, '#q-enunciado')) === q.enunciado && JSON.stringify(await page.$$eval('button.alt .corpo > span:first-child', (e) => e.map((x) => x.textContent))) === JSON.stringify(q.alternativas.map((a) => a.texto)));
+      await responder(page, { acertar: i % 2 === 0, conf: 'seguro' });
+      if (i === 0) {
+        const nota = await txt(page, '#q-nota-fonte');
+        check('K13: feedback do Direito mostra "Nível A" e a fonte oficial com data', /Nível A/.test(nota) && /texto oficial consultado em \d\d\/\d\d\/\d{4}/.test(nota) && /letra por letra/.test(nota), nota.slice(0, 160));
+        check('K13: não promete ser prova da banca', /não é questão de prova da VUNESP/.test(nota));
+        check('K13: a explicação cita o texto oficial', /Texto oficial \(/.test(await txt(page, '#q-feedback')));
+        check('K13: sem rolagem horizontal na questão de Direito respondida', (await sobreposicao(page)) <= 0);
+        await page.screenshot({ path: path.join(SHOTS, 'app-direito.png'), fullPage: true });
+      }
+      await page.click('#btn-q-proxima');
+    }
+    check('K13: a sessão de "toda a disciplina" só traz tópicos de LESP com questão (' + [...tops].length + ' tópicos)', [...tops].every((t) => /^OJ26-LESP-/.test(t)) && alvos === 10);
+    await esperarSalvo(page);
+    const ev = (await itens(page, 'eventos')).filter((x) => !x.tipo);
+    check('K13: respostas de Direito gravadas com o tópico da própria questão', ev.length === 10 && ev.every((x) => /^OJ26-LESP-/.test(x.topicId) && /^DIR-LESP-/.test(x.questionId)));
+    await aba(page, 'edital');
+    const linhas = await page.$$eval('[data-questoes^="OJ26-LESP"]', (els) => els.map((e) => e.textContent));
+    check('K13: aba Edital mostra o desempenho dos tópicos de Direito respondidos', linhas.some((t) => /Questões: [1-9]\d* distintas/.test(t)), linhas.join(' | ').slice(0, 160));
+    await ctx.close();
+  }
+
   // ===== K5: sem banco de dados =====
   {
     const { ctx, page } = await abrir(browser, 'semdb', { hash: '#questoes' });
@@ -460,7 +506,7 @@ const pctTxt = (x) => (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%';
     const nIng = v.diplomas.filter((d) => d.fonte === 'ingerida').length;
     check('K6: auditoria mostra a situação das fontes por diploma (' + nIng + ' de ' + v.diplomas.length + ')', new RegExp(nIng + ' de ' + v.diplomas.length + ' ingeridas').test(await txt(page, '#det-diplomas')), (await txt(page, '#det-diplomas')).slice(0, 120));
     check('K6: CPC aparece como fonte pendente e o Estatuto com 18 artigos conferidos', /fonte pendente/.test(await txt(page, '#det-diplomas [data-diploma^="Código de Processo Civil"]')) && /18 conferido\(s\) no texto oficial/.test(await txt(page, '#det-diplomas [data-diploma^="Estatuto dos Funcionários"]')));
-    check('K6: limites declaram que Direito não tem questões', /Direito, Língua Portuguesa, Informática e Atualidades não têm questões/.test(await txt(page, '#card-auditoria')));
+    check('K6: limites declaram que Direito não tem questões', /outros 11 diplomas de Direito/.test(await txt(page, '#card-auditoria')) && /leitura precisa da lei/.test(await txt(page, '#card-auditoria')));
     const r = JSON.parse(REGRAS);
     check('K6: regras do edital: ' + r.fatos.length + ' itens com página', /54 regras conferidas/.test(await txt(page, '#card-regras')) || new RegExp(r.fatos.length + ' regras').test(await txt(page, '#card-regras')));
     await page.click('#card-regras details summary');

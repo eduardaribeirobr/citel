@@ -110,7 +110,7 @@ function gerarQuestao(templateId, semente, nivel) {
   const t = modelo(templateId);
   for (let tentativa = 0; tentativa < 30; tentativa++) {
     const rng = criarRng(hashStr([templateId, VERSAO, semente, nivel, tentativa].join('|')));
-    const g = t.gerar(rng, nivel);
+    const g = t.gerar(rng, nivel, semente);
     const vistos = new Set([norm(g.correta.texto)]);
     const escolhidos = [];
     for (const e of rng.embaralhar(g.erros)) {
@@ -129,12 +129,12 @@ function gerarQuestao(templateId, semente, nivel) {
     return {
       id: idQuestao(templateId, semente, nivel),
       templateId, semente, nivel, versao: VERSAO,
-      topicId: t.topicId, disciplina: t.disciplina, assunto: t.titulo,
+      topicId: g.topicId || t.topicId, disciplina: t.disciplina, assunto: t.titulo,
       enunciado: corrigirPlural(g.enunciado),
       alternativas: todas.map((a, i) => ({ letra: LETRAS[i], texto: corrigirPlural(a.texto), valor: a.valor, correta: a.correta, comentario: corrigirPlural(a.comentario) })),
       gabarito: LETRAS[gabaritoIdx], gabaritoIdx,
       explicacao: corrigirPlural(g.explicacao), pegadinha: corrigirPlural(g.pegadinha),
-      origem: 'inédita', fonte: 'Verificação computacional por dois métodos independentes', valor: g.correta.valor, params: g.params,
+      origem: g.origem || 'inédita', fonte: g.fonte || 'Verificação computacional por dois métodos independentes', confianca: g.confianca || 'B', valor: g.correta.valor, params: g.params,
     };
   }
   throw new Error('não foi possível gerar 4 distratores válidos para ' + templateId + ' (semente ' + semente + ', nível ' + nivel + ')');
@@ -178,11 +178,13 @@ function gerarValida(templateId, sementeBase, nivel) {
   throw new Error('nenhuma questão válida para ' + templateId + ' a partir de ' + sementeBase);
 }
 
-const templatesDoTopico = (topicId) => CATALOGO.filter((t) => t.topicId === topicId);
+/** Tópicos que um modelo atende: um só (`topicId`) ou vários (`topicIds`, modelos de Direito: um por diploma). */
+const topicosDe = (t) => t.topicIds || [t.topicId];
+const templatesDoTopico = (topicId) => CATALOGO.filter((t) => topicosDe(t).includes(topicId));
 
 const API = {
   VERSAO, LETRAS, NOMES, CATALOGO, criarRng, hashStr, mdc, mmc, fmt, brl, F, fadd, fsub, fmul, fdiv, fval, ftxt, iguais,
-  idQuestao, lerId, modelo, gerarQuestao, validarQuestao, gerarValida, templatesDoTopico, corrigirPlural, ativos, sucessorDe,
+  idQuestao, lerId, modelo, gerarQuestao, validarQuestao, gerarValida, templatesDoTopico, topicosDe, corrigirPlural, ativos, sucessorDe,
 };
 if (typeof module !== 'undefined' && module.exports) module.exports = API;
 if (typeof globalThis !== 'undefined') globalThis.Questoes = API;

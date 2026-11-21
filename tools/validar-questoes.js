@@ -10,13 +10,16 @@ const path = require('path');
 const Q = require('../src/questoes.js');
 require('../src/questoes-mat.js');
 require('../src/questoes-mat2.js');
-require('../src/questoes-rl.js'); require('../src/questoes-rl2.js');
+require('../src/questoes-rl.js'); require('../src/questoes-rl2.js'); require('../src/questoes-dir.js');
 
 const F = require('../src/fontes.js');
 const RAIZ = path.join(__dirname, '..');
 const NIVEIS = [1, 2, 3, 4, 5];
 const VARIACOES_SEMENTES = 400;       // quantas sementes se testam para contar enunciados distintos (o número é um piso: "400 ou mais")
 const LIMITE_POUCAS = 30;             // abaixo disto o par modelo × nível é considerado de variação baixa
+
+/** Semente de teste: modelos de Direito giram pelos tópicos geráveis; os demais usam a própria semente. */
+const semente = (t, s) => (t.ajustarSemente ? t.ajustarSemente(Q.topicosDe(t)[s % Q.topicosDe(t).length], s * t.modulo + 1) : s);
 
 function validarCatalogo(opc) {
   const sementes = (opc && opc.sementes) || 120;
@@ -26,12 +29,12 @@ function validarCatalogo(opc) {
     let geradas = 0; let validas = 0; let rejeitadas = 0; let naoGeradas = 0; const variacoes = {};
     for (const n of NIVEIS) {
       const distintos = new Set();
-      for (let s = 1; s <= VARIACOES_SEMENTES; s++) { try { distintos.add(Q.gerarQuestao(t.id, s, n).enunciado); } catch (e) { /* conta como não gerada na etapa abaixo */ } }
+      for (let s = 1; s <= VARIACOES_SEMENTES; s++) { try { distintos.add(Q.gerarQuestao(t.id, semente(t, s), n).enunciado); } catch (e) { /* conta como não gerada na etapa abaixo */ } }
       variacoes[n] = distintos.size;
       const c = { geradas: 0, validas: 0, rejeitadas: 0, naoGeradas: 0 };
       for (let s = 1; s <= sementes; s++) {
         let q;
-        try { q = Q.gerarQuestao(t.id, s, n); } catch (e) { c.naoGeradas++; problemas['não gerada: ' + e.message.slice(0, 80)] = 1; continue; }
+        try { q = Q.gerarQuestao(t.id, semente(t, s), n); } catch (e) { c.naoGeradas++; problemas['não gerada: ' + e.message.slice(0, 80)] = 1; continue; }
         c.geradas++;
         const r = Q.validarQuestao(q);
         if (r.ok) { c.validas++; gabaritos[q.gabarito]++; } else { c.rejeitadas++; for (const m of r.erros) problemas[m] = (problemas[m] || 0) + 1; }
@@ -42,7 +45,7 @@ function validarCatalogo(opc) {
   });
   const cobertura = matriz.disciplinas.map((d) => {
     const topicos = matriz.topicos.filter((x) => x.disciplina === d.cod);
-    const comModelo = topicos.filter((x) => Q.ativos().some((t) => t.topicId === x.id));
+    const comModelo = topicos.filter((x) => Q.ativos().some((t) => Q.topicosDe(t).includes(x.id)));
     return { cod: d.cod, nome: d.nome, topicos: topicos.length, topicosComQuestoes: comModelo.length, modelos: Q.ativos().filter((t) => t.disciplina === d.cod).length };
   });
   // diplomas do edital: fonte oficial ingerida? os artigos citados no edital existem no texto oficial?
@@ -83,8 +86,9 @@ function validarCatalogo(opc) {
     cobertura,
     diplomas,
     limites: [
-      'Só Matemática e Raciocínio Lógico têm questões: são as únicas disciplinas cuja resposta pode ser conferida por cálculo sem depender de fonte externa.',
-      'Direito, Língua Portuguesa, Informática e Atualidades não têm questões: exigiriam o texto oficial da legislação, gramática de referência ou notícias, e não consegui acessar essas fontes. Não vou inventar.',
+      'Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 3 diplomas (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria) com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva.',
+      'Sem questões: os outros 11 diplomas de Direito (fonte oficial ainda não ingerida), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.',
+      'As questões de Direito treinam a leitura precisa da lei (prazos, números, condições). Não testam interpretação nem jurisprudência.',
       'Raciocínio Lógico cobre sequências, diagramas lógicos (conjuntos), ordenação, estruturas lógicas (negação, equivalência, valor lógico) e argumentação (conclusão necessária, premissa que falta), as áreas citadas no edital (p. 62).',
       'Alguns pares modelo × nível têm poucas variações reais (lista em variacao_baixa): depois de vistas todas, o app usa o nível vizinho e só então repete. Ampliar exige modelos novos, porque os ids existentes são imutáveis.',
       'Modelos aposentados (marcados no relatório) continuam gerando as mesmas questões para reproduzir o histórico, mas não entram em sessões novas.',

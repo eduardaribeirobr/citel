@@ -100,7 +100,7 @@ const ENUNCIADOS_LEMBRADOS = 400;
  */
 function montarSessao(p) {
   const o = Object.assign({ n: 10, topicIds: null, nivel: 'auto', fracRevisoes: 0.4 }, p);
-  const candidatos = Questoes.ativos().filter((t) => !o.topicIds || o.topicIds.includes(t.topicId));
+  const candidatos = Questoes.ativos().filter((t) => !o.topicIds || Questoes.topicosDe(t).some((x) => o.topicIds.includes(x)));
   if (!candidatos.length) return [];
   const resp = soRespostas(o.eventos);
   const respondidas = new Set(resp.map((e) => e.questionId));
@@ -112,8 +112,8 @@ function montarSessao(p) {
   const itens = [];
   // 1ª tentativa: id novo E enunciado nunca visto; 2ª: só id novo (quando o espaço de variações acabou)
   const procura = (templateId, nivel, base, exigeNovoTexto) => {
-    let sem = base;
-    for (let i = 0; i < (exigeNovoTexto ? 60 : 200); i++, sem += 7919) {
+    let sem = base; const passo = 7919 * (Questoes.modelo(templateId).modulo || 1);      // modelos de Direito: o tópico sai de semente % módulo, então o passo preserva o tópico
+    for (let i = 0; i < (exigeNovoTexto ? 60 : 200); i++, sem += passo) {
       if (respondidas.has(Questoes.idQuestao(templateId, sem, nivel))) continue;
       if (exigeNovoTexto) { const t = enunciadoDe(templateId, sem, nivel); if (t && vistos.has(t)) continue; }
       return sem;
@@ -127,14 +127,18 @@ function montarSessao(p) {
     const sem = procura(t.id, nivelPref, base, false);
     return { semente: sem === null ? base : sem, nivel: nivelPref };
   };
-  const nivelDe = (t) => (o.nivel === 'auto' ? nivelSugerido(o.eventos, t.topicId) : o.nivel);
+  const nivelDe = (t, topicId) => (o.nivel === 'auto' ? nivelSugerido(o.eventos, topicId || t.topicId) : o.nivel);
   const rng = Questoes.criarRng(o.semente >>> 0);
   const addItem = (t, tipo) => {
-    const base = (rng.int(1, 1e9) >>> 0);
-    const { semente, nivel } = escolhe(t, nivelDe(t), base);
+    let base = (rng.int(1, 1e9) >>> 0); let topico = t.topicId;
+    if (t.ajustarSemente) {                                   // Direito: escolhe o tópico (entre os pedidos e geráveis) e ajusta a semente para cair nele
+      const alvos = Questoes.topicosDe(t).filter((x) => !o.topicIds || o.topicIds.includes(x));
+      topico = alvos[rng.int(0, alvos.length - 1)]; base = t.ajustarSemente(topico, base);
+    }
+    const { semente, nivel } = escolhe(t, nivelDe(t, topico), base);
     respondidas.add(Questoes.idQuestao(t.id, semente, nivel));
     const texto = enunciadoDe(t.id, semente, nivel); if (texto) vistos.add(texto);
-    itens.push({ templateId: t.id, topicId: t.topicId, nivel, semente, tipo });
+    itens.push({ templateId: t.id, topicId: topico, nivel, semente, tipo });
   };
   const maxRev = Math.ceil(o.n * o.fracRevisoes);
   for (const c of vencidas) { if (itens.length >= maxRev) break; addItem(Questoes.modelo(c.templateId), 'revisao'); }

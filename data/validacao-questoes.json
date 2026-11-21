@@ -5,8 +5,8 @@
  "metodo": "Cada questão é gerada por um modelo e conferida por um segundo método de cálculo independente; só aparece se a estrutura, o gabarito único e as 5 alternativas distintas passarem. Isso prova que a conta está certa, não que a questão seja igual à da banca.",
  "origem_das_questoes": "inéditas, geradas por modelo; não são questões reais de provas da VUNESP",
  "total": {
-  "geradas": 12000,
-  "validas": 12000,
+  "geradas": 13800,
+  "validas": 13800,
   "rejeitadas": 0,
   "naoGeradas": 0
  },
@@ -52,6 +52,76 @@
    "modelo": "RLOG-04-SEQUENCIAS-B",
    "nivel": 5,
    "variacoes": 10
+  },
+  {
+   "modelo": "DIR-DADM-L10261",
+   "nivel": 1,
+   "variacoes": 10
+  },
+  {
+   "modelo": "DIR-DADM-L10261",
+   "nivel": 2,
+   "variacoes": 5
+  },
+  {
+   "modelo": "DIR-DADM-L10261",
+   "nivel": 3,
+   "variacoes": 5
+  },
+  {
+   "modelo": "DIR-DADM-L10261",
+   "nivel": 4,
+   "variacoes": 5
+  },
+  {
+   "modelo": "DIR-DADM-L10261",
+   "nivel": 5,
+   "variacoes": 5
+  },
+  {
+   "modelo": "DIR-LESP-L11608",
+   "nivel": 1,
+   "variacoes": 13
+  },
+  {
+   "modelo": "DIR-LESP-L11608",
+   "nivel": 2,
+   "variacoes": 5
+  },
+  {
+   "modelo": "DIR-LESP-L11608",
+   "nivel": 3,
+   "variacoes": 4
+  },
+  {
+   "modelo": "DIR-LESP-L11608",
+   "nivel": 4,
+   "variacoes": 4
+  },
+  {
+   "modelo": "DIR-LESP-L11608",
+   "nivel": 5,
+   "variacoes": 2
+  },
+  {
+   "modelo": "DIR-LESP-NSCGJ",
+   "nivel": 2,
+   "variacoes": 25
+  },
+  {
+   "modelo": "DIR-LESP-NSCGJ",
+   "nivel": 3,
+   "variacoes": 25
+  },
+  {
+   "modelo": "DIR-LESP-NSCGJ",
+   "nivel": 4,
+   "variacoes": 25
+  },
+  {
+   "modelo": "DIR-LESP-NSCGJ",
+   "nivel": 5,
+   "variacoes": 24
   }
  ],
  "modelos": [
@@ -1214,6 +1284,180 @@
     "E": 126
    },
    "problemas": {}
+  },
+  {
+   "id": "DIR-DADM-L10261",
+   "topicId": "OJ26-DADM-L10261-03",
+   "disciplina": "DADM",
+   "titulo": "Direito: Estatuto dos Funcionários Públicos Civis (Lei 10.261/68)",
+   "aposentado": null,
+   "variacoes": {
+    "1": 10,
+    "2": 5,
+    "3": 5,
+    "4": 5,
+    "5": 5
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 117,
+    "B": 118,
+    "C": 122,
+    "D": 125,
+    "E": 118
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-LESP-L11608",
+   "topicId": "OJ26-LESP-L11608-01",
+   "disciplina": "LESP",
+   "titulo": "Direito: Lei 11.608/2003 (taxa judiciária)",
+   "aposentado": null,
+   "variacoes": {
+    "1": 13,
+    "2": 5,
+    "3": 4,
+    "4": 4,
+    "5": 2
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 117,
+    "B": 117,
+    "C": 135,
+    "D": 109,
+    "E": 122
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-LESP-NSCGJ",
+   "topicId": "OJ26-LESP-NSCGJ-05",
+   "disciplina": "LESP",
+   "titulo": "Direito: Normas da Corregedoria Geral da Justiça (Tomo I)",
+   "aposentado": null,
+   "variacoes": {
+    "1": 59,
+    "2": 25,
+    "3": 25,
+    "4": 25,
+    "5": 24
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 112,
+    "B": 124,
+    "C": 125,
+    "D": 138,
+    "E": 101
+   },
+   "problemas": {}
   }
  ],
  "cobertura": [
@@ -1256,8 +1500,8 @@
    "cod": "DADM",
    "nome": "Direito Administrativo",
    "topicos": 18,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 5,
+   "modelos": 1
   },
   {
    "cod": "DCIV",
@@ -1270,8 +1514,8 @@
    "cod": "LESP",
    "nome": "Legislação Especial",
    "topicos": 22,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 5,
+   "modelos": 2
   },
   {
    "cod": "ATUA",
@@ -1517,8 +1761,9 @@
   }
  ],
  "limites": [
-  "Só Matemática e Raciocínio Lógico têm questões: são as únicas disciplinas cuja resposta pode ser conferida por cálculo sem depender de fonte externa.",
-  "Direito, Língua Portuguesa, Informática e Atualidades não têm questões: exigiriam o texto oficial da legislação, gramática de referência ou notícias, e não consegui acessar essas fontes. Não vou inventar.",
+  "Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 3 diplomas (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria) com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva.",
+  "Sem questões: os outros 11 diplomas de Direito (fonte oficial ainda não ingerida), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.",
+  "As questões de Direito treinam a leitura precisa da lei (prazos, números, condições). Não testam interpretação nem jurisprudência.",
   "Raciocínio Lógico cobre sequências, diagramas lógicos (conjuntos), ordenação, estruturas lógicas (negação, equivalência, valor lógico) e argumentação (conclusão necessária, premissa que falta), as áreas citadas no edital (p. 62).",
   "Alguns pares modelo × nível têm poucas variações reais (lista em variacao_baixa): depois de vistas todas, o app usa o nível vizinho e só então repete. Ampliar exige modelos novos, porque os ids existentes são imutáveis.",
   "Modelos aposentados (marcados no relatório) continuam gerando as mesmas questões para reproduzir o histórico, mas não entram em sessões novas."

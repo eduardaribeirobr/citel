@@ -209,7 +209,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
     S.topicos = S.matriz.topicos;
     S.topicos.forEach(function (t) { S.porId.set(t.id, t); });
     S.matriz.disciplinas.forEach(function (d) { S.discs.set(d.cod, d); });
-    S.comQuestoes = new Set(Questoes.ativos().map(function (t) { return t.topicId; }));
+    S.comQuestoes = new Set(); Questoes.ativos().forEach(function (t) { Questoes.topicosDe(t).forEach(function (id) { S.comQuestoes.add(id); }); });
   }
   function titulo(id) { var t = S.porId.get(id); return t ? t.titulo : id; }
   function curto(txt, n) { return txt.length > n ? txt.slice(0, n - 1) + '…' : txt; }
@@ -581,7 +581,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
       h('ul', { class: 'limpa' },
         h('li', null, 'Os minutos por tópico são estimativas iniciais, ainda não calibradas com o seu tempo real.'),
         h('li', null, 'Revisões de teoria em 1, 7 e 30 dias; revisões de questões em 1, 7, 15 e 30 dias. São estimativas pedagógicas, não regra do edital.'),
-        h('li', null, 'Só há questões de Matemática e Raciocínio Lógico (inéditas, conferidas por cálculo). Direito, Português, Informática e Atualidades dependem de fontes oficiais que não consegui acessar.'),
+        h('li', null, 'Questões de Matemática e Raciocínio Lógico (inéditas, conferidas por cálculo) e de 3 diplomas de Direito (reprodução conferida contra o texto oficial). Os outros 11 diplomas, Português, Informática e Atualidades ainda não têm questões.'),
         h('li', null, 'Ainda não existem simulados com cronômetro, treino de discursiva nem aulas dentro do app.'),
         h('li', null, 'Evite registrar ao mesmo tempo em duas abas do mesmo navegador.'),
         h('li', null, 'Funciona só online. O app não abre sem internet.'))));
@@ -599,7 +599,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
   }
   function topicosComQuestoes() {
     var vistos = {}; var lista = [];
-    Questoes.ativos().forEach(function (t) { if (!vistos[t.topicId]) { vistos[t.topicId] = true; lista.push({ id: t.topicId, titulo: titulo(t.topicId) }); } });
+    Questoes.ativos().forEach(function (t) { Questoes.topicosDe(t).forEach(function (id) { if (!vistos[id]) { vistos[id] = true; lista.push({ id: id, titulo: titulo(id) }); } }); });
     return lista;
   }
   function sementeNova() { return (Math.random() * 4294967296) >>> 0; }
@@ -624,9 +624,9 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
   function comecarSessaoQ() {
     if (!S.store) { toast('Sem banco de dados: não dá para salvar as respostas.'); return; }
     var q = estadoQ(); var c = calcular();
-    var itens = Aprendizagem.montarSessao({ n: q.cfg.n, topicIds: q.cfg.topico ? [q.cfg.topico] : null, nivel: q.cfg.nivel, eventos: c.d.eventos, hojeIdx: c.hojeIdx, semente: sementeNova() });
+    var itens = Aprendizagem.montarSessao({ n: q.cfg.n, topicIds: topicosDoFiltro(q.cfg.topico), nivel: q.cfg.nivel, eventos: c.d.eventos, hojeIdx: c.hojeIdx, semente: sementeNova() });
     if (!itens.length) { toast('Nenhuma questão disponível para esse filtro.'); return; }
-    abrirSessaoQ(itens, q.cfg.topico);
+    abrirSessaoQ(itens, q.cfg.topico && q.cfg.topico.indexOf('disc:') !== 0 ? q.cfg.topico : '');
   }
   function refazerQ(e) {
     var x = Questoes.lerId(e.questionId);
@@ -698,12 +698,37 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
     return telaInicioQ(c);
   }
 
+  // Menu com TODAS as disciplinas e tópicos do edital. Quem ainda não tem questão aparece esmaecido, com o motivo.
+  function motivoSemQuestoes(t) {
+    if (!t.diploma) return 'sem fonte aprovada';
+    var v = S.aux.validacao; var d = v && v !== 'erro' && v.diplomas ? v.diplomas.filter(function (x) { return x.nome === t.diploma.nome; })[0] : null;
+    return d && d.fonte === 'ingerida' ? 'questões em preparo' : 'fonte oficial pendente';
+  }
+  function montarSeletorAssunto() {
+    var sel = h('select', { id: 'q-assunto', 'aria-label': 'Assunto' }, h('option', { value: '', text: 'Todos os assuntos que já têm questões' }));
+    S.matriz.disciplinas.forEach(function (d) {
+      var ts = S.topicos.filter(function (t) { return t.disciplina === d.cod; });
+      var com = ts.filter(function (t) { return S.comQuestoes.has(t.id); });
+      var g = h('optgroup', { label: d.nome + ' (' + com.length + '/' + ts.length + ' com questões)' });
+      if (com.length) g.append(h('option', { value: 'disc:' + d.cod, text: 'Toda a disciplina: ' + d.nome }));
+      ts.forEach(function (t) {
+        var tem = S.comQuestoes.has(t.id); var rot = t.id.replace('OJ26-', '') + ' · ' + t.titulo;
+        g.append(h('option', { value: t.id, disabled: !tem, text: curto(rot, tem ? 70 : 58) + (tem ? '' : ' — ' + motivoSemQuestoes(t)) }));
+      });
+      sel.append(g);
+    });
+    return sel;
+  }
+  function topicosDoFiltro(valor) {
+    if (!valor) return null;
+    if (valor.indexOf('disc:') === 0) { var cod = valor.slice(5); return S.topicos.filter(function (t) { return t.disciplina === cod && S.comQuestoes.has(t.id); }).map(function (t) { return t.id; }); }
+    return [valor];
+  }
   function telaInicioQ(c) {
     var q = estadoQ(); var nodes = [];
     var st = c.q.stats; var rev = c.q.devidas;
     var selN = h('select', { id: 'q-n', 'aria-label': 'Quantidade de questões' }, [5, 10, 15, 20, 30].map(function (n) { return h('option', { value: String(n), text: n + ' questões' }); }));
-    var selT = h('select', { id: 'q-assunto', 'aria-label': 'Assunto' }, h('option', { value: '', text: 'Todos os assuntos' }),
-      topicosComQuestoes().map(function (t) { return h('option', { value: t.id, text: curto(t.id.replace('OJ26-', '') + ' · ' + t.titulo, 70) }); }));
+    var selT = montarSeletorAssunto();
     var selNv = h('select', { id: 'q-nivel', 'aria-label': 'Nível' }, h('option', { value: 'auto', text: 'Automático (acompanha seu desempenho)' }),
       [1, 2, 3, 4, 5].map(function (n) { return h('option', { value: String(n), text: 'Nível ' + n + (n === 1 ? ' (mais simples)' : n === 5 ? ' (mais difícil)' : '') }); }));
     selN.value = String(q.cfg.n); selT.value = q.cfg.topico; selNv.value = String(q.cfg.nivel);
@@ -712,7 +737,8 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
 
     nodes.push(h('section', { class: 'card', id: 'card-q-inicio' },
       h('h2', null, 'Modo Aprendizagem'),
-      h('p', { class: 'note' }, 'Questões inéditas de Matemática e Raciocínio Lógico (Bloco III da prova). Depois de cada resposta você vê o gabarito, a explicação e o motivo de cada alternativa estar certa ou errada.'),
+      h('p', { class: 'note', id: 'q-cobertura' }, S.comQuestoes.size + ' de ' + S.topicos.length + ' tópicos do edital já têm questões. Os demais aparecem esmaecidos no filtro, com o motivo.'),
+      h('p', { class: 'note' }, 'Depois de cada resposta você vê o gabarito, a explicação e o motivo de cada alternativa estar certa ou errada.'),
       rev.length
         ? h('div', { class: 'stack', id: 'q-revisoes' }, chip('warn', rev.length + (rev.length === 1 ? ' revisão vencida' : ' revisões vencidas')),
           rev.slice(0, 4).map(function (r) { return h('div', { class: 'm' }, '• ' + Questoes.modelo(r.templateId).titulo + (r.atrasoDias > 0 ? ' (atrasada ' + r.atrasoDias + ' d)' : ' (vence hoje)')); }),
@@ -737,7 +763,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
       h('div', { class: 'acoes' }, h('button', { id: 'btn-q-caderno', class: 'sec', onclick: function () { estadoQ().fase = 'caderno'; render(); window.scrollTo(0, 0); } }, 'Abrir caderno'))));
 
     nodes.push(h('section', { class: 'card', id: 'card-q-limites' }, h('h2', null, 'O que ainda não existe'),
-      h('p', { class: 'note' }, 'Não há questões de Direito, Língua Portuguesa, Informática ou Atualidades: elas exigiriam o texto oficial da legislação e de fontes de referência que não consegui acessar, e não vou inventar. Também não existem ainda simulados com cronômetro nem treino de discursiva. A auditoria completa está em Mais.')));
+      h('p', { class: 'note' }, 'Direito: só 3 dos 14 diplomas do edital têm questões (Estatuto dos Funcionários, Lei 11.608/2003 e Normas da Corregedoria), e só nos tópicos em que o texto oficial permite uma alteração objetiva (número, prazo, termo oposto). São questões de leitura precisa da lei, conferidas contra o texto oficial; não testam interpretação nem jurisprudência. Sem questões ainda: os outros 11 diplomas (fonte oficial pendente), Português, Informática e Atualidades. Também não existem simulados com cronômetro nem treino de discursiva. Detalhes em Mais → Auditoria.')));
     return nodes;
   }
 
@@ -788,7 +814,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
     var fb = h('section', { class: 'card', id: 'q-feedback', tabindex: '-1' },
       h('div', { class: 'row' }, ok ? chip('ok', 'Acertou') : chip('bad', 'Errou · gabarito ' + qs.gabarito), h('span', { class: 'm' }, 'Sua confiança: ' + (CONFIANCAS.filter(function (x) { return x[0] === q.resp.conf; })[0] || [0, ''])[1].toLowerCase())),
       h('div', { class: 'explic' }, h('p', null, h('b', null, 'Explicação: '), qs.explicacao), h('p', null, h('b', null, 'Atenção: '), qs.pegadinha)),
-      h('p', { class: 'note' }, 'Questão inédita gerada por modelo; a resposta foi conferida por dois métodos de cálculo. Não é questão de prova da VUNESP.'));
+      h('p', { class: 'note', id: 'q-nota-fonte' }, qs.confianca === 'A' ? 'Nível A: o trecho correto foi conferido, letra por letra, contra o texto oficial (' + qs.fonte + '), e cada alternativa errada foi conferida como inexistente no diploma. Treina a leitura precisa da lei; não é questão de prova da VUNESP.' : 'Questão inédita gerada por modelo; a resposta foi conferida por dois métodos de cálculo. Não é questão de prova da VUNESP.'));
     if (!ok) {
       var mot = h('div', { class: 'motivos', role: 'group', 'aria-label': 'Motivo do erro' });
       Object.keys(Aprendizagem.MOTIVOS).forEach(function (k) {
@@ -849,7 +875,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
     [['validacao', 'validacao-questoes.json'], ['regras', 'edital-regras.json']].forEach(function (par) {
       fetch(par[1]).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function (j) { S.aux[par[0]] = j; }, function () { S.aux[par[0]] = 'erro'; })
-        .then(function () { var a = document.activeElement; if (S.aba === 'mais' && (!a || a === document.body)) render(); });
+        .then(function () { var a = document.activeElement; if ((S.aba === 'mais' || (S.aba === 'questoes' && estadoQ().fase === 'inicio')) && (!a || a === document.body)) render(); });
     });
   }
   function cardAuditoria() {

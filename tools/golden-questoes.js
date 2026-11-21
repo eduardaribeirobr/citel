@@ -11,14 +11,19 @@ const path = require('path');
 const crypto = require('crypto');
 const Q = require('../src/questoes.js');
 require('../src/questoes-mat.js'); require('../src/questoes-mat2.js'); require('../src/questoes-rl.js'); require('../src/questoes-rl2.js');
+const DIR = process.argv.includes('--dir');
+if (DIR) require('../src/questoes-dir.js');
 
-const ARQ = path.join(__dirname, '../tests/golden-questoes.json');
+const ARQ = path.join(__dirname, DIR ? '../tests/golden-dir.json' : '../tests/golden-questoes.json');
 const SEMENTES = [1, 2, 3, 7919];
 const impressao = (q) => crypto.createHash('sha256').update(JSON.stringify({ e: q.enunciado, a: q.alternativas.map((x) => x.texto), g: q.gabarito })).digest('hex').slice(0, 16);
 
 function gerar() {
   const ids = {};
-  for (const t of Q.CATALOGO) for (let n = 1; n <= 5; n++) for (const s of SEMENTES) { const id = Q.idQuestao(t.id, s, n); ids[id] = impressao(Q.gerarQuestao(t.id, s, n)); }
+  for (const t of Q.CATALOGO.filter((x) => DIR === !!x.ajustarSemente)) for (let n = 1; n <= 5; n++) for (const s of SEMENTES) {
+    const sem = t.ajustarSemente ? t.ajustarSemente(Q.topicosDe(t)[s % Q.topicosDe(t).length], s * t.modulo + 1) : s;
+    ids[Q.idQuestao(t.id, sem, n)] = impressao(Q.gerarQuestao(t.id, sem, n));
+  }
   return ids;
 }
 module.exports = { impressao, gerar, ARQ };
