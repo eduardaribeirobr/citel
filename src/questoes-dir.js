@@ -46,7 +46,23 @@ const VERBOS_NEG = ['poderá', 'deverá', 'será', 'serão', 'poderão', 'dever�
 const maius = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /** Pontos alteráveis do texto: { ini, fim, original, tipo, opcoes:[substituições] }. Cada ponto tem texto coerente (dígito e extenso mudam juntos). */
-function pontos(texto) {
+/**
+ * Concordância número/unidade (só nos diplomas com `concordancia` nos dados; os modelos já publicados ficam como estão).
+ * Unidade no singular depois do número ("um mês") denunciaria a resposta pela gramática: o ponto é descartado.
+ * Unidade no plural: a alternativa "um/uma/1" seria agramatical, então sai das opções.
+ */
+function concordaUnidade(texto, fim, valor, opcoes) {
+  const m = /^\s*(?:\(([^)]*)\)\s*)?(?:úteis\s+|corridos\s+)?(\p{L}+)/u.exec(texto.slice(fim)); if (!m) return true;
+  const unidade = m[2].toLowerCase(); if (unidade.length < 3) return true;
+  const plural = /s$/.test(unidade) && !/^m[êe]s$/.test(unidade);                 // "mês" é singular apesar do s final
+  if (!plural) return false;
+  for (let i = opcoes.length - 1; i >= 0; i--) if (/^(?:1|um|uma)(?:\s*\(|$)/i.test(opcoes[i])) opcoes.splice(i, 1);
+  void valor; return true;
+}
+/** "quarenta e cinco": trocar só uma das partes de um numeral composto por extenso daria "quarenta e noventa" (sem sentido). */
+const DEZENAS = '(?:vinte|trinta|quarenta|cinquenta|sessenta|setenta|oitenta|noventa|cento|duzentos|duzentas|trezentos|trezentas|quatrocentos|quatrocentas|quinhentos|quinhentas|seiscentos|seiscentas|setecentos|setecentas|oitocentos|oitocentas|novecentos|novecentas)';
+const numeralComposto = (texto, ini) => new RegExp('(?:^|[^\\p{L}])' + DEZENAS + '\\s+e\\s+$', 'iu').test(texto.slice(0, ini));
+function pontos(texto, concordancia) {
   const out = []; const bloq = []; let m;
   const livre = (ini, fim) => !out.some((p) => ini < p.fim && fim > p.ini) && !bloq.some((p) => ini < p.fim && fim > p.ini);
   const REF = /(?:art|arts|artigo|artigos|§|n\.?º|lei|decreto|inciso|incisos)\.?\s*[\d.]*$/i;     // número que é referência, não quantidade
@@ -66,14 +82,17 @@ function pontos(texto) {
     const fem = FEM.test(texto.slice(fim));
     if (m[3]) { let ext; try { ext = extenso(valor, fem); } catch (e) { bloq.push({ ini, fim }); continue; } if (m[4].trim().toLowerCase() !== ext) { bloq.push({ ini, fim }); continue; } }
     const opcoes = VALORES.filter((v) => v !== valor).map((v) => (m[3] ? v + ' (' + extenso(v, fem) + ')' : String(v)));
+    if (concordancia && !concordaUnidade(texto, fim, valor, opcoes)) { bloq.push({ ini, fim }); continue; }
     out.push({ ini, fim, original: texto.slice(ini, fim), tipo: 'numero', opcoes });
   }
   RE_NUM_PAL.lastIndex = 0;
   while ((m = RE_NUM_PAL.exec(texto))) {
     const ini = m.index + m[1].length; const fim = ini + m[2].length;
     const v = VAL_DE_PALAVRA(m[2]); if (v === null || !livre(ini, fim)) continue;
+    if (concordancia && numeralComposto(texto, ini)) continue;
     const fem = FEM.test(texto.slice(fim)); const cap = m[2].charAt(0) !== m[2].charAt(0).toLowerCase();
     const opcoes = VALORES.filter((x) => x !== v && x <= 99).map((x) => { const w = extenso(x, fem); return cap ? maius(w) : w; });
+    if (concordancia && !concordaUnidade(texto, fim, v, opcoes)) continue;
     out.push({ ini, fim, original: texto.slice(ini, fim), tipo: 'numero', opcoes });
   }
   // unidade de tempo logo depois de uma quantidade (só unidades masculinas: a concordância do número não muda)
@@ -90,6 +109,7 @@ function pontos(texto) {
     const re = new RegExp('(^|[^\\p{L}])(' + de + ')(?![\\p{L}])', 'giu'); re.lastIndex = 0;
     while ((m = re.exec(texto))) {
       const ini = m.index + m[1].length; const orig = m[2]; if (!livre(ini, ini + orig.length)) continue;
+      if (concordancia && /^sempre$/i.test(orig) && /^\s+que(?![\p{L}])/iu.test(texto.slice(ini + orig.length))) continue;      // "nunca que" não existe em português
       out.push({ ini, fim: ini + orig.length, original: orig, tipo: 'termo', opcoes: [orig.charAt(0) !== orig.charAt(0).toLowerCase() ? maius(para) : para] });
     }
   }
@@ -140,7 +160,7 @@ const cacheCorpus = {}; const cacheCand = {};
 const corpusDe = (fid) => (cacheCorpus[fid] = cacheCorpus[fid] || norm(Object.values(DADOS.fontes[fid].artigos).map((a) => a.texto).join('\n')));
 function candidatos(fid, artigo) {
   const k = fid + '#' + artigo; if (cacheCand[k]) return cacheCand[k];
-  const lista = []; for (const s of segmentos(DADOS.fontes[fid].artigos[artigo].texto)) { const ps = pontos(s.corpo); if (ps.length) lista.push({ corpo: s.corpo, pontos: ps }); }
+  const lista = []; for (const s of segmentos(DADOS.fontes[fid].artigos[artigo].texto)) { const ps = pontos(s.corpo, !!DADOS.fontes[fid].concordancia); if (ps.length) lista.push({ corpo: s.corpo, pontos: ps }); }
   return (cacheCand[k] = lista);
 }
 function intercalar(rng, pts) {                 // uma substituição por ponto, em rodízio entre os pontos
@@ -210,7 +230,7 @@ function registrar() {
     const meta = DADOS.fontes[fid];
     const fixos = Object.keys(DADOS.topicos).filter((t) => DADOS.topicos[t].some((x) => x.fonte === fid)).sort();   // lista FIXA: o tópico de uma semente nunca muda
     const geraveis = fixos.filter((t) => !DADOS.topicosComQuestao || DADOS.topicosComQuestao.includes(t));
-    if (!fixos.length) continue;
+    if (!fixos.length || !geraveis.length) continue;                // sem nenhum tópico gerável, não há modelo (não publica modelo vazio)
     const K = fixos.length;
     Q.CATALOGO.push({
       id: meta.id, topicId: geraveis[0] || fixos[0], topicIds: geraveis, topicosFixos: fixos, modulo: K, disciplina: meta.disciplina, titulo: meta.titulo,
@@ -235,8 +255,9 @@ registrar();
 function descobrirTopicosComQuestao(dados) {
   const out = [];
   for (const t of Q.CATALOGO.filter((x) => x.topicosFixos)) for (const topico of t.topicosFixos) {
-    let ok = false;
-    for (let nivel = 1; nivel <= 5 && !ok; nivel++) for (let s = 1; s <= 25 && !ok; s++) { try { const q = Q.gerarQuestao(t.id, t.ajustarSemente(topico, 1000 + s * t.modulo), nivel); if (q.topicId === topico && Q.validarQuestao(q).ok) ok = true; } catch (e) { /* tenta a próxima */ } }
+    // Um tópico só é exposto se gera questão VÁLIDA em TODOS os 5 níveis, em todas as sementes testadas (nunca "só às vezes").
+    let ok = true;
+    for (let nivel = 1; nivel <= 5 && ok; nivel++) for (let s = 1; s <= 25 && ok; s++) { try { const q = Q.gerarQuestao(t.id, t.ajustarSemente(topico, 1000 + s * t.modulo), nivel); if (!(q.topicId === topico && Q.validarQuestao(q).ok)) ok = false; } catch (e) { ok = false; } }
     if (ok) out.push(topico);
   }
   void dados; return out.sort();

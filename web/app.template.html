@@ -581,7 +581,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
       h('ul', { class: 'limpa' },
         h('li', null, 'Os minutos por tópico são estimativas iniciais, ainda não calibradas com o seu tempo real.'),
         h('li', null, 'Revisões de teoria em 1, 7 e 30 dias; revisões de questões em 1, 7, 15 e 30 dias. São estimativas pedagógicas, não regra do edital.'),
-        h('li', null, 'Questões de Matemática e Raciocínio Lógico (inéditas, conferidas por cálculo) e de 3 diplomas de Direito (reprodução conferida contra o texto oficial). Os outros 11 diplomas, Português, Informática e Atualidades ainda não têm questões.'),
+        h('li', null, 'Questões de Matemática e Raciocínio Lógico (inéditas, conferidas por cálculo) e de 12 dos 14 diplomas do edital (reprodução conferida contra o texto oficial, só nos tópicos em que o texto permite alteração objetiva). Lei 8.429/1992 e Resolução CNJ 354/2020 não geram questão por esse método; Português, Informática e Atualidades ainda não têm questões.'),
         h('li', null, 'Ainda não existem simulados com cronômetro, treino de discursiva nem aulas dentro do app.'),
         h('li', null, 'Evite registrar ao mesmo tempo em duas abas do mesmo navegador.'),
         h('li', null, 'Funciona só online. O app não abre sem internet.'))));
@@ -702,7 +702,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
   function motivoSemQuestoes(t) {
     if (!t.diploma) return 'sem fonte aprovada';
     var v = S.aux.validacao; var d = v && v !== 'erro' && v.diplomas ? v.diplomas.filter(function (x) { return x.nome === t.diploma.nome; })[0] : null;
-    return d && d.fonte === 'ingerida' ? 'questões em preparo' : 'fonte oficial pendente';
+    return d && d.fonte === 'ingerida' ? 'sem alteração objetiva no texto' : 'fonte oficial pendente';
   }
   function montarSeletorAssunto() {
     var sel = h('select', { id: 'q-assunto', 'aria-label': 'Assunto' }, h('option', { value: '', text: 'Todos os assuntos que já têm questões' }));
@@ -763,7 +763,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
       h('div', { class: 'acoes' }, h('button', { id: 'btn-q-caderno', class: 'sec', onclick: function () { estadoQ().fase = 'caderno'; render(); window.scrollTo(0, 0); } }, 'Abrir caderno'))));
 
     nodes.push(h('section', { class: 'card', id: 'card-q-limites' }, h('h2', null, 'O que ainda não existe'),
-      h('p', { class: 'note' }, 'Direito: só 3 dos 14 diplomas do edital têm questões (Estatuto dos Funcionários, Lei 11.608/2003 e Normas da Corregedoria), e só nos tópicos em que o texto oficial permite uma alteração objetiva (número, prazo, termo oposto). São questões de leitura precisa da lei, conferidas contra o texto oficial; não testam interpretação nem jurisprudência. O texto oficial dos 14 diplomas já está guardado e conferido contra o edital; as questões dos outros 11 estão em preparo. Sem questões ainda: Português, Informática e Atualidades. Também não existem simulados com cronômetro nem treino de discursiva. Detalhes em Mais → Auditoria.')));
+      h('p', { class: 'note' }, 'Direito: 12 dos 14 diplomas do edital têm questões, mas só nos tópicos em que o texto oficial permite uma alteração objetiva (número, prazo, termo oposto). São questões de leitura precisa da lei, conferidas contra o texto oficial; não testam interpretação nem jurisprudência. Artigos que o Senado registra como alterados depois do texto guardado ficam de fora. O texto oficial dos 14 diplomas já está guardado e conferido contra o edital. Sem questões ainda: Português, Informática e Atualidades. Também não existem simulados com cronômetro nem treino de discursiva. Detalhes em Mais → Auditoria.')));
     return nodes;
   }
 

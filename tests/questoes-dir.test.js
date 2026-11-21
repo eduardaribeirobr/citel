@@ -12,7 +12,7 @@ const { impressao } = require('../tools/golden-questoes.js');
 
 const DADOS = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/dir-dados.json'), 'utf8'));
 const gold = JSON.parse(fs.readFileSync(path.join(__dirname, 'golden-dir.json'), 'utf8'));
-const AMOSTRAS = Number(process.env.AMOSTRAS || 300);          // AMOSTRAS menor só para a verificação por mutação (mais rápida)
+const AMOSTRAS = Number(process.env.AMOSTRAS || 100);          // AMOSTRAS menor só para a verificação por mutação (mais rápida)
 const modelos = Q.CATALOGO.filter((t) => t.ajustarSemente);
 const FONTES = {}; const fonteBruta = (id) => (FONTES[id] = FONTES[id] || F.lerFonte(id));
 const semente = (t, s) => t.ajustarSemente(Q.topicosDe(t)[s % Q.topicosDe(t).length], s * t.modulo + 1);
@@ -31,8 +31,8 @@ test('os dados embutidos são exatamente os que se derivam dos arquivos oficiais
   }
 });
 
-test('três modelos de Direito, ligados a tópicos reais do edital, com lista fixa de tópicos e só tópicos geráveis expostos', () => {
-  assert.deepEqual(modelos.map((t) => t.id).sort(), ['DIR-DADM-L10261', 'DIR-LESP-L11608', 'DIR-LESP-NSCGJ']);
+test('modelos de Direito (um por diploma com algum tópico gerável), ligados a tópicos reais do edital, com lista fixa de tópicos e só tópicos geráveis expostos', () => {
+  assert.deepEqual(modelos.map((t) => t.id).sort(), ['DIR-ATUA-L13146', 'DIR-DADM-L10261', 'DIR-DCIV-CC', 'DIR-DCIV-LINDB', 'DIR-DCON-CF', 'DIR-DPCI-CPC', 'DIR-DPEN-CP', 'DIR-DPPE-CPP', 'DIR-DPPE-L9099', 'DIR-LESP-L11608', 'DIR-LESP-L6830', 'DIR-LESP-NSCGJ']);
   const matriz = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/matriz-edital.json'), 'utf8')); const ids = new Set(matriz.topicos.map((t) => t.id));
   for (const t of modelos) {
     assert.ok(t.topicosFixos.length >= t.topicIds.length && t.topicIds.length >= 1);
@@ -44,7 +44,7 @@ test('três modelos de Direito, ligados a tópicos reais do edital, com lista fi
   assert.deepEqual(DADOS.topicosComQuestao, [...new Set(modelos.flatMap((t) => t.topicIds))].sort());
 });
 
-test('PROPRIEDADE (sorteios × 5 níveis × 3 modelos; 300 por padrão): válida, trecho literal no texto oficial BRUTO inteiro e nenhuma errada existe no diploma', () => {
+test('PROPRIEDADE (sorteios × 5 níveis × todos os modelos; 100 por modelo e nível por padrão): válida, trecho literal no texto oficial BRUTO inteiro e nenhuma errada existe no diploma', () => {
   let n = 0; const formas = { lacuna: 0, reproducao: 0 };
   for (const t of modelos) {
     const src = fonteBruta(idDaFonte(t));
@@ -69,7 +69,7 @@ test('PROPRIEDADE (sorteios × 5 níveis × 3 modelos; 300 por padrão): válida
       for (const x of [q.enunciado, q.explicacao].concat(q.alternativas.map((a) => a.texto))) assert.ok(!/undefined|NaN|\[object|Prov\.? ?CG|Revogad/.test(x), 'texto com defeito: ' + x.slice(0, 100));
     }
   }
-  assert.equal(n, 15 * AMOSTRAS); assert.ok(formas.lacuna > AMOSTRAS / 3 && formas.reproducao > AMOSTRAS * 3, JSON.stringify(formas));
+  assert.equal(n, 5 * modelos.length * AMOSTRAS); assert.ok(formas.lacuna > AMOSTRAS / 3 && formas.reproducao > AMOSTRAS * modelos.length, JSON.stringify(formas));
 });
 
 test('o texto da lei NÃO é alterado pelo normalizador de plural (a alternativa correta continua literal depois de montada)', () => {
@@ -111,7 +111,7 @@ test('ids imutáveis: o arquivo dourado de Direito reproduz exatamente as mesmas
   for (const [id, h] of Object.entries(gold.ids)) { const x = Q.lerId(id); if (impressao(Q.gerarQuestao(x.templateId, x.semente, x.nivel)) !== h) dif.push(id); }
   assert.deepEqual(dif, [], 'Estes ids passaram a gerar OUTRA questão: o histórico de quem já respondeu ficaria errado. Crie um modelo novo (versão) em vez de editar.');
   const fixos = Object.fromEntries(modelos.map((t) => [t.id, t.topicosFixos.length]));
-  assert.deepEqual(fixos, { 'DIR-DADM-L10261': 16, 'DIR-LESP-L11608': 1, 'DIR-LESP-NSCGJ': 13 }, 'lista fixa mudou: ids antigos trocariam de tópico');
+  assert.deepEqual(fixos, { 'DIR-DADM-L10261': 16, 'DIR-LESP-L11608': 1, 'DIR-LESP-NSCGJ': 13, 'DIR-DCIV-CC': 23, 'DIR-DPCI-CPC': 39, 'DIR-DPPE-CPP': 24, 'DIR-DPEN-CP': 17, 'DIR-DCON-CF': 7, 'DIR-ATUA-L13146': 3, 'DIR-DPPE-L9099': 8, 'DIR-LESP-L6830': 6, 'DIR-DCIV-LINDB': 1 }, 'lista fixa mudou: ids antigos trocariam de tópico');
 });
 
 test('ajustarSemente: a semente cai no tópico pedido, e o passo de sorteio preserva o tópico', () => {
@@ -139,10 +139,11 @@ test('o segundo método (resolver) REJEITA: alternativa errada que existe no dip
 
 test('cobertura: os tópicos declarados com questão são exatamente os que geram, e os demais falham de forma explícita', () => {
   for (const t of modelos) for (const topico of t.topicosFixos) {
-    let gera = false; for (let nivel = 1; nivel <= 5 && !gera; nivel++) for (let s = 1; s <= 25 && !gera; s++) { try { const q = Q.gerarQuestao(t.id, t.ajustarSemente(topico, 1000 + s * t.modulo), nivel); gera = q.topicId === topico && Q.validarQuestao(q).ok; } catch (e) { /* próximo */ } }
+    // regra do construtor: o tópico só é exposto se gera questão VÁLIDA em todos os 5 níveis e em todas as 25 sementes testadas
+    let gera = true; for (let nivel = 1; nivel <= 5 && gera; nivel++) for (let s = 1; s <= 25 && gera; s++) { try { const q = Q.gerarQuestao(t.id, t.ajustarSemente(topico, 1000 + s * t.modulo), nivel); gera = q.topicId === topico && Q.validarQuestao(q).ok; } catch (e) { gera = false; } }
     assert.equal(t.topicIds.includes(topico), gera, t.id + ' ' + topico);
   }
-  assert.equal(DADOS.topicosComQuestao.length, 10);
+  assert.equal(DADOS.topicosComQuestao.length, 61);
 });
 
 test('sessões: com filtro de tópico de Direito, todos os itens são do tópico, sem repetir enunciado entre sessões, e o nível sugerido acompanha o tópico', () => {
@@ -232,4 +233,33 @@ test('sessão filtrada por um tópico que NÃO é o primeiro do modelo funciona,
   assert.ok(comNivel.every((i) => i.nivel === 2), 'o nível do tópico acertado deveria subir para 2: ' + comNivel.map((i) => i.nivel));
   const outroTopico = A.montarSessao({ n: 4, topicIds: [primeiro], nivel: 'auto', eventos: evs, hojeIdx: Math.floor(BASE / 86400000) + 3, semente: 22 });
   assert.ok(outroTopico.every((i) => i.nivel === 1), 'o outro tópico não tem histórico: continua no nível 1: ' + outroTopico.map((i) => i.nivel));
+});
+
+// ---------- regras de qualidade dos diplomas novos (flag `concordancia`; os três primeiros modelos não são afetados) ----------
+const alvo = (txt, c) => M.pontos(txt, c).filter((p) => p.tipo === 'numero');
+test('concordância: unidade no singular denuncia a resposta e o ponto é descartado; no plural, "um/uma/1" sai das opções', () => {
+  const sing = 'Entrar no exercício da função: Pena - detenção, de quinze dias a um mês, ou multa, conforme o caso concreto.';
+  assert.ok(alvo(sing, false).some((p) => /^um$/i.test(p.original)), 'sem a flag o comportamento antigo se mantém');
+  assert.ok(!alvo(sing, true).some((p) => /^um$/i.test(p.original)), 'com a flag o ponto "um mês" é descartado');
+  const plur = 'Entrar na casa alheia: Pena - detenção, de um a três meses, ou multa, conforme o caso concreto.';
+  const p = alvo(plur, true).find((x) => /^três$/i.test(x.original));
+  assert.ok(p && !p.opcoes.some((o) => /^(um|uma|1)$/i.test(o)), 'opção "um" agramatical com unidade no plural');
+  assert.ok(alvo(plur, false).find((x) => /^três$/i.test(x.original)).opcoes.includes('um'), 'sem a flag a opção continua (modelos antigos intactos)');
+});
+test('numeral composto por extenso ("quarenta e cinco") não vira lacuna parcial; a flag não afeta os modelos antigos', () => {
+  const t = 'A lei começa a vigorar em todo o país quarenta e cinco dias depois de oficialmente publicada oficialmente.';
+  assert.ok(!alvo(t, true).some((p) => /cinco|quarenta/i.test(p.original)));
+  assert.ok(alvo(t, false).some((p) => /cinco|quarenta/i.test(p.original)));
+});
+test('"sempre que" não é trocado por "nunca que" (expressão que não existe) nos diplomas novos', () => {
+  const t = 'O tribunal atuará sempre que houver pedido da parte interessada no processo em curso.';
+  const termos = (c) => M.pontos(t, c).filter((p) => p.tipo === 'termo' && /^sempre$/i.test(p.original));
+  assert.equal(termos(true).length, 0); assert.equal(termos(false).length, 1);
+});
+test('os dados marcam `concordancia` só nos diplomas novos (os três primeiros ficam como foram publicados)', () => {
+  for (const [fid, f] of Object.entries(DADOS.fontes)) assert.equal(!!f.concordancia, !['alesp-lei-10261-1968', 'alesp-lei-11608-2003', 'tjsp-nscgj-tomo1'].includes(fid), fid);
+});
+
+test('a descoberta de tópicos com questão (regra estrita: 5 níveis × 25 sementes, todas válidas) reproduz exatamente o que está nos dados publicados', () => {
+  assert.deepEqual(M.descobrirTopicosComQuestao(DADOS), DADOS.topicosComQuestao);
 });

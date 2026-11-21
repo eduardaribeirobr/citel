@@ -29,18 +29,18 @@ test('variação: cada modelo informa quantos enunciados distintos tem por níve
   assert.ok(r.variacao_baixa.length > 0, 'o relatório precisa expor os pontos fracos conhecidos');
 });
 
-test('cobertura do edital: Matemática, Raciocínio Lógico e 3 diplomas de Direito têm questões; o resto fica declarado como sem questões', () => {
+test('cobertura do edital: Matemática, Raciocínio Lógico e 12 diplomas de Direito têm questões; o resto fica declarado como sem questões', () => {
   const r = validarCatalogo({ sementes: 3 });
   const por = Object.fromEntries(r.cobertura.map((c) => [c.cod, c]));
   assert.equal(por.MAT.topicosComQuestoes, 13); assert.equal(por.MAT.topicos, 13);
   assert.equal(por.RLOG.topicosComQuestoes, 1);
-  assert.equal(por.DADM.topicosComQuestoes, 5, 'Estatuto dos Funcionários: 5 de 18 tópicos com trecho alterável de forma objetiva');
-  assert.equal(por.LESP.topicosComQuestoes, 5, 'Lei 11.608 (1) + Normas da Corregedoria (4)');
-  const zero = r.cobertura.filter((c) => !['MAT', 'RLOG', 'DADM', 'LESP'].includes(c.cod));
-  assert.ok(zero.length >= 8, 'as demais disciplinas aparecem na cobertura');
+  const esperado = { DPEN: 15, DPPE: 7, DPCI: 16, DCON: 3, DADM: 5, DCIV: 6, LESP: 8, ATUA: 1 };
+  for (const [cod, n] of Object.entries(esperado)) assert.equal(por[cod].topicosComQuestoes, n, cod);
+  const zero = r.cobertura.filter((c) => !['MAT', 'RLOG', ...Object.keys(esperado)].includes(c.cod));
+  assert.ok(zero.length >= 2, 'as demais disciplinas aparecem na cobertura');
   for (const c of zero) { assert.equal(c.topicosComQuestoes, 0, c.cod + ' não pode aparecer com questões'); assert.equal(c.modelos, 0); }
-  const total = r.cobertura.reduce((s, c) => s + c.topicosComQuestoes, 0); assert.equal(total, 24, 'tópicos com questões no total');
-  assert.ok(r.limites.some((l) => /outros 11 diplomas/.test(l) && /Não vou inventar/.test(l)));
+  const total = r.cobertura.reduce((s, c) => s + c.topicosComQuestoes, 0); assert.equal(total, 75, 'tópicos com questões no total');
+  assert.ok(r.limites.some((l) => /Sem questões/.test(l) && /Não vou inventar/.test(l)));
   assert.ok(r.limites.some((l) => /leitura precisa da lei/.test(l) && /jurisprudência/.test(l)), 'o relatório declara o que as questões de Direito NÃO testam');
 });
 

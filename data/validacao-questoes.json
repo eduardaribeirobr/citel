@@ -5,8 +5,8 @@
  "metodo": "Cada questão é gerada por um modelo e conferida por um segundo método de cálculo independente; só aparece se a estrutura, o gabarito único e as 5 alternativas distintas passarem. Isso prova que a conta está certa, não que a questão seja igual à da banca.",
  "origem_das_questoes": "inéditas, geradas por modelo; não são questões reais de provas da VUNESP",
  "total": {
-  "geradas": 13800,
-  "validas": 13800,
+  "geradas": 19200,
+  "validas": 19200,
   "rejeitadas": 0,
   "naoGeradas": 0
  },
@@ -122,6 +122,181 @@
    "modelo": "DIR-LESP-NSCGJ",
    "nivel": 5,
    "variacoes": 24
+  },
+  {
+   "modelo": "DIR-DCIV-CC",
+   "nivel": 1,
+   "variacoes": 11
+  },
+  {
+   "modelo": "DIR-DCIV-CC",
+   "nivel": 2,
+   "variacoes": 10
+  },
+  {
+   "modelo": "DIR-DCIV-CC",
+   "nivel": 3,
+   "variacoes": 9
+  },
+  {
+   "modelo": "DIR-DCIV-CC",
+   "nivel": 4,
+   "variacoes": 9
+  },
+  {
+   "modelo": "DIR-DCIV-CC",
+   "nivel": 5,
+   "variacoes": 8
+  },
+  {
+   "modelo": "DIR-DPPE-CPP",
+   "nivel": 1,
+   "variacoes": 17
+  },
+  {
+   "modelo": "DIR-DPPE-CPP",
+   "nivel": 2,
+   "variacoes": 15
+  },
+  {
+   "modelo": "DIR-DPPE-CPP",
+   "nivel": 3,
+   "variacoes": 14
+  },
+  {
+   "modelo": "DIR-DPPE-CPP",
+   "nivel": 4,
+   "variacoes": 14
+  },
+  {
+   "modelo": "DIR-DPPE-CPP",
+   "nivel": 5,
+   "variacoes": 12
+  },
+  {
+   "modelo": "DIR-DCON-CF",
+   "nivel": 1,
+   "variacoes": 28
+  },
+  {
+   "modelo": "DIR-DCON-CF",
+   "nivel": 2,
+   "variacoes": 11
+  },
+  {
+   "modelo": "DIR-DCON-CF",
+   "nivel": 3,
+   "variacoes": 11
+  },
+  {
+   "modelo": "DIR-DCON-CF",
+   "nivel": 4,
+   "variacoes": 11
+  },
+  {
+   "modelo": "DIR-DCON-CF",
+   "nivel": 5,
+   "variacoes": 10
+  },
+  {
+   "modelo": "DIR-ATUA-L13146",
+   "nivel": 1,
+   "variacoes": 1
+  },
+  {
+   "modelo": "DIR-ATUA-L13146",
+   "nivel": 2,
+   "variacoes": 1
+  },
+  {
+   "modelo": "DIR-ATUA-L13146",
+   "nivel": 3,
+   "variacoes": 1
+  },
+  {
+   "modelo": "DIR-ATUA-L13146",
+   "nivel": 4,
+   "variacoes": 1
+  },
+  {
+   "modelo": "DIR-ATUA-L13146",
+   "nivel": 5,
+   "variacoes": 1
+  },
+  {
+   "modelo": "DIR-DPPE-L9099",
+   "nivel": 1,
+   "variacoes": 2
+  },
+  {
+   "modelo": "DIR-DPPE-L9099",
+   "nivel": 2,
+   "variacoes": 2
+  },
+  {
+   "modelo": "DIR-DPPE-L9099",
+   "nivel": 3,
+   "variacoes": 2
+  },
+  {
+   "modelo": "DIR-DPPE-L9099",
+   "nivel": 4,
+   "variacoes": 2
+  },
+  {
+   "modelo": "DIR-DPPE-L9099",
+   "nivel": 5,
+   "variacoes": 2
+  },
+  {
+   "modelo": "DIR-LESP-L6830",
+   "nivel": 1,
+   "variacoes": 6
+  },
+  {
+   "modelo": "DIR-LESP-L6830",
+   "nivel": 2,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-LESP-L6830",
+   "nivel": 3,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-LESP-L6830",
+   "nivel": 4,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-LESP-L6830",
+   "nivel": 5,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-DCIV-LINDB",
+   "nivel": 1,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-DCIV-LINDB",
+   "nivel": 2,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-DCIV-LINDB",
+   "nivel": 3,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-DCIV-LINDB",
+   "nivel": 4,
+   "variacoes": 3
+  },
+  {
+   "modelo": "DIR-DCIV-LINDB",
+   "nivel": 5,
+   "variacoes": 3
   }
  ],
  "modelos": [
@@ -1458,6 +1633,528 @@
     "E": 101
    },
    "problemas": {}
+  },
+  {
+   "id": "DIR-DCIV-CC",
+   "topicId": "OJ26-DCIV-CC-01",
+   "disciplina": "DCIV",
+   "titulo": "Direito: Código Civil",
+   "aposentado": null,
+   "variacoes": {
+    "1": 11,
+    "2": 10,
+    "3": 9,
+    "4": 9,
+    "5": 8
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 113,
+    "B": 124,
+    "C": 114,
+    "D": 122,
+    "E": 127
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-DPCI-CPC",
+   "topicId": "OJ26-DPCI-CPC-07",
+   "disciplina": "DPCI",
+   "titulo": "Direito: Código de Processo Civil",
+   "aposentado": null,
+   "variacoes": {
+    "1": 46,
+    "2": 40,
+    "3": 38,
+    "4": 35,
+    "5": 30
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 129,
+    "B": 121,
+    "C": 128,
+    "D": 110,
+    "E": 112
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-DPPE-CPP",
+   "topicId": "OJ26-DPPE-CPP-01",
+   "disciplina": "DPPE",
+   "titulo": "Direito: Código de Processo Penal",
+   "aposentado": null,
+   "variacoes": {
+    "1": 17,
+    "2": 15,
+    "3": 14,
+    "4": 14,
+    "5": 12
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 124,
+    "B": 119,
+    "C": 111,
+    "D": 112,
+    "E": 134
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-DPEN-CP",
+   "topicId": "OJ26-DPEN-CP-02",
+   "disciplina": "DPEN",
+   "titulo": "Direito: Código Penal",
+   "aposentado": null,
+   "variacoes": {
+    "1": 108,
+    "2": 79,
+    "3": 68,
+    "4": 72,
+    "5": 61
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 115,
+    "B": 122,
+    "C": 119,
+    "D": 121,
+    "E": 123
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-DCON-CF",
+   "topicId": "OJ26-DCON-CF-01",
+   "disciplina": "DCON",
+   "titulo": "Direito: Constituição Federal",
+   "aposentado": null,
+   "variacoes": {
+    "1": 28,
+    "2": 11,
+    "3": 11,
+    "4": 11,
+    "5": 10
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 114,
+    "B": 131,
+    "C": 122,
+    "D": 112,
+    "E": 121
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-ATUA-L13146",
+   "topicId": "OJ26-ATUA-L13146-01",
+   "disciplina": "ATUA",
+   "titulo": "Atualidades: Estatuto da Pessoa com Deficiência (Lei 13.146/2015)",
+   "aposentado": null,
+   "variacoes": {
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 119,
+    "B": 126,
+    "C": 102,
+    "D": 131,
+    "E": 122
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-DPPE-L9099",
+   "topicId": "OJ26-DPCI-L9099-02",
+   "disciplina": "DPPE",
+   "titulo": "Direito: Lei 9.099/1995 (Juizados Especiais)",
+   "aposentado": null,
+   "variacoes": {
+    "1": 2,
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 108,
+    "B": 130,
+    "C": 126,
+    "D": 124,
+    "E": 112
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-LESP-L6830",
+   "topicId": "OJ26-LESP-L6830-02",
+   "disciplina": "LESP",
+   "titulo": "Direito: Lei 6.830/1980 (Execução Fiscal)",
+   "aposentado": null,
+   "variacoes": {
+    "1": 6,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 3
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 125,
+    "B": 119,
+    "C": 116,
+    "D": 135,
+    "E": 105
+   },
+   "problemas": {}
+  },
+  {
+   "id": "DIR-DCIV-LINDB",
+   "topicId": "OJ26-DCIV-LINDB-01",
+   "disciplina": "DCIV",
+   "titulo": "Direito: LINDB (Decreto-Lei 4.657/1942)",
+   "aposentado": null,
+   "variacoes": {
+    "1": 3,
+    "2": 3,
+    "3": 3,
+    "4": 3,
+    "5": 3
+   },
+   "geradas": 600,
+   "validas": 600,
+   "rejeitadas": 0,
+   "naoGeradas": 0,
+   "niveis": {
+    "1": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "2": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "3": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "4": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    },
+    "5": {
+     "geradas": 120,
+     "validas": 120,
+     "rejeitadas": 0,
+     "naoGeradas": 0
+    }
+   },
+   "gabaritos": {
+    "A": 127,
+    "B": 140,
+    "C": 121,
+    "D": 104,
+    "E": 108
+   },
+   "problemas": {}
   }
  ],
  "cobertura": [
@@ -1472,29 +2169,29 @@
    "cod": "DPEN",
    "nome": "Direito Penal",
    "topicos": 17,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 15,
+   "modelos": 1
   },
   {
    "cod": "DPPE",
    "nome": "Direito Processual Penal",
    "topicos": 29,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 7,
+   "modelos": 2
   },
   {
    "cod": "DPCI",
    "nome": "Direito Processual Civil",
    "topicos": 43,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 16,
+   "modelos": 1
   },
   {
    "cod": "DCON",
    "nome": "Direito Constitucional",
    "topicos": 7,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 3,
+   "modelos": 1
   },
   {
    "cod": "DADM",
@@ -1507,22 +2204,22 @@
    "cod": "DCIV",
    "nome": "Direito Civil",
    "topicos": 24,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 6,
+   "modelos": 2
   },
   {
    "cod": "LESP",
    "nome": "Legislação Especial",
    "topicos": 22,
-   "topicosComQuestoes": 5,
-   "modelos": 2
+   "topicosComQuestoes": 8,
+   "modelos": 3
   },
   {
    "cod": "ATUA",
    "nome": "Atualidades",
    "topicos": 4,
-   "topicosComQuestoes": 0,
-   "modelos": 0
+   "topicosComQuestoes": 1,
+   "modelos": 1
   },
   {
    "cod": "MAT",
@@ -1761,7 +2458,7 @@
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
    "artigos_com_alteracao_posterior": [],
-   "observacao": null
+   "observacao": "Texto COMPILADO oficial publicado pelo CNJ (atos.cnj.jus.br), que incorpora as Resoluções 481/2022, 508/2023 e 679/2026, conforme o cabeçalho do próprio PDF. O título do PDF traz a data 18/11/2020 e a página do ato no portal traz 19/11/2020; a divergência foi apenas registrada, não resolvida. Os parágrafos e incisos não foram separados por artigo além do que o texto extraído do PDF permite."
   },
   {
    "nome": "Lei de Improbidade Administrativa (Lei n.º 8.429/92)",
@@ -1809,8 +2506,8 @@
   }
  ],
  "limites": [
-  "Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 3 diplomas (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria) com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva.",
-  "Sem questões: os outros 11 diplomas de Direito (a fonte oficial de todos já está ingerida e conferida contra o edital, mas as questões ainda não foram geradas), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.",
+  "Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 12 dos 14 diplomas com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva; Lei 8.429/1992 e Resolução CNJ 354/2020 não geram questão por esse método.",
+  "Sem questões: tópicos de Direito cujo texto é definicional ou cujos artigos estão duvidosos (revogados, vetados, alterados depois do texto guardado), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.",
   "As questões de Direito treinam a leitura precisa da lei (prazos, números, condições). Não testam interpretação nem jurisprudência.",
   "Raciocínio Lógico cobre sequências, diagramas lógicos (conjuntos), ordenação, estruturas lógicas (negação, equivalência, valor lógico) e argumentação (conclusão necessária, premissa que falta), as áreas citadas no edital (p. 62).",
   "Alguns pares modelo × nível têm poucas variações reais (lista em variacao_baixa): depois de vistas todas, o app usa o nível vizinho e só então repete. Ampliar exige modelos novos, porque os ids existentes são imutáveis.",

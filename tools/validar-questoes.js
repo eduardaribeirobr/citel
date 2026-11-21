@@ -87,8 +87,8 @@ function validarCatalogo(opc) {
     cobertura,
     diplomas,
     limites: [
-      'Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 3 diplomas (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria) com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva.',
-      'Sem questões: os outros 11 diplomas de Direito (a fonte oficial de todos já está ingerida e conferida contra o edital, mas as questões ainda não foram geradas), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.',
+      'Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 12 dos 14 diplomas com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva; Lei 8.429/1992 e Resolução CNJ 354/2020 não geram questão por esse método.',
+      'Sem questões: tópicos de Direito cujo texto é definicional ou cujos artigos estão duvidosos (revogados, vetados, alterados depois do texto guardado), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.',
       'As questões de Direito treinam a leitura precisa da lei (prazos, números, condições). Não testam interpretação nem jurisprudência.',
       'Raciocínio Lógico cobre sequências, diagramas lógicos (conjuntos), ordenação, estruturas lógicas (negação, equivalência, valor lógico) e argumentação (conclusão necessária, premissa que falta), as áreas citadas no edital (p. 62).',
       'Alguns pares modelo × nível têm poucas variações reais (lista em variacao_baixa): depois de vistas todas, o app usa o nível vizinho e só então repete. Ampliar exige modelos novos, porque os ids existentes são imutáveis.',
