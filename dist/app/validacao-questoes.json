@@ -1552,36 +1552,50 @@
    "topicos": 39,
    "artigos_citados": 232,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-cpc-2015",
+   "artigos_conferidos": 232,
    "artigos_ausentes": [],
-   "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_revogados_ou_vetados": [
+    "15"
+   ],
+   "artigos_com_dispositivo_omitido": 13,
+   "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2025-03-13: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Código Civil",
    "topicos": 23,
    "artigos_citados": 186,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-cc-2002",
+   "artigos_conferidos": 186,
    "artigos_ausentes": [],
-   "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_revogados_ou_vetados": [
+    "21",
+    "186",
+    "194",
+    "1776"
+   ],
+   "artigos_com_dispositivo_omitido": 4,
+   "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2024-06-28: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Código de Processo Penal",
    "topicos": 25,
    "artigos_citados": 147,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-cpp-1941",
+   "artigos_conferidos": 147,
    "artigos_ausentes": [],
-   "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_revogados_ou_vetados": [
+    "35",
+    "65",
+    "298"
+   ],
+   "artigos_com_dispositivo_omitido": 1,
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2026-08-07); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)",
@@ -1637,6 +1651,7 @@
     "1090",
     "1091"
    ],
+   "artigos_com_dispositivo_omitido": 0,
    "observacao": "Texto atualizado até 22/10/2026; o edital manda considerar a legislação vigente até a publicação (14/10/2026). Alterações entre 14 e 22/10/2026, se houver, não foram separadas."
   },
   {
@@ -1644,36 +1659,41 @@
    "topicos": 17,
    "artigos_citados": 87,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-cp-1940",
+   "artigos_conferidos": 87,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_com_dispositivo_omitido": 0,
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2026-09-23); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Constituição Federal",
    "topicos": 7,
    "artigos_citados": 33,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-cf-1988",
+   "artigos_conferidos": 33,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_com_dispositivo_omitido": 6,
+   "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2026-10-16: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015)",
    "topicos": 3,
    "artigos_citados": 27,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-lei-13146-2015",
+   "artigos_conferidos": 27,
    "artigos_ausentes": [],
-   "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_revogados_ou_vetados": [
+    "82"
+   ],
+   "artigos_com_dispositivo_omitido": 0,
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2025-11-06); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)",
@@ -1685,6 +1705,7 @@
    "artigos_conferidos": 18,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
+   "artigos_com_dispositivo_omitido": 0,
    "observacao": "Texto consolidado consultado em 21/11/2026; conferir se houve alteração após 14/10/2026 antes de tratar como definitivo."
   },
   {
@@ -1692,24 +1713,26 @@
    "topicos": 8,
    "artigos_citados": 12,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-lei-9099-1995",
+   "artigos_conferidos": 12,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_com_dispositivo_omitido": 0,
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2021-11-23); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Lei n.º 6.830/1980",
    "topicos": 6,
    "artigos_citados": 6,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-lei-6830-1980",
+   "artigos_conferidos": 6,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_com_dispositivo_omitido": 0,
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2023-12-26); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Resolução CNJ n.º 354/2020",
@@ -1721,6 +1744,7 @@
    "artigos_conferidos": 0,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
+   "artigos_com_dispositivo_omitido": 0,
    "observacao": null
   },
   {
@@ -1728,24 +1752,26 @@
    "topicos": 2,
    "artigos_citados": 2,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "senado-lei-8429-1992",
+   "artigos_conferidos": 2,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_com_dispositivo_omitido": 0,
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2022-09-05); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Decreto-Lei n.º 4.657/1942",
    "topicos": 1,
    "artigos_citados": 0,
    "lei_integral": true,
-   "fonte": "pendente",
-   "fonte_id": null,
+   "fonte": "ingerida",
+   "fonte_id": "senado-lindb-1942",
    "artigos_conferidos": 0,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
-   "observacao": null
+   "artigos_com_dispositivo_omitido": 0,
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2021-01-15); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Lei n.º 11.608/2003",
@@ -1757,12 +1783,13 @@
    "artigos_conferidos": 0,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
+   "artigos_com_dispositivo_omitido": 0,
    "observacao": "Texto consolidado consultado em 21/11/2026; conferir se houve alteração após 14/10/2026 antes de tratar como definitivo."
   }
  ],
  "limites": [
   "Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 3 diplomas (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria) com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva.",
-  "Sem questões: os outros 11 diplomas de Direito (fonte oficial ainda não ingerida), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.",
+  "Sem questões: os outros 11 diplomas de Direito (a fonte oficial de 10 deles já está ingerida e conferida, mas as questões ainda não foram geradas; a Resolução CNJ 354/2020 ainda não foi localizada), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.",
   "As questões de Direito treinam a leitura precisa da lei (prazos, números, condições). Não testam interpretação nem jurisprudência.",
   "Raciocínio Lógico cobre sequências, diagramas lógicos (conjuntos), ordenação, estruturas lógicas (negação, equivalência, valor lógico) e argumentação (conclusão necessária, premissa que falta), as áreas citadas no edital (p. 62).",
   "Alguns pares modelo × nível têm poucas variações reais (lista em variacao_baixa): depois de vistas todas, o app usa o nível vizinho e só então repete. Ampliar exige modelos novos, porque os ids existentes são imutáveis.",

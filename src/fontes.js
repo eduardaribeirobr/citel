@@ -6,6 +6,8 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const zlib = require('zlib');
+const S = require('./fontes-senado.js');
 
 const RAIZ = path.join(__dirname, '..');
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ordm: 'º', ordf: 'ª', deg: '°', sect: '§', laquo: '«', raquo: '»', ndash: '–', mdash: '—',
@@ -64,6 +66,13 @@ function lerFonte(id, raiz) {
   const bytes = fs.readFileSync(path.join(base, meta.arquivo));
   const sha = crypto.createHash('sha256').update(bytes).digest('hex');
   if (sha !== meta.sha256) throw new Error('hash da fonte ' + id + ' não confere (arquivo alterado)');
+  if (meta.formato === 'senado-json' || meta.formato === 'senado-html') {
+    const bruto = zlib.gunzipSync(bytes);
+    if (crypto.createHash('sha256').update(bruto).digest('hex') !== meta.sha256_bruto) throw new Error('hash do conteúdo de ' + id + ' não confere (arquivo alterado)');
+    if (meta.formato === 'senado-json') { const j = JSON.parse(bruto.toString('utf8')); const r = S.artigosSenadoJson(Array.isArray(j) ? j[0] : j, meta.referencia_vigencia); return { texto: Object.values(r.artigos).join('\n'), artigos: r.artigos, omitidos: r.omitidos, meta }; }
+    const texto = htmlParaTexto(bruto.toString('utf8')); const r = S.artigosSenadoHtml(texto);
+    return { texto: Object.values(r.artigos).join('\n'), artigos: r.artigos, omitidos: r.omitidos, meta };
+  }
   if (meta.formato === 'pdf') {
     const tb = fs.readFileSync(path.join(base, meta.texto));
     if (crypto.createHash('sha256').update(tb).digest('hex') !== meta.sha256_texto) throw new Error('hash do texto extraído de ' + id + ' não confere (arquivo alterado)');
@@ -77,8 +86,11 @@ function lerFonte(id, raiz) {
 function situacao(fonte, artigo) {
   const a = fonte.artigos[artigo]; if (a === undefined) return null;
   const corpo = a.replace(/^Art(?:igo)?\.?\s+\S+\s*[-–—.:]?\s*/, '').trim();
+  if (!corpo) return 'incerto';                                    // artigo sem texto nunca é tratado como vigente
   if (/^\(?\s*vetad[oa]\s*(?:[.\d()]|pel[oa]s?\b|$)/i.test(corpo)) return 'vetado';
+  if (/^\([^()]*\brevogad[oa]\b[^()]*\)\s*$/i.test(corpo)) return 'revogado';      // "(Artigo acrescido pela Lei X e revogado pela Lei Y)"
   if (/^\(?\s*revogad[oa]\s*(?:[.\d()]|pel[oa]s?\b|$)/i.test(corpo)) return 'revogado';
+  if (/^\(?\s*texto com supressão ou decisão judicial/i.test(corpo)) return 'incerto';
   return 'vigente';
 }
 /** Remove marcas de nota de rodapé coladas ao fim de frase ("mandados.3" -> "mandados."). Aplica-se a fonte e a citação. */

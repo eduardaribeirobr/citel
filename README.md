@@ -26,7 +26,7 @@ celular ou no computador.
 ## Fontes oficiais
 `tools/ingerir-fonte.js` guarda o arquivo bruto (HTML ou PDF) com URL, data e SHA-256 em `data/fontes/`; `src/fontes.js` extrai os artigos e
 confere citações LITERAIS (e recusa artigo vetado/revogado). A auditoria mostra, por diploma, se a fonte foi ingerida e quantos artigos do
-edital foram conferidos. Hoje: 3 de 14 diplomas ingeridos (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria).
+edital foram conferidos. Hoje: **13 de 14 diplomas ingeridos** e conferidos contra o edital (falta a Resolução CNJ 354/2020). As leis federais vêm da API pública oficial do Senado (`tools/ingerir-senado.js`): texto estruturado reconstruído na data do edital (CF, Código Civil, CPC) ou texto compilado vigente (os demais). Dispositivo revogado, vetado ou com anotação de decisão judicial nunca vira questão. Questões de Direito existem só para 3 diplomas; as dos outros 10 estão em preparo.
 
 ## Questões de Direito (nível A)
 `tools/build-dir-dados.js` extrai só os artigos que o edital cita e que estão vigentes, ligados ao tópico (`data/dir-dados.json`, embutido no app).
@@ -70,8 +70,8 @@ NODE_PATH=$(npm root -g) node tests/diag.e2e.js
 ```
 
 ## Como foi testado
-- 218 testes de unidade e de propriedades (sorteios com semente fixa; 12.000 questões geradas e validadas por rodada).
-- 254 verificações ponta a ponta no Chromium com tela de celular (390 px), tema claro e escuro, banco **simulado**, incluindo
+- 233 testes de unidade e de propriedades (sorteios com semente fixa; 12.000 questões geradas e validadas por rodada).
+- 255 verificações ponta a ponta no Chromium com tela de celular (390 px), tema claro e escuro, banco **simulado**, incluindo
   o histórico real de uso (respostas de um aparelho de verdade) aberto na interface.
 - Verificação por mutação: defeitos injetados de propósito nos módulos de progresso, plano, armazenamento, questões e
   aprendizagem; cada um precisa derrubar ao menos um teste. Os que sobreviveram revelaram lacunas de teste (fechadas) ou eram

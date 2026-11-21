@@ -22,21 +22,33 @@
 | Lei 11.608/2003 | integral | 1 |
 
 ## Cobertura hoje
-**24 de 198 tópicos** têm questões: Matemática 13 + Raciocínio Lógico 1 (nível B) e 10 de Direito (nível A): Estatuto dos Funcionários 5, Lei 11.608/2003 1, Normas da Corregedoria 4. As de Direito são de **reprodução fiel do texto oficial** (lacuna numérica e "qual alternativa reproduz o dispositivo"), geradas por alteração mecânica de número, unidade de tempo, termo oposto, negação ou advérbio, e só onde o trecho permite isso objetivamente. Não testam interpretação nem jurisprudência. Dos 30 tópicos desses 3 diplomas, 20 não geram questão por esse método (trechos definicionais). **Nenhum tópico dos outros 11 diplomas, de Português, de Informática ou de Atualidades.**
+**24 de 198 tópicos** têm questões: Matemática 13 + Raciocínio Lógico 1 (nível B) e 10 de Direito (nível A): Estatuto dos Funcionários 5, Lei 11.608/2003 1, Normas da Corregedoria 4. As de Direito são de **reprodução fiel do texto oficial** (lacuna numérica e "qual alternativa reproduz o dispositivo"), geradas por alteração mecânica de número, unidade de tempo, termo oposto, negação ou advérbio, e só onde o trecho permite isso objetivamente. Não testam interpretação nem jurisprudência. Dos 30 tópicos desses 3 diplomas, 20 não geram questão por esse método (trechos definicionais). **Nenhum tópico dos outros 11 diplomas (a fonte oficial de 10 deles já está ingerida; faltam as questões), de Português, de Informática ou de Atualidades.**
 
 ## Fontes: situação em 21/11/2026
-| Diploma | Fonte | Situação |
-|---|---|---|
-| Estatuto dos Funcionários (10.261/68) | ALESP (HTML) | **ingerida**; 351 artigos, 18/18 citados conferidos; 2 vetados (129, 330) |
-| Lei 11.608/2003 | ALESP (HTML) | **ingerida**; 12 artigos; lei integral |
-| Normas da Corregedoria, Tomo I | TJSP (PDF oficial, `api.tjsp.jus.br`) | **ingerida**; 1.509 dispositivos, 126/126 citados conferidos; 90 revogados no texto; numeração pula 370 e 981 no próprio texto |
-| Res. CNJ 354/2020 | `atos.cnj.jus.br` | host responde; texto ainda não localizado |
-| Federais (CPC, CC, CPP, CP, CF, 13.146, 9.099, 6.830, 8.429, LINDB) | Senado (Dados Abertos) | API oficial identifica a norma e lista alterações; **texto integral ainda não localizado**. Planalto/Presidência recusam clientes automatizados e não se contorna. Alternativa: a aluna envia o PDF oficial. |
+**13 dos 14 diplomas têm fonte oficial ingerida e conferida contra o edital** (todo artigo citado existe no texto oficial, inclusive os extremos exatos de cada faixa).
 
-**Achados da conferência edital × texto oficial:** o edital cita faixas das Normas da Corregedoria que incluem artigos já revogados (106–110, revogados pelo Prov. CG 26/2019; 1054–1091 também constam como revogados). Esses artigos nunca geram questão. O texto das Normas é de 22/10/2026 e o edital manda considerar a legislação vigente até 14/10/2026: alterações entre essas datas, se houver, não foram separadas.
+| Diploma | Fonte | Artigos do edital conferidos | Atualização da fonte | Observação |
+|---|---|---:|---|---|
+| Código de Processo Civil | Senado (estruturado, reconstruído em 14/10/2026) | 232/232 | até 13/03/2025 | 3 artigos sem dispositivo usável; 13 com dispositivo omitido por dúvida |
+| Código Civil | Senado (estruturado, reconstruído em 14/10/2026) | 186/186 | até 28/06/2024 | revogados 194 e 1.776; 4 com dispositivo omitido |
+| Código de Processo Penal | Senado (texto compilado) | 147/147 | salvo em 07/08/2026 | revogados 35 e 298; art. 65 tratado como duvidoso (anotação de ADPF) |
+| Normas da Corregedoria, Tomo I | TJSP (PDF oficial) | 126/126 | até 22/10/2026 | 43 dos citados estão revogados |
+| Código Penal | Senado (texto compilado) | 87/87 | salvo em 23/09/2026 | |
+| Constituição Federal | Senado (estruturado, reconstruído em 14/10/2026) | 33/33 | até 16/10/2026 | 6 artigos citados com dispositivo omitido por dúvida (decisão judicial) |
+| Estatuto da Pessoa com Deficiência | Senado (texto compilado) | 27/27 | salvo em 06/11/2025 | art. 82 vetado |
+| Estatuto dos Funcionários (10.261/68) | ALESP | 18/18 | consultado em 21/11/2026 | |
+| Lei 9.099/1995 | Senado (texto compilado) | 12/12 | salvo em 23/11/2021 | |
+| Lei 6.830/1980 | Senado (texto compilado) | 6/6 | salvo em 26/12/2023 | |
+| Lei 8.429/1992 | Senado (texto compilado) | 2/2 | salvo em 05/09/2022 | |
+| LINDB | Senado (texto compilado) | integral | salvo em 15/01/2021 | |
+| Lei 11.608/2003 | ALESP | integral | consultado em 21/11/2026 | |
+| **Resolução CNJ 354/2020** | `atos.cnj.jus.br` | **pendente** | | host responde; texto ainda não localizado |
+
+**Como o texto federal é obtido:** API pública oficial do Senado (`normas.leg.br`, licença CC BY 4.0), por rota documentada no próprio portal. Planalto e Presidência recusam acesso automatizado e **não são contornados**.
+**Ressalvas honestas:** (1) nas fontes "compiladas", o texto é o vigente na data de salvamento, não reconstruído para 14/10/2026; (2) a fonte pode estar desatualizada em relação a alterações recentes (datas acima), então vale conferir antes de tratar como definitivo; (3) anotações legislativas (\"Redação dada pela Lei…\") são retiradas do texto citado, e anotações de decisão judicial (ADI, ADPF) tornam o dispositivo duvidoso e ele é **omitido**, nunca usado; (4) o edital cita faixas que incluem artigos revogados (por exemplo, Normas da Corregedoria 106–110 e 1054–1091; CC 194 e 1.776; CPP 35 e 298): eles não geram questão.
 
 ## Fases e critério de saída
-- **F0 Fundação (em andamento):** feito: ingestão com hash (HTML e PDF), conferência literal de citação com trava de artigo vetado/revogado, mapa de fontes por diploma na auditoria, botão "reportar problema". Falta: textos dos diplomas federais e da Res. CNJ.
+- **F0 Fundação (quase concluída):** feito: ingestão com hash (HTML, PDF e API do Senado), conferência literal de citação com trava de artigo vetado/revogado/duvidoso, mapa de fontes por diploma na auditoria, botão "reportar problema". Falta: o texto da Res. CNJ 354/2020.
   Plano original: ingestão de fontes com hash e `tools/` de conferência de citação; matriz de cobertura por tópico na tela;
   botão "reportar problema" na questão (grava no banco da aluna). *Saída:* 3 diplomas ingeridos e verificados; cobertura visível no app.
 - **F1 Direito, por peso (iniciada com os 3 diplomas já ingeridos):** CPC, CC, CPP, Corregedoria, CP, CF, demais. Por diploma: texto-fonte, resumo teórico citando artigos, questões
