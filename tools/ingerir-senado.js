@@ -10,7 +10,7 @@ const zlib = require('zlib');
 const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 
-const [id, urn, nome] = process.argv.slice(2);
+const [id, urn, nome] = process.argv.slice(2).filter((x) => !x.startsWith('--'));
 if (!id || !urn || !nome) { console.error('uso: ingerir-senado.js <id> "<urn>" "<nome>"'); process.exit(2); }
 const dir = path.join(__dirname, '../data/fontes', id); fs.mkdirSync(dir, { recursive: true });
 const url = 'https://normas.leg.br/api/public/normas?urn=' + urn + '&&tipo_documento=maior-detalhe';
@@ -20,7 +20,8 @@ const bruto = fs.readFileSync(tmp); fs.rmSync(tmp);
 const json = JSON.parse(bruto.toString('utf8')); const raiz = Array.isArray(json) ? json[0] : json;
 if (!raiz || raiz['@type'] !== 'Legislation') throw new Error('resposta sem norma: ' + id);
 let formato = 'senado-json'; let conteudo = bruto; let arquivoNome = 'bruto.json.gz'; let extra = {};
-if (!raiz.hasPart) {
+const FORCAR_COMPILADO = process.argv.includes('--compilado');       // usa o texto compilado vigente mesmo quando existe estrutura (a estrutura pode estar defasada)
+if (!raiz.hasPart || FORCAR_COMPILADO) {
   // sem estrutura: usa o texto COMPILADO vigente publicado pela própria fonte (compilação monovigente)
   const encs = (raiz.encoding || []).filter((e) => e.contentUrl);
   const enc = encs.find((e) => /Compila/i.test(e.additionalType || '')) || encs.find((e) => e.version === 'Current');

@@ -1,0 +1,12 @@
+{
+ "descricao": "Revisões feitas lendo o texto oficial da norma alteradora: alteração registrada pelo Senado que, depois de lida, não muda a redação do artigo citado. Vale SOMENTE para a norma e o artigo indicados; qualquer outra alteração continua marcando o artigo como duvidoso.",
+ "senado-cpc-2015": [
+  {
+   "norma": "Lei nº 15.252 de 04/11/2025",
+   "artigos": ["833"],
+   "leitura": "A Lei 15.252/2025 dispõe sobre direitos da pessoa natural usuária de serviços financeiros. Um de seus dispositivos permite que o contrato de crédito preveja que os valores do inciso X do caput do art. 833 do CPC, que superem 20 salários mínimos, sejam penhoráveis. Ela não altera a redação do art. 833; o Senado a registra como \"Ressalva\".",
+   "fonte_da_leitura": "https://normas.leg.br/?urn=urn:lex:br:federal:lei:2025-11-04;15252",
+   "lido_em": "2026-11-21"
+  }
+ ]
+}

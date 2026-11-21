@@ -1684,11 +1684,11 @@
     }
    },
    "gabaritos": {
-    "A": 113,
-    "B": 124,
-    "C": 114,
-    "D": 122,
-    "E": 127
+    "A": 115,
+    "B": 118,
+    "C": 115,
+    "D": 136,
+    "E": 116
    },
    "problemas": {}
   },
@@ -1699,10 +1699,10 @@
    "titulo": "Direito: Código de Processo Civil",
    "aposentado": null,
    "variacoes": {
-    "1": 46,
+    "1": 48,
     "2": 40,
-    "3": 38,
-    "4": 35,
+    "3": 37,
+    "4": 36,
     "5": 30
    },
    "geradas": 600,
@@ -1742,11 +1742,11 @@
     }
    },
    "gabaritos": {
-    "A": 129,
-    "B": 121,
-    "C": 128,
-    "D": 110,
-    "E": 112
+    "A": 122,
+    "B": 117,
+    "C": 118,
+    "D": 116,
+    "E": 127
    },
    "problemas": {}
   },
@@ -2253,15 +2253,10 @@
    "fonte_id": "senado-cpc-2015",
    "artigos_conferidos": 232,
    "artigos_ausentes": [],
-   "artigos_revogados_ou_vetados": [
-    "15"
-   ],
-   "artigos_com_dispositivo_omitido": 13,
-   "artigos_com_alteracao_posterior": [
-    "82",
-    "833"
-   ],
-   "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2025-03-13: alterações posteriores a essa data podem não constar."
+   "artigos_revogados_ou_vetados": [],
+   "artigos_com_dispositivo_omitido": 3,
+   "artigos_com_alteracao_posterior": [],
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2025-03-14); não é reconstruído por data. A própria fonte informa atualização até 2025-03-13: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Código Civil",
@@ -2273,16 +2268,12 @@
    "artigos_conferidos": 186,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [
-    "21",
-    "186",
     "194",
     "1776"
    ],
-   "artigos_com_dispositivo_omitido": 4,
-   "artigos_com_alteracao_posterior": [
-    "44"
-   ],
-   "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2024-06-28: alterações posteriores a essa data podem não constar."
+   "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
+   "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2024-12-24); não é reconstruído por data. A própria fonte informa atualização até 2024-06-28: alterações posteriores a essa data podem não constar."
   },
   {
    "nome": "Código de Processo Penal",

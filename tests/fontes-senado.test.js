@@ -101,7 +101,7 @@ test('as 10 normas federais estão ingeridas, com proveniência completa e hash 
     assert.ok(['senado-json', 'senado-html'].includes(m.formato)); assert.ok(m.observacao.length > 40);
     if (m.formato === 'senado-html') assert.ok(m.texto_salvo_em, id + ': texto compilado sem data de salvamento');
   }
-  assert.deepEqual(FED.filter((i) => idx[i].formato === 'senado-json').sort(), ['senado-cc-2002', 'senado-cf-1988', 'senado-cpc-2015']);
+  assert.deepEqual(FED.filter((i) => idx[i].formato === 'senado-json').sort(), ['senado-cf-1988']);       // CC e CPC: o texto compilado vigente é mais novo que a estrutura do Senado
 });
 
 test('integridade: alterar o arquivo guardado (compactado ou o conteúdo) é detectado', () => {
@@ -122,8 +122,9 @@ test('integridade: alterar o arquivo guardado (compactado ou o conteúdo) é det
 
 test('textos de referência conferem com a fonte oficial (e a fonte manda: art. 2º da Lei 9.099 diz "buscando")', () => {
   const t = (id, k) => lido(id).artigos[k];
-  assert.match(t('senado-cc-2002', '1583'), /^Art\. 1583\. A guarda será unilateral ou compartilhada\.\n§ 1º Compreende-se por guarda unilateral/);
-  assert.equal(t('senado-cc-2002', '194'), 'Art. 194. (Revogado)'); assert.equal(F.situacao(lido('senado-cc-2002'), '194'), 'revogado');
+  assert.match(t('senado-cc-2002', '1583'), /^Art\. 1\.583\.? A guarda será unilateral ou compartilhada\.\n§ 1º Compreende-se por guarda unilateral/);
+  assert.match(t('senado-cc-2002', '194'), /^Art\. 194\. \(Revogado pela Lei nº 11\.280, de 16\/2\/2006/); assert.equal(F.situacao(lido('senado-cc-2002'), '194'), 'revogado');
+  assert.match(t('senado-cc-2002', '1992'), /^Art\. 1\.992\. O herdeiro que sonegar bens da herança/, 'espaço após "Art." corrigido');
   assert.match(t('senado-cc-2002', '48-A'), /^Art\. 48-A\. As pessoas jurídicas de direito privado/);
   assert.match(t('senado-cf-1988', '1'), /^Art\. 1º A República Federativa do Brasil[\s\S]*\nI - a soberania;\nII - a cidadania;/);
   assert.match(t('senado-cf-1988', '5'), /^Art\. 5º Todos são iguais perante a lei, sem distinção de qualquer natureza/); assert.ok(lido('senado-cf-1988').omitidos['5'] >= 1, 'art. 5º tem dispositivo omitido por dúvida judicial');
@@ -142,7 +143,7 @@ test('nenhum texto federal tem marcação XML/HTML, entidade solta ou anotação
     const f = lido(id); const ruins = [];
     for (const [k, a] of Object.entries(f.artigos)) {
       if (/<[a-z/][^>]*>|&[a-z]+;|xmlns|xlink:/.test(a)) ruins.push(k + ': marcação');
-      if (/\((?:Redação dada|Incluíd[oa]|Acrescid[oa]|Renumerad[oa]|Vide\b|“Caput” d)[^)]*\)/.test(a)) ruins.push(k + ': anotação');
+      if ((a.match(/\((?:Redação dada|Incluíd[oa]|Acrescid[oa]|Renumerad[oa]|Vide\b|“Caput” d)[^)]*\)/g) || []).some((x) => !/revogad|vetad/i.test(x))) ruins.push(k + ': anotação');      // anotação de revogação/veto é mantida de propósito
       if (!/^Art\. \d/.test(a)) ruins.push(k + ': não começa com "Art. N"');
     }
     assert.deepEqual(ruins.slice(0, 5), [], id + ' tem ' + ruins.length + ' problemas');
@@ -168,9 +169,9 @@ test('edital × texto oficial federal: TODO artigo citado existe, inclusive os e
 
 test('a data de referência da reconstrução é a do edital, e a ressalva sobre atualização da fonte fica registrada', () => {
   const idx = F.carregarIndice();
-  for (const id of ['senado-cf-1988', 'senado-cc-2002', 'senado-cpc-2015']) { assert.equal(idx[id].referencia_vigencia, '2026-10-14'); assert.match(idx[id].observacao, /reconstruído na data de referência/); assert.match(idx[id].atualizado_pela_fonte_em, /^\d{4}-\d\d-\d\d$/); }
-  assert.equal(idx['senado-cc-2002'].atualizado_pela_fonte_em, '2024-06-28'); assert.match(idx['senado-cc-2002'].observacao, /2024-06-28/);
-  for (const id of ['senado-cp-1940', 'senado-cpp-1941']) assert.match(idx[id].observacao, /não é reconstruído por data/);
+  assert.equal(idx['senado-cf-1988'].referencia_vigencia, '2026-10-14'); assert.match(idx['senado-cf-1988'].observacao, /reconstruído na data de referência/); assert.match(idx['senado-cf-1988'].atualizado_pela_fonte_em, /^\d{4}-\d\d-\d\d$/);
+  assert.equal(idx['senado-cc-2002'].texto_salvo_em, '2024-12-24'); assert.equal(idx['senado-cpc-2015'].texto_salvo_em, '2025-03-14');
+  for (const id of ['senado-cc-2002', 'senado-cpc-2015', 'senado-cp-1940', 'senado-cpp-1941']) assert.match(idx[id].observacao, /não é reconstruído por data/);
 });
 
 test('SEGURANÇA: artigo "acrescido por uma lei e revogado por outra" é revogado (a anotação não pode ser apagada), e artigo sem texto nunca é vigente', () => {
@@ -236,13 +237,17 @@ test('o arquivo de alterações posteriores cobre TODA norma do Senado do índic
   assert.equal(alt.limite, '2026-10-14'); assert.equal(alt.limite, idx['senado-cf-1988'].referencia_vigencia);
 });
 
-test('artigo alterado por norma posterior ao texto guardado vira incerto e não embasa questão (CC art. 44; CPC art. 833); vizinhos seguem vigentes', () => {
+test('artigo alterado por norma posterior ao texto guardado vira incerto e não embasa questão (CC art. 1.190; Lei 8.429 art. 13); o que o texto compilado já incorpora segue vigente (CC art. 44, CPC art. 82); revisado por leitura (CPC art. 833) é liberado', () => {
   const cc = F.lerFonte('senado-cc-2002'); const cpc = F.lerFonte('senado-cpc-2015');
-  assert.equal(F.situacao(cc, '44'), 'incerto'); assert.equal(F.situacao(cc, '45'), 'vigente');
-  assert.equal(F.situacao(cpc, '833'), 'incerto'); assert.equal(F.situacao(cpc, '834'), 'vigente');
-  const c = F.conferirCitacao(cc, '44', 'Começa a existência legal das pessoas jurídicas de direito privado');
+  assert.equal(F.situacao(cc, '44'), 'vigente'); assert.match(cc.artigos['44'], /VII - os empreendimentos de economia solidária/, 'Lei 15.068/2024 já está no texto');
+  assert.match(cpc.artigos['82'], /§ 3º Nas ações de cobrança por qualquer procedimento/, 'Lei 15.109/2025 já está no texto');
+  assert.equal(F.situacao(cc, '1190'), 'incerto'); assert.equal(F.situacao(cc, '45'), 'vigente');
+  assert.equal(F.situacao(cpc, '834'), 'vigente');
+  assert.equal(F.situacao(cpc, '833'), 'vigente'); assert.equal(F.conferirCitacao(cpc, '833', 'os bens inalienáveis e os declarados, por ato voluntário, não sujeitos à execução').ok, true, 'revisado: a Lei 15.252/2025 não altera a redação');
+  const l8429 = F.lerFonte('senado-lei-8429-1992'); assert.equal(F.situacao(l8429, '13'), 'incerto');
+  const c = F.conferirCitacao(cc, '1190', 'qualquer trecho comprido o bastante');
   assert.equal(c.ok, false); assert.match(c.motivo, /incerto/);
-  assert.ok(cc.alterados.includes('44')); assert.ok(cc.texto.includes(F.MARCA_ALTERADO));
+  assert.ok(cc.alterados.includes('1190')); assert.ok(cc.texto.includes(F.MARCA_ALTERADO));
 });
 
 test('aplicarAlteracoes: arquivo desatualizado em relação ao índice falha alto', () => {
@@ -256,4 +261,101 @@ test('aplicarAlteracoes: arquivo desatualizado em relação ao índice falha alt
   delete alt.fontes['senado-cc-2002']; fs.writeFileSync(arq, JSON.stringify(alt));
   assert.throws(() => F.lerFonte('senado-cc-2002', raiz), /ausente/);
   assert.ok(idx);
+});
+
+// ---------- vigência diferida: a lei existe, mas só vale depois (ex.: Lei 15.040/2024, "após decorrido 1 ano") ----------
+test('urnDaNorma: monta a URN do LexML a partir do nome registrado pelo Senado; acórdão não tem URN', () => {
+  assert.equal(S.urnDaNorma('Lei nº 15.040 de 09/12/2024'), 'urn:lex:br:federal:lei:2024-12-09;15040');
+  assert.equal(S.urnDaNorma('Lei Complementar nº 214 de 16/01/2025'), 'urn:lex:br:federal:lei.complementar:2025-01-16;214');
+  assert.equal(S.urnDaNorma('Medida Provisória nº 1.085 de 27/12/2021'), 'urn:lex:br:federal:medida.provisoria:2021-12-27;1085');
+  assert.equal(S.urnDaNorma('Decreto-Lei nº 5.452 de 01/05/1943'), 'urn:lex:br:federal:decreto.lei:1943-05-01;5452');
+  assert.equal(S.urnDaNorma('Acórdão da Ação Direta de Inconstitucionalidade nº 6.428 de 08/03/2024'), null);
+  assert.equal(S.urnDaNorma(''), null);
+});
+test('classificarVigencia: imediata, prazo após a publicação (com as duas bordas), data fixa, lista, "salvo" e o que NÃO é entendido', () => {
+  const c = (t, p) => S.classificarVigencia(t, p);
+  assert.equal(c(['Esta Lei entra em vigor na data de sua publicação.'], '2024-12-24').classe, 'imediata');
+  assert.equal(c(['Esta Lei entra em vigor na data de sua publicação .'], '2020-12-18').classe, 'imediata', 'espaço antes do ponto');
+  const a = c(['Esta Lei entra em vigor após decorrido 1 (um) ano de sua publicação oficial.'], '2024-12-10');
+  assert.deepEqual([a.classe, a.inicio_min, a.inicio_max], ['diferida', '2025-12-10', '2025-12-11']);
+  const b = c(['Esta Lei entra em vigor após decorridos 180 (cento e oitenta) dias de sua publicação.'], '2024-01-01');
+  assert.deepEqual([b.classe, b.inicio_min], ['diferida', '2024-06-29']);
+  const d = c(['Esta Lei entra em vigor após decorridos seis meses de sua publicação.'], '2024-08-31');
+  assert.equal(d.inicio_min, '2025-02-28', 'meses: dia 31 + 6 meses cai no último dia do mês');
+  const l = c(['Esta Lei entra em vigor:', 'em 1º de janeiro de 2024, quanto ao art. 11; e', 'na data de sua publicação, quanto aos demais dispositivos.', 'Brasília, 27 de junho de 2022'], '2022-06-28');
+  assert.deepEqual([l.classe, l.inicio_min, l.inicio_max], ['diferida', '2022-06-28', '2024-01-01']);
+  const u = c(['Esta Lei entra em vigor na data de sua publicação e produzirá efeitos:', 'em 3 (três) anos, contados da data de sua publicação, quanto ao inciso I;', 'no primeiro dia útil do primeiro mês subsequente ao da data de sua publicação, quanto aos arts. 8º; e', 'na data de sua publicação, quanto aos demais dispositivos.', 'Brasília, x'], '2021-08-27');
+  assert.deepEqual([u.classe, u.inicio_max], ['diferida', '2024-08-27']);
+  const s = c(['Esta Lei entra em vigor na data de sua publicação, salvo quanto ao art. 29, que entra em vigor após decorridos 180 (cento e oitenta) dias de sua publicação.'], '2018-04-26');
+  assert.deepEqual([s.classe, s.inicio_max], ['diferida', '2018-10-24']);
+  for (const t of [[], ['Esta Lei entra em vigor na data de sua publicação, salvo quanto ao art. 4º.'], ['Esta Lei entra em vigor na data de sua publicação e terá vigência até que sejam criados os instrumentos.'], ['Esta Lei entra em vigor:', 'no primeiro dia do exercício seguinte;', 'Brasília, x']]) assert.equal(c(t, '2020-01-01').classe, 'desconhecida', JSON.stringify(t));
+  assert.equal(c(['O Decreto-Lei entra em vigor na data de sua publicação.'], '2020-01-01').classe, 'desconhecida', 'só a cláusula da própria lei vale');
+});
+test('alteracoesPosteriores: lei publicada ANTES do texto mas com vigência diferida que só valeu depois entra; a de vigência imediata, a já transcorrida e a regulamentação, não', () => {
+  const d = detalhe([
+    vide('Lei Seguro', '09/12/2024', '10/12/2024', [['Art. 757, caput', 'Revogação']]),                                  // vigência após 1 ano: texto de 24/12/2024 ainda tem a redação antiga
+    vide('Lei Imediata', '20/12/2024', '21/12/2024', [['Art. 44, caput', 'Alteração']]),
+    vide('Lei Antiga Diferida', '01/01/2024', '02/01/2024', [['Art. 3, caput', 'Alteração']]),                          // diferida, mas já valia em 24/12/2024
+    vide('Lei Ininteligivel', '10/06/2024', '11/06/2024', [['Art. 5, caput', 'Alteração']]),
+    vide('Decreto Regulamentador', '15/12/2024', '16/12/2024', [['Art. 6, caput', 'Regulamentado']], 'Declaração de Regulamentação'),
+    vide('Lei Fora do Edital', '09/12/2024', '10/12/2024', [['Art. 9, caput', 'Alteração']]),                           // diferida para depois do limite: o texto antigo é o correto na data do edital
+    vide('Lei Nao Citada', '09/12/2024', '10/12/2024', [['Art. 800, caput', 'Revogação']]),
+  ]);
+  const vig = { 'Lei Seguro': { classe: 'diferida', inicio_min: '2025-12-10', inicio_max: '2025-12-11', clausula: 'x' }, 'Lei Imediata': { classe: 'imediata', inicio_min: '2024-12-21', inicio_max: '2024-12-21' },
+    'Lei Antiga Diferida': { classe: 'diferida', inicio_min: '2024-06-30', inicio_max: '2024-07-01' }, 'Lei Ininteligivel': { classe: 'desconhecida', inicio_min: null, inicio_max: null, clausula: 'y' },
+    'Decreto Regulamentador': { classe: 'desconhecida', inicio_min: null, inicio_max: null }, 'Lei Fora do Edital': { classe: 'diferida', inicio_min: '2027-01-10', inicio_max: '2027-01-11', clausula: 'z' },
+    'Lei Nao Citada': { classe: 'diferida', inicio_min: '2025-12-10', inicio_max: '2025-12-11', clausula: 'x' } };
+  const r = S.alteracoesPosteriores(d, '2024-12-24', '2026-10-14', vig, (k) => parseInt(k, 10) < 100);
+  assert.deepEqual(r.normas.map((n) => n.norma), ['Lei Ininteligivel'], 'Lei Seguro e Lei Nao Citada só atingem artigos não citados (757, 800)');
+  assert.deepEqual(r.artigos, ['5']);
+  const r2 = S.alteracoesPosteriores(d, '2024-12-24', '2026-10-14', vig, (k) => parseInt(k, 10) < 1000);
+  assert.deepEqual(r2.artigos, ['5', '757', '800']); assert.deepEqual(r2.normas.map((n) => n.norma).sort(), ['Lei Ininteligivel', 'Lei Nao Citada', 'Lei Seguro']);
+  assert.ok(r2.normas.find((n) => n.norma === 'Lei Seguro').motivo.includes('vigência diferida'));
+  assert.equal(r2.normas.find((n) => n.norma === 'Lei Ininteligivel').vigencia.classe, 'desconhecida');
+});
+test('alteracoesPosteriores: regulamentação por decreto e dispositivo correlato não tornam o artigo duvidoso; decisão judicial posterior continua tornando', () => {
+  const d = detalhe([
+    vide('Decreto X', '01/03/2025', '02/03/2025', [['Art. 13', 'Regulamentado'], ['Art. 14', 'Dispositivo Correlato']], 'Declaração de Regulamentação'),
+    vide('Acórdão da Ação Direta de Inconstitucionalidade nº 1 de 01/04/2025', '01/04/2025', '02/04/2025', [['Art. 15', 'Dispositivo Declarado Constitucional']], 'Declaração de Constitucionalidade'),
+  ]);
+  const r = S.alteracoesPosteriores(d, '2024-12-24', '2026-10-14');
+  assert.deepEqual(r.artigos, ['15']); assert.equal(r.normas.length, 1);
+});
+test('o registro de frescor declara a premissa e a análise de vigência lida (CC: Lei 15.068/2024 tem vigência imediata)', () => {
+  const alt = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/fontes/alteracoes-posteriores.json'), 'utf8'));
+  assert.match(alt.premissa, /5 anos/); assert.equal(Object.keys(alt.fontes['senado-cc-2002']).includes('analise_vigencia'), true);
+  const cc = alt.fontes['senado-cc-2002'].analise_vigencia;
+  assert.equal(cc['Lei nº 15.068 de 23/12/2024'].classe, 'imediata', 'publicada na data do texto, vigência na publicação: já está no texto (conferido no art. 44)');
+  for (const [id, f] of Object.entries(alt.fontes)) for (const [n, x] of Object.entries(f.analise_vigencia)) assert.ok(['imediata', 'diferida', 'desconhecida'].includes(x.classe), id + ' ' + n);
+});
+
+test('vigência: bordas e casos que antes passavam despercebidos (texto salvo no próprio dia da vigência; só "primeiro dia útil"; texto de outra lei antes da cláusula própria)', () => {
+  // texto salvo exatamente no dia mínimo de início: ainda não é seguro (a vigência pode começar no dia seguinte) -> duvidoso
+  const d = detalhe([vide('Lei Borda', '09/12/2024', '10/12/2024', [['Art. 7, caput', 'Alteração']])]);
+  const vig = { 'Lei Borda': { classe: 'diferida', inicio_min: '2025-12-10', inicio_max: '2025-12-11', clausula: 'x' } };
+  assert.deepEqual(S.alteracoesPosteriores(d, '2025-12-10', '2026-10-14', vig, () => true).artigos, ['7']);
+  assert.deepEqual(S.alteracoesPosteriores(d, '2025-12-11', '2026-10-14', vig, () => true).artigos, [], 'texto salvo no dia seguinte já incorpora');
+  const u = S.classificarVigencia(['Esta Lei entra em vigor:', 'no primeiro dia útil do primeiro mês subsequente ao da data de sua publicação, quanto aos arts. 8º.', 'Brasília, x'], '2021-08-27');
+  assert.deepEqual([u.inicio_min, u.inicio_max], ['2021-09-01', '2021-09-05'], '1º do mês seguinte, com folga de 4 dias para o dia útil');
+  const o = S.classificarVigencia(['O art. 5º desta Lei entra em vigor após decorridos 2 (dois) anos de sua publicação.', 'Esta Lei entra em vigor na data de sua publicação.'], '2020-01-01');
+  assert.equal(o.classe, 'imediata', 'só a cláusula que começa com "Esta/Este" é a da própria lei');
+  const e = S.classificarVigencia(['Esta Lei entra em vigor após decorridos 30 (trinta) dias de sua publicação.'], '2020-01-01');
+  assert.deepEqual([e.inicio_min, e.inicio_max], ['2020-01-31', '2020-02-01'], 'cláusula única: guarda as duas bordas (LC 95/98)');
+});
+
+test('aplicarRevisoes: libera o artigo só se TODA norma que o atinge foi revisada para ele; outra norma mantém a dúvida', () => {
+  const d = detalhe([vide('Lei A', '01/03/2025', '02/03/2025', [['Art. 833, caput, Inciso 10', 'Ressalva']]), vide('Lei B', '01/04/2025', '02/04/2025', [['Art. 833, caput', 'Alteração'], ['Art. 9', 'Alteração']])]);
+  const rev = [{ norma: 'Lei A', artigos: ['833'] }];
+  const r = S.alteracoesPosteriores(d, '2025-01-01', '2026-10-14'); assert.deepEqual(r.artigos, ['9', '833']);
+  const lib = S.aplicarRevisoes(r, rev); assert.deepEqual(lib, []); assert.deepEqual(r.artigos, ['9', '833'], 'Lei B também atinge o 833: continua duvidoso');
+  const r2 = S.alteracoesPosteriores(detalhe([vide('Lei A', '01/03/2025', '02/03/2025', [['Art. 833, caput, Inciso 10', 'Ressalva'], ['Art. 9', 'Alteração']])]), '2025-01-01', '2026-10-14');
+  assert.deepEqual(S.aplicarRevisoes(r2, rev), [{ artigo: '833', normas: ['Lei A'] }]); assert.deepEqual(r2.artigos, ['9'], 'só o artigo revisado sai');
+  assert.deepEqual(S.aplicarRevisoes(S.alteracoesPosteriores(detalhe([vide('Lei A2', '01/03/2025', '02/03/2025', [['Art. 833', 'Ressalva']])]), '2025-01-01', '2026-10-14'), rev), [], 'revisão de outra norma não vale');
+});
+test('as revisões de frescor trazem a evidência da leitura (norma, artigo, fonte, data) e só se referem a normas que de fato estão no registro', () => {
+  const rv = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/fontes/revisoes-frescor.json'), 'utf8')); const alt = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/fontes/alteracoes-posteriores.json'), 'utf8'));
+  for (const [id, lista] of Object.entries(rv).filter(([k]) => k !== 'descricao')) for (const x of lista) {
+    assert.ok(x.norma && x.artigos.length && x.leitura.length > 80 && /^https:\/\/normas\.leg\.br\//.test(x.fonte_da_leitura) && /^\d{4}-\d\d-\d\d$/.test(x.lido_em), id);
+    assert.ok(alt.fontes[id].revisados.some((r) => x.artigos.includes(r.artigo) && r.normas.includes(x.norma)), 'revisão sem efeito no registro: ' + x.norma);
+  }
 });

@@ -103,7 +103,7 @@ function artigosSenadoJson(raiz, ref) {
 // ---------- texto compilado (HTML) ----------
 const MARCADOR_LINHA = /^(?:Art\.\s*\d|§\s*\d|Parágrafo único|[IVXLC]+\s*[-–—]\s|[a-z]\)\s|\d+\s*[-–.)]\s)/;
 /** A Câmara/Senado publicam "Art. 1 º"/"§ 2 º" com espaço antes do ordinal. */
-const ajustaOrdinais = (s) => s.replace(/(\d)\s+([º°ª])/g, '$1$2').replace(/(Art\.|§)\s+(\d)/g, '$1 $2');
+const ajustaOrdinais = (s) => s.replace(/(\d)\s+([º°ª])/g, '$1$2').replace(/(Art\.|§)\s*(\d)/g, '$1 $2');
 
 function artigosSenadoHtml(texto) {
   const omitidos = {};
@@ -127,32 +127,149 @@ function artigosSenadoHtml(texto) {
 }
 /** "dd/mm/aaaa" -> "aaaa-mm-dd" (null se não for data). */
 const dataIso = (s) => { const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(String(s || '').trim()); return m ? m[3] + '-' + m[2] + '-' + m[1] : null; };
+const somaDias = (iso, n) => { const d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+function somaMeses(iso, n) {
+  const [a, m, d] = iso.split('-').map(Number); const t = (a * 12 + (m - 1)) + n; const aa = Math.floor(t / 12); const mm = (t % 12) + 1;
+  const ult = new Date(Date.UTC(aa, mm, 0)).getUTCDate();                       // dia 31 + 1 mês cai no último dia do mês seguinte
+  return aa + '-' + String(mm).padStart(2, '0') + '-' + String(Math.min(d, ult)).padStart(2, '0');
+}
+
+/** "Lei nº 15.040 de 09/12/2024" -> URN do LexML; null para o que não é ato normativo numerado (ex.: acórdão do STF). */
+function urnDaNorma(nome) {
+  const m = /^(Lei Complementar|Lei Delegada|Lei|Medida Provisória|Decreto-Lei|Decreto Legislativo|Decreto|Emenda Constitucional|Resolução)\s+n[ºo°.]*\s*([\d.]+)\s+de\s+(\d{2})\/(\d{2})\/(\d{4})/i.exec(String(nome || '').trim());
+  if (!m) return null;
+  const tipo = { 'lei complementar': 'lei.complementar', 'lei delegada': 'lei.delegada', lei: 'lei', 'medida provisória': 'medida.provisoria', 'decreto-lei': 'decreto.lei', 'decreto legislativo': 'decreto.legislativo', decreto: 'decreto', 'emenda constitucional': 'emenda.constitucional', 'resolução': 'resolucao' }[m[1].toLowerCase()];
+  return 'urn:lex:br:federal:' + tipo + ':' + m[5] + '-' + m[4] + '-' + m[3] + ';' + m[2].replace(/\./g, '');
+}
+
+const NUM_PAL = { um: 1, uma: 1, dois: 2, duas: 2, 'três': 3, quatro: 4, cinco: 5, seis: 6, sete: 7, oito: 8, nove: 9, dez: 10, onze: 11, doze: 12, quinze: 15, vinte: 20, trinta: 30, quarenta: 40, cinquenta: 50, sessenta: 60, noventa: 90, cento: 100, 'cento e vinte': 120, 'cento e oitenta': 180, 'trezentos e sessenta e cinco': 365 };
+const MESES = { janeiro: 1, fevereiro: 2, 'março': 3, abril: 4, maio: 5, junho: 6, julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12 };
+const ate = (s) => String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+/** "1 (um) ano" / "90 (noventa) dias" / "dois meses" -> data de início, ou null se o número não for entendido. */
+function aposPrazo(n1, n2, unidade, publicacao) {
+  let n = /^\d+$/.test(String(n1).trim()) ? Number(String(n1).trim()) : NUM_PAL[String(n1).trim().toLowerCase()];
+  if (n === undefined && n2 && NUM_PAL[String(n2).trim().toLowerCase()] !== undefined) n = NUM_PAL[String(n2).trim().toLowerCase()];
+  if (n === undefined || !publicacao) return null;
+  const u = unidade.toLowerCase();
+  return u.startsWith('dia') ? somaDias(publicacao, n) : u === 'mês' || u === 'meses' ? somaMeses(publicacao, n) : somaMeses(publicacao, 12 * n);
+}
+/** Uma cláusula (ou item de lista) de início de vigência -> data mínima de início (null = não entendida). */
+function inicioDeItem(txt, publicacao) {
+  const t = ate(txt).replace(/[;.]\s*(?:e\s*)?$/, '').replace(/\s+\./g, '.').trim();
+  if (/^na data de (?:sua|da sua) publicação(?:\s*,?\s*quanto (?:aos|às|ao|a) demais [\p{L}\s]+)?$/iu.test(t)) return publicacao;
+  let m = /^(?:em\s+)?([^()]*?)\s*(?:\(([^)]*)\)\s*)?(dias?|meses|mês|anos?),? (?:contados? )?(?:da data de sua publicação|após a data de sua publicação|da sua publicação)\b/i.exec(t);
+  if (m) return aposPrazo(m[1], m[2], m[3], publicacao);
+  m = /^(?:após|depois de) decorrid[oa]s? (?:o prazo de )?([^()]*?)\s*(?:\(([^)]*)\)\s*)?(dias?|meses|mês|anos?)(?: corridos)? (?:de sua|da sua|da) publicação(?: oficial)?$/i.exec(t);
+  if (m) return aposPrazo(m[1], m[2], m[3], publicacao);
+  if (/^no primeiro dia útil do primeiro mês subsequente ao da data de sua publicação\b/i.test(t) && publicacao) return somaDias(somaMeses(publicacao.slice(0, 8) + '01', 1), 0);      // 1º do mês seguinte (o dia útil pode ser até 4 dias depois: ver inicio_max)
+  m = /^em (\d{1,2})º? de ([a-zç]+) de (\d{4})\b/i.exec(t);
+  if (m && MESES[m[2].toLowerCase()]) return m[3] + '-' + String(MESES[m[2].toLowerCase()]).padStart(2, '0') + '-' + String(Number(m[1])).padStart(2, '0');
+  return null;
+}
 /**
- * Normas alteradoras que o Senado registra (campo "vides" do detalhe da norma) com publicação DEPOIS da data do texto guardado
- * e até a data-limite do edital. Não interpreta o que mudou: só lista a norma, a data e os dispositivos que ela cita.
- * Devolve { normas: [{ norma, assinatura, publicacao, comentario, itens: [{ dispositivo, comentario }] }], artigos: [chaves], nao_artigo: [dispositivos] }.
+ * Classifica a(s) cláusula(s) de vigência de uma lei a partir dos textos que falam de si mesma, na ordem do documento
+ * ("Esta Lei entra em vigor ..."), inclusive em lista ("Esta Lei entra em vigor: I - ...; II - ...").
+ * { classe: 'imediata' | 'diferida' | 'desconhecida', inicio_min, inicio_max, clausula, itens? }:
+ *   imediata: tudo vale na publicação; diferida: algum item começa depois (inicio_max = o mais tardio) e TODOS os itens foram entendidos;
+ *   desconhecida: não há cláusula ou algum item não foi entendido. 'desconhecida' NUNCA é tratada como em vigor: quem usa trata como duvidosa.
  */
-function alteracoesPosteriores(detalhe, dataTexto, limite) {
+function classificarVigencia(textos, publicacao) {
+  const T = (textos || []).map(ate);
+  const i = T.findIndex((t) => /^(?:Esta|Este)\b/.test(t) && /\bvigor\b/i.test(t) && t.length < 900);
+  if (i < 0) return { classe: 'desconhecida', inicio_min: null, inicio_max: null, clausula: null };
+  const cab = T[i]; let itens = [];
+  if (/[:]$/.test(cab) || /produzirá efeitos:$/i.test(cab)) {
+    for (let k = i + 1; k < T.length && !/^Brasília\b/.test(T[k]); k++) itens.push(T[k]);
+    if (!itens.length) return { classe: 'desconhecida', inicio_min: null, inicio_max: null, clausula: cab };
+    const inicios = itens.map((x) => inicioDeItem(x, publicacao));
+    const clausula = cab + ' ' + itens.join(' | ');
+    if (inicios.some((x) => x === null)) return { classe: 'desconhecida', inicio_min: null, inicio_max: null, clausula };
+    // "Esta Lei entra em vigor na data de sua publicação e produzirá efeitos:" -> vigência imediata, efeitos nas datas dos itens (tratado do mesmo modo: o mais tardio manda)
+    const folga = (x, k) => (/^no primeiro dia útil do primeiro mês subsequente/i.test(ate(itens[k]).replace(/[;.]\s*(?:e\s*)?$/, '')) ? somaDias(x, 4) : x);
+    const fim = inicios.map(folga); const min = inicios.slice().sort()[0]; const max = fim.slice().sort().pop();
+    return { classe: max > publicacao ? 'diferida' : 'imediata', inicio_min: min, inicio_max: max, clausula, itens: itens.length };
+  }
+  if (/^(?:Esta|Este) [^,;:]*? entra(?:m)? em vigor na data de (?:sua|da sua|sua respectiva) publicação\s*\.?$/i.test(cab)) return { classe: 'imediata', inicio_min: publicacao, inicio_max: publicacao, clausula: cab };
+  // "na data de sua publicação, salvo quanto ao art. 29, que entra em vigor após decorridos 180 dias": o prazo mais longo manda
+  const sv = /^(?:Esta|Este) [^,;:]*? entra(?:m)? em vigor na data de (?:sua|da sua) publicação,?\s*(?:salvo|exceto)\b(.*)$/i.exec(cab);
+  if (sv) {
+    const prazos = []; const re = /(?:após decorrid[oa]s?|depois de decorrid[oa]s?|em|no prazo de)\s+(?:o prazo de\s+)?([^()]*?)\s*(?:\(([^)]*)\)\s*)?(dias?|meses|mês|anos?)\b/gi; let q;
+    while ((q = re.exec(ate(sv[1]).replace(/art\.? \d+[^,;]*/gi, '')))) { const d = aposPrazo(q[1], q[2], q[3], publicacao); if (d) prazos.push(d); }
+    if (prazos.length) { const mx = prazos.slice().sort().pop(); return { classe: 'diferida', inicio_min: publicacao, inicio_max: somaDias(mx, 1), clausula: cab }; }
+    return { classe: 'desconhecida', inicio_min: null, inicio_max: null, clausula: cab };
+  }
+  const m = /^(?:Esta|Este) [^,;:]*? entra(?:m)? em vigor (.+)$/i.exec(cab);
+  const ini = m ? inicioDeItem(m[1], publicacao) : null;
+  if (ini) return { classe: ini > publicacao ? 'diferida' : 'imediata', inicio_min: ini, inicio_max: somaDias(ini, ini > publicacao ? 1 : 0), clausula: cab };      // LC 95/98 art. 8º §1: vigora no dia seguinte à consumação do prazo; guarda as duas bordas
+  return { classe: 'desconhecida', inicio_min: null, inicio_max: null, clausula: cab };
+}
+/** Textos (nós "text") do JSON estruturado da norma, em ordem. */
+function textosDaNorma(norma) {
+  const out = []; const andar = (o) => { if (Array.isArray(o)) o.forEach(andar); else if (o && typeof o === 'object') { if (typeof o.text === 'string') out.push(o.text); Object.values(o).forEach(andar); } };
+  andar(norma && norma.hasPart); return out;
+}
+
+/** Relações que o Senado registra e que NÃO mudam o texto do dispositivo (regulamentação por decreto, dispositivo correlato): não tornam o artigo duvidoso. */
+const NAO_ALTERA = /^(?:Regulamentado|Dispositivo Correlato)$/i;
+const CHAVE_ART = /^Art\.?\s*(\d+(?:\.\d{3})*)(?:\s*-\s*([A-Z]{1,2})\b)?/;
+const chaveDe = (dispositivo) => { const m = CHAVE_ART.exec(dispositivo); return m ? m[1].replace(/\./g, '') + (m[2] ? '-' + m[2] : '') : null; };
+/**
+ * Normas alteradoras que o Senado registra (campo "vides" do detalhe da norma) e que podem NÃO estar no texto guardado:
+ *  (a) publicadas depois da data do texto e até a data-limite do edital: sempre listadas;
+ *  (b) publicadas antes ou na data do texto, mas cuja cláusula de vigência (em `vigencia[nomeDaNorma]`, já classificada) mostra que a
+ *      alteração só passou a valer depois da data do texto (e até o limite) ou que a cláusula não pôde ser entendida: listadas
+ *      (só examina dispositivos para os quais `citado(chave)` é verdadeiro, pois só eles viram questão).
+ * Não interpreta o que mudou: só lista a norma, a data, o motivo e os dispositivos que ela cita.
+ * Devolve { normas: [{ norma, assinatura, publicacao, comentario, motivo, vigencia?, itens }], artigos: [chaves], nao_artigo: [dispositivos] }.
+ */
+function alteracoesPosteriores(detalhe, dataTexto, limite, vigencia, citado) {
   const doc = detalhe && detalhe.DetalheDocumento && detalhe.DetalheDocumento.documentos && detalhe.DetalheDocumento.documentos.documento;
   const d = Array.isArray(doc) ? doc[0] : doc;
   if (!d) throw new Error('detalhe da norma sem documento');
+  vigencia = vigencia || {}; citado = citado || (() => true);
   let vides = (d.vides && d.vides.vide) || []; if (!Array.isArray(vides)) vides = [vides];
   const normas = []; const artigos = new Set(); const naoArtigo = new Set();
   for (const v of vides) {
     const assinatura = dataIso(v.datAssinatura); const publicacao = dataIso(v.datapub) || assinatura;
     if (!publicacao) throw new Error('alteração sem data: ' + v.nomeNormaPosterior);
-    if (publicacao <= dataTexto || publicacao > limite) continue;
+    if (publicacao > limite) continue;
     let itens = (v.itens && v.itens.item) || []; if (!Array.isArray(itens)) itens = [itens];
     const lista = itens.map((i) => ({ dispositivo: String(i.dispositivo || '').trim(), comentario: i.comentario || null }));
-    for (const i of lista) {
-      const m = /^Art\.?\s*(\d+(?:\.\d{3})*)(?:\s*-\s*([A-Z]{1,2})\b)?/.exec(i.dispositivo);
-      if (m) artigos.add(m[1].replace(/\./g, '') + (m[2] ? '-' + m[2] : '')); else if (i.dispositivo) naoArtigo.add(i.dispositivo);
+    const altera = lista.filter((i) => !NAO_ALTERA.test(i.comentario || ''));
+    if (lista.length && !altera.length) continue;                        // só regulamentação/correlato: o texto da lei não muda
+    let motivo = null; let infoV = null;
+    if (publicacao > dataTexto) motivo = 'publicada depois da data do texto guardado';
+    else {
+      const info = vigencia[v.nomeNormaPosterior];
+      if (info && altera.some((i) => { const k = chaveDe(i.dispositivo); return k && citado(k); })) {
+        infoV = info;
+        if (info.classe === 'diferida') { if (info.inicio_max > dataTexto && info.inicio_min <= limite) motivo = 'vigência diferida: passou a valer depois da data do texto guardado'; }
+        else if (info.classe !== 'imediata') motivo = 'cláusula de vigência não reconhecida (' + info.classe + '): tratada como duvidosa';
+      }
     }
-    normas.push({ norma: v.nomeNormaPosterior, assinatura, publicacao, comentario: v.comentario || null, itens: lista });
+    if (!motivo) continue;
+    const afetados = publicacao > dataTexto ? altera : altera.filter((i) => { const k = chaveDe(i.dispositivo); return k && citado(k); });
+    for (const i of afetados) { const k = chaveDe(i.dispositivo); if (k) artigos.add(k); else if (i.dispositivo) naoArtigo.add(i.dispositivo); }
+    normas.push(Object.assign({ norma: v.nomeNormaPosterior, assinatura, publicacao, comentario: v.comentario || null, motivo }, infoV ? { vigencia: { classe: infoV.classe, inicio_min: infoV.inicio_min, inicio_max: infoV.inicio_max, clausula: infoV.clausula } } : {}, { itens: lista }));
   }
   normas.sort((x, y) => (x.publicacao < y.publicacao ? -1 : x.publicacao > y.publicacao ? 1 : x.norma < y.norma ? -1 : x.norma > y.norma ? 1 : 0));
   const chaves = [...artigos].sort((x, y) => { const px = x.split('-'); const py = y.split('-'); return Number(px[0]) - Number(py[0]) || (px[1] || '').localeCompare(py[1] || ''); });
   return { normas, artigos: chaves, nao_artigo: [...naoArtigo].sort() };
 }
 
-module.exports = { alteracoesPosteriores, dataIso, artigosSenadoJson, artigosSenadoHtml, limparAnotacoes, romano, letra, MARCA_REVOGADO, MARCA_INCERTO };
+/**
+ * Aplica revisões feitas por leitura do texto da norma alteradora: o artigo sai de `r.artigos` SÓ se TODA norma que o atinge tem revisão
+ * para ele (mesmo nome de norma e mesmo artigo). Qualquer outra norma que o atinja mantém o artigo como duvidoso. Devolve o que foi liberado.
+ */
+function aplicarRevisoes(r, revisoes) {
+  const liberados = [];
+  for (const k of r.artigos.slice()) {
+    const atingem = r.normas.filter((n) => n.itens.some((i) => chaveDe(i.dispositivo) === k && !NAO_ALTERA.test(i.comentario || '')));
+    if (!atingem.length) continue;
+    const todas = atingem.every((n) => revisoes.some((rv) => rv.norma === n.norma && rv.artigos.includes(k)));
+    if (todas) { r.artigos.splice(r.artigos.indexOf(k), 1); liberados.push({ artigo: k, normas: atingem.map((n) => n.norma) }); }
+  }
+  return liberados;
+}
+
+module.exports = { alteracoesPosteriores, aplicarRevisoes, classificarVigencia, textosDaNorma, urnDaNorma, chaveDe, somaDias, somaMeses, dataIso, artigosSenadoJson, artigosSenadoHtml, limparAnotacoes, romano, letra, MARCA_REVOGADO, MARCA_INCERTO };
