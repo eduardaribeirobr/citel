@@ -756,14 +756,14 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
         kpi('Acertos', pct(st.total.aproveitamento)),
         kpi('Hoje', st.hoje.n + (st.hoje.n ? ' · ' + pct(st.hoje.aproveitamento) : '')),
         kpi('Erros com certeza', String(st.total.errosComCerteza))),
-      st.total.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Erro com certeza é o mais perigoso: você não desconfiaria dele na prova. Releia a explicação desses no caderno.') : null));
+      st.total.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Erro com certeza: você marcou a alternativa errada com a confiança de que estava certa. Releia a explicação desses no caderno.') : null));
 
     nodes.push(h('section', { class: 'card', id: 'card-q-caderno-atalho' }, h('h2', null, 'Caderno de erros'),
       h('p', { class: 'note' }, c.q.caderno.length ? c.q.caderno.length + ' erro(s) registrado(s), com motivo e data da próxima revisão.' : 'Seus erros aparecem aqui, para refazer e revisar.'),
       h('div', { class: 'acoes' }, h('button', { id: 'btn-q-caderno', class: 'sec', onclick: function () { estadoQ().fase = 'caderno'; render(); window.scrollTo(0, 0); } }, 'Abrir caderno'))));
 
     nodes.push(h('section', { class: 'card', id: 'card-q-limites' }, h('h2', null, 'O que ainda não existe'),
-      h('p', { class: 'note' }, 'Direito: só 3 dos 14 diplomas do edital têm questões (Estatuto dos Funcionários, Lei 11.608/2003 e Normas da Corregedoria), e só nos tópicos em que o texto oficial permite uma alteração objetiva (número, prazo, termo oposto). São questões de leitura precisa da lei, conferidas contra o texto oficial; não testam interpretação nem jurisprudência. O texto oficial de 13 dos 14 diplomas já está guardado e conferido contra o edital (falta a Resolução 354/2020 do CNJ); as questões dos outros 10 estão em preparo. Sem questões ainda: Português, Informática e Atualidades. Também não existem simulados com cronômetro nem treino de discursiva. Detalhes em Mais → Auditoria.')));
+      h('p', { class: 'note' }, 'Direito: só 3 dos 14 diplomas do edital têm questões (Estatuto dos Funcionários, Lei 11.608/2003 e Normas da Corregedoria), e só nos tópicos em que o texto oficial permite uma alteração objetiva (número, prazo, termo oposto). São questões de leitura precisa da lei, conferidas contra o texto oficial; não testam interpretação nem jurisprudência. O texto oficial dos 14 diplomas já está guardado e conferido contra o edital; as questões dos outros 11 estão em preparo. Sem questões ainda: Português, Informática e Atualidades. Também não existem simulados com cronômetro nem treino de discursiva. Detalhes em Mais → Auditoria.')));
     return nodes;
   }
 
@@ -838,7 +838,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
     var nodes = [h('section', { class: 'card', id: 'card-q-resumo' }, h('h2', null, 'Resumo da sessão'),
       h('div', { class: 'big', id: 'q-resumo-placar' }, r.acertos + ' / ' + r.n, h('small', null, ' · ' + pct(r.aproveitamento))),
       h('div', { class: 'grid2' }, kpi('Tempo médio', seg), kpi('Acertos com dúvida', String(r.acertosComDuvida)), kpi('Erros com certeza', String(r.errosComCerteza))),
-      r.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Você errou ' + r.errosComCerteza + ' com certeza. Esses são os mais perigosos: releia as explicações.') : null,
+      r.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Você errou ' + r.errosComCerteza + ' com certeza (marcou como certa uma alternativa errada). Releia as explicações.') : null,
       r.acertosComDuvida > 0 ? h('p', { class: 'note' }, 'Acertou ' + r.acertosComDuvida + ' com dúvida ou chute. Ainda não é domínio: o assunto volta nas revisões.') : null,
       h('div', { class: 'acoes' },
         h('button', { id: 'btn-q-tempo', class: 'sec', disabled: q.tempoRegistrado, onclick: function () { registrarTempoQ(min); } }, q.tempoRegistrado ? 'Tempo registrado ✓' : 'Registrar ' + min + ' min de estudo'),
@@ -897,7 +897,7 @@ button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
       var dip = h('details', { id: 'det-diplomas' }, h('summary', null, 'Fontes oficiais por diploma (' + ing + ' de ' + v.diplomas.length + ' ingeridas)'));
       v.diplomas.forEach(function (d) {
         dip.append(h('div', { class: 'item', 'data-diploma': d.nome }, h('div', { class: 'row' }, h('span', { class: 't', text: d.nome }), d.fonte === 'ingerida' ? chip(d.artigos_ausentes.length ? 'warn' : 'ok', 'fonte ingerida') : chip('bad', 'fonte pendente')),
-          h('div', { class: 'm' }, d.lei_integral ? 'Lei integral no edital · ' : '', d.artigos_citados + ' artigo(s) citado(s) no edital · ' + d.topicos + ' tópico(s)' + (d.fonte === 'ingerida' ? ' · ' + d.artigos_conferidos + ' conferido(s) no texto oficial' + (d.artigos_ausentes.length ? ' (ausentes: ' + d.artigos_ausentes.slice(0, 5).join(', ') + ')' : '') + (d.artigos_revogados_ou_vetados.length ? ' · ' + d.artigos_revogados_ou_vetados.length + ' revogado(s)/vetado(s)/incerto(s), que não geram questão' : '') + (d.artigos_com_dispositivo_omitido ? ' · ' + d.artigos_com_dispositivo_omitido + ' com dispositivo omitido por dúvida (supressão ou decisão judicial)' : '') : '')),
+          h('div', { class: 'm' }, d.lei_integral ? 'Lei integral no edital · ' : '', d.artigos_citados + ' artigo(s) citado(s) no edital · ' + d.topicos + ' tópico(s)' + (d.fonte === 'ingerida' ? ' · ' + d.artigos_conferidos + ' conferido(s) no texto oficial' + (d.artigos_ausentes.length ? ' (ausentes: ' + d.artigos_ausentes.slice(0, 5).join(', ') + ')' : '') + (d.artigos_revogados_ou_vetados.length ? ' · ' + d.artigos_revogados_ou_vetados.length + ' revogado(s)/vetado(s)/incerto(s), que não geram questão' : '') + (d.artigos_com_dispositivo_omitido ? ' · ' + d.artigos_com_dispositivo_omitido + ' com dispositivo omitido por dúvida (supressão ou decisão judicial)' : '') + (d.artigos_com_alteracao_posterior && d.artigos_com_alteracao_posterior.length ? ' · art. ' + d.artigos_com_alteracao_posterior.join(', ') + ': o Senado registra norma alteradora posterior ao texto guardado; fora das questões até atualizar' : '') : '')),
           d.observacao ? h('div', { class: 'm', text: 'Atenção: ' + d.observacao }) : null));
       });
       card.append(dip, h('p', { class: 'note' }, 'Enquanto a fonte oficial de um diploma não estiver ingerida e conferida, o app não terá questões dele. Contagem pelos intervalos numéricos do edital.'));

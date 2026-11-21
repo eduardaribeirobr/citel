@@ -179,7 +179,7 @@ function gerarNoTopico(fid, topicId, rng, nivel) {
         enunciado: 'Complete a lacuna em um dispositivo do ' + rot + ':\n“' + branco + '”',
         correta: { texto: p.original, valor: p.original }, erros,
         explicacao: 'Texto oficial (' + meta.nome + ', art. ' + rotuloArtigo(x.artigo) + '): “' + x.c.corpo + '”. A lacuna é “' + p.original + '”.',
-        pegadinha: 'Prazos, percentuais e quantidades são os pontos mais fáceis de trocar e mais cobrados: leia o número e a unidade juntos.',
+        pegadinha: 'O número só tem sentido com a sua unidade (dias, meses, anos, por cento): leia os dois juntos.',
         params: { forma: 'lacuna', fonte: fid, artigo: x.artigo, topicId, corpo: x.c.corpo, branco, correto: p.original, distratores: erros.map((e) => ({ valor: e.valor, texto: aplicar(x.c.corpo, [{ p, op: e.texto }]) })) },
         comentarioCorreta: 'Completa a frase como no texto oficial.',
       });
@@ -189,7 +189,7 @@ function gerarNoTopico(fid, topicId, rng, nivel) {
     const escolhidos = ds.slice(0, 6);
     const erros = escolhidos.map((d) => E(d.texto, d.texto, 'o dispositivo foi alterado: ' + d.trocas.map(descTroca).join(' e ') + '; o texto oficial é diferente'));
     const tipos = escolhidos.slice(0, 4).flatMap((d) => d.trocas.map((t) => t.p.tipo));
-    const peg = tipos.includes('numero') || tipos.includes('unidade') ? 'Prazos, percentuais e quantidades são os pontos mais fáceis de trocar e mais cobrados: leia o número e a unidade juntos.'
+    const peg = tipos.includes('numero') || tipos.includes('unidade') ? 'Em alternativas erradas, o número ou a unidade foi trocado, o que muda o prazo ou a quantidade que a lei determina. Leia o número e a unidade juntos.'
       : tipos.includes('negacao') ? 'Uma negação a mais ou a menos inverte o sentido do dispositivo: confira o "não".' : 'Palavras como "poderá/deverá", "vedado/permitido" e "maior/menor" mudam a regra inteira com uma troca só.';
     return Object.assign(base, {
       enunciado: 'Qual alternativa reproduz corretamente um dispositivo do ' + rot + '?',

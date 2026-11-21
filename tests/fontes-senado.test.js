@@ -194,3 +194,66 @@ test('anotação de decisão judicial DENTRO do texto estruturado também torna 
   const r = S.artigosSenadoJson(j, REF);
   assert.equal(r.artigos['41'], 'Art. 41. Caput normal.\n§ 2º Parágrafo comum.'); assert.deepEqual(r.omitidos, { 41: 1 });
 });
+
+// ---------- alterações posteriores à data do texto guardado ----------
+const vide = (norma, assin, pub, itens, coment) => ({ nomeNormaPosterior: norma, datAssinatura: assin, datapub: pub, comentario: coment || 'Declaração de Alteração Permanente', itens: { item: itens.map(([d, c]) => ({ dispositivo: d, comentario: c })) } });
+const detalhe = (vides) => ({ DetalheDocumento: { documentos: { documento: [{ vides: { vide: vides } }] } } });
+
+test('alteracoesPosteriores: só entram normas publicadas DEPOIS da data do texto e ATÉ o limite; datas nas bordas', () => {
+  const d = detalhe([
+    vide('Lei A', '01/01/2020', '02/01/2020', [['Art. 1, caput', 'Alteração']]),                    // antes do texto: fora
+    vide('Lei B', '10/03/2021', '10/03/2021', [['Art. 2, caput', 'Alteração']]),                    // mesma data do texto: fora (já incorporada)
+    vide('Lei C', '11/03/2021', '12/03/2021', [['Art. 3, Parágrafo Único', 'Acréscimo'], ['Art. 3, § 2', 'Acréscimo'], ['Art. 4-A, caput', 'Revogação']]),
+    vide('Lei D', '14/10/2026', '14/10/2026', [['Art. 5', 'Ressalva']]),                          // no limite: entra
+    vide('Lei E', '15/10/2026', '15/10/2026', [['Art. 6', 'Alteração']]),                          // depois do edital: fora
+    vide('Lei F', '13/10/2026', '16/10/2026', [['Art. 7', 'Alteração']]),                          // assinada antes, publicada depois do limite: fora
+  ]);
+  const r = S.alteracoesPosteriores(d, '2021-03-10', '2026-10-14');
+  assert.deepEqual(r.normas.map((n) => n.norma), ['Lei C', 'Lei D']);
+  assert.deepEqual(r.artigos, ['3', '4-A', '5'], 'chaves únicas, ordenadas, com sufixo de letra');
+  assert.equal(r.normas[0].itens.length, 3);
+});
+
+test('alteracoesPosteriores: dispositivo que não é artigo é listado à parte; artigo com milhar; vide único (objeto) e sem itens', () => {
+  const d = { DetalheDocumento: { documentos: { documento: { vides: { vide: vide('Lei G', '01/02/2025', '02/02/2025', [['Art. 1.190, caput', 'Ressalva'], ['Preâmbulo', 'Alteração']]) } } } } };
+  const r = S.alteracoesPosteriores(d, '2024-01-01', '2026-10-14');
+  assert.deepEqual(r.artigos, ['1190']); assert.deepEqual(r.nao_artigo, ['Preâmbulo']);
+  const v2 = S.alteracoesPosteriores(detalhe([{ nomeNormaPosterior: 'Lei H', datAssinatura: '01/02/2025', datapub: '02/02/2025', comentario: 'Declaração de Legislação Correlata' }]), '2024-01-01', '2026-10-14');
+  assert.equal(v2.normas.length, 1); assert.deepEqual(v2.artigos, []);
+  assert.deepEqual(S.alteracoesPosteriores(detalhe([]), '2024-01-01', '2026-10-14'), { normas: [], artigos: [], nao_artigo: [] });
+});
+
+test('alteracoesPosteriores: sem data ou sem documento falha alto (nunca assume que está em dia)', () => {
+  assert.throws(() => S.alteracoesPosteriores(detalhe([{ nomeNormaPosterior: 'Lei X', itens: { item: [] } }]), '2024-01-01', '2026-10-14'), /sem data/);
+  assert.throws(() => S.alteracoesPosteriores({ DetalheDocumento: { documentos: { documento: [] } } }, '2024-01-01', '2026-10-14'), /sem documento/);
+});
+
+test('o arquivo de alterações posteriores cobre TODA norma do Senado do índice, com a data de texto que o código calcula', () => {
+  const alt = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/fontes/alteracoes-posteriores.json'), 'utf8'));
+  const idx = F.carregarIndice(); const ids = Object.keys(idx).filter((k) => /^senado-/.test(k));
+  assert.deepEqual(Object.keys(alt.fontes).sort(), ids.sort());
+  for (const id of ids) assert.equal(alt.fontes[id].data_texto, F.dataDoTexto(idx[id]), id);
+  assert.equal(alt.limite, '2026-10-14'); assert.equal(alt.limite, idx['senado-cf-1988'].referencia_vigencia);
+});
+
+test('artigo alterado por norma posterior ao texto guardado vira incerto e não embasa questão (CC art. 44; CPC art. 833); vizinhos seguem vigentes', () => {
+  const cc = F.lerFonte('senado-cc-2002'); const cpc = F.lerFonte('senado-cpc-2015');
+  assert.equal(F.situacao(cc, '44'), 'incerto'); assert.equal(F.situacao(cc, '45'), 'vigente');
+  assert.equal(F.situacao(cpc, '833'), 'incerto'); assert.equal(F.situacao(cpc, '834'), 'vigente');
+  const c = F.conferirCitacao(cc, '44', 'Começa a existência legal das pessoas jurídicas de direito privado');
+  assert.equal(c.ok, false); assert.match(c.motivo, /incerto/);
+  assert.ok(cc.alterados.includes('44')); assert.ok(cc.texto.includes(F.MARCA_ALTERADO));
+});
+
+test('aplicarAlteracoes: arquivo desatualizado em relação ao índice falha alto', () => {
+  const raiz = fs.mkdtempSync(path.join(os.tmpdir(), 'alt-'));
+  fs.mkdirSync(path.join(raiz, 'data/fontes'), { recursive: true });
+  const idx = F.carregarIndice();
+  fs.cpSync(path.join(__dirname, '../data/fontes'), path.join(raiz, 'data/fontes'), { recursive: true });
+  const arq = path.join(raiz, 'data/fontes/alteracoes-posteriores.json'); const alt = JSON.parse(fs.readFileSync(arq, 'utf8'));
+  alt.fontes['senado-cc-2002'].data_texto = '2020-01-01'; fs.writeFileSync(arq, JSON.stringify(alt));
+  assert.throws(() => F.lerFonte('senado-cc-2002', raiz), /desatualizado/);
+  delete alt.fontes['senado-cc-2002']; fs.writeFileSync(arq, JSON.stringify(alt));
+  assert.throws(() => F.lerFonte('senado-cc-2002', raiz), /ausente/);
+  assert.ok(idx);
+});

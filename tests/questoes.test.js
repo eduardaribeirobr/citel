@@ -269,3 +269,24 @@ test('português dos enunciados de conjuntos: quantificador no singular concorda
   }
   assert.ok(n > 1000);
 });
+
+// ---------------- nenhuma afirmação sem fundamento nos textos gerados ----------------
+// O texto de explicação/pegadinha só pode dizer o que se verifica na fonte ou no cálculo. Afirmações sobre frequência, banca,
+// "o que cai na prova" ou "o erro mais comum" não têm fonte e não podem aparecer.
+test('explicações e pegadinhas de todos os modelos não fazem afirmações sem fonte (banca, frequência, "mais comum")', () => {
+  const proibido = /mais cobrad|costuma|\bna prova\b|\bbanca\b|geralmente|normalmente|mais comum|cl[aá]ssic[ao]|armadilha mais|mais f[aá]cei|frequente|cai muito|mais perigos|pegadinha da/i;
+  let n = 0;
+  for (const t of Q.CATALOGO) {
+    for (let s = 1; s <= 60; s++) {
+      for (const nivel of [1, 2, 3, 4, 5]) {
+        let q; try { q = Q.gerarQuestao(t.id, t.ajustarSemente ? t.ajustarSemente(Q.topicosDe(t)[s % Q.topicosDe(t).length], s * t.modulo + 1) : s, nivel); } catch (e) { continue; }
+        if (!q) continue; n++;
+        for (const campo of ['explicacao', 'pegadinha']) {
+          const m = proibido.exec(q[campo] || '');
+          assert.ok(!m, t.id + ' ' + campo + ' contém "' + (m && m[0]) + '": ' + q[campo]);
+        }
+      }
+    }
+  }
+  assert.ok(n > 1000, 'amostra pequena demais: ' + n);
+});

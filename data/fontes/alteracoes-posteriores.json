@@ -1,0 +1,707 @@
+{
+ "gerado_em": "2026-11-21",
+ "limite": "2026-10-14",
+ "fonte_api": "https://legis.senado.leg.br/dadosabertos/legislacao/urn?urn=<urn>",
+ "fontes": {
+  "senado-cf-1988": {
+   "nome": "Constituição da República Federativa do Brasil de 1988",
+   "data_texto": "2026-10-14",
+   "normas": [],
+   "artigos": [],
+   "nao_artigo": []
+  },
+  "senado-cc-2002": {
+   "nome": "Código Civil (Lei 10.406/2002)",
+   "data_texto": "2024-06-28",
+   "normas": [
+    {
+     "norma": "Lei nº 14.905 de 28/06/2024",
+     "assinatura": "2024-06-28",
+     "publicacao": "2024-07-01",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 389, caput",
+       "comentario": "Alteração"
+      },
+      {
+       "dispositivo": "Art. 389, Parágrafo Único",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 395, caput",
+       "comentario": "Alteração"
+      },
+      {
+       "dispositivo": "Art. 404, caput",
+       "comentario": "Alteração"
+      },
+      {
+       "dispositivo": "Art. 406, caput",
+       "comentario": "Alteração"
+      },
+      {
+       "dispositivo": "Art. 406, § 1",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 406, § 2",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 406, § 3",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 418, caput",
+       "comentario": "Alteração"
+      },
+      {
+       "dispositivo": "Art. 418, caput, Inciso 1",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 418, caput, Inciso 2",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 591, caput",
+       "comentario": "Alteração"
+      },
+      {
+       "dispositivo": "Art. 591, Parágrafo Único",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 772, caput",
+       "comentario": "Alteração"
+      },
+      {
+       "dispositivo": "Art. 1336, § 1",
+       "comentario": "Alteração"
+      }
+     ]
+    },
+    {
+     "norma": "Lei nº 15.040 de 09/12/2024",
+     "assinatura": "2024-12-09",
+     "publicacao": "2024-12-10",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 206, § 1, Inciso 2",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 757, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 757, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 758, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 759, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 760, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 760, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 761, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 762, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 763, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 764, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 765, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 766, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 766, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 767, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 768, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 769, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 769, § 1",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 769, § 2",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 770, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 771, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 771, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 772, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 773, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 774, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 775, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 776, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 777, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 778, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 779, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 780, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 781, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 782, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 783, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 784, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 784, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 785, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 785, § 1",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 785, § 2",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 786, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 786, § 1",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 786, § 2",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 787",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 788, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 788, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 789, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 790, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 790, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 791, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 791, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 792, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 792, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 793, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 794, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 795, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 796, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 796, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 797, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 797, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 798, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 798, Parágrafo Único",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 799, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 800, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 801, caput",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 801, § 1",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 801, § 2",
+       "comentario": "Revogação"
+      },
+      {
+       "dispositivo": "Art. 802, caput",
+       "comentario": "Revogação"
+      }
+     ]
+    },
+    {
+     "norma": "Lei nº 15.068 de 23/12/2024",
+     "assinatura": "2024-12-23",
+     "publicacao": "2024-12-24",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 44, caput, Inciso 7",
+       "comentario": "Acréscimo"
+      },
+      {
+       "dispositivo": "Art. 44, § 2",
+       "comentario": "Alteração"
+      }
+     ]
+    },
+    {
+     "norma": "Lei Complementar nº 214 de 16/01/2025",
+     "assinatura": "2025-01-16",
+     "publicacao": "2025-01-16",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 1190, caput",
+       "comentario": "Ressalva"
+      },
+      {
+       "dispositivo": "Art. 1191",
+       "comentario": "Ressalva"
+      }
+     ]
+    },
+    {
+     "norma": "Lei nº 15.224 de 30/09/2025",
+     "assinatura": "2025-09-30",
+     "publicacao": "2025-10-01",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 931, caput",
+       "comentario": "Ressalva"
+      }
+     ]
+    }
+   ],
+   "artigos": [
+    "44",
+    "206",
+    "389",
+    "395",
+    "404",
+    "406",
+    "418",
+    "591",
+    "757",
+    "758",
+    "759",
+    "760",
+    "761",
+    "762",
+    "763",
+    "764",
+    "765",
+    "766",
+    "767",
+    "768",
+    "769",
+    "770",
+    "771",
+    "772",
+    "773",
+    "774",
+    "775",
+    "776",
+    "777",
+    "778",
+    "779",
+    "780",
+    "781",
+    "782",
+    "783",
+    "784",
+    "785",
+    "786",
+    "787",
+    "788",
+    "789",
+    "790",
+    "791",
+    "792",
+    "793",
+    "794",
+    "795",
+    "796",
+    "797",
+    "798",
+    "799",
+    "800",
+    "801",
+    "802",
+    "931",
+    "1190",
+    "1191",
+    "1336"
+   ],
+   "nao_artigo": []
+  },
+  "senado-cpc-2015": {
+   "nome": "Código de Processo Civil (Lei 13.105/2015)",
+   "data_texto": "2025-03-13",
+   "normas": [
+    {
+     "norma": "Lei nº 15.109 de 13/03/2025",
+     "assinatura": "2025-03-13",
+     "publicacao": "2025-03-14",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 82, § 3",
+       "comentario": "Acréscimo"
+      }
+     ]
+    },
+    {
+     "norma": "Lei nº 15.252 de 04/11/2025",
+     "assinatura": "2025-11-04",
+     "publicacao": "2025-11-05",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 833, caput, Inciso 10",
+       "comentario": "Ressalva"
+      }
+     ]
+    }
+   ],
+   "artigos": [
+    "82",
+    "833"
+   ],
+   "nao_artigo": []
+  },
+  "senado-cp-1940": {
+   "nome": "Código Penal (Decreto-Lei 2.848/1940)",
+   "data_texto": "2026-09-23",
+   "normas": [],
+   "artigos": [],
+   "nao_artigo": []
+  },
+  "senado-cpp-1941": {
+   "nome": "Código de Processo Penal (Decreto-Lei 3.689/1941)",
+   "data_texto": "2026-08-07",
+   "normas": [],
+   "artigos": [],
+   "nao_artigo": []
+  },
+  "senado-lei-13146-2015": {
+   "nome": "Estatuto da Pessoa com Deficiência (Lei 13.146/2015)",
+   "data_texto": "2025-11-06",
+   "normas": [
+    {
+     "norma": "Lei nº 15.280 de 05/12/2025",
+     "assinatura": "2025-12-05",
+     "publicacao": "2025-12-08",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 18, § 4, Inciso 5",
+       "comentario": "Alteração"
+      }
+     ]
+    },
+    {
+     "norma": "Lei nº 15.492 de 02/09/2026",
+     "assinatura": "2026-09-02",
+     "publicacao": "2026-09-03",
+     "comentario": "Declaração de Legislação Correlata",
+     "itens": []
+    }
+   ],
+   "artigos": [
+    "18"
+   ],
+   "nao_artigo": []
+  },
+  "senado-lei-9099-1995": {
+   "nome": "Lei 9.099/1995 (Juizados Especiais)",
+   "data_texto": "2021-11-23",
+   "normas": [],
+   "artigos": [],
+   "nao_artigo": []
+  },
+  "senado-lei-6830-1980": {
+   "nome": "Lei 6.830/1980 (Execução Fiscal)",
+   "data_texto": "2023-12-26",
+   "normas": [],
+   "artigos": [],
+   "nao_artigo": []
+  },
+  "senado-lei-8429-1992": {
+   "nome": "Lei 8.429/1992 (Improbidade Administrativa)",
+   "data_texto": "2022-09-05",
+   "normas": [
+    {
+     "norma": "Acórdão da Ação Direta de Inconstitucionalidade nº 4.295 de 21/08/2023",
+     "assinatura": "2023-08-21",
+     "publicacao": "2023-10-16",
+     "comentario": "Declaração de Constitucionalidade",
+     "itens": [
+      {
+       "dispositivo": "Art. 2, caput",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 2, Parágrafo Único",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 12",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 13",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 15, caput",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 15, Parágrafo Único",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 21, caput, Inciso 1",
+       "comentario": "Dispositivo Declarado Constitucional"
+      }
+     ]
+    },
+    {
+     "norma": "Lei nº 15.269 de 24/11/2025",
+     "assinatura": "2025-11-24",
+     "publicacao": "2025-11-25",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 11, caput, Inciso 13",
+       "comentario": "Acréscimo Vetado"
+      }
+     ]
+    },
+    {
+     "norma": "Acórdão da Ação Direta de Inconstitucionalidade nº 7.156 de 01/07/2026",
+     "assinatura": "2026-07-01",
+     "publicacao": "2026-08-05",
+     "comentario": "Declaração de Constitucionalidade",
+     "itens": [
+      {
+       "dispositivo": "Art. 23, § 4, Inciso 2",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 23, § 4, Inciso 3",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 23, § 4, Inciso 4",
+       "comentario": "Dispositivo Declarado Constitucional"
+      },
+      {
+       "dispositivo": "Art. 23, § 4, Inciso 5",
+       "comentario": "Dispositivo Declarado Constitucional"
+      }
+     ]
+    },
+    {
+     "norma": "Acórdão da Ação Direta de Inconstitucionalidade nº 7.156 de 01/07/2026",
+     "assinatura": "2026-07-01",
+     "publicacao": "2026-08-05",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 23, § 5",
+       "comentario": "Declaração de Inconstitucionalidade de Parte do Texto"
+      }
+     ]
+    },
+    {
+     "norma": "Acórdão da Ação Direta de Inconstitucionalidade nº 7.236 de 01/07/2026",
+     "assinatura": "2026-07-01",
+     "publicacao": "2026-08-05",
+     "comentario": "Declaração de Alteração Permanente",
+     "itens": [
+      {
+       "dispositivo": "Art. 23, § 5",
+       "comentario": "Declaração de Inconstitucionalidade de Parte do Texto"
+      }
+     ]
+    }
+   ],
+   "artigos": [
+    "2",
+    "11",
+    "12",
+    "13",
+    "15",
+    "21",
+    "23"
+   ],
+   "nao_artigo": []
+  },
+  "senado-lindb-1942": {
+   "nome": "LINDB (Decreto-Lei 4.657/1942)",
+   "data_texto": "2021-01-15",
+   "normas": [
+    {
+     "norma": "Acórdão da Ação Direta de Inconstitucionalidade nº 6.421 de 08/03/2024",
+     "assinatura": "2024-03-08",
+     "publicacao": "2024-03-14",
+     "comentario": "Declaração de Constitucionalidade",
+     "itens": [
+      {
+       "dispositivo": "Art. 28, caput",
+       "comentario": "Dispositivo Declarado Constitucional"
+      }
+     ]
+    },
+    {
+     "norma": "Acórdão da Ação Direta de Inconstitucionalidade nº 6.428 de 08/03/2024",
+     "assinatura": "2024-03-08",
+     "publicacao": "2024-03-14",
+     "comentario": "Declaração de Constitucionalidade",
+     "itens": [
+      {
+       "dispositivo": "Art. 28, caput",
+       "comentario": "Dispositivo Declarado Constitucional"
+      }
+     ]
+    }
+   ],
+   "artigos": [
+    "28"
+   ],
+   "nao_artigo": []
+  }
+ }
+}

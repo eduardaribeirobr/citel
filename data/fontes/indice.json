@@ -224,5 +224,20 @@
   "url_texto": "https://normas.leg.br/api/public/binario/b11a6dee-86c0-4f95-a805-e92f9fe36a15/texto",
   "tipo_texto": "versão Current",
   "texto_salvo_em": "2021-01-15"
+ },
+ "cnj-res-354-2020": {
+  "nome": "Resolução CNJ 354/2020, texto compilado (cumprimento digital de ato processual e de ordem judicial)",
+  "url": "https://atos.cnj.jus.br/files/compilado2018222026050869fe450e4e3a9.pdf",
+  "consultado_em": "2026-11-21",
+  "sha256": "aa27ed176f5b35b4629d3881b0dae40a6213d21c2a86fee19e52ceab7c79d1b9",
+  "bytes": 218827,
+  "codificacao": "utf8",
+  "arquivo": "data/fontes/cnj-res-354-2020/bruto.pdf",
+  "formato": "pdf",
+  "texto": "data/fontes/cnj-res-354-2020/texto.txt",
+  "sha256_texto": "082b1fd331a3c208706b3aa8151662a365fb136d785c17fa8032372a6796d718",
+  "estilo": "art-ponto",
+  "inicio": "^\\s*Art\\. 1o Esta Resolução regulamenta",
+  "observacao": "Texto COMPILADO oficial publicado pelo CNJ (atos.cnj.jus.br), que incorpora as Resoluções 481/2022, 508/2023 e 679/2026, conforme o cabeçalho do próprio PDF. O título do PDF traz a data 18/11/2020 e a página do ato no portal traz 19/11/2020; a divergência foi apenas registrada, não resolvida. Os parágrafos e incisos não foram separados por artigo além do que o texto extraído do PDF permite."
  }
 }

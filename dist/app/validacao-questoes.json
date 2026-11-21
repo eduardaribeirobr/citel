@@ -1560,6 +1560,10 @@
     "15"
    ],
    "artigos_com_dispositivo_omitido": 13,
+   "artigos_com_alteracao_posterior": [
+    "82",
+    "833"
+   ],
    "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2025-03-13: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1578,6 +1582,9 @@
     "1776"
    ],
    "artigos_com_dispositivo_omitido": 4,
+   "artigos_com_alteracao_posterior": [
+    "44"
+   ],
    "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2024-06-28: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1595,6 +1602,7 @@
     "298"
    ],
    "artigos_com_dispositivo_omitido": 1,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2026-08-07); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1652,6 +1660,7 @@
     "1091"
    ],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto atualizado até 22/10/2026; o edital manda considerar a legislação vigente até a publicação (14/10/2026). Alterações entre 14 e 22/10/2026, se houver, não foram separadas."
   },
   {
@@ -1665,6 +1674,7 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2026-09-23); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1678,6 +1688,7 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 6,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto consolidado do Senado reconstruído na data de referência do edital (14/10/2026). A própria fonte informa atualização até 2026-10-16: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1693,6 +1704,7 @@
     "82"
    ],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2025-11-06); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1706,6 +1718,7 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto consolidado consultado em 21/11/2026; conferir se houve alteração após 14/10/2026 antes de tratar como definitivo."
   },
   {
@@ -1719,6 +1732,7 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2021-11-23); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1732,6 +1746,7 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2023-12-26); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1739,12 +1754,13 @@
    "topicos": 2,
    "artigos_citados": 4,
    "lei_integral": false,
-   "fonte": "pendente",
-   "fonte_id": null,
-   "artigos_conferidos": 0,
+   "fonte": "ingerida",
+   "fonte_id": "cnj-res-354-2020",
+   "artigos_conferidos": 4,
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": null
   },
   {
@@ -1758,6 +1774,9 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [
+    "13"
+   ],
    "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2022-09-05); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1771,6 +1790,7 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto compilado vigente, publicado pela fonte (salvo em 2021-01-15); não é reconstruído por data. A própria fonte informa atualização até data não informada: alterações posteriores a essa data podem não constar."
   },
   {
@@ -1784,12 +1804,13 @@
    "artigos_ausentes": [],
    "artigos_revogados_ou_vetados": [],
    "artigos_com_dispositivo_omitido": 0,
+   "artigos_com_alteracao_posterior": [],
    "observacao": "Texto consolidado consultado em 21/11/2026; conferir se houve alteração após 14/10/2026 antes de tratar como definitivo."
   }
  ],
  "limites": [
   "Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 3 diplomas (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria) com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva.",
-  "Sem questões: os outros 11 diplomas de Direito (a fonte oficial de 10 deles já está ingerida e conferida, mas as questões ainda não foram geradas; a Resolução CNJ 354/2020 ainda não foi localizada), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.",
+  "Sem questões: os outros 11 diplomas de Direito (a fonte oficial de todos já está ingerida e conferida contra o edital, mas as questões ainda não foram geradas), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.",
   "As questões de Direito treinam a leitura precisa da lei (prazos, números, condições). Não testam interpretação nem jurisprudência.",
   "Raciocínio Lógico cobre sequências, diagramas lógicos (conjuntos), ordenação, estruturas lógicas (negação, equivalência, valor lógico) e argumentação (conclusão necessária, premissa que falta), as áreas citadas no edital (p. 62).",
   "Alguns pares modelo × nível têm poucas variações reais (lista em variacao_baixa): depois de vistas todas, o app usa o nível vizinho e só então repete. Ampliar exige modelos novos, porque os ids existentes são imutáveis.",

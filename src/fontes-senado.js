@@ -125,4 +125,34 @@ function artigosSenadoHtml(texto) {
   }
   return { artigos: out, omitidos };
 }
-module.exports = { artigosSenadoJson, artigosSenadoHtml, limparAnotacoes, romano, letra, MARCA_REVOGADO, MARCA_INCERTO };
+/** "dd/mm/aaaa" -> "aaaa-mm-dd" (null se não for data). */
+const dataIso = (s) => { const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(String(s || '').trim()); return m ? m[3] + '-' + m[2] + '-' + m[1] : null; };
+/**
+ * Normas alteradoras que o Senado registra (campo "vides" do detalhe da norma) com publicação DEPOIS da data do texto guardado
+ * e até a data-limite do edital. Não interpreta o que mudou: só lista a norma, a data e os dispositivos que ela cita.
+ * Devolve { normas: [{ norma, assinatura, publicacao, comentario, itens: [{ dispositivo, comentario }] }], artigos: [chaves], nao_artigo: [dispositivos] }.
+ */
+function alteracoesPosteriores(detalhe, dataTexto, limite) {
+  const doc = detalhe && detalhe.DetalheDocumento && detalhe.DetalheDocumento.documentos && detalhe.DetalheDocumento.documentos.documento;
+  const d = Array.isArray(doc) ? doc[0] : doc;
+  if (!d) throw new Error('detalhe da norma sem documento');
+  let vides = (d.vides && d.vides.vide) || []; if (!Array.isArray(vides)) vides = [vides];
+  const normas = []; const artigos = new Set(); const naoArtigo = new Set();
+  for (const v of vides) {
+    const assinatura = dataIso(v.datAssinatura); const publicacao = dataIso(v.datapub) || assinatura;
+    if (!publicacao) throw new Error('alteração sem data: ' + v.nomeNormaPosterior);
+    if (publicacao <= dataTexto || publicacao > limite) continue;
+    let itens = (v.itens && v.itens.item) || []; if (!Array.isArray(itens)) itens = [itens];
+    const lista = itens.map((i) => ({ dispositivo: String(i.dispositivo || '').trim(), comentario: i.comentario || null }));
+    for (const i of lista) {
+      const m = /^Art\.?\s*(\d+(?:\.\d{3})*)(?:\s*-\s*([A-Z]{1,2})\b)?/.exec(i.dispositivo);
+      if (m) artigos.add(m[1].replace(/\./g, '') + (m[2] ? '-' + m[2] : '')); else if (i.dispositivo) naoArtigo.add(i.dispositivo);
+    }
+    normas.push({ norma: v.nomeNormaPosterior, assinatura, publicacao, comentario: v.comentario || null, itens: lista });
+  }
+  normas.sort((x, y) => (x.publicacao < y.publicacao ? -1 : x.publicacao > y.publicacao ? 1 : x.norma < y.norma ? -1 : x.norma > y.norma ? 1 : 0));
+  const chaves = [...artigos].sort((x, y) => { const px = x.split('-'); const py = y.split('-'); return Number(px[0]) - Number(py[0]) || (px[1] || '').localeCompare(py[1] || ''); });
+  return { normas, artigos: chaves, nao_artigo: [...naoArtigo].sort() };
+}
+
+module.exports = { alteracoesPosteriores, dataIso, artigosSenadoJson, artigosSenadoHtml, limparAnotacoes, romano, letra, MARCA_REVOGADO, MARCA_INCERTO };

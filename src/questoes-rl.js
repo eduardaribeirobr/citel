@@ -220,7 +220,7 @@ Q.CATALOGO.push({
       erros.push(E('Não é possível determinar', 'Não é possível determinar', 'as pistas determinam uma única ordem, então é possível descobrir quem ocupa essa posição'));
       return {
         enunciado, correta: { texto: ok, valor: ok }, erros,
-        explicacao: `Testando as ${fat(m)} ordens possíveis, só uma satisfaz todas as pistas: ${alvo.map((q) => nomes[q]).join(' → ')} (da 1ª à ${m}ª posição). Logo, ${ok} ocupa a ${p + 1}ª posição. Na prova, comece pelas pistas que fixam posições e use as demais para eliminar possibilidades.`,
+        explicacao: `Testando as ${fat(m)} ordens possíveis, só uma satisfaz todas as pistas: ${alvo.map((q) => nomes[q]).join(' → ')} (da 1ª à ${m}ª posição). Logo, ${ok} ocupa a ${p + 1}ª posição.`,
         pegadinha: 'Pistas do tipo "antes de" ou "não é o" só ELIMINAM possibilidades: é preciso combinar todas até sobrar uma única ordem, e não parar na primeira que parece resolver.',
         params: { nomes, pistas, p, m }, comentarioCorreta: ok + ' ocupa a ' + (p + 1) + 'ª posição.',
       };

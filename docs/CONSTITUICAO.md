@@ -12,6 +12,10 @@ Regras que valem para qualquer sessão de trabalho, inclusive futuras. Quem cons
 4. **Nada sem portão.** Nada é publicado se o portão (seção 3) não estiver todo verde.
 5. **Privacidade.** Dados da aluna ficam no banco dela. Nunca em commits, zips, logs ou serviços externos.
 6. **Cobertura honesta.** O app mostra o que está coberto e o que não está. Nunca esconde lacuna para parecer completo.
+7. **Nada por suposição.** Questão, gabarito, explicação e dica só dizem o que se verifica no texto oficial guardado ou por cálculo
+   conferido. Não entram afirmações sobre o que a banca cobra, o que é mais comum, mais difícil ou "clássico", nem conselho de prova sem
+   fonte. Quando a fonte pode estar desatualizada (norma alteradora posterior ao texto guardado, registrada pelo Senado), o dispositivo
+   fica duvidoso e não gera questão. Um teste varre os textos de todos os modelos e falha se uma dessas afirmações voltar.
 
 ## 2. Níveis de confiança do conteúdo (aparecem na tela)
 | Nível | Significado | Pode aparecer em simulado? |

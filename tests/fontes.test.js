@@ -135,3 +135,14 @@ test('situação: "Revogado3" (nota de rodapé colada) é revogado; "Revogadas a
   for (const c of ['Revogado.', 'Revogado3', 'Revogado.1', '(Revogado pela Lei 5/2001)', 'Revogada pelo Provimento 9', 'Vetado.', '(VETADO)', 'Revogado']) assert.notEqual(F.situacao(art(c), '1'), 'vigente', c);
   for (const c of ['Revogadas as disposições em contrário.', 'Revogam-se as disposições em contrário.', 'Vetadas as emendas aditivas não podem ser repetidas.', 'O prazo revogado não corre.']) assert.equal(F.situacao(art(c), '1'), 'vigente', c);
 });
+
+test('Resolução CNJ 354/2020: texto compilado lido ("Art. 1o" do PDF, "Art. 3º-A"), artigos do edital existem e são vigentes', () => {
+  const f = F.lerFonte('cnj-res-354-2020');
+  assert.deepEqual(Object.keys(f.artigos).sort(), ['1', '10', '11', '12', '13', '13-A', '14', '2', '3', '3-A', '4', '5', '6', '7', '8', '9']);
+  const mapa = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/fontes/mapa-diplomas.json'), 'utf8'));
+  assert.equal(mapa['Resolução CNJ n.º 354/2020'], 'cnj-res-354-2020');
+  for (const n of ['1', '8', '9', '10']) assert.equal(F.situacao(f, n), 'vigente', 'art. ' + n);
+  assert.match(f.artigos['1'], /^Art\. 1o Esta Resolução regulamenta/);
+  assert.match(f.artigos['3-A'], /violência doméstica e familiar contra/);
+  assert.match(f.meta.observacao || '', /compilad/i);
+});

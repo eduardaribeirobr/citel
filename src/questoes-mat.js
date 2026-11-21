@@ -31,7 +31,7 @@ Q.CATALOGO.push({
       const m = mmc(a.q, b.q);
       enunciado = `Calcule ${ftxt(a)} + ${ftxt(b)}.`;
       expl = `Iguale os denominadores: MMC(${a.q}, ${b.q}) = ${m}. Então ${ftxt(a)} = ${a.p * m / a.q}/${m} e ${ftxt(b)} = ${b.p * m / b.q}/${m}. Somando os numeradores: ${a.p * m / a.q + b.p * m / b.q}/${m}, que simplificado dá ${ftxt(ok)}.`;
-      pega = 'Somar numerador com numerador e denominador com denominador é o erro clássico: só se somam os numeradores depois de igualar os denominadores.';
+      pega = 'Somar numerador com numerador e denominador com denominador não é o procedimento correto: só se somam os numeradores depois de igualar os denominadores.';
       erros = [ef(F(a.p + b.p, a.q + b.q), 'somou numeradores com numeradores e denominadores com denominadores'), ef(fmul(a, b), 'multiplicou as frações em vez de somá-las'),
         ef(fsub(a, b), 'subtraiu em vez de somar'), ef(F(a.p + b.p, a.q * b.q), 'somou os numeradores e multiplicou os denominadores sem igualar as frações'),
         ef(F(a.p + b.p, Math.max(a.q, b.q)), 'somou os numeradores e manteve o maior denominador sem igualar as frações')];
@@ -168,7 +168,7 @@ Q.CATALOGO.push({
       ok = V * p / 100;
       enunciado = `Quanto é ${p}% de ${fmt(V)}?`;
       expl = `${p}% é ${p}/100. Então ${p}/100 × ${fmt(V)} = ${fmt(ok)}.`;
-      pega = 'Por cento significa "por cem": divida por 100. Errar a casa da vírgula é a falha mais comum.';
+      pega = 'Por cento significa "por cem": divida por 100. Deslocar a vírgula duas casas para a esquerda equivale a dividir por 100.';
       erros = [num(V * p / 10, 'dividiu por 10 em vez de por 100 (vírgula na casa errada)'), num(V - ok, `calculou o que sobra depois de tirar ${p}%`), num(V + ok, `somou ${p}% ao valor`),
         num(V * p, 'multiplicou pelo percentual sem dividir por 100'), num(V / p, 'dividiu o valor pelo percentual')];
       params = { f: 1, V, p };
@@ -396,7 +396,7 @@ Q.CATALOGO.push({
         const c = a * x + b; ok = x;
         enunciado = `Qual é o valor de x na equação ${a}x ${sg(b)} = ${fmt(c)}?`;
         expl = `Isole o termo com x: ${a}x = ${fmt(c)} ${b >= 0 ? '−' : '+'} ${fmt(Math.abs(b))} = ${fmt(c - b)}. Divida por ${a}: x = ${fmt(c - b)} ÷ ${a} = ${fmt(x)}.`;
-        pega = 'Ao passar um termo para o outro lado, ele troca de sinal. Errar esse sinal é a falha mais comum.';
+        pega = 'Ao passar um termo para o outro lado, ele troca de sinal. Esquecer a troca de sinal leva a outro resultado, como mostram as alternativas erradas.';
         erros = [num((c + b) / a, 'não trocou o sinal de b ao passá-lo para o outro lado'), num((b - c) / a, 'inverteu a ordem da subtração'), num((c - b) * a, 'multiplicou por a em vez de dividir'), num(c / a - b, 'dividiu c por a antes de passar b'), num(c - b, 'esqueceu de dividir por a')];
         params = { f: 1, a, b, c };
       } else {

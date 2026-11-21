@@ -60,15 +60,15 @@ function validarCatalogo(opc) {
     porDiploma.set(t.diploma.nome, o);
   }
   const diplomas = [...porDiploma.values()].sort((x, y) => y.citados - x.citados).map((o) => {
-    const id = mapa[o.nome]; let conferidos = 0; const ausentes = []; const inutilizaveis = []; let omitidosCitados = 0;
+    const id = mapa[o.nome]; let conferidos = 0; const ausentes = []; const inutilizaveis = []; const alteradosCitados = []; let omitidosCitados = 0;
     if (id) {
       const f = F.lerFonte(id); const ks = Object.keys(f.artigos).map((k) => k.toUpperCase());
       for (const n of o.nums) { if (ks.some((k) => k === String(n) || k.startsWith(n + '-'))) conferidos++; else ausentes.push(String(n)); }
-      for (const n of new Set(o.nums)) { const k = ks.find((x) => x === String(n)); if (k && F.situacao(f, Object.keys(f.artigos).find((y) => y.toUpperCase() === k)) !== 'vigente') inutilizaveis.push(String(n)); }
+      for (const n of new Set(o.nums)) { const k = ks.find((x) => x === String(n)); if (k && F.situacao(f, Object.keys(f.artigos).find((y) => y.toUpperCase() === k)) !== 'vigente') (f.alterados && f.alterados.includes(String(n)) ? alteradosCitados : inutilizaveis).push(String(n)); }
       if (f.omitidos) for (const n of new Set(o.nums)) if (f.omitidos[String(n)]) omitidosCitados++;
       for (const e of o.extremos) if (!ks.includes(e) && !ausentes.includes(e)) ausentes.push(e);     // extremo exato (ex.: 1091-A) precisa existir
     }
-    return { nome: o.nome, topicos: o.topicos, artigos_citados: o.citados, lei_integral: o.integral, fonte: id ? 'ingerida' : 'pendente', fonte_id: id || null, artigos_conferidos: conferidos, artigos_ausentes: ausentes, artigos_revogados_ou_vetados: inutilizaveis, artigos_com_dispositivo_omitido: omitidosCitados, observacao: id ? (F.carregarIndice()[id].observacao || null) : null };
+    return { nome: o.nome, topicos: o.topicos, artigos_citados: o.citados, lei_integral: o.integral, fonte: id ? 'ingerida' : 'pendente', fonte_id: id || null, artigos_conferidos: conferidos, artigos_ausentes: ausentes, artigos_revogados_ou_vetados: inutilizaveis, artigos_com_dispositivo_omitido: omitidosCitados, artigos_com_alteracao_posterior: alteradosCitados, observacao: id ? (F.carregarIndice()[id].observacao || null) : null };
   });
   const total = modelos.reduce((s, m) => ({ geradas: s.geradas + m.geradas, validas: s.validas + m.validas, rejeitadas: s.rejeitadas + m.rejeitadas, naoGeradas: s.naoGeradas + m.naoGeradas }), { geradas: 0, validas: 0, rejeitadas: 0, naoGeradas: 0 });
   const variacaoBaixa = [];
@@ -88,7 +88,7 @@ function validarCatalogo(opc) {
     diplomas,
     limites: [
       'Matemática e Raciocínio Lógico: respostas conferidas por cálculo (nível B). Direito: 3 diplomas (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria) com questões de reprodução conferidas contra o texto oficial (nível A), só nos tópicos em que o texto permite alteração objetiva.',
-      'Sem questões: os outros 11 diplomas de Direito (a fonte oficial de 10 deles já está ingerida e conferida, mas as questões ainda não foram geradas; a Resolução CNJ 354/2020 ainda não foi localizada), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.',
+      'Sem questões: os outros 11 diplomas de Direito (a fonte oficial de todos já está ingerida e conferida contra o edital, mas as questões ainda não foram geradas), Língua Portuguesa, Informática e Atualidades (sem fonte aprovada). Não vou inventar.',
       'As questões de Direito treinam a leitura precisa da lei (prazos, números, condições). Não testam interpretação nem jurisprudência.',
       'Raciocínio Lógico cobre sequências, diagramas lógicos (conjuntos), ordenação, estruturas lógicas (negação, equivalência, valor lógico) e argumentação (conclusão necessária, premissa que falta), as áreas citadas no edital (p. 62).',
       'Alguns pares modelo × nível têm poucas variações reais (lista em variacao_baixa): depois de vistas todas, o app usa o nível vizinho e só então repete. Ampliar exige modelos novos, porque os ids existentes são imutáveis.',

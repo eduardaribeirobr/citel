@@ -28,7 +28,7 @@ function htmlParaTexto(html) {
 const normalizar = (s) => s.normalize('NFC').replace(/\s+/g, ' ').trim();
 
 const INICIO_ARTIGO = /^Artigo\s+(\d+(?:\.\d+)*)[º°]?(?:-([A-Z]{1,2})\b)?\s*[º°.]?\s*(?:-|–|—)?/;
-const INICIO_ART_PONTO = /^\s*Art\.\s*(\d+(?:\.\d{3})*)\s*[º°]?(?:-([A-Z]{1,2})\b)?(?=[\s.:\-–—]|$)/;
+const INICIO_ART_PONTO = /^\s*Art\.\s*(\d+(?:\.\d{3})*)\s*(?:[º°]|o(?=[\s.\-–—]))?(?:-([A-Z]{1,2})\b)?(?=[\s.:\-–—]|$)/;      // "Art. 1º", "Art. 1o" (PDF), "Art. 3º-A"
 const REMISSAO = /^\s*Art\.\s*\d[\d.]*\S*\s+(?:da|do|das|dos|desta|deste|e|ou|a|ao|c\/c|,)\b/;
 /** Estilo "Art. 994." (PDF das Normas da Corregedoria). Começa em `inicio` (regex) para pular provimentos e índice. */
 function extrairArtigosArtPonto(texto, inicio) {
@@ -58,6 +58,32 @@ function extrairArtigos(texto) {
   return out;
 }
 
+const MARCA_ALTERADO = '(Texto com alteração posterior à fonte guardada: não usado)';
+/** Data do texto realmente guardado: a mais antiga entre a da própria fonte e a data de referência da reconstrução. */
+function dataDoTexto(meta) {
+  const base = meta.formato === 'senado-html' ? (meta.texto_salvo_em || meta.publicado_pela_fonte_em) : meta.atualizado_pela_fonte_em;
+  if (!base) throw new Error('sem data do texto para ' + meta.nome);
+  return meta.referencia_vigencia && meta.referencia_vigencia < base ? meta.referencia_vigencia : base;
+}
+/**
+ * Normas federais: artigos que o Senado registra como alterados/ressalvados/declarados por norma posterior à data do texto guardado
+ * (até a publicação do edital) viram DUVIDOSOS: ficam sem texto usável e nunca embasam questão, até a fonte ser atualizada.
+ * Lê data/fontes/alteracoes-posteriores.json (gerado por tools/verificar-frescor.js) e exige que esteja em dia com o índice.
+ */
+function aplicarAlteracoes(res, id, meta, base) {
+  const arq = path.join(base, 'data/fontes/alteracoes-posteriores.json');
+  if (!fs.existsSync(arq)) return res;
+  const reg = JSON.parse(fs.readFileSync(arq, 'utf8')).fontes[id];
+  if (!reg) throw new Error('fonte ' + id + ' ausente em alteracoes-posteriores.json (rode tools/verificar-frescor.js)');
+  if (reg.data_texto !== dataDoTexto(meta)) throw new Error('alteracoes-posteriores.json desatualizado para ' + id + ' (rode tools/verificar-frescor.js)');
+  const alterados = [];
+  for (const k of reg.artigos) {
+    if (res.artigos[k] === undefined) continue;
+    res.artigos[k] = (/^Art\.\s*\S+/.exec(res.artigos[k]) || ['Art. ' + k])[0] + ' ' + MARCA_ALTERADO; alterados.push(k);
+  }
+  if (alterados.length) { res.alterados = alterados; res.texto = Object.values(res.artigos).join('\n'); }
+  return res;
+}
 function carregarIndice(raiz) { return JSON.parse(fs.readFileSync(path.join(raiz || RAIZ, 'data/fontes/indice.json'), 'utf8')); }
 /** Lê a fonte, CONFERE o hash contra o índice e devolve { texto, artigos, meta }. Falha alto se o arquivo mudou. */
 function lerFonte(id, raiz) {
@@ -69,9 +95,9 @@ function lerFonte(id, raiz) {
   if (meta.formato === 'senado-json' || meta.formato === 'senado-html') {
     const bruto = zlib.gunzipSync(bytes);
     if (crypto.createHash('sha256').update(bruto).digest('hex') !== meta.sha256_bruto) throw new Error('hash do conteúdo de ' + id + ' não confere (arquivo alterado)');
-    if (meta.formato === 'senado-json') { const j = JSON.parse(bruto.toString('utf8')); const r = S.artigosSenadoJson(Array.isArray(j) ? j[0] : j, meta.referencia_vigencia); return { texto: Object.values(r.artigos).join('\n'), artigos: r.artigos, omitidos: r.omitidos, meta }; }
+    if (meta.formato === 'senado-json') { const j = JSON.parse(bruto.toString('utf8')); const r = S.artigosSenadoJson(Array.isArray(j) ? j[0] : j, meta.referencia_vigencia); return aplicarAlteracoes({ texto: Object.values(r.artigos).join('\n'), artigos: r.artigos, omitidos: r.omitidos, meta }, id, meta, base); }
     const texto = htmlParaTexto(bruto.toString('utf8')); const r = S.artigosSenadoHtml(texto);
-    return { texto: Object.values(r.artigos).join('\n'), artigos: r.artigos, omitidos: r.omitidos, meta };
+    return aplicarAlteracoes({ texto: Object.values(r.artigos).join('\n'), artigos: r.artigos, omitidos: r.omitidos, meta }, id, meta, base);
   }
   if (meta.formato === 'pdf') {
     const tb = fs.readFileSync(path.join(base, meta.texto));
@@ -90,7 +116,7 @@ function situacao(fonte, artigo) {
   if (/^\(?\s*vetad[oa]\s*(?:[.\d()]|pel[oa]s?\b|$)/i.test(corpo)) return 'vetado';
   if (/^\([^()]*\brevogad[oa]\b[^()]*\)\s*$/i.test(corpo)) return 'revogado';      // "(Artigo acrescido pela Lei X e revogado pela Lei Y)"
   if (/^\(?\s*revogad[oa]\s*(?:[.\d()]|pel[oa]s?\b|$)/i.test(corpo)) return 'revogado';
-  if (/^\(?\s*texto com supressão ou decisão judicial/i.test(corpo)) return 'incerto';
+  if (/^\(?\s*texto com (?:supressão ou decisão judicial|alteração posterior)/i.test(corpo)) return 'incerto';
   return 'vigente';
 }
 /** Remove marcas de nota de rodapé coladas ao fim de frase ("mandados.3" -> "mandados."). Aplica-se a fonte e a citação. */
@@ -107,4 +133,4 @@ function conferirCitacao(fonte, artigo, trecho) {
 /** O trecho ocorre em algum ponto da fonte inteira? (usado para provar que uma versão ALTERADA não existe no texto oficial) */
 const ocorreEmQualquerLugar = (fonte, trecho) => normalizar(limparNotas(fonte.texto)).includes(normalizar(limparNotas(trecho)));
 
-module.exports = { limparNotas, extrairArtigosArtPonto, situacao, htmlParaTexto, extrairArtigos, normalizar, carregarIndice, lerFonte, conferirCitacao, ocorreEmQualquerLugar };
+module.exports = { limparNotas, extrairArtigosArtPonto, situacao, htmlParaTexto, extrairArtigos, normalizar, carregarIndice, lerFonte, conferirCitacao, ocorreEmQualquerLugar, dataDoTexto, MARCA_ALTERADO };

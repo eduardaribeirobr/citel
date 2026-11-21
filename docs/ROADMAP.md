@@ -25,12 +25,12 @@
 **24 de 198 tópicos** têm questões: Matemática 13 + Raciocínio Lógico 1 (nível B) e 10 de Direito (nível A): Estatuto dos Funcionários 5, Lei 11.608/2003 1, Normas da Corregedoria 4. As de Direito são de **reprodução fiel do texto oficial** (lacuna numérica e "qual alternativa reproduz o dispositivo"), geradas por alteração mecânica de número, unidade de tempo, termo oposto, negação ou advérbio, e só onde o trecho permite isso objetivamente. Não testam interpretação nem jurisprudência. Dos 30 tópicos desses 3 diplomas, 20 não geram questão por esse método (trechos definicionais). **Nenhum tópico dos outros 11 diplomas (a fonte oficial de 10 deles já está ingerida; faltam as questões), de Português, de Informática ou de Atualidades.**
 
 ## Fontes: situação em 21/11/2026
-**13 dos 14 diplomas têm fonte oficial ingerida e conferida contra o edital** (todo artigo citado existe no texto oficial, inclusive os extremos exatos de cada faixa).
+**Os 14 diplomas têm fonte oficial ingerida e conferida contra o edital** (todo artigo citado existe no texto oficial, inclusive os extremos exatos de cada faixa).
 
 | Diploma | Fonte | Artigos do edital conferidos | Atualização da fonte | Observação |
 |---|---|---:|---|---|
-| Código de Processo Civil | Senado (estruturado, reconstruído em 14/10/2026) | 232/232 | até 13/03/2025 | 3 artigos sem dispositivo usável; 13 com dispositivo omitido por dúvida |
-| Código Civil | Senado (estruturado, reconstruído em 14/10/2026) | 186/186 | até 28/06/2024 | revogados 194 e 1.776; 4 com dispositivo omitido |
+| Código de Processo Civil | Senado (estruturado, reconstruído em 14/10/2026) | 232/232 | até 13/03/2025 | 1 revogado/vetado/incerto; 13 com dispositivo omitido por dúvida; **82 e 833 alterados por lei posterior ao texto** (ver abaixo) |
+| Código Civil | Senado (estruturado, reconstruído em 14/10/2026) | 186/186 | até 28/06/2024 | revogados 194 e 1.776; 4 com dispositivo omitido; **44 alterado por lei posterior ao texto** (ver abaixo) |
 | Código de Processo Penal | Senado (texto compilado) | 147/147 | salvo em 07/08/2026 | revogados 35 e 298; art. 65 tratado como duvidoso (anotação de ADPF) |
 | Normas da Corregedoria, Tomo I | TJSP (PDF oficial) | 126/126 | até 22/10/2026 | 43 dos citados estão revogados |
 | Código Penal | Senado (texto compilado) | 87/87 | salvo em 23/09/2026 | |
@@ -42,13 +42,13 @@
 | Lei 8.429/1992 | Senado (texto compilado) | 2/2 | salvo em 05/09/2022 | |
 | LINDB | Senado (texto compilado) | integral | salvo em 15/01/2021 | |
 | Lei 11.608/2003 | ALESP | integral | consultado em 21/11/2026 | |
-| **Resolução CNJ 354/2020** | `atos.cnj.jus.br` | **pendente** | | host responde; texto ainda não localizado |
+| Resolução CNJ 354/2020 | `atos.cnj.jus.br` (PDF do texto compilado) | 4/4 | compilado com as Res. 481/2022, 508/2023 e 679/2026 | o título do PDF diz 18/11/2020 e a página do ato diz 19/11/2020; divergência só registrada |
 
 **Como o texto federal é obtido:** API pública oficial do Senado (`normas.leg.br`, licença CC BY 4.0), por rota documentada no próprio portal. Planalto e Presidência recusam acesso automatizado e **não são contornados**.
-**Ressalvas honestas:** (1) nas fontes "compiladas", o texto é o vigente na data de salvamento, não reconstruído para 14/10/2026; (2) a fonte pode estar desatualizada em relação a alterações recentes (datas acima), então vale conferir antes de tratar como definitivo; (3) anotações legislativas (\"Redação dada pela Lei…\") são retiradas do texto citado, e anotações de decisão judicial (ADI, ADPF) tornam o dispositivo duvidoso e ele é **omitido**, nunca usado; (4) o edital cita faixas que incluem artigos revogados (por exemplo, Normas da Corregedoria 106–110 e 1054–1091; CC 194 e 1.776; CPP 35 e 298): eles não geram questão.
+**Ressalvas honestas:** (1) nas fontes "compiladas", o texto é o vigente na data de salvamento, não reconstruído para 14/10/2026; (2) a fonte pode estar desatualizada em relação a alterações recentes (datas acima), então vale conferir antes de tratar como definitivo; (3) anotações legislativas (\"Redação dada pela Lei…\") são retiradas do texto citado, e anotações de decisão judicial (ADI, ADPF) tornam o dispositivo duvidoso e ele é **omitido**, nunca usado; (4) **o Senado registra normas alteradoras publicadas depois da data do texto guardado** (checagem automática por `tools/verificar-frescor.js`, janela até 14/10/2026, edital p. 60): CC (Lei 14.905/2024, 15.040/2024, 15.068/2024, LC 214/2025, Lei 15.224/2025), CPC (Leis 15.109/2025 e 15.252/2025), Lei 8.429 (acórdãos do STF e Lei 15.269/2025), Estatuto da Pessoa com Deficiência (Lei 15.280/2025) e LINDB (acórdãos do STF). Os artigos atingidos ficam **duvidosos e fora das questões** até a fonte ser atualizada; dos citados no edital isso atinge CC 44, CPC 82 e 833 e Lei 8.429 art. 13 (neste último o registro é de decisão do STF que declara o dispositivo constitucional, sem mudança de texto registrada, mas foi tratado como duvidoso por precaução); (5) o edital cita faixas que incluem artigos revogados (por exemplo, Normas da Corregedoria 106–110 e 1054–1091; CC 194 e 1.776; CPP 35 e 298): eles não geram questão.
 
 ## Fases e critério de saída
-- **F0 Fundação (quase concluída):** feito: ingestão com hash (HTML, PDF e API do Senado), conferência literal de citação com trava de artigo vetado/revogado/duvidoso, mapa de fontes por diploma na auditoria, botão "reportar problema". Falta: o texto da Res. CNJ 354/2020.
+- **F0 Fundação (quase concluída):** feito: ingestão com hash (HTML, PDF e API do Senado), conferência literal de citação com trava de artigo vetado/revogado/duvidoso, mapa de fontes por diploma na auditoria, botão "reportar problema". Falta: atualizar CC e CPC para as alterações posteriores (hoje só marcadas como duvidosas).
   Plano original: ingestão de fontes com hash e `tools/` de conferência de citação; matriz de cobertura por tópico na tela;
   botão "reportar problema" na questão (grava no banco da aluna). *Saída:* 3 diplomas ingeridos e verificados; cobertura visível no app.
 - **F1 Direito, por peso (iniciada com os 3 diplomas já ingeridos):** CPC, CC, CPP, Corregedoria, CP, CF, demais. Por diploma: texto-fonte, resumo teórico citando artigos, questões

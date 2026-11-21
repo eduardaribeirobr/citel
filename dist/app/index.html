@@ -1403,7 +1403,7 @@ Q.CATALOGO.push({
       const m = mmc(a.q, b.q);
       enunciado = `Calcule ${ftxt(a)} + ${ftxt(b)}.`;
       expl = `Iguale os denominadores: MMC(${a.q}, ${b.q}) = ${m}. Então ${ftxt(a)} = ${a.p * m / a.q}/${m} e ${ftxt(b)} = ${b.p * m / b.q}/${m}. Somando os numeradores: ${a.p * m / a.q + b.p * m / b.q}/${m}, que simplificado dá ${ftxt(ok)}.`;
-      pega = 'Somar numerador com numerador e denominador com denominador é o erro clássico: só se somam os numeradores depois de igualar os denominadores.';
+      pega = 'Somar numerador com numerador e denominador com denominador não é o procedimento correto: só se somam os numeradores depois de igualar os denominadores.';
       erros = [ef(F(a.p + b.p, a.q + b.q), 'somou numeradores com numeradores e denominadores com denominadores'), ef(fmul(a, b), 'multiplicou as frações em vez de somá-las'),
         ef(fsub(a, b), 'subtraiu em vez de somar'), ef(F(a.p + b.p, a.q * b.q), 'somou os numeradores e multiplicou os denominadores sem igualar as frações'),
         ef(F(a.p + b.p, Math.max(a.q, b.q)), 'somou os numeradores e manteve o maior denominador sem igualar as frações')];
@@ -1540,7 +1540,7 @@ Q.CATALOGO.push({
       ok = V * p / 100;
       enunciado = `Quanto é ${p}% de ${fmt(V)}?`;
       expl = `${p}% é ${p}/100. Então ${p}/100 × ${fmt(V)} = ${fmt(ok)}.`;
-      pega = 'Por cento significa "por cem": divida por 100. Errar a casa da vírgula é a falha mais comum.';
+      pega = 'Por cento significa "por cem": divida por 100. Deslocar a vírgula duas casas para a esquerda equivale a dividir por 100.';
       erros = [num(V * p / 10, 'dividiu por 10 em vez de por 100 (vírgula na casa errada)'), num(V - ok, `calculou o que sobra depois de tirar ${p}%`), num(V + ok, `somou ${p}% ao valor`),
         num(V * p, 'multiplicou pelo percentual sem dividir por 100'), num(V / p, 'dividiu o valor pelo percentual')];
       params = { f: 1, V, p };
@@ -1768,7 +1768,7 @@ Q.CATALOGO.push({
         const c = a * x + b; ok = x;
         enunciado = `Qual é o valor de x na equação ${a}x ${sg(b)} = ${fmt(c)}?`;
         expl = `Isole o termo com x: ${a}x = ${fmt(c)} ${b >= 0 ? '−' : '+'} ${fmt(Math.abs(b))} = ${fmt(c - b)}. Divida por ${a}: x = ${fmt(c - b)} ÷ ${a} = ${fmt(x)}.`;
-        pega = 'Ao passar um termo para o outro lado, ele troca de sinal. Errar esse sinal é a falha mais comum.';
+        pega = 'Ao passar um termo para o outro lado, ele troca de sinal. Esquecer a troca de sinal leva a outro resultado, como mostram as alternativas erradas.';
         erros = [num((c + b) / a, 'não trocou o sinal de b ao passá-lo para o outro lado'), num((b - c) / a, 'inverteu a ordem da subtração'), num((c - b) * a, 'multiplicou por a em vez de dividir'), num(c / a - b, 'dividiu c por a antes de passar b'), num(c - b, 'esqueceu de dividir por a')];
         params = { f: 1, a, b, c };
       } else {
@@ -2349,7 +2349,7 @@ Q.CATALOGO.push({
       erros.push(E('Não é possível determinar', 'Não é possível determinar', 'as pistas determinam uma única ordem, então é possível descobrir quem ocupa essa posição'));
       return {
         enunciado, correta: { texto: ok, valor: ok }, erros,
-        explicacao: `Testando as ${fat(m)} ordens possíveis, só uma satisfaz todas as pistas: ${alvo.map((q) => nomes[q]).join(' → ')} (da 1ª à ${m}ª posição). Logo, ${ok} ocupa a ${p + 1}ª posição. Na prova, comece pelas pistas que fixam posições e use as demais para eliminar possibilidades.`,
+        explicacao: `Testando as ${fat(m)} ordens possíveis, só uma satisfaz todas as pistas: ${alvo.map((q) => nomes[q]).join(' → ')} (da 1ª à ${m}ª posição). Logo, ${ok} ocupa a ${p + 1}ª posição.`,
         pegadinha: 'Pistas do tipo "antes de" ou "não é o" só ELIMINAM possibilidades: é preciso combinar todas até sobrar uma única ordem, e não parar na primeira que parece resolver.',
         params: { nomes, pistas, p, m }, comentarioCorreta: ok + ' ocupa a ' + (p + 1) + 'ª posição.',
       };
@@ -2476,7 +2476,7 @@ Q.CATALOGO.push({
       const x1 = a * m; const x2 = x1 - c; const x3 = x2 * m; const x4 = x3 - c; const x5 = x4 * m;
       termos = [a, x1, x2, x3, x4, x5]; ok = x5 - c;
       expl = `A regra alterna duas operações: multiplicar por ${m} e subtrair ${c} (${a} × ${m} = ${x1}; ${x1} − ${c} = ${x2}; ${x2} × ${m} = ${x3}; ${x3} − ${c} = ${x4}; ${x4} × ${m} = ${x5}). Depois da multiplicação vem a subtração: ${x5} − ${c} = ${fmt(ok)}.`;
-      pega = 'Quando os termos sobem e descem em vezes alternadas, a regra costuma alternar duas operações: descubra a ordem delas olhando dois passos seguidos.';
+      pega = 'Quando os termos sobem e descem em vezes alternadas, uma regra possível é alternar duas operações: descubra a ordem delas olhando dois passos seguidos.';
       erros = [num(x5 * m, 'repetiu a multiplicação (a operação seguinte é a subtração)'), num(x5 + c, 'somou em vez de subtrair'), num(x5 - 2 * c, 'subtraiu duas vezes'), num(x5 + (x5 - x4), 'repetiu a última diferença'), num(x5 - c * m, `subtraiu ${c * m} em vez de ${c}`)];
       params = { f, termos, a, m, c };
     } else if (f === 8) {
@@ -2747,7 +2747,7 @@ function gerarNegacao(r, n) {
     enunciado: `Qual das alternativas é a negação da proposição ${aspas(texto(S, at).replace(/\.$/, ''))}?`,
     correta: { texto: texto(correta, at), valor: alvo }, erros,
     explicacao: `${regra} Conferido pela tabela-verdade (valores de ${aspas(at[0][0])} e ${aspas(at[1][0])}, nessa ordem → valor da proposição original): ${linhasTxt}. A negação tem os valores contrários em todas as linhas, e só “${texto(correta, at).replace(/\.$/, '')}” os tem.`,
-    pegadinha: tipo === 'imp' ? 'Negar “Se A, então B” não é dar outra condicional: a condicional só falha no caso A verdadeira e B falsa.' : 'Ao negar “e” ou “ou”, o conectivo troca (e ↔ ou) E cada parte é negada. Fazer só uma das duas coisas é a armadilha mais comum.',
+    pegadinha: tipo === 'imp' ? 'Negar “Se A, então B” não é dar outra condicional: a condicional só falha no caso A verdadeira e B falsa.' : 'Ao negar “e” ou “ou”, o conectivo troca (e ↔ ou) E cada parte é negada. Fazer só uma das duas coisas não nega a proposição.',
     params: { forma: 'negacao', at, S, correta, candidatas: cands, k }, comentarioCorreta: 'É a negação: tem sempre o valor contrário ao da proposição original.',
   };
 }
@@ -2891,7 +2891,7 @@ function construirArgumento(r, n) {
       enunciado: `Considere as premissas:\n${prems.map((pm, i) => `${i + 1}) ${texto(pm, at)}`).join('\n')}\nQual das conclusões abaixo decorre NECESSARIAMENTE dessas premissas?`,
       correta: { texto: texto(concl, at), valor: assinatura(concl, k) }, erros,
       explicacao: `Um argumento é válido quando a conclusão é verdadeira sempre que todas as premissas são verdadeiras. Aqui vale o ${regra}. ${resumo} “${texto(concl, at).replace(/\.$/, '')}” é verdadeira.`,
-      pegadinha: 'Não basta a conclusão parecer razoável: ela precisa ser verdadeira em TODAS as situações em que as premissas são verdadeiras. Inverter ou negar uma condicional (recíproca e inversa) é a armadilha clássica.',
+      pegadinha: 'Não basta a conclusão parecer razoável: ela precisa ser verdadeira em TODAS as situações em que as premissas são verdadeiras. Inverter ou negar uma condicional (recíproca e inversa) não preserva a tabela-verdade.',
       params: { modo, at, premissas: prems, correta: concl, candidatas: naoDecorre, k, regra }, comentarioCorreta: `Decorre das premissas (${regra}).`,
     };
   }
@@ -3134,7 +3134,7 @@ function gerarNoTopico(fid, topicId, rng, nivel) {
         enunciado: 'Complete a lacuna em um dispositivo do ' + rot + ':\n“' + branco + '”',
         correta: { texto: p.original, valor: p.original }, erros,
         explicacao: 'Texto oficial (' + meta.nome + ', art. ' + rotuloArtigo(x.artigo) + '): “' + x.c.corpo + '”. A lacuna é “' + p.original + '”.',
-        pegadinha: 'Prazos, percentuais e quantidades são os pontos mais fáceis de trocar e mais cobrados: leia o número e a unidade juntos.',
+        pegadinha: 'O número só tem sentido com a sua unidade (dias, meses, anos, por cento): leia os dois juntos.',
         params: { forma: 'lacuna', fonte: fid, artigo: x.artigo, topicId, corpo: x.c.corpo, branco, correto: p.original, distratores: erros.map((e) => ({ valor: e.valor, texto: aplicar(x.c.corpo, [{ p, op: e.texto }]) })) },
         comentarioCorreta: 'Completa a frase como no texto oficial.',
       });
@@ -3144,7 +3144,7 @@ function gerarNoTopico(fid, topicId, rng, nivel) {
     const escolhidos = ds.slice(0, 6);
     const erros = escolhidos.map((d) => E(d.texto, d.texto, 'o dispositivo foi alterado: ' + d.trocas.map(descTroca).join(' e ') + '; o texto oficial é diferente'));
     const tipos = escolhidos.slice(0, 4).flatMap((d) => d.trocas.map((t) => t.p.tipo));
-    const peg = tipos.includes('numero') || tipos.includes('unidade') ? 'Prazos, percentuais e quantidades são os pontos mais fáceis de trocar e mais cobrados: leia o número e a unidade juntos.'
+    const peg = tipos.includes('numero') || tipos.includes('unidade') ? 'Em alternativas erradas, o número ou a unidade foi trocado, o que muda o prazo ou a quantidade que a lei determina. Leia o número e a unidade juntos.'
       : tipos.includes('negacao') ? 'Uma negação a mais ou a menos inverte o sentido do dispositivo: confira o "não".' : 'Palavras como "poderá/deverá", "vedado/permitido" e "maior/menor" mudam a regra inteira com uma troca só.';
     return Object.assign(base, {
       enunciado: 'Qual alternativa reproduz corretamente um dispositivo do ' + rot + '?',
@@ -4028,14 +4028,14 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
         kpi('Acertos', pct(st.total.aproveitamento)),
         kpi('Hoje', st.hoje.n + (st.hoje.n ? ' · ' + pct(st.hoje.aproveitamento) : '')),
         kpi('Erros com certeza', String(st.total.errosComCerteza))),
-      st.total.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Erro com certeza é o mais perigoso: você não desconfiaria dele na prova. Releia a explicação desses no caderno.') : null));
+      st.total.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Erro com certeza: você marcou a alternativa errada com a confiança de que estava certa. Releia a explicação desses no caderno.') : null));
 
     nodes.push(h('section', { class: 'card', id: 'card-q-caderno-atalho' }, h('h2', null, 'Caderno de erros'),
       h('p', { class: 'note' }, c.q.caderno.length ? c.q.caderno.length + ' erro(s) registrado(s), com motivo e data da próxima revisão.' : 'Seus erros aparecem aqui, para refazer e revisar.'),
       h('div', { class: 'acoes' }, h('button', { id: 'btn-q-caderno', class: 'sec', onclick: function () { estadoQ().fase = 'caderno'; render(); window.scrollTo(0, 0); } }, 'Abrir caderno'))));
 
     nodes.push(h('section', { class: 'card', id: 'card-q-limites' }, h('h2', null, 'O que ainda não existe'),
-      h('p', { class: 'note' }, 'Direito: só 3 dos 14 diplomas do edital têm questões (Estatuto dos Funcionários, Lei 11.608/2003 e Normas da Corregedoria), e só nos tópicos em que o texto oficial permite uma alteração objetiva (número, prazo, termo oposto). São questões de leitura precisa da lei, conferidas contra o texto oficial; não testam interpretação nem jurisprudência. O texto oficial de 13 dos 14 diplomas já está guardado e conferido contra o edital (falta a Resolução 354/2020 do CNJ); as questões dos outros 10 estão em preparo. Sem questões ainda: Português, Informática e Atualidades. Também não existem simulados com cronômetro nem treino de discursiva. Detalhes em Mais → Auditoria.')));
+      h('p', { class: 'note' }, 'Direito: só 3 dos 14 diplomas do edital têm questões (Estatuto dos Funcionários, Lei 11.608/2003 e Normas da Corregedoria), e só nos tópicos em que o texto oficial permite uma alteração objetiva (número, prazo, termo oposto). São questões de leitura precisa da lei, conferidas contra o texto oficial; não testam interpretação nem jurisprudência. O texto oficial dos 14 diplomas já está guardado e conferido contra o edital; as questões dos outros 11 estão em preparo. Sem questões ainda: Português, Informática e Atualidades. Também não existem simulados com cronômetro nem treino de discursiva. Detalhes em Mais → Auditoria.')));
     return nodes;
   }
 
@@ -4110,7 +4110,7 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
     var nodes = [h('section', { class: 'card', id: 'card-q-resumo' }, h('h2', null, 'Resumo da sessão'),
       h('div', { class: 'big', id: 'q-resumo-placar' }, r.acertos + ' / ' + r.n, h('small', null, ' · ' + pct(r.aproveitamento))),
       h('div', { class: 'grid2' }, kpi('Tempo médio', seg), kpi('Acertos com dúvida', String(r.acertosComDuvida)), kpi('Erros com certeza', String(r.errosComCerteza))),
-      r.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Você errou ' + r.errosComCerteza + ' com certeza. Esses são os mais perigosos: releia as explicações.') : null,
+      r.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Você errou ' + r.errosComCerteza + ' com certeza (marcou como certa uma alternativa errada). Releia as explicações.') : null,
       r.acertosComDuvida > 0 ? h('p', { class: 'note' }, 'Acertou ' + r.acertosComDuvida + ' com dúvida ou chute. Ainda não é domínio: o assunto volta nas revisões.') : null,
       h('div', { class: 'acoes' },
         h('button', { id: 'btn-q-tempo', class: 'sec', disabled: q.tempoRegistrado, onclick: function () { registrarTempoQ(min); } }, q.tempoRegistrado ? 'Tempo registrado ✓' : 'Registrar ' + min + ' min de estudo'),
@@ -4169,7 +4169,7 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
       var dip = h('details', { id: 'det-diplomas' }, h('summary', null, 'Fontes oficiais por diploma (' + ing + ' de ' + v.diplomas.length + ' ingeridas)'));
       v.diplomas.forEach(function (d) {
         dip.append(h('div', { class: 'item', 'data-diploma': d.nome }, h('div', { class: 'row' }, h('span', { class: 't', text: d.nome }), d.fonte === 'ingerida' ? chip(d.artigos_ausentes.length ? 'warn' : 'ok', 'fonte ingerida') : chip('bad', 'fonte pendente')),
-          h('div', { class: 'm' }, d.lei_integral ? 'Lei integral no edital · ' : '', d.artigos_citados + ' artigo(s) citado(s) no edital · ' + d.topicos + ' tópico(s)' + (d.fonte === 'ingerida' ? ' · ' + d.artigos_conferidos + ' conferido(s) no texto oficial' + (d.artigos_ausentes.length ? ' (ausentes: ' + d.artigos_ausentes.slice(0, 5).join(', ') + ')' : '') + (d.artigos_revogados_ou_vetados.length ? ' · ' + d.artigos_revogados_ou_vetados.length + ' revogado(s)/vetado(s)/incerto(s), que não geram questão' : '') + (d.artigos_com_dispositivo_omitido ? ' · ' + d.artigos_com_dispositivo_omitido + ' com dispositivo omitido por dúvida (supressão ou decisão judicial)' : '') : '')),
+          h('div', { class: 'm' }, d.lei_integral ? 'Lei integral no edital · ' : '', d.artigos_citados + ' artigo(s) citado(s) no edital · ' + d.topicos + ' tópico(s)' + (d.fonte === 'ingerida' ? ' · ' + d.artigos_conferidos + ' conferido(s) no texto oficial' + (d.artigos_ausentes.length ? ' (ausentes: ' + d.artigos_ausentes.slice(0, 5).join(', ') + ')' : '') + (d.artigos_revogados_ou_vetados.length ? ' · ' + d.artigos_revogados_ou_vetados.length + ' revogado(s)/vetado(s)/incerto(s), que não geram questão' : '') + (d.artigos_com_dispositivo_omitido ? ' · ' + d.artigos_com_dispositivo_omitido + ' com dispositivo omitido por dúvida (supressão ou decisão judicial)' : '') + (d.artigos_com_alteracao_posterior && d.artigos_com_alteracao_posterior.length ? ' · art. ' + d.artigos_com_alteracao_posterior.join(', ') + ': o Senado registra norma alteradora posterior ao texto guardado; fora das questões até atualizar' : '') : '')),
           d.observacao ? h('div', { class: 'm', text: 'Atenção: ' + d.observacao }) : null));
       });
       card.append(dip, h('p', { class: 'note' }, 'Enquanto a fonte oficial de um diploma não estiver ingerida e conferida, o app não terá questões dele. Contagem pelos intervalos numéricos do edital.'));

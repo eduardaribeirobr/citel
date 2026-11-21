@@ -88,7 +88,7 @@ Q.CATALOGO.push({
       const x1 = a * m; const x2 = x1 - c; const x3 = x2 * m; const x4 = x3 - c; const x5 = x4 * m;
       termos = [a, x1, x2, x3, x4, x5]; ok = x5 - c;
       expl = `A regra alterna duas operações: multiplicar por ${m} e subtrair ${c} (${a} × ${m} = ${x1}; ${x1} − ${c} = ${x2}; ${x2} × ${m} = ${x3}; ${x3} − ${c} = ${x4}; ${x4} × ${m} = ${x5}). Depois da multiplicação vem a subtração: ${x5} − ${c} = ${fmt(ok)}.`;
-      pega = 'Quando os termos sobem e descem em vezes alternadas, a regra costuma alternar duas operações: descubra a ordem delas olhando dois passos seguidos.';
+      pega = 'Quando os termos sobem e descem em vezes alternadas, uma regra possível é alternar duas operações: descubra a ordem delas olhando dois passos seguidos.';
       erros = [num(x5 * m, 'repetiu a multiplicação (a operação seguinte é a subtração)'), num(x5 + c, 'somou em vez de subtrair'), num(x5 - 2 * c, 'subtraiu duas vezes'), num(x5 + (x5 - x4), 'repetiu a última diferença'), num(x5 - c * m, `subtraiu ${c * m} em vez de ${c}`)];
       params = { f, termos, a, m, c };
     } else if (f === 8) {
@@ -359,7 +359,7 @@ function gerarNegacao(r, n) {
     enunciado: `Qual das alternativas é a negação da proposição ${aspas(texto(S, at).replace(/\.$/, ''))}?`,
     correta: { texto: texto(correta, at), valor: alvo }, erros,
     explicacao: `${regra} Conferido pela tabela-verdade (valores de ${aspas(at[0][0])} e ${aspas(at[1][0])}, nessa ordem → valor da proposição original): ${linhasTxt}. A negação tem os valores contrários em todas as linhas, e só “${texto(correta, at).replace(/\.$/, '')}” os tem.`,
-    pegadinha: tipo === 'imp' ? 'Negar “Se A, então B” não é dar outra condicional: a condicional só falha no caso A verdadeira e B falsa.' : 'Ao negar “e” ou “ou”, o conectivo troca (e ↔ ou) E cada parte é negada. Fazer só uma das duas coisas é a armadilha mais comum.',
+    pegadinha: tipo === 'imp' ? 'Negar “Se A, então B” não é dar outra condicional: a condicional só falha no caso A verdadeira e B falsa.' : 'Ao negar “e” ou “ou”, o conectivo troca (e ↔ ou) E cada parte é negada. Fazer só uma das duas coisas não nega a proposição.',
     params: { forma: 'negacao', at, S, correta, candidatas: cands, k }, comentarioCorreta: 'É a negação: tem sempre o valor contrário ao da proposição original.',
   };
 }
@@ -503,7 +503,7 @@ function construirArgumento(r, n) {
       enunciado: `Considere as premissas:\n${prems.map((pm, i) => `${i + 1}) ${texto(pm, at)}`).join('\n')}\nQual das conclusões abaixo decorre NECESSARIAMENTE dessas premissas?`,
       correta: { texto: texto(concl, at), valor: assinatura(concl, k) }, erros,
       explicacao: `Um argumento é válido quando a conclusão é verdadeira sempre que todas as premissas são verdadeiras. Aqui vale o ${regra}. ${resumo} “${texto(concl, at).replace(/\.$/, '')}” é verdadeira.`,
-      pegadinha: 'Não basta a conclusão parecer razoável: ela precisa ser verdadeira em TODAS as situações em que as premissas são verdadeiras. Inverter ou negar uma condicional (recíproca e inversa) é a armadilha clássica.',
+      pegadinha: 'Não basta a conclusão parecer razoável: ela precisa ser verdadeira em TODAS as situações em que as premissas são verdadeiras. Inverter ou negar uma condicional (recíproca e inversa) não preserva a tabela-verdade.',
       params: { modo, at, premissas: prems, correta: concl, candidatas: naoDecorre, k, regra }, comentarioCorreta: `Decorre das premissas (${regra}).`,
     };
   }
