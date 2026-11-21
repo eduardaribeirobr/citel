@@ -24,18 +24,20 @@
 ## Cobertura hoje
 14 de 198 tópicos têm questões (Matemática 13 + Raciocínio Lógico 1), todas de nível B. **Nenhum tópico jurídico, de Português, de Informática ou de Atualidades.**
 
-## Fontes: o que foi verificado em 21/11/2026
-| Fonte | Diplomas | Situação |
+## Fontes: situação em 21/11/2026
+| Diploma | Fonte | Situação |
 |---|---|---|
-| www.al.sp.gov.br | 10.261/68, 11.608/2003 | texto integral em HTML lido (516 e 41 ocorrências de "Artigo") |
-| www.tjsp.jus.br | Normas da Corregedoria | host responde; localizar o documento do Tomo I |
-| atos.cnj.jus.br | Res. CNJ 354/2020 | host responde (redirecionamento); localizar o texto |
-| legis.senado.leg.br (Dados Abertos) | federais | API oficial responde: identifica a norma e lista alterações com datas; **texto integral ainda não localizado** |
-| www.planalto.gov.br, legislacao.presidencia.gov.br | federais | liberados na rede, mas **recusam clientes automatizados** (resposta vazia). Não se contorna. |
-Alternativa para os federais: a aluna envia o PDF/HTML oficial salvo (como foi feito com o edital); o projeto guarda com SHA-256.
+| Estatuto dos Funcionários (10.261/68) | ALESP (HTML) | **ingerida**; 351 artigos, 18/18 citados conferidos; 2 vetados (129, 330) |
+| Lei 11.608/2003 | ALESP (HTML) | **ingerida**; 12 artigos; lei integral |
+| Normas da Corregedoria, Tomo I | TJSP (PDF oficial, `api.tjsp.jus.br`) | **ingerida**; 1.509 dispositivos, 126/126 citados conferidos; 90 revogados no texto; numeração pula 370 e 981 no próprio texto |
+| Res. CNJ 354/2020 | `atos.cnj.jus.br` | host responde; texto ainda não localizado |
+| Federais (CPC, CC, CPP, CP, CF, 13.146, 9.099, 6.830, 8.429, LINDB) | Senado (Dados Abertos) | API oficial identifica a norma e lista alterações; **texto integral ainda não localizado**. Planalto/Presidência recusam clientes automatizados e não se contorna. Alternativa: a aluna envia o PDF oficial. |
+
+**Achados da conferência edital × texto oficial:** o edital cita faixas das Normas da Corregedoria que incluem artigos já revogados (106–110, revogados pelo Prov. CG 26/2019; 1054–1091 também constam como revogados). Esses artigos nunca geram questão. O texto das Normas é de 22/10/2026 e o edital manda considerar a legislação vigente até 14/10/2026: alterações entre essas datas, se houver, não foram separadas.
 
 ## Fases e critério de saída
-- **F0 Fundação:** ingestão de fontes com hash e `tools/` de conferência de citação; matriz de cobertura por tópico na tela;
+- **F0 Fundação (em andamento):** feito: ingestão com hash (HTML e PDF), conferência literal de citação com trava de artigo vetado/revogado, mapa de fontes por diploma na auditoria, botão "reportar problema". Falta: textos dos diplomas federais e da Res. CNJ.
+  Plano original: ingestão de fontes com hash e `tools/` de conferência de citação; matriz de cobertura por tópico na tela;
   botão "reportar problema" na questão (grava no banco da aluna). *Saída:* 3 diplomas ingeridos e verificados; cobertura visível no app.
 - **F1 Direito, por peso:** CPC, CC, CPP, Corregedoria, CP, CF, demais. Por diploma: texto-fonte, resumo teórico citando artigos, questões
   de nível A ligadas ao trecho (geradas a partir do texto oficial com alteração controlada de prazo/número/termo, conferindo por script que a

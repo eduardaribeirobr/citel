@@ -400,6 +400,38 @@ const pctTxt = (x) => (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%';
     await ctx.close();
   }
 
+  // ===== K12: reportar problema numa questão =====
+  {
+    const { ctx, page } = await abrir(browser, 'ok', { hash: '#questoes' });
+    await esperarSalvo(page);
+    await configurar(page, { n: 5, assunto: 'OJ26-MAT-02', nivel: '1' });
+    await page.click('#btn-q-comecar');
+    check('K12: antes de responder não há botão de reportar', (await page.$('#btn-q-reportar')) === null);
+    const r = await responder(page, { acertar: false, conf: 'seguro' });
+    await page.click('.motivos button[data-motivo="calculo"]');
+    await page.click('#btn-q-reportar');
+    await page.selectOption('#q-rep-cat', 'gabarito'); await page.fill('#q-rep-nota', 'Acho que o gabarito está trocado');
+    await page.click('#btn-q-enviar-rep');
+    check('K12: confirmação visível e o botão some', /Aviso registrado/.test(await txt(page, '#q-reportado')) && (await page.$('#btn-q-reportar')) === null);
+    await esperarSalvo(page);
+    const ev = await itens(page, 'eventos'); const av = ev.find((x) => x.tipo === 'problema'); const resp = ev.find((x) => x.questionId === r.qid && !x.tipo);
+    check('K12: aviso gravado, ligado à resposta e à questão', av && av.ref === resp.id && av.questionId === r.qid && av.categoria === 'gabarito' && av.nota === 'Acho que o gabarito está trocado', JSON.stringify(av));
+    await page.click('#btn-q-proxima');
+    await responder(page, { acertar: true, conf: 'seguro' });
+    await page.click('#btn-q-reportar'); await page.click('#btn-q-enviar-rep');
+    await esperarSalvo(page);
+    check('K12: aviso sem texto usa a categoria escolhida por padrão', (await itens(page, 'eventos')).filter((x) => x.tipo === 'problema').length === 2);
+    await page.click('#btn-q-encerrar-sessao').catch(() => {});
+    await aba(page, 'mais');
+    check('K12: Mais lista os 2 avisos', /2 aviso\(s\)/.test(await txt(page, '#card-problemas')) && /O gabarito parece errado/.test(await txt(page, '#card-problemas')), (await txt(page, '#card-problemas')).slice(0, 160));
+    await aba(page, 'questoes');
+    const sess = await page.$('#card-q-resumo'); if (!sess) { await page.click('button.sec:has-text("Encerrar sessão")').catch(() => {}); }
+    const total = (await itens(page, 'eventos')).filter((x) => !x.tipo).length;
+    check('K12: os avisos não contam como respostas (2 respostas no banco)', total === 2);
+    check('K12: sem rolagem horizontal', (await sobreposicao(page)) <= 0);
+    await ctx.close();
+  }
+
   // ===== K5: sem banco de dados =====
   {
     const { ctx, page } = await abrir(browser, 'semdb', { hash: '#questoes' });
@@ -424,6 +456,10 @@ const pctTxt = (x) => (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%';
     check('K6: variação por nível é exibida para cada modelo', /Variações distintas por nível \(1→5\): \d+/.test(await txt(page, '#card-auditoria [data-modelo="MAT-02-MMC-MDC"]')));
     check('K6: pontos fracos de variação declarados (' + v.variacao_baixa.length + ')', new RegExp(v.variacao_baixa.length + ' combinações de modelo e nível têm menos de').test(await txt(page, '#texto-variacao')), await txt(page, '#texto-variacao'));
     check('K6: modelo com pouca variação recebe aviso', /pouca variação/.test(await txt(page, '#card-auditoria [data-modelo="MAT-12-GEOMETRIA"]')));
+    await page.click('#det-diplomas summary');
+    const nIng = v.diplomas.filter((d) => d.fonte === 'ingerida').length;
+    check('K6: auditoria mostra a situação das fontes por diploma (' + nIng + ' de ' + v.diplomas.length + ')', new RegExp(nIng + ' de ' + v.diplomas.length + ' ingeridas').test(await txt(page, '#det-diplomas')), (await txt(page, '#det-diplomas')).slice(0, 120));
+    check('K6: CPC aparece como fonte pendente e o Estatuto com 18 artigos conferidos', /fonte pendente/.test(await txt(page, '#det-diplomas [data-diploma^="Código de Processo Civil"]')) && /18 conferido\(s\) no texto oficial/.test(await txt(page, '#det-diplomas [data-diploma^="Estatuto dos Funcionários"]')));
     check('K6: limites declaram que Direito não tem questões', /Direito, Língua Portuguesa, Informática e Atualidades não têm questões/.test(await txt(page, '#card-auditoria')));
     const r = JSON.parse(REGRAS);
     check('K6: regras do edital: ' + r.fatos.length + ' itens com página', /54 regras conferidas/.test(await txt(page, '#card-regras')) || new RegExp(r.fatos.length + ' regras').test(await txt(page, '#card-regras')));

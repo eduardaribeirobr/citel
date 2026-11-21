@@ -23,6 +23,12 @@ celular ou no computador.
 - Simulados com cronômetro e modo prova, módulo de discursiva, aulas dentro do app.
 - Uso offline (o app precisa de internet) e compartilhamento com outras pessoas (a gravação por terceiros não foi testada).
 
+## Fontes oficiais
+`tools/ingerir-fonte.js` guarda o arquivo bruto (HTML ou PDF) com URL, data e SHA-256 em `data/fontes/`; `src/fontes.js` extrai os artigos e
+confere citações LITERAIS (e recusa artigo vetado/revogado). A auditoria mostra, por diploma, se a fonte foi ingerida e quantos artigos do
+edital foram conferidos. Hoje: 3 de 14 diplomas ingeridos (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria). **Ainda não
+há questão jurídica**: a ingestão é a base para elas.
+
 ## Regra dos ids imutáveis
 O histórico guarda só o id da questão (`MODELO:semente:nível`); ao refazer, a questão é gerada de novo. Por isso **um modelo
 publicado nunca é editado**: se tiver defeito, cria-se um modelo novo e o antigo recebe `aposentado: '<sucessor>'` (continua
@@ -58,8 +64,8 @@ NODE_PATH=$(npm root -g) node tests/diag.e2e.js
 ```
 
 ## Como foi testado
-- 187 testes de unidade e de propriedades (sorteios com semente fixa; 12.000 questões geradas e validadas por rodada).
-- 219 verificações ponta a ponta no Chromium com tela de celular (390 px), tema claro e escuro, banco **simulado**, incluindo
+- 201 testes de unidade e de propriedades (sorteios com semente fixa; 12.000 questões geradas e validadas por rodada).
+- 228 verificações ponta a ponta no Chromium com tela de celular (390 px), tema claro e escuro, banco **simulado**, incluindo
   o histórico real de uso (respostas de um aparelho de verdade) aberto na interface.
 - Verificação por mutação: defeitos injetados de propósito nos módulos de progresso, plano, armazenamento, questões e
   aprendizagem; cada um precisa derrubar ao menos um teste. Os que sobreviveram revelaram lacunas de teste (fechadas) ou eram

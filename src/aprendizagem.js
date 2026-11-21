@@ -18,7 +18,8 @@ const MOTIVOS = Object.freeze({ desconhecimento: 'Não sabia a regra', desatenca
  * O motor guarda só o último evento de cada questão; um motivo anotado depois de um acerto na refação
  * (correct:false, mesmo questionId) viraria "erro" e derrubaria o desempenho do tópico.
  */
-const paraMotor = (eventos) => eventos.filter((e) => e.tipo !== 'motivo');
+const TIPOS_AUXILIARES = ['motivo', 'problema'];
+const paraMotor = (eventos) => eventos.filter((e) => !TIPOS_AUXILIARES.includes(e.tipo));
 /** Respostas válidas (ignora os registros de motivo e ids que não são de questões geradas). */
 const soRespostas = (eventos) => paraMotor(eventos).filter((e) => Questoes.lerId(e.questionId));
 /** Modelo ATIVO ao qual a questão pertence (um modelo aposentado entrega seu histórico ao sucessor). */
@@ -198,6 +199,12 @@ function eventoResposta(q, indiceEscolhido, conf, ms) {
 }
 const eventoMotivo = (eventoResp, motivo) => ({ tipo: 'motivo', ref: eventoResp.id, topicId: eventoResp.topicId, questionId: eventoResp.questionId, correct: false, motivo });
 
-const API = { INTERVALOS, CREDITO, MOTIVOS, paraMotor, soRespostas, templateDe, cartoes, revisoesVencidas, nivelSugerido, montarSessao, cadernoErros, resumo, estatisticas, eventoResposta, eventoMotivo };
+const CATEGORIAS_PROBLEMA = Object.freeze({ enunciado: 'Enunciado errado ou confuso', gabarito: 'O gabarito parece errado', explicacao: 'A explicação está errada', outro: 'Outro problema' });
+/** Aviso da aluna sobre uma questão. Não é resposta: fica fora do motor de progresso, das revisões e do caderno. */
+const eventoProblema = (eventoResp, categoria, nota) => ({ tipo: 'problema', ref: eventoResp.id, topicId: eventoResp.topicId, questionId: eventoResp.questionId, correct: false,
+  categoria: CATEGORIAS_PROBLEMA[categoria] ? categoria : 'outro', nota: String(nota || '').slice(0, 300) });
+const problemasReportados = (eventos) => eventos.filter((e) => e.tipo === 'problema').sort((a, b) => b.ts - a.ts);
+
+const API = { CATEGORIAS_PROBLEMA, eventoProblema, problemasReportados, TIPOS_AUXILIARES, INTERVALOS, CREDITO, MOTIVOS, paraMotor, soRespostas, templateDe, cartoes, revisoesVencidas, nivelSugerido, montarSessao, cadernoErros, resumo, estatisticas, eventoResposta, eventoMotivo };
 if (typeof module !== 'undefined' && module.exports) module.exports = API;
 if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;

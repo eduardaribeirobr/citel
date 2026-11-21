@@ -12,6 +12,7 @@ require('../src/questoes-mat.js');
 require('../src/questoes-mat2.js');
 require('../src/questoes-rl.js'); require('../src/questoes-rl2.js');
 
+const F = require('../src/fontes.js');
 const RAIZ = path.join(__dirname, '..');
 const NIVEIS = [1, 2, 3, 4, 5];
 const VARIACOES_SEMENTES = 400;       // quantas sementes se testam para contar enunciados distintos (o número é um piso: "400 ou mais")
@@ -44,6 +45,27 @@ function validarCatalogo(opc) {
     const comModelo = topicos.filter((x) => Q.ativos().some((t) => t.topicId === x.id));
     return { cod: d.cod, nome: d.nome, topicos: topicos.length, topicosComQuestoes: comModelo.length, modelos: Q.ativos().filter((t) => t.disciplina === d.cod).length };
   });
+  // diplomas do edital: fonte oficial ingerida? os artigos citados no edital existem no texto oficial?
+  const mapa = JSON.parse(fs.readFileSync(path.join(RAIZ, 'data/fontes/mapa-diplomas.json'), 'utf8'));
+  const porDiploma = new Map();
+  const chave = (x) => String(x).replace(/\./g, '').replace(/[º°\s]/g, '').toUpperCase();      // "1.091-A" -> "1091-A"
+  const inteiro = (x) => parseInt(chave(x), 10);
+  for (const t of matriz.topicos) if (t.diploma) {
+    const o = porDiploma.get(t.diploma.nome) || { nome: t.diploma.nome, topicos: 0, citados: 0, integral: false, nums: [], extremos: [] };
+    o.topicos++; if (!t.dispositivos || !t.dispositivos.length) o.integral = true;
+    for (const d of t.dispositivos || []) { o.extremos.push(chave(d.de)); if (d.ate) o.extremos.push(chave(d.ate)); const a = inteiro(d.de); const b = inteiro(d.ate || d.de); for (let i = a; i <= b; i++) { o.citados++; o.nums.push(i); } }
+    porDiploma.set(t.diploma.nome, o);
+  }
+  const diplomas = [...porDiploma.values()].sort((x, y) => y.citados - x.citados).map((o) => {
+    const id = mapa[o.nome]; let conferidos = 0; const ausentes = []; const inutilizaveis = [];
+    if (id) {
+      const f = F.lerFonte(id); const ks = Object.keys(f.artigos).map((k) => k.toUpperCase());
+      for (const n of o.nums) { if (ks.some((k) => k === String(n) || k.startsWith(n + '-'))) conferidos++; else ausentes.push(String(n)); }
+      for (const n of new Set(o.nums)) { const k = ks.find((x) => x === String(n)); if (k && F.situacao(f, Object.keys(f.artigos).find((y) => y.toUpperCase() === k)) !== 'vigente') inutilizaveis.push(String(n)); }
+      for (const e of o.extremos) if (!ks.includes(e) && !ausentes.includes(e)) ausentes.push(e);     // extremo exato (ex.: 1091-A) precisa existir
+    }
+    return { nome: o.nome, topicos: o.topicos, artigos_citados: o.citados, lei_integral: o.integral, fonte: id ? 'ingerida' : 'pendente', fonte_id: id || null, artigos_conferidos: conferidos, artigos_ausentes: ausentes, artigos_revogados_ou_vetados: inutilizaveis, observacao: id ? (F.carregarIndice()[id].observacao || null) : null };
+  });
   const total = modelos.reduce((s, m) => ({ geradas: s.geradas + m.geradas, validas: s.validas + m.validas, rejeitadas: s.rejeitadas + m.rejeitadas, naoGeradas: s.naoGeradas + m.naoGeradas }), { geradas: 0, validas: 0, rejeitadas: 0, naoGeradas: 0 });
   const variacaoBaixa = [];
   for (const m of modelos) if (!m.aposentado) for (const n of NIVEIS) if (m.variacoes[n] < LIMITE_POUCAS) variacaoBaixa.push({ modelo: m.id, nivel: n, variacoes: m.variacoes[n] });
@@ -59,6 +81,7 @@ function validarCatalogo(opc) {
     variacao_baixa: variacaoBaixa,
     modelos,
     cobertura,
+    diplomas,
     limites: [
       'Só Matemática e Raciocínio Lógico têm questões: são as únicas disciplinas cuja resposta pode ser conferida por cálculo sem depender de fonte externa.',
       'Direito, Língua Portuguesa, Informática e Atualidades não têm questões: exigiriam o texto oficial da legislação, gramática de referência ou notícias, e não consegui acessar essas fontes. Não vou inventar.',

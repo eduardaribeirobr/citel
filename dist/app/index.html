@@ -2968,7 +2968,8 @@ const MOTIVOS = Object.freeze({ desconhecimento: 'Não sabia a regra', desatenca
  * O motor guarda só o último evento de cada questão; um motivo anotado depois de um acerto na refação
  * (correct:false, mesmo questionId) viraria "erro" e derrubaria o desempenho do tópico.
  */
-const paraMotor = (eventos) => eventos.filter((e) => e.tipo !== 'motivo');
+const TIPOS_AUXILIARES = ['motivo', 'problema'];
+const paraMotor = (eventos) => eventos.filter((e) => !TIPOS_AUXILIARES.includes(e.tipo));
 /** Respostas válidas (ignora os registros de motivo e ids que não são de questões geradas). */
 const soRespostas = (eventos) => paraMotor(eventos).filter((e) => Questoes.lerId(e.questionId));
 /** Modelo ATIVO ao qual a questão pertence (um modelo aposentado entrega seu histórico ao sucessor). */
@@ -3148,7 +3149,13 @@ function eventoResposta(q, indiceEscolhido, conf, ms) {
 }
 const eventoMotivo = (eventoResp, motivo) => ({ tipo: 'motivo', ref: eventoResp.id, topicId: eventoResp.topicId, questionId: eventoResp.questionId, correct: false, motivo });
 
-const API = { INTERVALOS, CREDITO, MOTIVOS, paraMotor, soRespostas, templateDe, cartoes, revisoesVencidas, nivelSugerido, montarSessao, cadernoErros, resumo, estatisticas, eventoResposta, eventoMotivo };
+const CATEGORIAS_PROBLEMA = Object.freeze({ enunciado: 'Enunciado errado ou confuso', gabarito: 'O gabarito parece errado', explicacao: 'A explicação está errada', outro: 'Outro problema' });
+/** Aviso da aluna sobre uma questão. Não é resposta: fica fora do motor de progresso, das revisões e do caderno. */
+const eventoProblema = (eventoResp, categoria, nota) => ({ tipo: 'problema', ref: eventoResp.id, topicId: eventoResp.topicId, questionId: eventoResp.questionId, correct: false,
+  categoria: CATEGORIAS_PROBLEMA[categoria] ? categoria : 'outro', nota: String(nota || '').slice(0, 300) });
+const problemasReportados = (eventos) => eventos.filter((e) => e.tipo === 'problema').sort((a, b) => b.ts - a.ts);
+
+const API = { CATEGORIAS_PROBLEMA, eventoProblema, problemasReportados, TIPOS_AUXILIARES, INTERVALOS, CREDITO, MOTIVOS, paraMotor, soRespostas, templateDe, cartoes, revisoesVencidas, nivelSugerido, montarSessao, cadernoErros, resumo, estatisticas, eventoResposta, eventoMotivo };
 if (typeof module !== 'undefined' && module.exports) module.exports = API;
 if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
 
@@ -3577,6 +3584,10 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
       h('p', { class: 'note', id: 'texto-verificacao' }, st ? 'Blocos gravados por este aparelho: ' + st.chunks + ' · cópia local: ' + (st.localOk ? 'ativa' : 'indisponível') + ' · pendentes: ' + st.pendentes + '.' : 'Sem banco de dados.'),
       h('div', { class: 'acoes' }, h('button', { id: 'btn-verificar', class: 'sec', disabled: !S.store, onclick: verificarGravacao }, 'Testar gravação agora'))));
 
+    var probs = Aprendizagem.problemasReportados(c.d.eventos);
+    nodes.push(h('section', { class: 'card', id: 'card-problemas' }, h('h2', null, 'Problemas que você reportou'),
+      probs.length ? h('p', { class: 'note' }, probs.length + ' aviso(s). Eles são lidos na próxima revisão do banco de questões; a questão errada é aposentada, e o seu histórico não se perde.') : h('p', { class: 'note' }, 'Nenhum. Se achar erro numa questão, use "Reportar problema" depois de responder.'),
+      probs.slice(0, 5).map(function (e) { return h('div', { class: 'item' }, h('div', { class: 't', text: Aprendizagem.CATEGORIAS_PROBLEMA[e.categoria] || e.categoria }), h('div', { class: 'm', text: dataBR(e.ts) + ' · ' + e.questionId + (e.nota ? ' · ' + curto(e.nota, 80) : '') })); })));
     nodes.push(cardAuditoria());
     nodes.push(cardRegras());
     nodes.push(h('section', { class: 'card', id: 'card-limites' }, h('h2', null, 'Limites conhecidos'),
@@ -3596,7 +3607,7 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
   var MAX_MS_QUESTAO = 30 * 60 * 1000;                 // uma pausa longa não distorce o tempo médio
 
   function estadoQ() {
-    if (!S.q) S.q = { fase: 'inicio', cfg: { n: 10, topico: '', nivel: 'auto' }, itens: [], pos: 0, topicoSessao: '', questao: null, erroGeracao: null, escolha: null, conf: null, revelada: false, t0: 0, resp: null, motivo: null, feitas: [], tempoRegistrado: false };
+    if (!S.q) S.q = { fase: 'inicio', cfg: { n: 10, topico: '', nivel: 'auto' }, itens: [], pos: 0, topicoSessao: '', questao: null, erroGeracao: null, escolha: null, conf: null, revelada: false, t0: 0, resp: null, motivo: null, feitas: [], tempoRegistrado: false, reportando: false, reportado: false };
     return S.q;
   }
   function topicosComQuestoes() {
@@ -3609,7 +3620,7 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
 
   function carregarItemQ() {
     var q = estadoQ(); var it = q.itens[q.pos];
-    q.escolha = null; q.conf = null; q.revelada = false; q.resp = null; q.motivo = null; q.erroGeracao = null; q.questao = null;
+    q.escolha = null; q.conf = null; q.revelada = false; q.resp = null; q.motivo = null; q.erroGeracao = null; q.questao = null; q.reportando = false; q.reportado = false;
     try {
       var qs = it.exata ? Questoes.gerarQuestao(it.templateId, it.semente, it.nivel) : Questoes.gerarValida(it.templateId, it.semente, it.nivel);
       var v = Questoes.validarQuestao(qs);
@@ -3661,6 +3672,22 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
     catch (e) { toast('Não foi possível anotar o motivo: ' + e.message); return; }
     q.motivo = m; render();
     var b = document.querySelector('.motivos button[data-motivo="' + m + '"]'); if (b) b.focus({ preventScroll: true });
+  }
+  function reportarQ(categoria, nota) {
+    var q = estadoQ();
+    if (!q.revelada || !q.resp || q.reportado) return;
+    try { if (!S.store.registrar('eventos', Aprendizagem.eventoProblema(q.resp, categoria, nota))) throw new Error('não registrado'); }
+    catch (e) { toast('Não foi possível enviar o aviso: ' + e.message); return; }
+    q.reportado = true; q.reportando = false; render(); toast('Aviso registrado. Obrigada: vou revisar esta questão.');
+  }
+  function painelReportarQ() {
+    var q = estadoQ();
+    if (q.reportado) return h('p', { class: 'note', id: 'q-reportado' }, '✓ Aviso registrado para esta questão.');
+    if (!q.reportando) return h('div', { class: 'acoes' }, h('button', { id: 'btn-q-reportar', class: 'sec peq', onclick: function () { q.reportando = true; render(); } }, 'Reportar problema nesta questão'));
+    var cat = h('select', { id: 'q-rep-cat', 'aria-label': 'Tipo de problema' }, Object.keys(Aprendizagem.CATEGORIAS_PROBLEMA).map(function (k) { return h('option', { value: k, text: Aprendizagem.CATEGORIAS_PROBLEMA[k] }); }));
+    var nota = h('input', { id: 'q-rep-nota', type: 'text', maxlength: '300', placeholder: 'O que está errado? (opcional)', 'aria-label': 'Descrição do problema' });
+    return h('div', { class: 'stack', id: 'q-reportar' }, h('label', null, 'Tipo de problema', cat), h('label', null, 'Descrição', nota),
+      h('div', { class: 'acoes' }, h('button', { id: 'btn-q-enviar-rep', onclick: function () { reportarQ(cat.value, nota.value); } }, 'Enviar aviso'), h('button', { class: 'sec', onclick: function () { q.reportando = false; render(); } }, 'Cancelar')));
   }
   function proximaQ() {
     var q = estadoQ();
@@ -3782,6 +3809,7 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
       });
       fb.append(h('div', { class: 'stack', id: 'q-motivo' }, h('p', { class: 'note' }, 'Por que errou? (anotar ajuda a achar o padrão no caderno de erros)'), mot));
     }
+    fb.append(painelReportarQ());
     var ultima = q.pos + 1 >= q.itens.length;
     fb.append(h('div', { class: 'acoes' },
       h('button', { id: 'btn-q-proxima', onclick: proximaQ }, ultima ? 'Ver resumo' : 'Próxima questão'),
@@ -3851,6 +3879,16 @@ if (typeof globalThis !== 'undefined') globalThis.Aprendizagem = API;
       cob.append(h('div', { class: 'row item' }, h('span', { class: 't', text: d.nome }), d.topicosComQuestoes === d.topicos ? chip('ok', d.topicosComQuestoes + '/' + d.topicos + ' tópicos') : d.topicosComQuestoes > 0 ? chip('warn', d.topicosComQuestoes + '/' + d.topicos + ' tópicos') : chip('bad', 'sem questões')));
     });
     card.append(cob);
+    if (v.diplomas) {
+      var ing = v.diplomas.filter(function (d) { return d.fonte === 'ingerida'; }).length;
+      var dip = h('details', { id: 'det-diplomas' }, h('summary', null, 'Fontes oficiais por diploma (' + ing + ' de ' + v.diplomas.length + ' ingeridas)'));
+      v.diplomas.forEach(function (d) {
+        dip.append(h('div', { class: 'item', 'data-diploma': d.nome }, h('div', { class: 'row' }, h('span', { class: 't', text: d.nome }), d.fonte === 'ingerida' ? chip(d.artigos_ausentes.length ? 'warn' : 'ok', 'fonte ingerida') : chip('bad', 'fonte pendente')),
+          h('div', { class: 'm' }, d.lei_integral ? 'Lei integral no edital · ' : '', d.artigos_citados + ' artigo(s) citado(s) no edital · ' + d.topicos + ' tópico(s)' + (d.fonte === 'ingerida' ? ' · ' + d.artigos_conferidos + ' conferido(s) no texto oficial' + (d.artigos_ausentes.length ? ' (ausentes: ' + d.artigos_ausentes.slice(0, 5).join(', ') + ')' : '') + (d.artigos_revogados_ou_vetados.length ? ' · ' + d.artigos_revogados_ou_vetados.length + ' revogado(s)/vetado(s), que não geram questão' : '') : '')),
+          d.observacao ? h('div', { class: 'm', text: 'Atenção: ' + d.observacao }) : null));
+      });
+      card.append(dip, h('p', { class: 'note' }, 'Enquanto a fonte oficial de um diploma não estiver ingerida e conferida, o app não terá questões dele. Contagem pelos intervalos numéricos do edital.'));
+    }
     var mod = h('details', null, h('summary', null, 'Modelos de questão (' + v.modelos.length + ')'));
     v.modelos.forEach(function (m) {
       var cap = v.variacoes_max;

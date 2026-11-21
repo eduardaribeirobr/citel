@@ -393,6 +393,30 @@ test('com as variações do nível esgotadas e nível fixo, o guarda de id conti
   } finally { Q.criarRng = original; }
 });
 
+test('aviso de problema: é registro auxiliar válido, fica fora do motor, das estatísticas, das revisões e do caderno', () => {
+  const q = Q.gerarQuestao(T, 41, 1);
+  const resp = Object.assign({ id: 'e-p1', ts: BASE }, A.eventoResposta(q, (q.gabaritoIdx + 1) % 5, 'seguro', 3000));
+  const aviso = Object.assign({ id: 'p-1', ts: BASE + 5000 }, A.eventoProblema(resp, 'gabarito', 'x'.repeat(500)));
+  assert.equal(Backup.VALIDADORES.eventos(aviso), true);
+  assert.equal(aviso.tipo, 'problema'); assert.equal(aviso.ref, 'e-p1'); assert.equal(aviso.categoria, 'gabarito'); assert.equal(aviso.nota.length, 300, 'nota limitada a 300 caracteres');
+  assert.equal(A.eventoProblema(resp, 'inventada', '').categoria, 'outro');
+  const todos = [resp, aviso];
+  assert.deepEqual(A.paraMotor(todos).map((e) => e.id), ['e-p1']);
+  assert.equal(A.soRespostas(todos).length, 1);
+  assert.equal(A.estatisticas(todos, idxDe(0)).total.n, 1);
+  assert.equal(A.cadernoErros(todos, idxDe(1)).length, 1);
+  assert.equal(A.cartoes(todos, idxDe(1)).get(T).respostas, 1);
+  assert.equal(A.problemasReportados(todos).length, 1);
+  const mais = Object.assign({}, aviso, { id: 'p-2', ts: aviso.ts + 100 });
+  assert.deepEqual(A.problemasReportados([aviso, mais]).map((e) => e.id), ['p-2', 'p-1'], 'mais recente primeiro');
+  const topicos = [{ id: q.topicId, esforcoMin: 45 }];
+  const motor = (evs) => calcularProgresso({ topicos, eventos: evs, sessoes: [], estudados: [], agora: BASE + DIA, dataProva: Date.UTC(2027, 2, 14, 17), revisoesVencidas: 0 }).topicos[0];
+  const certa = Object.assign({ id: 'e-p2', ts: BASE + 9000 }, A.eventoResposta(q, q.gabaritoIdx, 'seguro', 3000));
+  const avisoTardio = Object.assign({ id: 'p-3', ts: BASE + 20000 }, A.eventoProblema(certa, 'enunciado', ''));
+  assert.equal(motor(A.paraMotor([resp, certa, avisoTardio])).desempenhoPonderado, 1, 'um aviso depois do acerto não pode virar erro');
+  assert.equal(motor([resp, certa, avisoTardio]).desempenhoPonderado, 0, 'sem o filtro viraria erro (premissa do teste)');
+});
+
 test('propriedades (300 sorteios): sessões e cartões respeitam os invariantes', () => {
   const rnd = mulberry32(2026);
   const ri = (a, b) => a + Math.floor(rnd() * (b - a + 1));

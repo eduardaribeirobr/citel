@@ -1,0 +1,37 @@
+{
+ "alesp-lei-10261-1968": {
+  "nome": "Estatuto dos Funcionários Públicos Civis do Estado de SP (Lei 10.261/68)",
+  "url": "https://www.al.sp.gov.br/repositorio/legislacao/lei/1968/lei-10261-28.10.1968.html",
+  "consultado_em": "2026-11-21",
+  "sha256": "fd02d8d42350015c2dada224c2292901668f9239d2d5b9fea81c95c1b5481d5a",
+  "bytes": 371685,
+  "codificacao": "utf8",
+  "arquivo": "data/fontes/alesp-lei-10261-1968/bruto.html",
+  "observacao": "Texto consolidado consultado em 21/11/2026; conferir se houve alteração após 14/10/2026 antes de tratar como definitivo."
+ },
+ "alesp-lei-11608-2003": {
+  "nome": "Lei 11.608/2003 (taxa judiciária)",
+  "url": "https://www.al.sp.gov.br/repositorio/legislacao/lei/2003/lei-11608-29.12.2003.html",
+  "consultado_em": "2026-11-21",
+  "sha256": "41b754e31e8fc07a54948b25afb04005ae3217c22be91dcee6bbecbd23815a41",
+  "bytes": 31023,
+  "codificacao": "utf8",
+  "arquivo": "data/fontes/alesp-lei-11608-2003/bruto.html",
+  "observacao": "Texto consolidado consultado em 21/11/2026; conferir se houve alteração após 14/10/2026 antes de tratar como definitivo."
+ },
+ "tjsp-nscgj-tomo1": {
+  "nome": "Normas de Serviço da Corregedoria Geral da Justiça, Tomo I (texto atualizado até 22/10/2026)",
+  "url": "https://api.tjsp.jus.br/Handlers/Handler/FileFetch.ashx?codigo=203718",
+  "consultado_em": "2026-11-21",
+  "sha256": "6e23fa86153e42192caa43858573ab8e8e4844f11a247fb3f767e94e28d9537b",
+  "bytes": 4627105,
+  "codificacao": "utf8",
+  "arquivo": "data/fontes/tjsp-nscgj-tomo1/bruto.pdf",
+  "formato": "pdf",
+  "texto": "data/fontes/tjsp-nscgj-tomo1/texto.txt",
+  "sha256_texto": "4df169801cc22c3d4121c2355ff3649c39015269f7714e356d6c54a37ee05cc8",
+  "estilo": "art-ponto",
+  "inicio": "^\\s*Art\\. 1º A Corregedoria Geral da Justiça alinha-se",
+  "observacao": "Texto atualizado até 22/10/2026; o edital manda considerar a legislação vigente até a publicação (14/10/2026). Alterações entre 14 e 22/10/2026, se houver, não foram separadas."
+ }
+}
