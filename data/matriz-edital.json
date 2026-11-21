@@ -1,0 +1,6038 @@
+{
+ "versao": "1.0",
+ "edital": "Edital de Abertura n.º 01/2026, com a Retificação de 04/11/2026 (esta não altera o conteúdo programático)",
+ "fonte": {
+  "documento": "Anexo VIII – Conteúdo Programático",
+  "paginas": "60 a 62"
+ },
+ "regra_legislacao": "Toda legislação deve ser considerada com as alterações e atualizações vigentes até a data da publicação do edital; legislação posterior pode ser usada quando superveniente ou complementar a tópico já previsto ou indispensável à avaliação.",
+ "modelo_esforco": {
+  "descricao": "Estimativa inicial, a ser substituída pelo seu tempo real (o motor de progresso recalibra após 3 tópicos dominados).",
+  "legislacao": {
+   "baseMin": 20,
+   "porArtigoMin": 6,
+   "formula": "esforço = 20 + 6 × nº de artigos"
+  },
+  "diplomaIntegral": {
+   "min": 120,
+   "formula": "diploma integral cujo nº de artigos não consta do edital: 120 min"
+  },
+  "lingua_portuguesa": {
+   "padraoMin": 45,
+   "interpretacaoMin": 120
+  },
+  "matematica": {
+   "padraoMin": 45
+  },
+  "raciocinio_logico": {
+   "min": 180
+  },
+  "informatica": {
+   "padraoMin": 30
+  },
+  "atualidades": {
+   "fatosMin": 120
+  }
+ },
+ "frequencia_historica_vunesp": "não apurada (exige provas anteriores acessíveis e contagem verificável)",
+ "blocos": [
+  {
+   "id": "B1",
+   "nome": "Língua Portuguesa",
+   "questoes": 15,
+   "eliminatorio": true,
+   "acerto_minimo": 0.5,
+   "na_discursiva": false,
+   "fonte": "Cap. IX item 1.1 (p.28); Cap. X itens 1 e 2 (p.35)"
+  },
+  {
+   "id": "B2",
+   "nome": "Conhecimentos Específicos",
+   "questoes": 40,
+   "eliminatorio": true,
+   "acerto_minimo": 0.5,
+   "na_discursiva": true,
+   "fonte": "Cap. IX itens 1.1 e 1.2 (p.28); Cap. X itens 1 e 2 (p.35)"
+  },
+  {
+   "id": "B3",
+   "nome": "Conhecimentos Gerais",
+   "questoes": 15,
+   "eliminatorio": false,
+   "acerto_minimo": null,
+   "na_discursiva": false,
+   "fonte": "Cap. X item 2.1 (p.35)"
+  }
+ ],
+ "disciplinas": [
+  {
+   "cod": "LP",
+   "bloco": "B1",
+   "nome": "Língua Portuguesa",
+   "questoes": 15,
+   "questoes_fonte": "Anexo VIII, Bloco I: \"15 questões\"",
+   "relevancia_cargo": null,
+   "fonte_pagina": 60
+  },
+  {
+   "cod": "DPEN",
+   "bloco": "B2",
+   "nome": "Direito Penal",
+   "questoes": null,
+   "questoes_fonte": "o edital informa apenas o total do Bloco II (40 questões) e não discrimina por disciplina",
+   "relevancia_cargo": "média",
+   "fonte_pagina": 60
+  },
+  {
+   "cod": "DPPE",
+   "bloco": "B2",
+   "nome": "Direito Processual Penal",
+   "questoes": null,
+   "questoes_fonte": "o edital informa apenas o total do Bloco II (40 questões) e não discrimina por disciplina",
+   "relevancia_cargo": "alta",
+   "fonte_pagina": 60
+  },
+  {
+   "cod": "DPCI",
+   "bloco": "B2",
+   "nome": "Direito Processual Civil",
+   "questoes": null,
+   "questoes_fonte": "o edital informa apenas o total do Bloco II (40 questões) e não discrimina por disciplina",
+   "relevancia_cargo": "alta",
+   "fonte_pagina": 61
+  },
+  {
+   "cod": "DCON",
+   "bloco": "B2",
+   "nome": "Direito Constitucional",
+   "questoes": null,
+   "questoes_fonte": "o edital informa apenas o total do Bloco II (40 questões) e não discrimina por disciplina",
+   "relevancia_cargo": "média",
+   "fonte_pagina": 61
+  },
+  {
+   "cod": "DADM",
+   "bloco": "B2",
+   "nome": "Direito Administrativo",
+   "questoes": null,
+   "questoes_fonte": "o edital informa apenas o total do Bloco II (40 questões) e não discrimina por disciplina",
+   "relevancia_cargo": "média",
+   "fonte_pagina": 61
+  },
+  {
+   "cod": "DCIV",
+   "bloco": "B2",
+   "nome": "Direito Civil",
+   "questoes": null,
+   "questoes_fonte": "o edital informa apenas o total do Bloco II (40 questões) e não discrimina por disciplina",
+   "relevancia_cargo": "média",
+   "fonte_pagina": 61
+  },
+  {
+   "cod": "LESP",
+   "bloco": "B2",
+   "nome": "Legislação Especial",
+   "questoes": null,
+   "questoes_fonte": "o edital informa apenas o total do Bloco II (40 questões) e não discrimina por disciplina",
+   "relevancia_cargo": "alta",
+   "fonte_pagina": 61
+  },
+  {
+   "cod": "ATUA",
+   "bloco": "B3",
+   "nome": "Atualidades",
+   "questoes": 3,
+   "questoes_fonte": "Anexo VIII, Bloco III: \"3 questões\"",
+   "relevancia_cargo": null,
+   "fonte_pagina": 61
+  },
+  {
+   "cod": "MAT",
+   "bloco": "B3",
+   "nome": "Matemática",
+   "questoes": 3,
+   "questoes_fonte": "Anexo VIII: \"sendo 3 questões de matemática\"",
+   "relevancia_cargo": null,
+   "fonte_pagina": 62
+  },
+  {
+   "cod": "RLOG",
+   "bloco": "B3",
+   "nome": "Raciocínio Lógico",
+   "questoes": 4,
+   "questoes_fonte": "Anexo VIII: \"4 questões de raciocínio lógico\"",
+   "relevancia_cargo": null,
+   "fonte_pagina": 62
+  },
+  {
+   "cod": "INFO",
+   "bloco": "B3",
+   "nome": "Informática",
+   "questoes": 5,
+   "questoes_fonte": "Anexo VIII, Bloco III: \"5 questões\"",
+   "relevancia_cargo": null,
+   "fonte_pagina": 62
+  }
+ ],
+ "topicos": [
+  {
+   "id": "OJ26-LP-01",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Análise, compreensão e interpretação de diversos tipos de textos verbais, não verbais, literários e não literários",
+   "texto_edital": "Análise, compreensão e interpretação de diversos tipos de textos verbais, não verbais, literários e não literários.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 120,
+   "esforco_origem": "interpretação de textos: 120 min (habilidade)",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-02",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Informações literais e inferências possíveis",
+   "texto_edital": "Informações literais e inferências possíveis.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-03",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Ponto de vista do autor",
+   "texto_edital": "Ponto de vista do autor.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-04",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Estruturação do texto",
+   "texto_edital": "Estruturação do texto: relações entre ideias; recursos de coesão.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-05",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Significação contextual de palavras e expressões",
+   "texto_edital": "Significação contextual de palavras e expressões.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-06",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Sinônimos e antônimos",
+   "texto_edital": "Sinônimos e antônimos.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-07",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Sentido próprio e figurado das palavras",
+   "texto_edital": "Sentido próprio e figurado das palavras.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-08",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Classes de palavras",
+   "texto_edital": "Classes de palavras: emprego e sentido que imprimem às relações que estabelecem: substantivo, adjetivo, artigo, numeral, pronome, verbo, advérbio, preposição e conjunção.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-09",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Concordância verbal e nominal",
+   "texto_edital": "Concordância verbal e nominal.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-10",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Regência verbal e nominal",
+   "texto_edital": "Regência verbal e nominal.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-11",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Colocação pronominal",
+   "texto_edital": "Colocação pronominal.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-12",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Crase",
+   "texto_edital": "Crase.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LP-13",
+   "bloco": "B1",
+   "disciplina": "LP",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Pontuação",
+   "texto_edital": "Pontuação.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Língua Portuguesa: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-01",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, arts. 1 a 12",
+   "texto_edital": "1 a 12",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "12",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 12,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 92,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1 a 12; 100 a 106; 107 a 121; 129; 150; 154; 293 a 305; 307; 308; 311-A; 312 a 317; 319 a 333; 336 e 337; 339 a 347; 357 e 359"
+  },
+  {
+   "id": "OJ26-DPEN-CP-02",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, arts. 100 a 106",
+   "texto_edital": "100 a 106",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "100",
+     "ate": "106",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 7,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 62,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-03",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, arts. 107 a 121",
+   "texto_edital": "107 a 121",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "107",
+     "ate": "121",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 15,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 110,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-04",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 129",
+   "texto_edital": "129",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "129",
+     "ate": "129",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-05",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 150",
+   "texto_edital": "150",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "150",
+     "ate": "150",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-06",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 154",
+   "texto_edital": "154",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "154",
+     "ate": "154",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-07",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, arts. 293 a 305",
+   "texto_edital": "293 a 305",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "293",
+     "ate": "305",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 13,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 98,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-08",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 307",
+   "texto_edital": "307",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "307",
+     "ate": "307",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-09",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 308",
+   "texto_edital": "308",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "308",
+     "ate": "308",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-10",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 311-A",
+   "texto_edital": "311-A",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "311-A",
+     "ate": "311-A",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-11",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, arts. 312 a 317",
+   "texto_edital": "312 a 317",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "312",
+     "ate": "317",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-12",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, arts. 319 a 333",
+   "texto_edital": "319 a 333",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "319",
+     "ate": "333",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 15,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 110,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-13",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 336",
+   "texto_edital": "336",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "336",
+     "ate": "336",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-14",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 337",
+   "texto_edital": "337",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "337",
+     "ate": "337",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-15",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, arts. 339 a 347",
+   "texto_edital": "339 a 347",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "339",
+     "ate": "347",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 9,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 74,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-16",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 357",
+   "texto_edital": "357",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "357",
+     "ate": "357",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPEN-CP-17",
+   "bloco": "B2",
+   "disciplina": "DPEN",
+   "diploma": {
+    "cod": "CP",
+    "nome": "Código Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Penal, art. 359",
+   "texto_edital": "359",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "359",
+     "ate": "359",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-01",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 24 a 42",
+   "texto_edital": "24 a 42",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "24",
+     "ate": "42",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 19,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 134,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "24 a 42; 61 a 74; 112; 125 a 131; 156, 185; 202 a 204; 218 a 225; 240 a 250; 274; 283 a 303; 351 a 363; 370 a 372; 396 a 396-A; 406; 436 a 446; 485 a 487; 513 a 518; 563 a 570; 593; 647 a 654; 762 a 763; 792; 798 e 798-A"
+  },
+  {
+   "id": "OJ26-DPPE-CPP-02",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 61 a 74",
+   "texto_edital": "61 a 74",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "61",
+     "ate": "74",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 14,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 104,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-03",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 112",
+   "texto_edital": "112",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "112",
+     "ate": "112",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-04",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 125 a 131",
+   "texto_edital": "125 a 131",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "125",
+     "ate": "131",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 7,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 62,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-05",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 156",
+   "texto_edital": "156",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "156",
+     "ate": "156",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-06",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 185",
+   "texto_edital": "185",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "185",
+     "ate": "185",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-07",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 202 a 204",
+   "texto_edital": "202 a 204",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "202",
+     "ate": "204",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-08",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 218 a 225",
+   "texto_edital": "218 a 225",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "218",
+     "ate": "225",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 8,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 68,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-09",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 240 a 250",
+   "texto_edital": "240 a 250",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "240",
+     "ate": "250",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 11,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 86,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-10",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 274",
+   "texto_edital": "274",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "274",
+     "ate": "274",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-11",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 283 a 303",
+   "texto_edital": "283 a 303",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "283",
+     "ate": "303",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 21,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 146,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-12",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 351 a 363",
+   "texto_edital": "351 a 363",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "351",
+     "ate": "363",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 13,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 98,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-13",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 370 a 372",
+   "texto_edital": "370 a 372",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "370",
+     "ate": "372",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-14",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 396 a 396-A",
+   "texto_edital": "396 a 396-A",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "396",
+     "ate": "396-A",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-15",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 406",
+   "texto_edital": "406",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "406",
+     "ate": "406",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-16",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 436 a 446",
+   "texto_edital": "436 a 446",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "436",
+     "ate": "446",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 11,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 86,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-17",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 485 a 487",
+   "texto_edital": "485 a 487",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "485",
+     "ate": "487",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-18",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 513 a 518",
+   "texto_edital": "513 a 518",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "513",
+     "ate": "518",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-19",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 563 a 570",
+   "texto_edital": "563 a 570",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "563",
+     "ate": "570",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 8,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 68,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-20",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 593",
+   "texto_edital": "593",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "593",
+     "ate": "593",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-21",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 647 a 654",
+   "texto_edital": "647 a 654",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "647",
+     "ate": "654",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 8,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 68,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-22",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, arts. 762 a 763",
+   "texto_edital": "762 a 763",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "762",
+     "ate": "763",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-23",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 792",
+   "texto_edital": "792",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "792",
+     "ate": "792",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-24",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 798",
+   "texto_edital": "798",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "798",
+     "ate": "798",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-CPP-25",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "CPP",
+    "nome": "Código de Processo Penal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Penal, art. 798-A",
+   "texto_edital": "798-A",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "798-A",
+     "ate": "798-A",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-L9099-01",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, art. 1",
+   "texto_edital": "1",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "1",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1; 2; 60 a 62; 66 a 68"
+  },
+  {
+   "id": "OJ26-DPPE-L9099-02",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, art. 2",
+   "texto_edital": "2",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "2",
+     "ate": "2",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-L9099-03",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, arts. 60 a 62",
+   "texto_edital": "60 a 62",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "60",
+     "ate": "62",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPPE-L9099-04",
+   "bloco": "B2",
+   "disciplina": "DPPE",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, arts. 66 a 68",
+   "texto_edital": "66 a 68",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "66",
+     "ate": "68",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 60,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-01",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 1 a 11",
+   "texto_edital": "1 a 11",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "11",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 11,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 86,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1 a 11; 13 a 18; 21 a 27; 36; 42 a 53; 64 a 66; 70 a 85; 98 a 102; 110 a 111; 125 a 135; 139 a 143; 149 a 155; 159 a 161; 176 a 199; 203 a 259; 269 a 275; 447 a 449; 453 a 454; 502; 528; 535 a 536; 538; 554; 560 a 563; 626; 695; 751; 782; 795; 806 a 807; 827 a 846; 870 a 875; 994; 1.001; 1.003; 1.009; 1.010; 1.015; 1.022"
+  },
+  {
+   "id": "OJ26-DPCI-CPC-02",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 13 a 18",
+   "texto_edital": "13 a 18",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "13",
+     "ate": "18",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-03",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 21 a 27",
+   "texto_edital": "21 a 27",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "21",
+     "ate": "27",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 7,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 62,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-04",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 36",
+   "texto_edital": "36",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "36",
+     "ate": "36",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-05",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 42 a 53",
+   "texto_edital": "42 a 53",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "42",
+     "ate": "53",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 12,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 92,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-06",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 64 a 66",
+   "texto_edital": "64 a 66",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "64",
+     "ate": "66",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-07",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 70 a 85",
+   "texto_edital": "70 a 85",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "70",
+     "ate": "85",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 16,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 116,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-08",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 98 a 102",
+   "texto_edital": "98 a 102",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "98",
+     "ate": "102",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 5,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 50,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-09",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 110 a 111",
+   "texto_edital": "110 a 111",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "110",
+     "ate": "111",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-10",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 125 a 135",
+   "texto_edital": "125 a 135",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "125",
+     "ate": "135",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 11,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 86,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-11",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 139 a 143",
+   "texto_edital": "139 a 143",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "139",
+     "ate": "143",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 5,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 50,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-12",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 149 a 155",
+   "texto_edital": "149 a 155",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "149",
+     "ate": "155",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 7,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 62,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-13",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 159 a 161",
+   "texto_edital": "159 a 161",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "159",
+     "ate": "161",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-14",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 176 a 199",
+   "texto_edital": "176 a 199",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "176",
+     "ate": "199",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 24,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 164,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 4,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-15",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 203 a 259",
+   "texto_edital": "203 a 259",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "203",
+     "ate": "259",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 57,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 362,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 5,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-16",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 269 a 275",
+   "texto_edital": "269 a 275",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "269",
+     "ate": "275",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 7,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 62,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-17",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 447 a 449",
+   "texto_edital": "447 a 449",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "447",
+     "ate": "449",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-18",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 453 a 454",
+   "texto_edital": "453 a 454",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "453",
+     "ate": "454",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-19",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 502",
+   "texto_edital": "502",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "502",
+     "ate": "502",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-20",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 528",
+   "texto_edital": "528",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "528",
+     "ate": "528",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-21",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 535 a 536",
+   "texto_edital": "535 a 536",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "535",
+     "ate": "536",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-22",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 538",
+   "texto_edital": "538",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "538",
+     "ate": "538",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-23",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 554",
+   "texto_edital": "554",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "554",
+     "ate": "554",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-24",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 560 a 563",
+   "texto_edital": "560 a 563",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "560",
+     "ate": "563",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 4,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 44,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-25",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 626",
+   "texto_edital": "626",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "626",
+     "ate": "626",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-26",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 695",
+   "texto_edital": "695",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "695",
+     "ate": "695",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-27",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 751",
+   "texto_edital": "751",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "751",
+     "ate": "751",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-28",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 782",
+   "texto_edital": "782",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "782",
+     "ate": "782",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-29",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 795",
+   "texto_edital": "795",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "795",
+     "ate": "795",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-30",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 806 a 807",
+   "texto_edital": "806 a 807",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "806",
+     "ate": "807",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-31",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 827 a 846",
+   "texto_edital": "827 a 846",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "827",
+     "ate": "846",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 20,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 140,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-32",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, arts. 870 a 875",
+   "texto_edital": "870 a 875",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "870",
+     "ate": "875",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-33",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 994",
+   "texto_edital": "994",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "994",
+     "ate": "994",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-34",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 1.001",
+   "texto_edital": "1.001",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.001",
+     "ate": "1.001",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-35",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 1.003",
+   "texto_edital": "1.003",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.003",
+     "ate": "1.003",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-36",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 1.009",
+   "texto_edital": "1.009",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.009",
+     "ate": "1.009",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-37",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 1.010",
+   "texto_edital": "1.010",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.010",
+     "ate": "1.010",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-38",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 1.015",
+   "texto_edital": "1.015",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.015",
+     "ate": "1.015",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-CPC-39",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "CPC",
+    "nome": "Código de Processo Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código de Processo Civil, art. 1.022",
+   "texto_edital": "1.022",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.022",
+     "ate": "1.022",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-L9099-01",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, art. 8",
+   "texto_edital": "8",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "8",
+     "ate": "8",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "8; 9; 18; 19"
+  },
+  {
+   "id": "OJ26-DPCI-L9099-02",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, art. 9",
+   "texto_edital": "9",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "9",
+     "ate": "9",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-L9099-03",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, art. 18",
+   "texto_edital": "18",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "18",
+     "ate": "18",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DPCI-L9099-04",
+   "bloco": "B2",
+   "disciplina": "DPCI",
+   "diploma": {
+    "cod": "L9099",
+    "nome": "Lei n.º 9.099/1995"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 9.099/1995, art. 19",
+   "texto_edital": "19",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "19",
+     "ate": "19",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCON-CF-01",
+   "bloco": "B2",
+   "disciplina": "DCON",
+   "diploma": {
+    "cod": "CF",
+    "nome": "Constituição Federal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Constituição Federal, arts. 1 a 16",
+   "texto_edital": "1 a 16",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "16",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 16,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 116,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1 a 16; 18; 37 a 41; 92 a 99; 125; 127; 134"
+  },
+  {
+   "id": "OJ26-DCON-CF-02",
+   "bloco": "B2",
+   "disciplina": "DCON",
+   "diploma": {
+    "cod": "CF",
+    "nome": "Constituição Federal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Constituição Federal, art. 18",
+   "texto_edital": "18",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "18",
+     "ate": "18",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCON-CF-03",
+   "bloco": "B2",
+   "disciplina": "DCON",
+   "diploma": {
+    "cod": "CF",
+    "nome": "Constituição Federal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Constituição Federal, arts. 37 a 41",
+   "texto_edital": "37 a 41",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "37",
+     "ate": "41",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 5,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 50,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCON-CF-04",
+   "bloco": "B2",
+   "disciplina": "DCON",
+   "diploma": {
+    "cod": "CF",
+    "nome": "Constituição Federal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Constituição Federal, arts. 92 a 99",
+   "texto_edital": "92 a 99",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "92",
+     "ate": "99",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 8,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 68,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCON-CF-05",
+   "bloco": "B2",
+   "disciplina": "DCON",
+   "diploma": {
+    "cod": "CF",
+    "nome": "Constituição Federal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Constituição Federal, art. 125",
+   "texto_edital": "125",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "125",
+     "ate": "125",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCON-CF-06",
+   "bloco": "B2",
+   "disciplina": "DCON",
+   "diploma": {
+    "cod": "CF",
+    "nome": "Constituição Federal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Constituição Federal, art. 127",
+   "texto_edital": "127",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "127",
+     "ate": "127",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCON-CF-07",
+   "bloco": "B2",
+   "disciplina": "DCON",
+   "diploma": {
+    "cod": "CF",
+    "nome": "Constituição Federal"
+   },
+   "tipo": "legislacao",
+   "titulo": "Constituição Federal, art. 134",
+   "texto_edital": "134",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "134",
+     "ate": "134",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-01",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 1",
+   "texto_edital": "1",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "1",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1; 3; 4; 11; 13; 14; 46; 47; 57; 78; 110; 120; 127; 176; 241 a 243; 251"
+  },
+  {
+   "id": "OJ26-DADM-L10261-02",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 3",
+   "texto_edital": "3",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "3",
+     "ate": "3",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-03",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 4",
+   "texto_edital": "4",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "4",
+     "ate": "4",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-04",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 11",
+   "texto_edital": "11",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "11",
+     "ate": "11",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-05",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 13",
+   "texto_edital": "13",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "13",
+     "ate": "13",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-06",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 14",
+   "texto_edital": "14",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "14",
+     "ate": "14",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-07",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 46",
+   "texto_edital": "46",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "46",
+     "ate": "46",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-08",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 47",
+   "texto_edital": "47",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "47",
+     "ate": "47",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-09",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 57",
+   "texto_edital": "57",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "57",
+     "ate": "57",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-10",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 78",
+   "texto_edital": "78",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "78",
+     "ate": "78",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-11",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 110",
+   "texto_edital": "110",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "110",
+     "ate": "110",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-12",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 120",
+   "texto_edital": "120",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "120",
+     "ate": "120",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-13",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 127",
+   "texto_edital": "127",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "127",
+     "ate": "127",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-14",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 176",
+   "texto_edital": "176",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "176",
+     "ate": "176",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-15",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), arts. 241 a 243",
+   "texto_edital": "241 a 243",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "241",
+     "ate": "243",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L10261-16",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L10261",
+    "nome": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 251",
+   "texto_edital": "251",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "251",
+     "ate": "251",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DADM-L8429-01",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L8429",
+    "nome": "Lei de Improbidade Administrativa (Lei n.º 8.429/92)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei de Improbidade Administrativa (Lei n.º 8.429/92), art. 9",
+   "texto_edital": "9",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "9",
+     "ate": "9",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "9 e 13"
+  },
+  {
+   "id": "OJ26-DADM-L8429-02",
+   "bloco": "B2",
+   "disciplina": "DADM",
+   "diploma": {
+    "cod": "L8429",
+    "nome": "Lei de Improbidade Administrativa (Lei n.º 8.429/92)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei de Improbidade Administrativa (Lei n.º 8.429/92), art. 13",
+   "texto_edital": "13",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "13",
+     "ate": "13",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-01",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 1 a 25",
+   "texto_edital": "1 a 25",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "25",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 25,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 170,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 4,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1 a 25; 40 a 45; 49 a 50; 53; 62; 70 a 103; 115 a 120; 138 a 159; 166 a 201; 212 a 215; 653 a 666; 1.169 a 1.173; 1.196 a 1.203; 1.431 a 1.432; 1.442; 1.444 a 1.447; 1.451; 1.461; 1.467 a 1.472; 1.728; 1.767; 1.775 a 1.778; 1.997"
+  },
+  {
+   "id": "OJ26-DCIV-CC-02",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 40 a 45",
+   "texto_edital": "40 a 45",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "40",
+     "ate": "45",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-03",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 49 a 50",
+   "texto_edital": "49 a 50",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "49",
+     "ate": "50",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-04",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 53",
+   "texto_edital": "53",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "53",
+     "ate": "53",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-05",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 62",
+   "texto_edital": "62",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "62",
+     "ate": "62",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-06",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 70 a 103",
+   "texto_edital": "70 a 103",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "70",
+     "ate": "103",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 34,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 224,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 4,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-07",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 115 a 120",
+   "texto_edital": "115 a 120",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "115",
+     "ate": "120",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-08",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 138 a 159",
+   "texto_edital": "138 a 159",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "138",
+     "ate": "159",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 22,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 152,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 4,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-09",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 166 a 201",
+   "texto_edital": "166 a 201",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "166",
+     "ate": "201",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 36,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 236,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 4,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-10",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 212 a 215",
+   "texto_edital": "212 a 215",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "212",
+     "ate": "215",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 4,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 44,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-11",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 653 a 666",
+   "texto_edital": "653 a 666",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "653",
+     "ate": "666",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 14,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 104,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-12",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 1.169 a 1.173",
+   "texto_edital": "1.169 a 1.173",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.169",
+     "ate": "1.173",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 5,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 50,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-13",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 1.196 a 1.203",
+   "texto_edital": "1.196 a 1.203",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.196",
+     "ate": "1.203",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 8,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 68,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-14",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 1.431 a 1.432",
+   "texto_edital": "1.431 a 1.432",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.431",
+     "ate": "1.432",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-15",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 1.442",
+   "texto_edital": "1.442",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.442",
+     "ate": "1.442",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-16",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 1.444 a 1.447",
+   "texto_edital": "1.444 a 1.447",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.444",
+     "ate": "1.447",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 4,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 44,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-17",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 1.451",
+   "texto_edital": "1.451",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.451",
+     "ate": "1.451",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-18",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 1.461",
+   "texto_edital": "1.461",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.461",
+     "ate": "1.461",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-19",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 1.467 a 1.472",
+   "texto_edital": "1.467 a 1.472",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.467",
+     "ate": "1.472",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-20",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 1.728",
+   "texto_edital": "1.728",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.728",
+     "ate": "1.728",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-21",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 1.767",
+   "texto_edital": "1.767",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.767",
+     "ate": "1.767",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-22",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, arts. 1.775 a 1.778",
+   "texto_edital": "1.775 a 1.778",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.775",
+     "ate": "1.778",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 4,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 44,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-CC-23",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "CC",
+    "nome": "Código Civil"
+   },
+   "tipo": "legislacao",
+   "titulo": "Código Civil, art. 1.997",
+   "texto_edital": "1.997",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1.997",
+     "ate": "1.997",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-DCIV-LINDB-01",
+   "bloco": "B2",
+   "disciplina": "DCIV",
+   "diploma": {
+    "cod": "LINDB",
+    "nome": "Decreto-Lei n.º 4.657/1942"
+   },
+   "tipo": "legislacao",
+   "titulo": "Decreto-Lei n.º 4.657/1942 (diploma integral)",
+   "texto_edital": "Decreto-Lei n.º 4.657 de 04/09/1942",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 120,
+   "esforco_origem": "diploma integral cujo nº de artigos não consta do edital: 120 min",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: o edital não indica os artigos; conferir o texto integral na fonte oficial",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "integral": true
+  },
+  {
+   "id": "OJ26-LESP-L6830-01",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "L6830",
+    "nome": "Lei n.º 6.830/1980"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 6.830/1980, art. 1",
+   "texto_edital": "1",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "1",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1; 2; 7; 8; 11; 37"
+  },
+  {
+   "id": "OJ26-LESP-L6830-02",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "L6830",
+    "nome": "Lei n.º 6.830/1980"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 6.830/1980, art. 2",
+   "texto_edital": "2",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "2",
+     "ate": "2",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-L6830-03",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "L6830",
+    "nome": "Lei n.º 6.830/1980"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 6.830/1980, art. 7",
+   "texto_edital": "7",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "7",
+     "ate": "7",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-L6830-04",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "L6830",
+    "nome": "Lei n.º 6.830/1980"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 6.830/1980, art. 8",
+   "texto_edital": "8",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "8",
+     "ate": "8",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-L6830-05",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "L6830",
+    "nome": "Lei n.º 6.830/1980"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 6.830/1980, art. 11",
+   "texto_edital": "11",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "11",
+     "ate": "11",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-L6830-06",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "L6830",
+    "nome": "Lei n.º 6.830/1980"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 6.830/1980, art. 37",
+   "texto_edital": "37",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "37",
+     "ate": "37",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-CNJ354-01",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "CNJ354",
+    "nome": "Resolução CNJ n.º 354/2020"
+   },
+   "tipo": "legislacao",
+   "titulo": "Resolução CNJ n.º 354/2020, art. 1",
+   "texto_edital": "1",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "1",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1; 8 a 10"
+  },
+  {
+   "id": "OJ26-LESP-CNJ354-02",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "CNJ354",
+    "nome": "Resolução CNJ n.º 354/2020"
+   },
+   "tipo": "legislacao",
+   "titulo": "Resolução CNJ n.º 354/2020, arts. 8 a 10",
+   "texto_edital": "8 a 10",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "8",
+     "ate": "10",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-L11608-01",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "L11608",
+    "nome": "Lei n.º 11.608/2003"
+   },
+   "tipo": "legislacao",
+   "titulo": "Lei n.º 11.608/2003 (diploma integral)",
+   "texto_edital": "Lei n.º 11.608, de 29/12/2003",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 120,
+   "esforco_origem": "diploma integral cujo nº de artigos não consta do edital: 120 min",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: o edital não indica os artigos; conferir o texto integral na fonte oficial",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "integral": true
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-01",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo I, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 1 a 4",
+   "texto_edital": "art. 1º a 4º",
+   "localizacao": "Tomo I – Capítulo I",
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "4",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 4,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 44,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-02",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo III – Seção III, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 33",
+   "texto_edital": "art. 33",
+   "localizacao": "Tomo I – Capítulo III – Seção III",
+   "dispositivos": [
+    {
+     "de": "33",
+     "ate": "33",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-03",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo III – Seção V, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 47; 49",
+   "texto_edital": "art. 47; 49",
+   "localizacao": "Tomo I – Capítulo III – Seção V",
+   "dispositivos": [
+    {
+     "de": "47",
+     "ate": "47",
+     "isolado": true
+    },
+    {
+     "de": "49",
+     "ate": "49",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-04",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo III – Seção XI, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 105 a 110",
+   "texto_edital": "arts. 105 a 110",
+   "localizacao": "Tomo I – Capítulo III – Seção XI",
+   "dispositivos": [
+    {
+     "de": "105",
+     "ate": "110",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 6,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 56,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-05",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo IV – Seção III, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 196, inciso XX",
+   "texto_edital": "art. 196, inciso XX",
+   "localizacao": "Tomo I – Capítulo IV – Seção III",
+   "dispositivos": [
+    {
+     "de": "196",
+     "ate": "196",
+     "isolado": true
+    }
+   ],
+   "detalhe": {
+    "inciso": "XX"
+   },
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-06",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo IV – Seção IV, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 282, § 1º",
+   "texto_edital": "art. 282. § 1º",
+   "localizacao": "Tomo I – Capítulo IV – Seção IV",
+   "dispositivos": [
+    {
+     "de": "282",
+     "ate": "282",
+     "isolado": true
+    }
+   ],
+   "detalhe": {
+    "paragrafo": "1º"
+   },
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-07",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo IV – Seção VI, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 310; 315",
+   "texto_edital": "arts. 310; 315",
+   "localizacao": "Tomo I – Capítulo IV – Seção VI",
+   "dispositivos": [
+    {
+     "de": "310",
+     "ate": "310",
+     "isolado": true
+    },
+    {
+     "de": "315",
+     "ate": "315",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-08",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo IV – Seção XII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 410",
+   "texto_edital": "art. 410",
+   "localizacao": "Tomo I – Capítulo IV – Seção XII",
+   "dispositivos": [
+    {
+     "de": "410",
+     "ate": "410",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 1,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 26,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-09",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo IV – Seção XIII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 436; 436-A",
+   "texto_edital": "arts. 436; 436-A",
+   "localizacao": "Tomo I – Capítulo IV – Seção XIII",
+   "dispositivos": [
+    {
+     "de": "436",
+     "ate": "436",
+     "isolado": true
+    },
+    {
+     "de": "436-A",
+     "ate": "436-A",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-10",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo IV – Seção XIV, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 439; 440; 440-A",
+   "texto_edital": "art. 439; 440; 440-A",
+   "localizacao": "Tomo I – Capítulo IV – Seção XIV",
+   "dispositivos": [
+    {
+     "de": "439",
+     "ate": "439",
+     "isolado": true
+    },
+    {
+     "de": "440",
+     "ate": "440",
+     "isolado": true
+    },
+    {
+     "de": "440-A",
+     "ate": "440-A",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-11",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo VII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 994 a 1.091-A",
+   "texto_edital": "art. 994 a 1.091-A",
+   "localizacao": "Tomo I – Capítulo VII",
+   "dispositivos": [
+    {
+     "de": "994",
+     "ate": "1.091-A",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 99,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 614,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 5,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-12",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo X – Seção III, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 1.137 a 1.139",
+   "texto_edital": "art. 1.137 a 1.139",
+   "localizacao": "Tomo I – Capítulo X – Seção III",
+   "dispositivos": [
+    {
+     "de": "1.137",
+     "ate": "1.139",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 3,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 38,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-LESP-NSCGJ-13",
+   "bloco": "B2",
+   "disciplina": "LESP",
+   "diploma": {
+    "cod": "NSCGJ",
+    "nome": "Normas Judiciais da Corregedoria Geral da Justiça (Tomo I)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Tomo I – Capítulo XI – Seção VII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 1.245; 1.247",
+   "texto_edital": "art. 1.245; 1.247",
+   "localizacao": "Tomo I – Capítulo XI – Seção VII",
+   "dispositivos": [
+    {
+     "de": "1.245",
+     "ate": "1.245",
+     "isolado": true
+    },
+    {
+     "de": "1.247",
+     "ate": "1.247",
+     "isolado": true
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 2,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 32,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-ATUA-01",
+   "bloco": "B3",
+   "disciplina": "ATUA",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Fatos políticos, econômicos, sociais e culturais divulgados a partir do 1º semestre de 2026",
+   "texto_edital": "Questões relacionadas a fatos políticos, econômicos, sociais e culturais, nacionais e internacionais, divulgados a partir do 1° semestre de 2026 na mídia local e/ou nacional;",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 120,
+   "esforco_origem": "acompanhamento de notícias: 120 min",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-ATUA-L13146-01",
+   "bloco": "B3",
+   "disciplina": "ATUA",
+   "diploma": {
+    "cod": "L13146",
+    "nome": "Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015), arts. 1 a 13",
+   "texto_edital": "1 a 13",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "1",
+     "ate": "13",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 13,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 98,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 3,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0,
+   "lista_literal_do_diploma": "1 a 13; 34 a 38; 79 a 87"
+  },
+  {
+   "id": "OJ26-ATUA-L13146-02",
+   "bloco": "B3",
+   "disciplina": "ATUA",
+   "diploma": {
+    "cod": "L13146",
+    "nome": "Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015), arts. 34 a 38",
+   "texto_edital": "34 a 38",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "34",
+     "ate": "38",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 5,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 50,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-ATUA-L13146-03",
+   "bloco": "B3",
+   "disciplina": "ATUA",
+   "diploma": {
+    "cod": "L13146",
+    "nome": "Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015)"
+   },
+   "tipo": "legislacao",
+   "titulo": "Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015), arts. 79 a 87",
+   "texto_edital": "79 a 87",
+   "localizacao": null,
+   "dispositivos": [
+    {
+     "de": "79",
+     "ate": "87",
+     "isolado": false
+    }
+   ],
+   "detalhe": null,
+   "n_dispositivos": 9,
+   "n_dispositivos_e_minimo": true,
+   "esforco_min": 74,
+   "esforco_origem": "esforço = 20 + 6 × nº de artigos",
+   "complexidade_derivada": 2,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP)",
+   "fonte_pagina": 61,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-01",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Operações com números reais",
+   "texto_edital": "Operações com números reais.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-02",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Mínimo múltiplo comum e máximo divisor comum",
+   "texto_edital": "Mínimo múltiplo comum e máximo divisor comum.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-03",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Razão e proporção",
+   "texto_edital": "Razão e proporção.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-04",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Porcentagem",
+   "texto_edital": "Porcentagem.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-05",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Regra de três simples e composta",
+   "texto_edital": "Regra de três simples e composta.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-06",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Média aritmética simples e ponderada",
+   "texto_edital": "Média aritmética simples e ponderada.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-07",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Juros simples",
+   "texto_edital": "Juros simples.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-08",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Equação do 1.º e 2.º graus",
+   "texto_edital": "Equação do 1.º e 2.º graus.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-09",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Sistema de equações do 1.º grau",
+   "texto_edital": "Sistema de equações do 1.º grau.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-10",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Relação entre grandezas",
+   "texto_edital": "Relação entre grandezas: tabelas e gráficos.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-11",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Sistemas de medidas usuais",
+   "texto_edital": "Sistemas de medidas usuais.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-12",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Noções de geometria",
+   "texto_edital": "Noções de geometria: forma, perímetro, área, volume, ângulo, teorema de Pitágoras.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-MAT-13",
+   "bloco": "B3",
+   "disciplina": "MAT",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Resolução de situações-problema",
+   "texto_edital": "Resolução de situações-problema.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 45,
+   "esforco_origem": "padrão de Matemática: 45 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-RLOG-01",
+   "bloco": "B3",
+   "disciplina": "RLOG",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Raciocínio Lógico",
+   "texto_edital": "Raciocínio Lógico: entendimento da estrutura lógica das relações arbitrárias entre pessoas, lugares, coisas, eventos fictícios; dedução de novas informações das relações fornecidas e avaliação das condições usadas para estabelecer a estrutura daquelas relações. Identificação das regularidades de uma sequência, numérica ou figural, de modo a indicar qual é o elemento de uma dada posição. As questões desta prova poderão tratar das seguintes áreas: estruturas lógicas, lógicas de argumentação, diagramas lógicos, sequências.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 180,
+   "esforco_origem": "raciocínio lógico: 180 min (habilidade)",
+   "complexidade_derivada": 4,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-INFO-01",
+   "bloco": "B3",
+   "disciplina": "INFO",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "MS-Windows 10 ou superior",
+   "texto_edital": "MS-Windows 10 ou superior: conceito de pastas, diretórios, arquivos e atalhos, área de trabalho, área de transferência, manipulação de arquivos e pastas, uso dos menus, programas e aplicativos, interação com o conjunto de aplicativos do Microsoft-365.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 30,
+   "esforco_origem": "padrão de Informática: 30 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-INFO-02",
+   "bloco": "B3",
+   "disciplina": "INFO",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "MS-Word",
+   "texto_edital": "MS-Word: estrutura básica dos documentos, edição e formatação de textos, cabeçalhos, parágrafos, fontes, colunas, marcadores simbólicos e numéricos, tabelas, impressão, controle de quebras e numeração de páginas, legendas, índices, inserção de objetos, campos predefinidos, caixas de texto.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 30,
+   "esforco_origem": "padrão de Informática: 30 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-INFO-03",
+   "bloco": "B3",
+   "disciplina": "INFO",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "MS-Excel",
+   "texto_edital": "MS-Excel: estrutura básica das planilhas, conceitos de células, linhas, colunas, pastas e gráficos, elaboração de tabelas e gráficos, uso de fórmulas.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 30,
+   "esforco_origem": "padrão de Informática: 30 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-INFO-04",
+   "bloco": "B3",
+   "disciplina": "INFO",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "MS-Teams",
+   "texto_edital": "MS-Teams: chats, chamadas de áudio e vídeo, criação de grupos, trabalho em equipe: Word, Excel, PowerPoint, SharePoint e OneNote, agendamento de reuniões e gravação.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 30,
+   "esforco_origem": "padrão de Informática: 30 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-INFO-05",
+   "bloco": "B3",
+   "disciplina": "INFO",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "OneDrive",
+   "texto_edital": "OneDrive: armazenamento e compartilhamento de arquivos.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 30,
+   "esforco_origem": "padrão de Informática: 30 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-INFO-06",
+   "bloco": "B3",
+   "disciplina": "INFO",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Correio Eletrônico",
+   "texto_edital": "Correio Eletrônico: uso de correio eletrônico, preparo e envio de mensagens, anexação de arquivos.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 30,
+   "esforco_origem": "padrão de Informática: 30 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  },
+  {
+   "id": "OJ26-INFO-07",
+   "bloco": "B3",
+   "disciplina": "INFO",
+   "diploma": null,
+   "tipo": "conteudo",
+   "titulo": "Internet",
+   "texto_edital": "Internet: navegação internet, conceitos de URL, links, sites, busca e impressão de páginas.",
+   "localizacao": null,
+   "dispositivos": [],
+   "detalhe": null,
+   "n_dispositivos": 0,
+   "n_dispositivos_e_minimo": false,
+   "esforco_min": 30,
+   "esforco_origem": "padrão de Informática: 30 min",
+   "complexidade_derivada": 1,
+   "rotulo_do_dispositivo": null,
+   "rotulo_status": "não se aplica",
+   "fonte_pagina": 62,
+   "status_aprendizado": "NÃO INICIADO",
+   "cobertura": 0
+  }
+ ]
+}

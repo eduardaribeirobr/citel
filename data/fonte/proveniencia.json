@@ -1,0 +1,26 @@
+{
+ "descricao": "Fontes primárias do concurso de Oficial de Justiça do TJSP (Edital 01/2026), enviadas pela aluna em 20/11/2026. Os textos foram extraídos da camada de texto dos PDFs.",
+ "extracao": {
+  "ferramenta": "pdftotext version 24.02.0",
+  "comando": "pdftotext -layout",
+  "observacao": "As páginas ficam separadas por form feed (\\f). A primeira página do texto é a página 1 do PDF."
+ },
+ "arquivos": {
+  "edital": {
+   "pdf_nome_original": "EDITAL_2026.pdf",
+   "pdf_sha256": "6e98b07ce010b351d5787053ee7f44826576d7b783e52369d3d9198d201b5474",
+   "paginas": 62,
+   "texto": "edital-2026.txt",
+   "texto_sha256": "1f210db2e1451b42ff13e51fb853ef150d7a861d1411b0714489bba8ef414621",
+   "documento": "Edital de Abertura n.º 01/2026, assinado em 14/10/2026 e disponibilizado no DEJESP de 19/10/2026"
+  },
+  "retificacao": {
+   "pdf_nome_original": "RET_EDITAL_2026.pdf",
+   "pdf_sha256": "8e425abacdc8cafcc9ae623b9454e267a01ad21f154b01acc805fe2768e7d468",
+   "paginas": 2,
+   "texto": "retificacao-2026.txt",
+   "texto_sha256": "1322516b8ce57207af7b4f02b5c92af411d5c7911f537db63c4afc3f8ea083f0",
+   "documento": "Retificação do Edital n.º 01/2026, assinada em 04/11/2026"
+  }
+ }
+}

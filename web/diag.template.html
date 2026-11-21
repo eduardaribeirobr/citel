@@ -1,0 +1,471 @@
+<title>Diagnóstico de Armazenamento</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: uma coluna estreita com quatro blocos (acesso, banco de dados, modo local, relatório), pensada para o celular. */
+:root {
+  --bg: #f6f7f5;
+  --panel: #ffffff;
+  --fg: #18211d;
+  --muted: #5a6861;
+  --line: #d8dfda;
+  --accent: #17634b;
+  --accent-fg: #ffffff;
+  --ok: #17663f;
+  --ok-bg: #e0f1e7;
+  --bad: #a4261d;
+  --bad-bg: #fbe5e2;
+  --info: #3b4a43;
+  --info-bg: #e9eeea;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101612; --panel: #18211c; --fg: #e8eee9; --muted: #9db0a5; --line: #2c3a32;
+    --accent: #5fc79f; --accent-fg: #0c1510;
+    --ok: #86dfae; --ok-bg: #16301f; --bad: #ffa196; --bad-bg: #3a1b18;
+    --info: #b9c9bf; --info-bg: #222d26;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101612; --panel: #18211c; --fg: #e8eee9; --muted: #9db0a5; --line: #2c3a32;
+  --accent: #5fc79f; --accent-fg: #0c1510;
+  --ok: #86dfae; --ok-bg: #16301f; --bad: #ffa196; --bad-bg: #3a1b18;
+  --info: #b9c9bf; --info-bg: #222d26;
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.5 var(--sans);
+  padding-block: 20px 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 640px; margin: 0 auto; display: grid; gap: 16px; }
+h1 { font-size: 1.4rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+.lead { color: var(--muted); margin: 6px 0 0; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+h2 { font-size: .75rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 0; font-weight: 600; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-width: 0; }
+.row > span:first-child { min-width: 0; }
+.pill { font: 600 .78rem/1 var(--sans); padding: 6px 10px; border-radius: 999px; white-space: nowrap; }
+.pill.ok { color: var(--ok); background: var(--ok-bg); }
+.pill.bad { color: var(--bad); background: var(--bad-bg); }
+.pill.info { color: var(--info); background: var(--info-bg); }
+button, .filebtn { font: 600 .95rem var(--sans); min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-fg); cursor: pointer; box-sizing: border-box; }
+button.secondary, .filebtn { background: transparent; color: var(--accent); }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible, .filebtn:focus-within { outline: 3px solid var(--accent); outline-offset: 2px; }
+.filebtn { position: relative; display: inline-flex; align-items: center; }
+.filebtn input { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+ol li { display: flex; justify-content: space-between; gap: 12px; align-items: center; min-width: 0; }
+ol li .name { min-width: 0; overflow-wrap: anywhere; }
+ol li .meta { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.ms { font: 400 .75rem var(--mono); color: var(--muted); }
+.verdict { font-weight: 600; margin: 0; overflow-wrap: anywhere; }
+.note { color: var(--muted); font-size: .85rem; margin: 0; overflow-wrap: anywhere; }
+pre { font: 400 12px/1.5 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; max-height: 280px; overflow: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+</style>
+
+<main class="wrap">
+  <header>
+    <h1>Diagnóstico de armazenamento</h1>
+    <p class="lead">Confere, neste aparelho e nesta conta, se o seu progresso de estudo é gravado, relido sem alteração, apagável e salvo em arquivo. Os testes usam só o seu espaço e removem tudo o que criam.</p>
+  </header>
+
+  <section aria-labelledby="h-acesso">
+    <h2 id="h-acesso">Seu acesso</h2>
+    <div class="row"><span>Banco de dados da plataforma</span><span id="r-db"><span class="pill info">verificando</span></span></div>
+    <div class="row"><span>Identidade (espaço privado por pessoa)</span><span id="r-id"><span class="pill info">verificando</span></span></div>
+    <div class="row"><span>Seu papel neste documento</span><span id="r-role"><span class="pill info">verificando</span></span></div>
+    <div class="row"><span>Exportação de backup em arquivo</span><span id="r-dl"><span class="pill info">verificando</span></span></div>
+    <div class="row"><span>Armazenamento local do navegador</span><span id="r-ls"><span class="pill info">verificando</span></span></div>
+    <p class="note" id="hint" hidden></p>
+  </section>
+
+  <section aria-labelledby="h-teste">
+    <h2 id="h-teste">Banco de dados da plataforma</h2>
+    <div class="actions">
+      <button id="run" type="button" disabled>Executar teste</button>
+    </div>
+    <ol id="steps" aria-live="polite"></ol>
+    <p class="verdict" id="verdict" role="status"></p>
+  </section>
+
+  <section aria-labelledby="h-local">
+    <h2 id="h-local">Modo local e backup em arquivo</h2>
+    <div class="row"><span>IndexedDB</span><span id="r-idb"><span class="pill info">verificando</span></span></div>
+    <div class="row"><span>Marcador de persistência</span><span id="r-mark"><span class="pill info">verificando</span></span></div>
+    <p class="note" id="mark-note"></p>
+    <div class="actions">
+      <button id="run-local" type="button">Testar modo local</button>
+      <button id="export" type="button" class="secondary" disabled>Exportar backup de teste</button>
+      <label class="filebtn" for="imp">Importar backup<input id="imp" type="file" accept=".json,application/json"></label>
+    </div>
+    <ol id="steps-local" aria-live="polite"></ol>
+    <p class="verdict" id="verdict-local" role="status"></p>
+  </section>
+
+  <section aria-labelledby="h-rel">
+    <h2 id="h-rel">Relatório</h2>
+    <pre id="report">Execute os testes para gerar o relatório.</pre>
+    <div class="actions"><button id="copy" type="button" class="secondary">Copiar relatório</button><span class="note" id="copied" role="status"></span></div>
+  </section>
+</main>
+
+<script>
+/*__BACKUP_JS__*/
+</script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var env = { db: null, user: null, dl: null, uid: null, owner: false, edit: false, canWrite: null, ls: false, idb: false };
+  var reportDb = [], reportLocal = [], marcadorTexto = "não verificado", exportTexto = "não testada", importTexto = "não testada", resultados = { db: null, local: null };
+  var MARK_KEY = "plataforma-diag-marcador";
+
+  var canon = Backup.canonico;
+  async function sha(s) { try { return await Backup.sha256Hex(s); } catch (e) { return null; } }
+  function pill(kind, text) { var s = document.createElement("span"); s.className = "pill " + kind; s.textContent = text; return s; }
+  function setRow(id, kind, text) { $(id).replaceChildren(pill(kind, text)); }
+  function errText(e) { return (e && (e.code || e.message)) ? String(e.code || e.message) : String(e); }
+  function plataforma() { var u = navigator.userAgent; return /iPhone|iPad|iPod/.test(u) ? "iOS" : /Android/.test(u) ? "Android" : "computador"; }
+  function comTempo(p, ms) {
+    return new Promise(function (res, rej) {
+      var t = setTimeout(function () { rej(new Error("tempo esgotado (" + Math.round(ms / 1000) + " s)")); }, ms);
+      Promise.resolve(p).then(function (v) { clearTimeout(t); res(v); }, function (e) { clearTimeout(t); rej(e); });
+    });
+  }
+
+  async function use(name) {
+    try {
+      if (!window.claude || !window.claude.use) return null;
+      return await Promise.race([window.claude.use(name), new Promise(function (r) { setTimeout(function () { r(null); }, 10000); })]);
+    } catch (e) { return null; }
+  }
+
+  // ---------- IndexedDB (simples, com tempo limite) ----------
+  function idbAbrir(nome) {
+    return new Promise(function (res, rej) {
+      try {
+        if (!window.indexedDB) return rej(new Error("IndexedDB indisponível"));
+        var r = window.indexedDB.open(nome, 1);
+        r.onupgradeneeded = function () { r.result.createObjectStore("kv"); };
+        r.onsuccess = function () { res(r.result); };
+        r.onerror = function () { rej(r.error || new Error("falha ao abrir o IndexedDB")); };
+        r.onblocked = function () { rej(new Error("IndexedDB bloqueado")); };
+      } catch (e) { rej(e); }
+    });
+  }
+  function idbOp(db, modo, fn) {
+    return new Promise(function (res, rej) {
+      var tx = db.transaction("kv", modo), out;
+      var req = fn(tx.objectStore("kv"));
+      if (req) req.onsuccess = function () { out = req.result; };
+      tx.oncomplete = function () { res(out); };
+      tx.onerror = function () { rej(tx.error || new Error("erro na transação")); };
+      tx.onabort = function () { rej(tx.error || new Error("transação abortada")); };
+    });
+  }
+  function idbApagarBanco(nome) {
+    return new Promise(function (res, rej) {
+      try {
+        var r = window.indexedDB.deleteDatabase(nome);
+        r.onsuccess = function () { res(); };
+        r.onerror = function () { rej(r.error || new Error("falha ao apagar o banco local")); };
+        r.onblocked = function () { res(); };
+      } catch (e) { rej(e); }
+    });
+  }
+
+  // ---------- Marcador de persistência ----------
+  async function verificarMarcador() {
+    var ls = null, idb = null, lsErro = false, idbErro = false, db = null;
+    try { var v = localStorage.getItem(MARK_KEY); ls = v ? JSON.parse(v) : null; } catch (e) { lsErro = true; }
+    try { db = await comTempo(idbAbrir("plataforma-diag"), 6000); idb = (await comTempo(idbOp(db, "readonly", function (s) { return s.get(MARK_KEY); }), 6000)) || null; }
+    catch (e) { idbErro = true; }
+    var agora = Date.now();
+    var kind, texto, nota;
+    var ativos = [];
+    if (!lsErro) ativos.push({ nome: "localStorage", valor: ls });
+    if (!idbErro) ativos.push({ nome: "IndexedDB", valor: idb });
+    var soUm = ativos.length === 1 ? " (só " + ativos[0].nome + " disponível)" : "";
+    var comValor = ativos.filter(function (a) { return a.valor; });
+    if (ativos.length === 0) {
+      kind = "bad"; texto = "indisponível"; nota = "Nenhum armazenamento local funciona aqui. O modo local não é possível neste aparelho."; marcadorTexto = "indisponível";
+    } else if (comValor.length === 0) {
+      var marca = { criadoEm: agora };
+      for (var k = 0; k < ativos.length; k++) {
+        if (ativos[k].nome === "localStorage") { try { localStorage.setItem(MARK_KEY, JSON.stringify(marca)); } catch (e) {} }
+        else { try { await comTempo(idbOp(db, "readwrite", function (s) { return s.put(marca, MARK_KEY); }), 6000); } catch (e) {} }
+      }
+      kind = "info"; texto = "primeiro uso";
+      nota = "Marcador criado agora" + soUm + ". Abra esta página de novo em alguns dias: se disser \"primeiro uso\" outra vez, o aparelho apagou os dados locais.";
+      marcadorTexto = "primeiro uso (criado " + new Date(agora).toISOString() + ")" + soUm;
+    } else if (comValor.length === ativos.length) {
+      var ini = Math.min.apply(null, comValor.map(function (a) { return a.valor.criadoEm; })), dias = Math.floor((agora - ini) / 86400000);
+      kind = "ok"; texto = dias < 1 ? "presente (hoje)" : "presente há " + dias + (dias === 1 ? " dia" : " dias");
+      nota = "O aparelho manteve os dados locais desde " + new Date(ini).toISOString().slice(0, 10) + soUm + ".";
+      marcadorTexto = texto + " desde " + new Date(ini).toISOString() + soUm;
+    } else {
+      kind = "bad"; texto = "parcial";
+      nota = "Só " + comValor.map(function (a) { return a.nome; }).join(" e ") + " manteve o marcador. O aparelho apagou parte dos dados locais.";
+      marcadorTexto = "PARCIAL: só " + comValor.map(function (a) { return a.nome; }).join(" e ") + " manteve o marcador";
+    }
+    setRow("r-mark", kind, texto);
+    $("mark-note").textContent = nota;
+    if (db) try { db.close(); } catch (e) {}
+  }
+
+  async function boot() {
+    env.db = await use("db"); env.user = await use("user"); env.dl = await use("downloads");
+    if (env.user) {
+      env.uid = await env.user.id(); env.owner = await env.user.isOwner(); env.edit = await env.user.canEdit(); env.canWrite = await env.user.can("data.write");
+    }
+    try { localStorage.setItem("__diag", "1"); env.ls = localStorage.getItem("__diag") === "1"; localStorage.removeItem("__diag"); } catch (e) { env.ls = false; }
+    env.idb = !!window.indexedDB;
+
+    setRow("r-db", env.db ? "ok" : "bad", env.db ? "disponível" : "indisponível");
+    setRow("r-id", env.uid ? "ok" : "bad", env.uid ? "identificado" : "sem identidade");
+    setRow("r-role", "info", env.owner ? "dono" : env.edit ? "editor" : "colaborador ou leitor");
+    setRow("r-dl", env.dl ? "ok" : "bad", env.dl ? "disponível" : "indisponível");
+    setRow("r-ls", env.ls ? "ok" : "bad", env.ls ? "funciona" : "bloqueado");
+    setRow("r-idb", env.idb ? "ok" : "bad", env.idb ? "disponível" : "indisponível");
+
+    var ready = !!(env.db && env.uid);
+    $("run").disabled = !ready;
+    $("export").disabled = !env.dl;
+    if (!ready) {
+      var h = $("hint"); h.hidden = false;
+      h.textContent = !env.db
+        ? "O banco de dados da plataforma não está disponível nesta visualização. O modo local abaixo ainda pode ser testado."
+        : "Sua conta não recebeu uma identidade neste documento, então não há espaço privado no banco. O modo local abaixo ainda pode ser testado.";
+    }
+    await verificarMarcador();
+  }
+
+  // ---------- Dados de teste com o formato real dos eventos ----------
+  function eventosTeste(runId, n) {
+    return Array.from({ length: n }, function (_, i) {
+      return { id: runId + "-" + i, topicId: "T" + (i % 7), questionId: "Q" + String(i).padStart(4, "0"), ts: 1700000000000 + i * 1000, correct: i % 3 !== 0, conf: ["seguro", "duvida", "chute"][i % 3] };
+    });
+  }
+  function dadosTeste(runId, n) { return { eventos: eventosTeste(runId, n), sessoes: [], estudados: ["T1"], config: {} }; }
+
+  // ---------- Executor de passos ----------
+  async function executar(listEl, steps, linhas) {
+    listEl.replaceChildren();
+    var passed = 0, failedAt = -1;
+    for (var i = 0; i < steps.length; i++) {
+      var li = document.createElement("li");
+      var name = document.createElement("span"); name.className = "name"; name.textContent = steps[i][0];
+      var meta = document.createElement("span"); meta.className = "meta";
+      li.append(name, meta); listEl.append(li);
+      var t0 = performance.now();
+      try {
+        var note = (await comTempo(steps[i][1](), 20000)) || "";
+        var ms = Math.round(performance.now() - t0);
+        var m = document.createElement("span"); m.className = "ms"; m.textContent = ms + " ms";
+        meta.append(m, pill("ok", "OK"));
+        linhas.push("OK     " + steps[i][0] + " (" + ms + " ms)" + (note ? " - " + note : ""));
+        passed++;
+      } catch (e) {
+        var ms2 = Math.round(performance.now() - t0);
+        meta.append(pill("bad", "FALHOU"));
+        linhas.push("FALHOU " + steps[i][0] + " (" + ms2 + " ms) - " + errText(e));
+        failedAt = i; break;
+      }
+    }
+    return { passed: passed, total: steps.length, failedAt: failedAt };
+  }
+
+  // ---------- Teste do banco de dados ----------
+  async function runDb() {
+    $("run").disabled = true; $("verdict").textContent = ""; reportDb = [];
+    var runId = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    var coll = env.db.collection("data/users/" + env.uid);
+    var refA = coll.doc("diag-" + runId + "-a"), refB = coll.doc("diag-" + runId + "-b");
+    var eventos = eventosTeste(runId, 200);
+    var hash = await sha(canon(eventos));
+    var body = { schema: 1, runId: runId, count: eventos.length, events: eventos, sha: hash };
+    var steps = [
+      ["Gravar um bloco de 200 respostas", async function () { await refA.set(body); }],
+      ["Reler o bloco e conferir integridade", async function () {
+        var s = await refA.get();
+        if (!s.exists) throw new Error("documento não encontrado após gravar");
+        var d = s.data();
+        if (canon(d) !== canon(body)) throw new Error("conteúdo lido difere do gravado");
+        var again = await sha(canon(d.events));
+        if (hash && again !== hash) throw new Error("SHA-256 não confere");
+        return hash ? "SHA-256 confere" : "sem SHA-256 neste aparelho";
+      }],
+      ["Atualizar um campo sem perder o resto", async function () {
+        await refA.update({ nota: "ok", meta: { revisao: 1 } });
+        var d = (await refA.get()).data();
+        if (!d || d.events.length !== 200 || d.nota !== "ok") throw new Error("atualização perdeu dados");
+      }],
+      ["Gravar um segundo bloco (outro aparelho)", async function () { await refB.set({ schema: 1, runId: runId, count: 0, events: [] }); }],
+      ["Listar seus blocos", async function () {
+        var q = await coll.get(); var ids = q.docs.map(function (x) { return x.id; });
+        if (ids.indexOf(refA.id) < 0 || ids.indexOf(refB.id) < 0) throw new Error("listagem não mostra os blocos gravados");
+      }],
+      ["Apagar tudo e confirmar remoção", async function () {
+        await refA.delete(); await refB.delete();
+        var a = await refA.get(), b = await refB.get();
+        if (a.exists || b.exists) throw new Error("documento ainda existe após apagar");
+      }]
+    ];
+    var r = await executar($("steps"), steps, reportDb);
+    if (r.failedAt >= 0) {
+      try { await refA.delete(); await refB.delete(); reportDb.push("Limpeza: documentos de teste removidos"); }
+      catch (e) { reportDb.push("Limpeza FALHOU: " + errText(e) + " (restam documentos diag-" + runId + "-*)"); }
+    }
+    resultados.db = r;
+    $("verdict").textContent = r.passed === r.total ? "Todas as " + r.total + " verificações passaram." : r.passed + " de " + r.total + " verificações passaram. Veja o relatório.";
+    montarRelatorio(); $("run").disabled = false;
+  }
+
+  // ---------- Teste do modo local ----------
+  async function runLocal() {
+    $("run-local").disabled = true; $("verdict-local").textContent = ""; reportLocal = [];
+    var runId = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    var chave = "diag-local-" + runId, nomeBanco = "plataforma-diag-teste-" + runId;
+    var dados = dadosTeste(runId, 200);
+    var corpo = { schema: 1, dados: dados };
+    var idbAberto = null, textoBackup = null;
+    var steps = [
+      ["Gravar 200 respostas no localStorage e reler", async function () {
+        localStorage.setItem(chave, JSON.stringify(corpo));
+        var lido = JSON.parse(localStorage.getItem(chave));
+        if (canon(lido) !== canon(corpo)) throw new Error("conteúdo lido difere do gravado");
+      }],
+      ["Gravar e reler no IndexedDB", async function () {
+        idbAberto = await idbAbrir(nomeBanco);
+        await idbOp(idbAberto, "readwrite", function (s) { return s.put(corpo, "bloco"); });
+        var lido = await idbOp(idbAberto, "readonly", function (s) { return s.get("bloco"); });
+        if (!lido || canon(lido) !== canon(corpo)) throw new Error("conteúdo lido difere do gravado");
+      }],
+      ["Criar backup .json e verificar a integridade", async function () {
+        textoBackup = await Backup.criarBackup(dados, { dispositivo: plataforma() });
+        var v = await Backup.verificarBackup(textoBackup);
+        if (!v.ok) throw new Error(v.motivo);
+        return Math.round(textoBackup.length / 1024) + " KB, SHA-256 confere";
+      }],
+      ["Recusar um backup adulterado", async function () {
+        var alterado = textoBackup.replace('"correct": false', '"correct": true');
+        if (alterado === textoBackup) throw new Error("não foi possível preparar a adulteração");
+        var v = await Backup.verificarBackup(alterado);
+        if (v.ok) throw new Error("backup adulterado foi aceito");
+        return "recusado: " + v.motivo;
+      }],
+      ["Importar o mesmo backup sem duplicar", async function () {
+        var v = await Backup.verificarBackup(textoBackup);
+        var p = Backup.planejarImportacao(dados, v.backup.dados);
+        if (p.tipo !== "NADA NOVO" || p.relatorio.eventosNovos !== 0) throw new Error("importação duplicaria registros (" + p.tipo + ")");
+        return p.relatorio.eventosDuplicados + " já existentes, 0 novos";
+      }],
+      ["Remover os dados de teste", async function () {
+        localStorage.removeItem(chave);
+        if (idbAberto) { idbAberto.close(); idbAberto = null; }
+        await idbApagarBanco(nomeBanco);
+        if (localStorage.getItem(chave) !== null) throw new Error("dado ainda presente no localStorage");
+      }]
+    ];
+    var r = await executar($("steps-local"), steps, reportLocal);
+    if (r.failedAt >= 0) {
+      try { localStorage.removeItem(chave); } catch (e) {}
+      try { if (idbAberto) idbAberto.close(); await idbApagarBanco(nomeBanco); } catch (e) {}
+      reportLocal.push("Limpeza dos dados de teste locais tentada");
+    }
+    resultados.local = r;
+    $("verdict-local").textContent = r.passed === r.total ? "Todas as " + r.total + " verificações do modo local passaram." : r.passed + " de " + r.total + " verificações do modo local passaram. Veja o relatório.";
+    montarRelatorio(); $("run-local").disabled = false;
+  }
+
+  // ---------- Exportar e importar um arquivo de backup ----------
+  async function exportar() {
+    var out = $("verdict-local");
+    try {
+      var runId = "exp" + Date.now().toString(36);
+      var texto = await Backup.criarBackup(dadosTeste(runId, 50), { dispositivo: plataforma() });
+      var r = await env.dl.save({ filename: "plataforma-backup-teste.json", data: texto });
+      out.textContent = r.status === "saved" ? "Exportação: arquivo entregue ao aparelho. Agora toque em Importar backup e escolha esse arquivo." : "Exportação: " + r.status;
+      exportTexto = r.status;
+    } catch (e) {
+      out.textContent = errText(e) === "declined" ? "Exportação: você cancelou." : "Exportação falhou: " + errText(e);
+      exportTexto = "FALHOU: " + errText(e);
+    }
+    montarRelatorio();
+  }
+  async function lerArquivo(f) {
+    if (f.text) return f.text();
+    return new Promise(function (res, rej) { var r = new FileReader(); r.onload = function () { res(String(r.result)); }; r.onerror = function () { rej(r.error); }; r.readAsText(f); });
+  }
+  async function importar(ev) {
+    var f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    var out = $("verdict-local");
+    try {
+      var v = await Backup.verificarBackup(await lerArquivo(f));
+      if (v.ok) {
+        var b = v.backup;
+        out.textContent = "Backup íntegro: " + b.contagens.eventos + " respostas, " + b.contagens.sessoes + " sessões, criado em " + b.criadoEm.slice(0, 10) + (b.dispositivo ? " (" + b.dispositivo + ")" : "") + ".";
+        importTexto = "íntegro (" + b.contagens.eventos + " respostas)";
+      } else { out.textContent = "Backup recusado: " + v.motivo + "."; importTexto = "recusado: " + v.motivo; }
+    } catch (e) { out.textContent = "Não foi possível ler o arquivo: " + errText(e); importTexto = "FALHOU: " + errText(e); }
+    ev.target.value = "";
+    montarRelatorio();
+  }
+
+  // ---------- Relatório ----------
+  function montarRelatorio() {
+    var rd = resultados.db, rl = resultados.local;
+    var cab = [
+      "Diagnóstico de armazenamento",
+      "Data: " + new Date().toISOString(),
+      "Plataforma: " + plataforma(),
+      "Banco de dados: " + (env.db ? "sim" : "não") + (rd ? " - " + rd.passed + " de " + rd.total : " - não executado"),
+      "Identidade: " + (env.uid ? "sim" : "não"),
+      "Papel: " + (env.owner ? "dono" : env.edit ? "editor" : "colaborador ou leitor"),
+      "can(data.write): " + String(env.canWrite),
+      "Exportação em arquivo disponível: " + (env.dl ? "sim" : "não"),
+      "localStorage: " + (env.ls ? "sim" : "não") + " | IndexedDB: " + (env.idb ? "sim" : "não"),
+      "Modo local: " + (rl ? rl.passed + " de " + rl.total : "não executado"),
+      "Marcador de persistência: " + marcadorTexto,
+      "Teste de exportação: " + exportTexto,
+      "Teste de importação: " + importTexto,
+      "Online: " + String(navigator.onLine),
+      "Aparelho: " + navigator.userAgent,
+      ""
+    ];
+    var corpo = [];
+    if (reportDb.length) corpo.push("-- Banco de dados --"), corpo = corpo.concat(reportDb);
+    if (reportLocal.length) corpo.push("-- Modo local --"), corpo = corpo.concat(reportLocal);
+    $("report").textContent = cab.concat(corpo).join("\n");
+  }
+
+  async function copiar() {
+    var out = $("copied");
+    try { await navigator.clipboard.writeText($("report").textContent); out.textContent = "Copiado."; }
+    catch (e) {
+      var r = document.createRange(); r.selectNodeContents($("report"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      out.textContent = "Texto selecionado: copie manualmente.";
+    }
+  }
+
+  $("run").addEventListener("click", runDb);
+  $("run-local").addEventListener("click", runLocal);
+  $("export").addEventListener("click", exportar);
+  $("imp").addEventListener("change", importar);
+  $("copy").addEventListener("click", copiar);
+  boot().then(montarRelatorio);
+})();
+</script>

@@ -1,0 +1,983 @@
+<title>Preparo TJSP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna, cartões empilhados, barra de abas fixa embaixo (Hoje, Questões, Painel, Edital, Mais), pensado para o celular. */
+:root {
+  --bg: #f4f6f5;
+  --panel: #ffffff;
+  --fg: #17211c;
+  --muted: #58665f;
+  --line: #d7ded9;
+  --accent: #17634b;
+  --accent-fg: #ffffff;
+  --accent-soft: #e2f0e9;
+  --ok: #17663f; --ok-bg: #e0f1e7;
+  --warn: #7a4b00; --warn-bg: #fbeed2;
+  --bad: #a4261d; --bad-bg: #fbe5e2;
+  --info: #3b4a43; --info-bg: #e9eeea;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1511; --panel: #17201b; --fg: #e8eee9; --muted: #9db0a5; --line: #2b3a31;
+    --accent: #5fc79f; --accent-fg: #0c1510; --accent-soft: #1d3329;
+    --ok: #86dfae; --ok-bg: #16301f; --warn: #f1c978; --warn-bg: #352a0d; --bad: #ffa196; --bad-bg: #3a1b18;
+    --info: #b9c9bf; --info-bg: #222d26;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1511; --panel: #17201b; --fg: #e8eee9; --muted: #9db0a5; --line: #2b3a31;
+  --accent: #5fc79f; --accent-fg: #0c1510; --accent-soft: #1d3329;
+  --ok: #86dfae; --ok-bg: #16301f; --warn: #f1c978; --warn-bg: #352a0d; --bad: #ffa196; --bad-bg: #3a1b18;
+  --info: #b9c9bf; --info-bg: #222d26;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 calc(84px + env(safe-area-inset-bottom, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 20; }
+.wrap { max-width: 720px; margin: 0 auto; }
+header.topo {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0 10px; border-bottom: 1px solid var(--line);
+}
+header.topo h1 { font-size: 1.05rem; margin: 0; letter-spacing: .01em; }
+main { display: grid; gap: 14px; padding-top: 14px; min-width: 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.card h2 { margin: 0; font-size: .75rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.card h3 { margin: 0; font-size: 1rem; }
+.big { font: 500 2rem/1.1 var(--mono); letter-spacing: -.01em; }
+.big small { font-size: .95rem; color: var(--muted); font-weight: 400; }
+.note { color: var(--muted); font-size: .85rem; margin: 0; overflow-wrap: anywhere; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; }
+.row > :first-child { min-width: 0; }
+.stack { display: grid; gap: 8px; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.kpi { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; gap: 4px; min-width: 0; }
+.kpi .v { font: 500 1.35rem/1.15 var(--mono); }
+.kpi .l { font-size: .78rem; color: var(--muted); }
+.chip { display: inline-block; font: 600 .74rem/1 var(--sans); padding: 5px 9px; border-radius: 999px; white-space: nowrap; }
+.chip.ok { color: var(--ok); background: var(--ok-bg); } .chip.warn { color: var(--warn); background: var(--warn-bg); }
+.chip.bad { color: var(--bad); background: var(--bad-bg); } .chip.info { color: var(--info); background: var(--info-bg); }
+.bar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); }
+button, .btn { font: 600 .92rem var(--sans); min-height: 44px; padding: 0 14px; border-radius: 9px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-fg); cursor: pointer; }
+button.sec, .btn.sec { background: transparent; color: var(--accent); }
+button.peq { min-height: 36px; padding: 0 10px; font-size: .84rem; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+input, select { font: 400 .95rem var(--sans); min-height: 44px; padding: 0 10px; border-radius: 9px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); min-width: 0; width: 100%; }
+label { font-size: .82rem; color: var(--muted); display: grid; gap: 4px; min-width: 0; }
+.acoes { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.item { display: grid; gap: 6px; padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+.item:first-child { border-top: 0; padding-top: 0; }
+.item .t { overflow-wrap: anywhere; }
+.item .m { color: var(--muted); font-size: .82rem; }
+.mono { font-family: var(--mono); }
+.chart .area { position: relative; display: flex; align-items: flex-end; gap: 4px; height: 96px; }
+.chart .area .col { flex: 1; display: flex; align-items: flex-end; height: 100%; min-width: 0; }
+.chart .area .col i { display: block; width: 100%; background: var(--accent); border-radius: 3px 3px 0 0; }
+.chart .area .metalinha { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--muted); pointer-events: none; }
+.chart .rotulos { display: flex; gap: 4px; margin-top: 4px; }
+.chart .rotulos span { flex: 1; text-align: center; font: 400 .62rem var(--mono); color: var(--muted); min-width: 0; }
+details { border-top: 1px solid var(--line); padding: 8px 0; }
+details > summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+details > summary::-webkit-details-marker { display: none; }
+details.disc { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); padding: 12px 14px; }
+.topico { display: grid; gap: 6px; padding: 10px 0; border-top: 1px solid var(--line); }
+.topico .cab { display: flex; gap: 10px; align-items: flex-start; justify-content: space-between; min-width: 0; }
+.topico .tit { overflow-wrap: anywhere; min-width: 0; }
+.topico .det { font-size: .82rem; color: var(--muted); display: grid; gap: 4px; overflow-wrap: anywhere; }
+.estudado-sim { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+nav.abas {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: var(--panel); border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px));
+}
+nav.abas a { text-align: center; text-decoration: none; color: var(--muted); font-weight: 600; font-size: .78rem; padding: 10px 2px; border-radius: 9px; min-height: 44px; display: grid; place-items: center; }
+nav.abas a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(92px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 10px 14px; border-radius: 10px; font-size: .88rem; z-index: 30; max-width: min(92vw, 520px); }
+.erro-bloco { border-color: var(--bad); }
+.timer { font: 500 1.8rem/1 var(--mono); }
+pre.mono { white-space: pre-wrap; overflow-wrap: anywhere; font: 400 .78rem/1.5 var(--mono); margin: 0; }
+ul.limpa { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.enun { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 1.02rem; line-height: 1.55; margin: 0; }
+.alts { display: grid; gap: 8px; }
+button.alt, button.conf, .motivos button { background: var(--panel); color: var(--fg); border: 1px solid var(--line); font-weight: 500; text-align: left; }
+button.alt { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; padding: 10px 12px; min-height: 48px; line-height: 1.4; }
+button.alt .l { font: 600 .95rem var(--mono); color: var(--accent); }
+button.alt .corpo { display: grid; gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+button.alt .com { font-size: .82rem; color: var(--muted); font-weight: 400; }
+button.alt[aria-pressed="true"], button.conf[aria-pressed="true"], .motivos button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
+button.alt.certa { border-color: var(--ok); background: var(--ok-bg); box-shadow: inset 0 0 0 1px var(--ok); }
+button.alt.errada { border-color: var(--bad); background: var(--bad-bg); box-shadow: inset 0 0 0 1px var(--bad); }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+button.conf { text-align: center; font-size: .84rem; padding: 0 6px; }
+.motivos { display: grid; gap: 8px; }
+.explic { display: grid; gap: 8px; padding: 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+.explic p { margin: 0; overflow-wrap: anywhere; }
+#q-feedback { scroll-margin-top: 64px; }
+#q-feedback:focus { outline: none; }
+</style>
+
+<div class="wrap">
+  <header class="topo">
+    <h1>Preparo TJSP</h1>
+    <span id="status" class="chip info" role="status" aria-live="polite">Carregando…</span>
+  </header>
+  <main id="view" aria-live="polite"><div class="card"><p class="note">Carregando o edital e o seu histórico…</p></div></main>
+</div>
+<nav class="abas" aria-label="Seções">
+  <a href="#hoje" data-aba="hoje">Hoje</a>
+  <a href="#questoes" data-aba="questoes">Questões</a>
+  <a href="#painel" data-aba="painel">Painel</a>
+  <a href="#edital" data-aba="edital">Edital</a>
+  <a href="#mais" data-aba="mais">Mais</a>
+</nav>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script>
+/*__MODULOS__*/
+</script>
+<script>
+(function () {
+  'use strict';
+  var PROVA = Date.UTC(2027, 2, 14, 17, 0, 0);          // 14/03/2027 (edital p.28)
+  var TZ = -180;                                         // Brasília
+  var PADRAO = { disponivelMinDia: 60, diasPorSemana: 6, reservaFinalDias: 14 };
+  // Peso de cada etapa na CARGA (estimativa nossa): o estudo da teoria é a etapa mais longa.
+  var PESOS_APP = { estudo: 0.40, exercicio: 0.25, desempenho: 0.20, retencao: 0.15 };
+  var NOMES_ETAPA = { 1: '1 dia', 2: '7 dias', 3: '30 dias' };
+  var ABAS = ['hoje', 'questoes', 'painel', 'edital', 'mais'];
+
+  var S = { matriz: null, topicos: [], porId: new Map(), discs: new Map(), store: null, uid: null, dl: null, aba: 'hoje', filtro: { q: '', disc: '', estado: 'todos' },
+    topicoSel: '', semBanco: false, erroCarga: null, importacao: null, parando: null, toastTimer: null, tick: null, q: null, aux: { validacao: null, regras: null }, comQuestoes: new Set() };
+
+  function $(id) { return document.getElementById(id); }
+  function h(tag, attrs) {
+    var e = document.createElement(tag);
+    var kids = Array.prototype.slice.call(arguments, 2);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === 'class') e.className = v;
+      else if (k === 'text') e.textContent = v;
+      else if (k === 'style') Object.assign(e.style, v);
+      else if (k.indexOf('on') === 0) e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v === true ? '' : v);
+    });
+    (function add(list) {
+      list.forEach(function (c) {
+        if (Array.isArray(c)) return add(c);
+        if (c === null || c === undefined || c === false) return;
+        e.append(c.nodeType ? c : document.createTextNode(String(c)));
+      });
+    })(kids);
+    return e;
+  }
+  function chip(tipo, texto) { return h('span', { class: 'chip ' + tipo, text: texto }); }
+  function barra(frac) { var i = h('i'); i.style.width = Math.max(0, Math.min(100, frac * 100)) + '%'; return h('div', { class: 'bar', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(Math.round(Math.max(0, Math.min(1, frac)) * 100)) }, i); }
+  function pct(x) { return (Math.round(x * 1000) / 10).toLocaleString('pt-BR') + '%'; }
+  function dur(min) { min = Math.round(min); return min >= 60 ? Math.floor(min / 60) + 'h' + String(min % 60).padStart(2, '0') : min + ' min'; }
+  function plataforma() { var u = navigator.userAgent; return /iPhone|iPad|iPod/.test(u) ? 'iOS' : /Android/.test(u) ? 'Android' : 'computador'; }
+  function hhmm(ts) { return new Date(ts).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' }); }
+  function dataBR(ts) { return new Date(ts).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'America/Sao_Paulo' }); }
+
+  function toast(msg) {
+    var t = $('toast'); t.textContent = msg; t.hidden = false;
+    clearTimeout(S.toastTimer); S.toastTimer = setTimeout(function () { t.hidden = true; }, 3200);
+  }
+
+  // ---------- armazenamento local (pode não existir) ----------
+  function armazenamento() { try { var s = window.localStorage; s.getItem('__t'); return s; } catch (e) { return null; } }
+  var LS = armazenamento();
+  function lsGet(k) { try { return LS ? LS.getItem(k) : null; } catch (e) { return null; } }
+  function lsSet(k, v) { try { if (LS) LS.setItem(k, v); } catch (e) { /* sem cópia local */ } }
+  function lsDel(k) { try { if (LS) LS.removeItem(k); } catch (e) { /* sem cópia local */ } }
+
+  // ---------- dados do edital ----------
+  function indexar() {
+    S.topicos = S.matriz.topicos;
+    S.topicos.forEach(function (t) { S.porId.set(t.id, t); });
+    S.matriz.disciplinas.forEach(function (d) { S.discs.set(d.cod, d); });
+    S.comQuestoes = new Set(Questoes.ativos().map(function (t) { return t.topicId; }));
+  }
+  function titulo(id) { var t = S.porId.get(id); return t ? t.titulo : id; }
+  function curto(txt, n) { return txt.length > n ? txt.slice(0, n - 1) + '…' : txt; }
+
+  // ---------- cálculo central ----------
+  function calcular() {
+    var agora = Date.now();
+    var est = S.store ? S.store.estado() : { dados: {}, derivado: { eventos: [], sessoes: [], marcacoes: [], revisoes: [], estudados: new Set(), ultimaMarcacao: new Map(), minutosPorTopico: new Map() }, config: {} };
+    var d = est.derivado;
+    var cfg = Object.assign({}, PADRAO, est.config);
+    var hojeIdx = Progresso.diaIdx(agora, TZ);
+    var devidas = Plano.revisoesDevidas({ derivado: d, hojeIdx: hojeIdx });
+    var proximas = Plano.proximasRevisoes({ derivado: d, hojeIdx: hojeIdx, limite: 5 });
+    var minutosHoje = Plano.minutosNoDia(d.sessoes, hojeIdx);
+    var sugestao = Plano.sugerirHoje({ topicos: S.topicos, derivado: d, disponivelMin: cfg.disponivelMinDia, minutosHoje: minutosHoje, revisoes: devidas });
+    // respostas de questões: os registros de "motivo do erro" não são respostas e não entram no motor
+    var respostas = Aprendizagem.paraMotor(d.eventos);
+    var qCart = Aprendizagem.cartoes(d.eventos, hojeIdx, TZ);
+    var qDevidas = Aprendizagem.revisoesVencidas(qCart);
+    var engine = Progresso.calcularProgresso({
+      topicos: S.topicos.map(function (t) { return { id: t.id, esforcoMin: t.esforco_min }; }),
+      eventos: respostas,
+      sessoes: d.sessoes.filter(function (s) { return s.min > 0; }).map(function (s) { return { ts: s.ts, min: s.min, topicId: s.topicId || undefined }; }),
+      estudados: Array.from(d.estudados), agora: agora, dataProva: PROVA, revisoesVencidas: devidas.length + qDevidas.length,
+    }, { disponivelMinDia: cfg.disponivelMinDia, diasPorSemana: cfg.diasPorSemana, reservaFinalDias: cfg.reservaFinalDias, pesosEtapas: PESOS_APP, tzOffsetMin: TZ });
+    var serie = Plano.serieDiaria(d.sessoes, hojeIdx, 14);
+    var q = { cart: qCart, devidas: qDevidas, stats: Aprendizagem.estatisticas(d.eventos, hojeIdx, TZ), caderno: Aprendizagem.cadernoErros(d.eventos, hojeIdx) };
+    return { agora: agora, est: est, d: d, cfg: cfg, hojeIdx: hojeIdx, devidas: devidas, proximas: proximas, minutosHoje: minutosHoje, sugestao: sugestao, engine: engine, serie: serie, q: q, engTop: new Map(engine.topicos.map(function (t) { return [t.id, t]; })),
+      diasProva: Progresso.diaIdx(PROVA, TZ) - hojeIdx, configurado: !!(est.config && est.config.atualizadoEm) };
+  }
+
+  // ---------- status de gravação ----------
+  function atualizarStatus(st) {
+    var el = $('status');
+    st = st || (S.store ? S.store.status() : null);
+    if (!S.store || !st) { el.className = 'chip ' + (S.semBanco ? 'bad' : 'info'); el.textContent = S.semBanco ? 'Sem banco de dados' : 'Carregando…'; return; }
+    var cls = 'ok', txt;
+    if (st.erro && st.erro.fatal) { cls = 'bad'; txt = 'Não salvou: ' + st.erro.code; }
+    else if (st.erro) { cls = 'warn'; txt = 'Sem conexão, tentando de novo (' + st.pendentes + ')'; }
+    else if (st.gravando) { cls = 'info'; txt = 'Salvando…'; }
+    else if (st.pendentes > 0) { cls = 'info'; txt = 'Pendente (' + st.pendentes + ')'; }
+    else { txt = st.ultimoSalvo ? 'Salvo às ' + hhmm(st.ultimoSalvo) : 'Tudo salvo'; }
+    el.className = 'chip ' + cls;
+    el.textContent = txt;
+    el.dataset.estado = st.erro ? 'erro' : st.gravando ? 'salvando' : st.pendentes > 0 ? 'pendente' : 'salvo';
+  }
+
+  // ---------- ações (todas passam pelo registro confiável) ----------
+  function registrar(colecao, item, msg) {
+    if (!S.store) { toast('Sem banco de dados: não foi possível salvar.'); return null; }
+    try { var r = S.store.registrar(colecao, item); if (msg) toast(msg); render(); return r; }
+    catch (e) { toast('Não foi possível registrar: ' + e.message); return null; }
+  }
+  function registrarSessao(min, topicId) {
+    min = Math.round(Number(min));
+    if (!(min >= 1 && min <= 480)) { toast('Informe entre 1 e 480 minutos.'); return; }
+    registrar('sessoes', { min: min, topicId: topicId || null }, 'Registrado: ' + min + ' min');
+  }
+  function alternarEstudado(id, estudadoAtual) {
+    registrar('marcacoes', { topicId: id, estudado: !estudadoAtual }, estudadoAtual ? 'Desmarcado.' : 'Marcado como estudado. Revisões em 1, 7 e 30 dias.');
+  }
+  function desfazer(id) { registrar('cancelamentos', { ref: id }, 'Desfeito.'); }
+
+  // ---------- cronômetro ----------
+  function chaveTimer() { return 'pl:' + S.uid + ':timer'; }
+  function timerAtual() { try { return JSON.parse(lsGet(chaveTimer()) || 'null'); } catch (e) { return null; } }
+  function iniciarTimer(topicId) { lsSet(chaveTimer(), JSON.stringify({ topicId: topicId || '', inicio: Date.now() })); render(); }
+  function pararTimer() { var t = timerAtual(); if (!t) return; S.parando = { topicId: t.topicId, min: Math.max(1, Math.round((Date.now() - t.inicio) / 60000)) }; lsDel(chaveTimer()); render(); }
+  function mmss(ms) { var s = Math.max(0, Math.floor(ms / 1000)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+  function atualizarCronometro() {
+    var t = timerAtual(); var el = $('timer-display');
+    if (t && el) el.textContent = mmss(Date.now() - t.inicio);
+  }
+
+  // ---------- telas ----------
+  function selectTopicos(valor, id) {
+    var sel = h('select', { id: id, 'aria-label': 'Tópico estudado' });
+    sel.append(h('option', { value: '', text: '(sem tópico específico)' }));
+    S.matriz.disciplinas.forEach(function (d) {
+      var g = h('optgroup', { label: d.nome });
+      S.topicos.filter(function (t) { return t.disciplina === d.cod; }).forEach(function (t) {
+        g.append(h('option', { value: t.id, text: curto(t.id.replace('OJ26-', '') + ' · ' + t.titulo, 80) }));
+      });
+      sel.append(g);
+    });
+    sel.value = valor || '';
+    sel.addEventListener('change', function () { S.topicoSel = sel.value; });
+    return sel;
+  }
+
+  function viewHoje(c) {
+    var nodes = [];
+    var meta = c.cfg.disponivelMinDia;
+    var diasTxt = c.diasProva > 0 ? 'A prova é em ' + c.diasProva + ' dias (14/03/2027, prevista no edital).' : 'A data prevista da prova já chegou.';
+    nodes.push(h('section', { class: 'card', id: 'card-hoje' },
+      h('h2', null, 'Hoje'),
+      h('div', { class: 'big', id: 'minutos-hoje', 'data-minutos': String(c.minutosHoje) }, String(c.minutosHoje), h('small', null, ' / ' + meta + ' min')),
+      barra(c.minutosHoje / meta),
+      h('p', { class: 'note' }, (c.minutosHoje >= meta ? 'Meta do dia cumprida. ' : 'Faltam ' + (meta - c.minutosHoje) + ' min para a meta de hoje. ') + diasTxt)));
+
+    if (!c.configurado && S.store) {
+      nodes.push(h('section', { class: 'card' },
+        h('h2', null, 'Comece por aqui'),
+        h('p', { class: 'note' }, 'Seu tempo diário está em ' + PADRAO.disponivelMinDia + ' min, 6 dias por semana, com 14 dias finais reservados para simulados e revisão. Confirme ou ajuste em Mais.'),
+        h('div', { class: 'acoes' },
+          h('button', { id: 'btn-confirmar-padrao', onclick: function () { S.store.salvarConfig(PADRAO); toast('Configuração salva.'); render(); } }, 'Usar esses valores'),
+          h('a', { class: 'btn sec', href: '#mais', style: { textDecoration: 'none', display: 'inline-grid', placeItems: 'center' } }, 'Ajustar'))));
+    }
+
+    // questões do dia
+    if (S.store) {
+      var qs = c.q.stats; var qd = c.q.devidas;
+      nodes.push(h('section', { class: 'card', id: 'card-questoes-hoje' }, h('h2', null, 'Questões'),
+        h('p', { class: 'note', id: 'q-hoje-texto' }, (qs.hoje.n ? qs.hoje.n + ' respondida(s) hoje, ' + pct(qs.hoje.aproveitamento) + ' de acerto.' : 'Nenhuma questão respondida hoje.') + (qd.length ? ' ' + qd.length + (qd.length === 1 ? ' revisão vencida.' : ' revisões vencidas.') : '')),
+        h('div', { class: 'acoes' }, h('a', { class: 'btn', id: 'btn-ir-questoes', href: '#questoes', style: { textDecoration: 'none', display: 'inline-grid', placeItems: 'center' } }, qd.length ? 'Fazer revisões e questões' : 'Praticar questões'))));
+    }
+
+    // cronômetro e registro de tempo
+    var t = timerAtual();
+    var cron;
+    if (S.parando) {
+      var inp = h('input', { id: 'min-parar', type: 'number', inputmode: 'numeric', min: '1', max: '480', value: String(S.parando.min), 'aria-label': 'Minutos estudados' });
+      cron = h('div', { class: 'stack' },
+        h('p', { class: 'note' }, 'Confirme os minutos da sessão' + (S.parando.topicId ? ' de ' + curto(titulo(S.parando.topicId), 70) : '') + '.'),
+        h('label', null, 'Minutos estudados', inp),
+        h('div', { class: 'acoes' },
+          h('button', { id: 'btn-salvar-sessao', onclick: function () { var p = S.parando; S.parando = null; registrarSessao(inp.value, p.topicId); } }, 'Salvar sessão'),
+          h('button', { class: 'sec', onclick: function () { S.parando = null; render(); } }, 'Descartar')));
+    } else if (t) {
+      cron = h('div', { class: 'stack' },
+        h('p', { class: 'note' }, 'Estudando: ' + (t.topicId ? curto(titulo(t.topicId), 80) : '(sem tópico específico)')),
+        h('div', { class: 'timer', id: 'timer-display' }, mmss(Date.now() - t.inicio)),
+        h('div', { class: 'acoes' },
+          h('button', { id: 'btn-parar', onclick: pararTimer }, 'Parar e registrar'),
+          h('button', { class: 'sec', onclick: function () { lsDel(chaveTimer()); render(); } }, 'Cancelar')));
+    } else {
+      var primeiro = (c.sugestao.itens.filter(function (i) { return i.tipo === 'estudo'; })[0] || {}).topicId;
+      var sel = selectTopicos(S.topicoSel || primeiro || '', 'sel-topico');
+      var minInp = h('input', { id: 'min-manual', type: 'number', inputmode: 'numeric', min: '1', max: '480', value: '15', 'aria-label': 'Minutos' });
+      cron = h('div', { class: 'stack' },
+        h('label', null, 'Tópico', sel),
+        h('div', { class: 'acoes' },
+          h('button', { id: 'btn-iniciar', onclick: function () { iniciarTimer(sel.value); } }, 'Iniciar cronômetro')),
+        h('div', { class: 'row' },
+          h('label', { style: { flex: '1' } }, 'Ou registre minutos', minInp),
+          h('button', { id: 'btn-registrar', class: 'sec', style: { alignSelf: 'end' }, onclick: function () { registrarSessao(minInp.value, sel.value); } }, 'Registrar')),
+        h('div', { class: 'acoes' }, [15, 30, 45, 60].map(function (m) { return h('button', { class: 'sec peq', onclick: function () { minInp.value = String(m); } }, '+' + m); })));
+    }
+    nodes.push(h('section', { class: 'card' }, h('h2', null, 'Tempo de estudo'), cron));
+
+    // plano do dia
+    var itens = c.sugestao.itens;
+    var plano = h('section', { class: 'card', id: 'card-plano' }, h('h2', null, 'Plano sugerido para hoje'));
+    if (!itens.length) {
+      plano.append(h('p', { class: 'note' }, c.sugestao.orcamentoMin === 0 ? 'Você já cumpriu o tempo de hoje.' : 'Não há tópicos pendentes para sugerir.'));
+    }
+    itens.forEach(function (i) {
+      var tp = S.porId.get(i.topicId);
+      var disc = tp ? S.discs.get(tp.disciplina).nome : '';
+      if (i.tipo === 'revisao') {
+        plano.append(h('div', { class: 'item', 'data-tipo': 'revisao' },
+          h('div', { class: 'row' }, chip('warn', 'Revisão ' + NOMES_ETAPA[i.etapa]), h('span', { class: 'mono' }, i.minutos + ' min')),
+          h('div', { class: 't', text: titulo(i.topicId) }),
+          h('div', { class: 'm' }, 'Sem consultar o material, explique com suas palavras o que lembra deste tópico; depois confira' + (i.atrasoDias > 0 ? ' (atrasada ' + i.atrasoDias + ' d)' : '') + '.'),
+          h('div', { class: 'acoes' }, h('button', { class: 'peq', onclick: function () { registrar('revisoes', { topicId: i.topicId, etapa: i.etapa }, 'Revisão registrada.'); } }, 'Revisão feita'))));
+      } else {
+        plano.append(h('div', { class: 'item', 'data-tipo': 'estudo', 'data-topico': i.topicId },
+          h('div', { class: 'row' }, chip('info', disc), h('span', { class: 'mono' }, i.minutos + ' min')),
+          h('div', { class: 't', text: titulo(i.topicId) }),
+          h('div', { class: 'm' }, (i.continuacao ? 'Continuar este tópico. ' : '') + 'Peça a aula deste tópico aqui no chat do Claude (/aula).'),
+          h('div', { class: 'acoes' },
+            h('button', { class: 'peq sec', onclick: function () { S.topicoSel = i.topicId; render(); window.scrollTo(0, 0); } }, 'Estudar este'),
+            h('button', { class: 'peq', onclick: function () { alternarEstudado(i.topicId, false); } }, 'Já estudei'))));
+      }
+    });
+    if (c.sugestao.revisoesPendentes > 0) plano.append(h('p', { class: 'note' }, '+ ' + c.sugestao.revisoesPendentes + ' revisão(ões) atrasada(s) ficam para os próximos dias.'));
+    plano.append(h('p', { class: 'note' }, 'Sequência sugerida e intervalos de revisão (1, 7 e 30 dias) são estimativas pedagógicas, não regra do edital.'));
+    nodes.push(plano);
+    return nodes;
+  }
+
+  function kpi(l, v, extra) { return h('div', { class: 'kpi' }, h('span', { class: 'l' }, l), h('span', { class: 'v' }, v), extra || null); }
+  function chipSituacao(s) { return chip(s === 'DENTRO DA CAPACIDADE' || s === 'CONCLUÍDO' ? 'ok' : s === 'APERTADO' ? 'warn' : 'bad', s.toLowerCase()); }
+  function chipRitmo(s) { return chip(s === 'ADIANTADA' || s === 'NO RITMO' ? 'ok' : s === 'ATRASADA' ? 'warn' : 'info', s.toLowerCase()); }
+
+  function viewPainel(c) {
+    var r = c.engine;
+    var nodes = [];
+    var estudados = c.d.estudados.size;
+    var totalEsf = S.topicos.reduce(function (s, t) { return s + t.esforco_min; }, 0);
+    var estEsf = S.topicos.reduce(function (s, t) { return s + (c.d.estudados.has(t.id) ? t.esforco_min : 0); }, 0);
+    nodes.push(h('section', { class: 'card' },
+      h('h2', null, 'Visão geral'),
+      h('div', { class: 'grid2' },
+        kpi('Dias até a prova', String(Math.max(0, c.diasProva)), h('span', { class: 'l' }, '14/03/2027, prevista')),
+        kpi('Tópicos estudados', estudados + ' / ' + S.topicos.length, barra(estudados / S.topicos.length)),
+        kpi('Teoria estudada (por esforço)', pct(estEsf / totalEsf)),
+        kpi('Domínio comprovado por questões', r.topicosEmDominio + ' / ' + S.topicos.length, h('span', { class: 'l' }, 'só ' + S.comQuestoes.size + ' tópicos têm questões no app')))));
+    if (r.alerta) nodes.push(h('section', { class: 'card' }, h('h2', null, r.alerta.nivel.toLowerCase()), h('p', { class: 'note' }, r.alerta.mensagem)));
+    var nec = r.meta.necessarioMinDia;
+    nodes.push(h('section', { class: 'card', id: 'card-meta' },
+      h('h2', null, 'Quanto estudar por dia'),
+      h('div', { class: 'grid2' },
+        kpi('Necessário por dia', nec === null ? '—' : dur(nec), chipSituacao(r.meta.situacao)),
+        kpi('Você reservou', dur(c.cfg.disponivelMinDia), r.meta.faltaMinDia ? h('span', { class: 'l' }, 'faltam ' + dur(r.meta.faltaMinDia) + ' por dia') : null),
+        kpi('Cobertura projetada', pct(r.meta.projecaoCoberturaNoTempoDisponivel), h('span', { class: 'l' }, 'se mantiver o tempo reservado até ' + r.prazo.prazoEstudo.split('-').reverse().join('/'))),
+        kpi('Ritmo (7 dias)', r.ritmo.observadoMinDia === null ? '—' : dur(r.ritmo.observadoMinDia) + '/dia', chipRitmo(r.ritmo.status))),
+      r.ritmo.conclusaoProjetada ? h('p', { class: 'note' }, 'No seu ritmo atual, a carga restante termina em ' + r.ritmo.conclusaoProjetada.split('-').reverse().join('/') + (r.ritmo.dentroDoPrazo ? ' (dentro do prazo de estudo).' : ' (depois do prazo de estudo).')) : null,
+      h('p', { class: 'note' }, 'Carga total estimada: ' + dur(r.carga.totalMin) + ' (' + (r.carga.calibrado ? 'calibrada com o seu tempo real' : 'estimativa inicial: 20 min + 6 min por artigo; calibra após 3 tópicos dominados') + '). Restam ' + dur(r.carga.restanteMin) + ', incluindo revisões vencidas.')));
+    var max = Math.max.apply(null, [c.cfg.disponivelMinDia].concat(c.serie.map(function (s) { return s.min; })), 1);
+    var chart = h('div', { class: 'chart', role: 'img', 'aria-label': 'Minutos por dia nos últimos 14 dias: ' + c.serie.map(function (s) { return s.iso.slice(8) + '/' + s.iso.slice(5, 7) + ' ' + s.min; }).join(', ') });
+    var area = h('div', { class: 'area' });
+    var linha = h('div', { class: 'metalinha', 'data-meta': String(c.cfg.disponivelMinDia) }); linha.style.bottom = (c.cfg.disponivelMinDia / max * 100) + '%';
+    area.append(linha);
+    var rotulos = h('div', { class: 'rotulos' });
+    c.serie.forEach(function (s) {
+      var i = h('i', { title: s.iso + ': ' + s.min + ' min', 'data-min': String(s.min) }); i.style.height = (s.min / max * 100) + '%';
+      area.append(h('div', { class: 'col' }, i));
+      rotulos.append(h('span', null, s.iso.slice(8)));
+    });
+    chart.append(area, rotulos);
+    var total14 = c.serie.reduce(function (s, x) { return s + x.min; }, 0);
+    nodes.push(h('section', { class: 'card' }, h('h2', null, 'Últimos 14 dias'), chart, h('p', { class: 'note' }, 'Total: ' + dur(total14) + '. A linha tracejada é a sua meta diária.')));
+    var disc = h('section', { class: 'card' }, h('h2', null, 'Por disciplina'));
+    S.matriz.disciplinas.forEach(function (d) {
+      var ts = S.topicos.filter(function (t) { return t.disciplina === d.cod; });
+      var n = ts.filter(function (t) { return c.d.estudados.has(t.id); }).length;
+      disc.append(h('div', { class: 'item' }, h('div', { class: 'row' }, h('span', { class: 't', text: d.nome }), h('span', { class: 'mono' }, n + '/' + ts.length)), barra(n / ts.length)));
+    });
+    nodes.push(disc);
+    var rev = h('section', { class: 'card', id: 'card-revisoes' }, h('h2', null, 'Revisões'));
+    rev.append(h('p', { class: 'note' }, c.devidas.length ? c.devidas.length + ' revisão(ões) vencida(s). Aparecem no plano de Hoje.' : 'Nenhuma revisão vencida.'));
+    c.proximas.slice(0, 3).forEach(function (p) { rev.append(h('div', { class: 'item' }, h('div', { class: 't', text: curto(titulo(p.topicId), 80) }), h('div', { class: 'm' }, 'Revisão de ' + NOMES_ETAPA[p.etapa] + ' em ' + p.emDias + (p.emDias === 1 ? ' dia' : ' dias')))); });
+    nodes.push(rev);
+    var somaEsf = 0; var tetoEsf = 0;
+    S.topicos.forEach(function (t) { somaEsf += t.esforco_min; tetoEsf += t.esforco_min * (S.comQuestoes.has(t.id) ? 1 : PESOS_APP.estudo); });
+    nodes.push(h('section', { class: 'card', id: 'card-como-ler' }, h('h2', null, 'Como ler estes números'),
+      h('p', { class: 'note' }, 'O progresso por critérios do plano (' + pct(r.percentualGeral) + ') só chega a 100% com estudo, questões, desempenho e retenção.'),
+      h('p', { class: 'note', id: 'texto-teto' }, 'Hoje o app tem questões para ' + S.comQuestoes.size + ' dos ' + S.topicos.length + ' tópicos (Matemática e Raciocínio Lógico). Nos demais, o máximo é ' + pct(PESOS_APP.estudo) + ' (só a teoria), então o teto atual do progresso geral é ' + pct(tetoEsf / somaEsf) + '. Isso não é falha sua: é falta de questões validadas no app.'),
+      h('p', { class: 'note' }, 'Estes números medem o cumprimento do plano e não preveem o resultado da prova.')));
+    return nodes;
+  }
+
+  function linhaQuestoesTopico(c, t) {
+    var e = c.engTop.get(t.id);
+    var txt = e && e.questoesDistintas > 0 ? 'Questões: ' + e.questoesDistintas + ' distintas · desempenho ' + pct(e.desempenhoPonderado) + ' · ' + e.estado.toLowerCase() : 'Questões: nenhuma respondida ainda.';
+    return h('div', { class: 'm', 'data-questoes': t.id }, txt);
+  }
+  function estadoTopico(c, t) {
+    if (c.d.estudados.has(t.id)) return 'estudado';
+    if ((c.d.minutosPorTopico.get(t.id) || 0) > 0) return 'andamento';
+    return 'pendente';
+  }
+
+  function viewEdital(c) {
+    var nodes = [];
+    var q = h('input', { id: 'busca', type: 'search', placeholder: 'Buscar tópico, artigo ou lei', value: S.filtro.q, 'aria-label': 'Buscar' });
+    var sd = h('select', { id: 'filtro-disc', 'aria-label': 'Disciplina' }, h('option', { value: '', text: 'Todas as disciplinas' }));
+    S.matriz.disciplinas.forEach(function (d) { sd.append(h('option', { value: d.cod, text: d.nome })); });
+    sd.value = S.filtro.disc;
+    var se = h('select', { id: 'filtro-estado', 'aria-label': 'Situação' },
+      h('option', { value: 'todos', text: 'Todos' }), h('option', { value: 'pendente', text: 'Pendentes' }), h('option', { value: 'andamento', text: 'Em andamento' }), h('option', { value: 'estudado', text: 'Estudados' }));
+    se.value = S.filtro.estado;
+    var lista = h('div', { id: 'lista-edital', class: 'stack' });
+    function atualizar() { S.filtro.q = q.value; S.filtro.disc = sd.value; S.filtro.estado = se.value; desenharLista(lista, calcular()); }
+    q.addEventListener('input', atualizar); sd.addEventListener('change', atualizar); se.addEventListener('change', atualizar);
+    nodes.push(h('section', { class: 'card' }, h('h2', null, 'Edital 01/2026 — ' + S.topicos.length + ' tópicos'),
+      h('p', { class: 'note' }, 'Conteúdo do Anexo VIII. O edital informa o número de questões do Bloco II só no total (40), não por disciplina.'),
+      q, h('div', { class: 'grid2' }, sd, se)));
+    nodes.push(lista);
+    desenharLista(lista, c);
+    return nodes;
+  }
+
+  function desenharLista(el, c) {
+    el.replaceChildren();
+    var f = S.filtro;
+    var termo = f.q.trim().toLowerCase();
+    var total = 0;
+    S.matriz.disciplinas.forEach(function (d) {
+      if (f.disc && f.disc !== d.cod) return;
+      var ts = S.topicos.filter(function (t) {
+        if (t.disciplina !== d.cod) return false;
+        if (f.estado !== 'todos' && estadoTopico(c, t) !== f.estado) return false;
+        if (termo && (t.id + ' ' + t.titulo + ' ' + t.texto_edital).toLowerCase().indexOf(termo) < 0) return false;
+        return true;
+      });
+      if (!ts.length) return;
+      total += ts.length;
+      var feitos = S.topicos.filter(function (t) { return t.disciplina === d.cod && c.d.estudados.has(t.id); }).length;
+      var todos = S.topicos.filter(function (t) { return t.disciplina === d.cod; }).length;
+      var det = h('details', { class: 'disc', 'data-disc': d.cod }, h('summary', null, h('span', { text: d.nome }), h('span', { class: 'mono' }, feitos + '/' + todos)));
+      if (termo || f.disc || f.estado !== 'todos') det.open = true;
+      ts.forEach(function (t) {
+        var est = estadoTopico(c, t);
+        var min = c.d.minutosPorTopico.get(t.id) || 0;
+        var tog = h('button', { class: 'peq ' + (est === 'estudado' ? 'estudado-sim' : 'sec'), 'data-acao': 'estudado', 'data-id': t.id, 'aria-pressed': est === 'estudado' ? 'true' : 'false', onclick: function () { alternarEstudado(t.id, est === 'estudado'); } }, est === 'estudado' ? 'Estudado ✓' : 'Marcar estudado');
+        var disp = t.dispositivos && t.dispositivos.length ? t.dispositivos.map(function (x) { return x.isolado ? x.de : x.de + ' a ' + x.ate; }).join('; ') : '';
+        det.append(h('div', { class: 'topico', 'data-topico': t.id },
+          h('div', { class: 'cab' }, h('div', { class: 'tit' }, h('div', { text: t.titulo }), h('div', { class: 'm mono', style: { fontSize: '.74rem', color: 'var(--muted)' } }, t.id)), tog),
+          S.comQuestoes.has(t.id) ? linhaQuestoesTopico(c, t) : null,
+          h('div', { class: 'm' }, [t.n_dispositivos ? t.n_dispositivos + (t.n_dispositivos_e_minimo ? '+' : '') + ' artigos · ' : '', '~' + t.esforco_min + ' min estimados', min ? ' · ' + min + ' min registrados' : ''].join('')),
+          h('details', null, h('summary', null, 'Detalhes do edital'),
+            h('div', { class: 'det' },
+              h('div', null, 'Texto do edital: ' + t.texto_edital),
+              disp ? h('div', null, 'Dispositivos: ' + disp) : null,
+              t.rotulo_status !== 'não se aplica' ? h('div', null, 'Tema do artigo: ainda não conferido na fonte oficial.') : null,
+              h('div', null, 'Anexo VIII, p.' + t.fonte_pagina + ' · esforço: ' + t.esforco_origem)))));
+      });
+      el.append(det);
+    });
+    if (!total) el.append(h('div', { class: 'card' }, h('p', { class: 'note' }, 'Nenhum tópico com esse filtro.')));
+  }
+
+  function viewMais(c) {
+    var nodes = [];
+    var cfg = c.cfg;
+    var iMin = h('input', { id: 'cfg-min', type: 'number', inputmode: 'numeric', min: '10', max: '480', step: '5', value: String(cfg.disponivelMinDia) });
+    var iDias = h('select', { id: 'cfg-dias' }, [5, 6, 7].map(function (n) { return h('option', { value: String(n), text: n + ' dias por semana' }); }));
+    iDias.value = String(cfg.diasPorSemana);
+    var iRes = h('input', { id: 'cfg-reserva', type: 'number', inputmode: 'numeric', min: '0', max: '30', value: String(cfg.reservaFinalDias) });
+    nodes.push(h('section', { class: 'card' }, h('h2', null, 'Ajustes'),
+      h('label', null, 'Minutos de estudo por dia', iMin),
+      h('label', null, 'Dias de estudo por semana', iDias),
+      h('label', null, 'Dias finais reservados para simulados e revisão', iRes),
+      h('div', { class: 'acoes' }, h('button', { id: 'btn-salvar-cfg', onclick: function () {
+        var m = Math.round(Number(iMin.value)); var r = Math.round(Number(iRes.value));
+        if (!(m >= 10 && m <= 480) || !(r >= 0 && r <= 30)) { toast('Valores fora do limite.'); return; }
+        S.store.salvarConfig({ disponivelMinDia: m, diasPorSemana: Number(iDias.value), reservaFinalDias: r }); toast('Ajustes salvos.'); render();
+      } }, 'Salvar ajustes'))));
+
+    // histórico
+    var hist = [];
+    c.d.sessoes.forEach(function (s) { hist.push({ id: s.id, ts: s.ts, txt: s.min + ' min' + (s.topicId ? ' · ' + curto(titulo(s.topicId), 60) : ''), tipo: 'Sessão' }); });
+    c.d.marcacoes.forEach(function (m) { hist.push({ id: m.id, ts: m.ts, txt: (m.estudado ? 'Estudado: ' : 'Desmarcado: ') + curto(titulo(m.topicId), 60), tipo: 'Marcação' }); });
+    c.d.revisoes.forEach(function (r) { hist.push({ id: r.id, ts: r.ts, txt: 'Revisão de ' + NOMES_ETAPA[r.etapa] + ': ' + curto(titulo(r.topicId), 60), tipo: 'Revisão' }); });
+    hist.sort(function (a, b) { return b.ts - a.ts; });
+    var hs = h('section', { class: 'card', id: 'card-historico' }, h('h2', null, 'Histórico recente'));
+    if (!hist.length) hs.append(h('p', { class: 'note' }, 'Nada registrado ainda.'));
+    hist.slice(0, 25).forEach(function (x) {
+      hs.append(h('div', { class: 'item', 'data-id': x.id }, h('div', { class: 'row' }, chip('info', x.tipo), h('span', { class: 'm' }, dataBR(x.ts) + ' ' + hhmm(x.ts))), h('div', { class: 't', text: x.txt }),
+        h('div', { class: 'acoes' }, h('button', { class: 'peq sec', onclick: function () { desfazer(x.id); } }, 'Desfazer'))));
+    });
+    nodes.push(hs);
+
+    // backup
+    var arq = h('input', { id: 'arquivo-backup', type: 'file', accept: '.json,application/json', 'aria-label': 'Escolher arquivo de backup' });
+    arq.addEventListener('change', function () { importarArquivo(arq); });
+    var bk = h('section', { class: 'card', id: 'card-backup' }, h('h2', null, 'Backup'),
+      h('p', { class: 'note' }, 'Seu histórico é salvo no banco de dados da plataforma. O arquivo de backup é uma cópia sua, com verificação SHA-256. Exporte de vez em quando.'),
+      h('div', { class: 'acoes' }, h('button', { id: 'btn-exportar', disabled: !S.dl || !S.store, onclick: exportar }, 'Exportar backup (.json)')),
+      h('label', null, 'Importar backup (junta com o que já existe, nunca apaga)', arq));
+    if (S.importacao) bk.append(painelImportacao());
+    nodes.push(bk);
+
+    // verificação
+    var st = S.store ? S.store.status() : null;
+    nodes.push(h('section', { class: 'card', id: 'card-verificacao' }, h('h2', null, 'Verificação de gravação'),
+      h('p', { class: 'note', id: 'texto-verificacao' }, st ? 'Blocos gravados por este aparelho: ' + st.chunks + ' · cópia local: ' + (st.localOk ? 'ativa' : 'indisponível') + ' · pendentes: ' + st.pendentes + '.' : 'Sem banco de dados.'),
+      h('div', { class: 'acoes' }, h('button', { id: 'btn-verificar', class: 'sec', disabled: !S.store, onclick: verificarGravacao }, 'Testar gravação agora'))));
+
+    nodes.push(cardAuditoria());
+    nodes.push(cardRegras());
+    nodes.push(h('section', { class: 'card', id: 'card-limites' }, h('h2', null, 'Limites conhecidos'),
+      h('ul', { class: 'limpa' },
+        h('li', null, 'Os minutos por tópico são estimativas iniciais, ainda não calibradas com o seu tempo real.'),
+        h('li', null, 'Revisões de teoria em 1, 7 e 30 dias; revisões de questões em 1, 7, 15 e 30 dias. São estimativas pedagógicas, não regra do edital.'),
+        h('li', null, 'Só há questões de Matemática e Raciocínio Lógico (inéditas, conferidas por cálculo). Direito, Português, Informática e Atualidades dependem de fontes oficiais que não consegui acessar.'),
+        h('li', null, 'Ainda não existem simulados com cronômetro, treino de discursiva nem aulas dentro do app.'),
+        h('li', null, 'Evite registrar ao mesmo tempo em duas abas do mesmo navegador.'),
+        h('li', null, 'Funciona só online. O app não abre sem internet.'))));
+    return nodes;
+  }
+
+  // ---------- questões: Modo Aprendizagem ----------
+  var CONFIANCAS = [['seguro', 'Tenho certeza'], ['duvida', 'Tenho dúvida'], ['chute', 'Foi chute']];
+  var TIPO_ITEM = { revisao: ['warn', 'Revisão'], nova: ['ok', 'Nova'], refazer: ['info', 'Refazendo'] };
+  var MAX_MS_QUESTAO = 30 * 60 * 1000;                 // uma pausa longa não distorce o tempo médio
+
+  function estadoQ() {
+    if (!S.q) S.q = { fase: 'inicio', cfg: { n: 10, topico: '', nivel: 'auto' }, itens: [], pos: 0, topicoSessao: '', questao: null, erroGeracao: null, escolha: null, conf: null, revelada: false, t0: 0, resp: null, motivo: null, feitas: [], tempoRegistrado: false };
+    return S.q;
+  }
+  function topicosComQuestoes() {
+    var vistos = {}; var lista = [];
+    Questoes.ativos().forEach(function (t) { if (!vistos[t.topicId]) { vistos[t.topicId] = true; lista.push({ id: t.topicId, titulo: titulo(t.topicId) }); } });
+    return lista;
+  }
+  function sementeNova() { return (Math.random() * 4294967296) >>> 0; }
+  function ddmm(idx) { var iso = Progresso.idxParaISO(idx); return iso.slice(8) + '/' + iso.slice(5, 7); }
+
+  function carregarItemQ() {
+    var q = estadoQ(); var it = q.itens[q.pos];
+    q.escolha = null; q.conf = null; q.revelada = false; q.resp = null; q.motivo = null; q.erroGeracao = null; q.questao = null;
+    try {
+      var qs = it.exata ? Questoes.gerarQuestao(it.templateId, it.semente, it.nivel) : Questoes.gerarValida(it.templateId, it.semente, it.nivel);
+      var v = Questoes.validarQuestao(qs);
+      if (!v.ok) throw new Error(v.erros.join('; '));
+      q.questao = qs;
+    } catch (e) { q.erroGeracao = (e && e.message) || String(e); }
+    q.t0 = Date.now();
+  }
+  function abrirSessaoQ(itens, topicoUnico) {
+    var q = estadoQ();
+    q.itens = itens; q.pos = 0; q.feitas = []; q.tempoRegistrado = false; q.topicoSessao = topicoUnico || ''; q.fase = 'sessao';
+    carregarItemQ(); render(); window.scrollTo(0, 0);
+  }
+  function comecarSessaoQ() {
+    if (!S.store) { toast('Sem banco de dados: não dá para salvar as respostas.'); return; }
+    var q = estadoQ(); var c = calcular();
+    var itens = Aprendizagem.montarSessao({ n: q.cfg.n, topicIds: q.cfg.topico ? [q.cfg.topico] : null, nivel: q.cfg.nivel, eventos: c.d.eventos, hojeIdx: c.hojeIdx, semente: sementeNova() });
+    if (!itens.length) { toast('Nenhuma questão disponível para esse filtro.'); return; }
+    abrirSessaoQ(itens, q.cfg.topico);
+  }
+  function refazerQ(e) {
+    var x = Questoes.lerId(e.questionId);
+    if (!x) { toast('Esta questão não pode ser reproduzida.'); return; }
+    abrirSessaoQ([{ templateId: x.templateId, topicId: e.topicId, nivel: x.nivel, semente: x.semente, tipo: 'refazer', exata: true }], e.topicId);
+  }
+  function praticarAssuntoQ(topicId) {
+    var c = calcular();
+    var itens = Aprendizagem.montarSessao({ n: 5, topicIds: [topicId], nivel: 'auto', eventos: c.d.eventos, hojeIdx: c.hojeIdx, semente: sementeNova() });
+    if (!itens.length) { toast('Este assunto ainda não tem questões.'); return; }
+    abrirSessaoQ(itens, topicId);
+  }
+  function confirmarQ() {
+    var q = estadoQ();
+    if (q.revelada || q.escolha === null || !q.conf || !q.questao) return;
+    if (!S.store) { toast('Sem banco de dados: a resposta não pôde ser salva.'); return; }
+    var ev = Aprendizagem.eventoResposta(q.questao, q.escolha, q.conf, Math.min(Date.now() - q.t0, MAX_MS_QUESTAO));
+    var salvo = null;
+    try { salvo = S.store.registrar('eventos', ev); } catch (e) { toast('Não foi possível registrar: ' + e.message); return; }
+    if (!salvo) { toast('Não foi possível registrar a resposta.'); return; }
+    q.resp = salvo; q.feitas.push(salvo); q.revelada = true;
+    render();
+    var fb = $('q-feedback');
+    if (fb) { fb.focus({ preventScroll: true }); fb.scrollIntoView({ block: 'start' }); }
+  }
+  function motivoQ(m) {
+    var q = estadoQ();
+    if (!q.revelada || !q.resp || q.resp.correct || q.motivo === m) return;
+    try { if (!S.store.registrar('eventos', Aprendizagem.eventoMotivo(q.resp, m))) throw new Error('não registrado'); }
+    catch (e) { toast('Não foi possível anotar o motivo: ' + e.message); return; }
+    q.motivo = m; render();
+    var b = document.querySelector('.motivos button[data-motivo="' + m + '"]'); if (b) b.focus({ preventScroll: true });
+  }
+  function proximaQ() {
+    var q = estadoQ();
+    if (!q.revelada && !q.erroGeracao) return;
+    if (q.pos + 1 >= q.itens.length) { q.fase = q.feitas.length ? 'resumo' : 'inicio'; render(); window.scrollTo(0, 0); return; }
+    q.pos++; carregarItemQ(); render(); window.scrollTo(0, 0);
+  }
+  function encerrarQ() { var q = estadoQ(); q.fase = q.feitas.length ? 'resumo' : 'inicio'; render(); window.scrollTo(0, 0); }
+  function voltarInicioQ() { estadoQ().fase = 'inicio'; render(); window.scrollTo(0, 0); }
+  function registrarTempoQ(min) {
+    var q = estadoQ(); if (q.tempoRegistrado) return;
+    var r = registrar('sessoes', { min: min, topicId: q.topicoSessao || null }, 'Registrado: ' + min + ' min de estudo.');
+    if (r) { q.tempoRegistrado = true; render(); }
+  }
+
+  function viewQuestoes(c) {
+    var q = estadoQ();
+    if (q.fase === 'sessao') return telaSessaoQ();
+    if (q.fase === 'resumo') return telaResumoQ();
+    if (q.fase === 'caderno') return telaCadernoQ(c);
+    return telaInicioQ(c);
+  }
+
+  function telaInicioQ(c) {
+    var q = estadoQ(); var nodes = [];
+    var st = c.q.stats; var rev = c.q.devidas;
+    var selN = h('select', { id: 'q-n', 'aria-label': 'Quantidade de questões' }, [5, 10, 15, 20, 30].map(function (n) { return h('option', { value: String(n), text: n + ' questões' }); }));
+    var selT = h('select', { id: 'q-assunto', 'aria-label': 'Assunto' }, h('option', { value: '', text: 'Todos os assuntos' }),
+      topicosComQuestoes().map(function (t) { return h('option', { value: t.id, text: curto(t.id.replace('OJ26-', '') + ' · ' + t.titulo, 70) }); }));
+    var selNv = h('select', { id: 'q-nivel', 'aria-label': 'Nível' }, h('option', { value: 'auto', text: 'Automático (acompanha seu desempenho)' }),
+      [1, 2, 3, 4, 5].map(function (n) { return h('option', { value: String(n), text: 'Nível ' + n + (n === 1 ? ' (mais simples)' : n === 5 ? ' (mais difícil)' : '') }); }));
+    selN.value = String(q.cfg.n); selT.value = q.cfg.topico; selNv.value = String(q.cfg.nivel);
+    function guardar() { q.cfg = { n: Number(selN.value), topico: selT.value, nivel: selNv.value === 'auto' ? 'auto' : Number(selNv.value) }; }
+    [selN, selT, selNv].forEach(function (el) { el.addEventListener('change', guardar); });
+
+    nodes.push(h('section', { class: 'card', id: 'card-q-inicio' },
+      h('h2', null, 'Modo Aprendizagem'),
+      h('p', { class: 'note' }, 'Questões inéditas de Matemática e Raciocínio Lógico (Bloco III da prova). Depois de cada resposta você vê o gabarito, a explicação e o motivo de cada alternativa estar certa ou errada.'),
+      rev.length
+        ? h('div', { class: 'stack', id: 'q-revisoes' }, chip('warn', rev.length + (rev.length === 1 ? ' revisão vencida' : ' revisões vencidas')),
+          rev.slice(0, 4).map(function (r) { return h('div', { class: 'm' }, '• ' + Questoes.modelo(r.templateId).titulo + (r.atrasoDias > 0 ? ' (atrasada ' + r.atrasoDias + ' d)' : ' (vence hoje)')); }),
+          h('p', { class: 'note' }, 'As revisões entram primeiro na sessão, até 40% das questões.'))
+        : h('div', null, chip('ok', 'Nenhuma revisão vencida')),
+      h('label', null, 'Quantidade', selN),
+      h('label', null, 'Assunto', selT),
+      h('label', null, 'Nível', selNv),
+      h('div', { class: 'acoes' }, h('button', { id: 'btn-q-comecar', disabled: !S.store, onclick: function () { guardar(); comecarSessaoQ(); } }, 'Começar')),
+      !S.store ? h('p', { class: 'note' }, 'Sem banco de dados, as respostas não podem ser salvas, então a prática está desativada.') : null));
+
+    nodes.push(h('section', { class: 'card', id: 'card-q-desempenho' }, h('h2', null, 'Seu desempenho em questões'),
+      st.total.n === 0 ? h('p', { class: 'note' }, 'Nenhuma questão respondida ainda.') : h('div', { class: 'grid2' },
+        kpi('Respondidas', String(st.total.n)),
+        kpi('Acertos', pct(st.total.aproveitamento)),
+        kpi('Hoje', st.hoje.n + (st.hoje.n ? ' · ' + pct(st.hoje.aproveitamento) : '')),
+        kpi('Erros com certeza', String(st.total.errosComCerteza))),
+      st.total.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Erro com certeza é o mais perigoso: você não desconfiaria dele na prova. Releia a explicação desses no caderno.') : null));
+
+    nodes.push(h('section', { class: 'card', id: 'card-q-caderno-atalho' }, h('h2', null, 'Caderno de erros'),
+      h('p', { class: 'note' }, c.q.caderno.length ? c.q.caderno.length + ' erro(s) registrado(s), com motivo e data da próxima revisão.' : 'Seus erros aparecem aqui, para refazer e revisar.'),
+      h('div', { class: 'acoes' }, h('button', { id: 'btn-q-caderno', class: 'sec', onclick: function () { estadoQ().fase = 'caderno'; render(); window.scrollTo(0, 0); } }, 'Abrir caderno'))));
+
+    nodes.push(h('section', { class: 'card', id: 'card-q-limites' }, h('h2', null, 'O que ainda não existe'),
+      h('p', { class: 'note' }, 'Não há questões de Direito, Língua Portuguesa, Informática ou Atualidades: elas exigiriam o texto oficial da legislação e de fontes de referência que não consegui acessar, e não vou inventar. Também não existem ainda simulados com cronômetro nem treino de discursiva. A auditoria completa está em Mais.')));
+    return nodes;
+  }
+
+  function telaSessaoQ() {
+    var q = estadoQ(); var it = q.itens[q.pos];
+    if (q.erroGeracao) {
+      return [h('section', { class: 'card erro-bloco', id: 'q-erro' }, h('h2', null, 'Questão indisponível'),
+        h('p', { class: 'note' }, 'Não foi possível gerar esta questão com segurança (' + q.erroGeracao + '). Ela não foi mostrada nem contada.'),
+        h('div', { class: 'acoes' }, h('button', { id: 'btn-q-pular', onclick: proximaQ }, 'Pular'), h('button', { class: 'sec', onclick: encerrarQ }, 'Encerrar')))];
+    }
+    var qs = q.questao; var nodes = [];
+    var tipo = TIPO_ITEM[it.tipo] || TIPO_ITEM.nova;
+    var alts = h('div', { class: 'alts', role: 'group', 'aria-label': 'Alternativas' });
+    qs.alternativas.forEach(function (a, i) {
+      var sel = q.escolha === i; var cls = 'alt'; var marca = null;
+      if (q.revelada) {
+        if (a.correta) { cls += ' certa'; marca = chip('ok', '✓ Correta'); }
+        else if (sel) { cls += ' errada'; marca = chip('bad', '✗ Sua resposta'); }
+      }
+      alts.append(h('button', { class: cls, 'data-letra': a.letra, 'aria-pressed': sel ? 'true' : 'false', onclick: function () {
+        if (q.revelada) return;
+        q.escolha = i; render();
+        var b = document.querySelector('button.alt[data-letra="' + a.letra + '"]'); if (b) b.focus({ preventScroll: true });
+      } }, h('span', { class: 'l', text: a.letra }), h('span', { class: 'corpo' }, h('span', { text: a.texto }), marca, q.revelada ? h('span', { class: 'com', text: a.comentario }) : null)));
+    });
+    var card = h('section', { class: 'card', id: 'card-questao', 'data-qid': qs.id },
+      h('div', { class: 'row' }, h('span', { class: 'mono', id: 'q-pos' }, 'Questão ' + (q.pos + 1) + ' de ' + q.itens.length), h('span', { class: 'acoes' }, chip(tipo[0], tipo[1]), chip('info', 'nível ' + qs.nivel))),
+      h('h3', null, qs.assunto),
+      h('p', { class: 'enun', id: 'q-enunciado', text: qs.enunciado }),
+      alts);
+    if (!q.revelada) {
+      var segConf = h('div', { class: 'seg', role: 'group', 'aria-label': 'Quão seguro você está' });
+      CONFIANCAS.forEach(function (cf) {
+        segConf.append(h('button', { class: 'conf', 'data-conf': cf[0], 'aria-pressed': q.conf === cf[0] ? 'true' : 'false', onclick: function () {
+          q.conf = cf[0]; render();
+          var b = document.querySelector('button.conf[data-conf="' + cf[0] + '"]'); if (b) b.focus({ preventScroll: true });
+        } }, cf[1]));
+      });
+      card.append(h('div', { class: 'stack' }, h('p', { class: 'note' }, 'Quão seguro você está? Seja honesto: acertar com dúvida ou no chute conta menos para o domínio do assunto.'), segConf),
+        h('div', { class: 'acoes' },
+          h('button', { id: 'btn-q-confirmar', disabled: q.escolha === null || !q.conf, onclick: confirmarQ }, 'Confirmar resposta'),
+          h('button', { class: 'sec', onclick: encerrarQ }, 'Encerrar sessão')));
+      nodes.push(card);
+      return nodes;
+    }
+    nodes.push(card);
+    var ok = q.resp.correct;
+    var fb = h('section', { class: 'card', id: 'q-feedback', tabindex: '-1' },
+      h('div', { class: 'row' }, ok ? chip('ok', 'Acertou') : chip('bad', 'Errou · gabarito ' + qs.gabarito), h('span', { class: 'm' }, 'Sua confiança: ' + (CONFIANCAS.filter(function (x) { return x[0] === q.resp.conf; })[0] || [0, ''])[1].toLowerCase())),
+      h('div', { class: 'explic' }, h('p', null, h('b', null, 'Explicação: '), qs.explicacao), h('p', null, h('b', null, 'Atenção: '), qs.pegadinha)),
+      h('p', { class: 'note' }, 'Questão inédita gerada por modelo; a resposta foi conferida por dois métodos de cálculo. Não é questão de prova da VUNESP.'));
+    if (!ok) {
+      var mot = h('div', { class: 'motivos', role: 'group', 'aria-label': 'Motivo do erro' });
+      Object.keys(Aprendizagem.MOTIVOS).forEach(function (k) {
+        mot.append(h('button', { 'data-motivo': k, 'aria-pressed': q.motivo === k ? 'true' : 'false', onclick: function () { motivoQ(k); } }, Aprendizagem.MOTIVOS[k]));
+      });
+      fb.append(h('div', { class: 'stack', id: 'q-motivo' }, h('p', { class: 'note' }, 'Por que errou? (anotar ajuda a achar o padrão no caderno de erros)'), mot));
+    }
+    var ultima = q.pos + 1 >= q.itens.length;
+    fb.append(h('div', { class: 'acoes' },
+      h('button', { id: 'btn-q-proxima', onclick: proximaQ }, ultima ? 'Ver resumo' : 'Próxima questão'),
+      ultima ? null : h('button', { class: 'sec', onclick: encerrarQ }, 'Encerrar sessão')));
+    nodes.push(fb);
+    return nodes;
+  }
+
+  function telaResumoQ() {
+    var q = estadoQ(); var r = Aprendizagem.resumo(q.feitas);
+    var min = Math.max(1, Math.round(q.feitas.reduce(function (s, e) { return s + (e.ms || 0); }, 0) / 60000));
+    var seg = r.tempoMedioMs === null ? '—' : Math.round(r.tempoMedioMs / 1000) + ' s';
+    var nodes = [h('section', { class: 'card', id: 'card-q-resumo' }, h('h2', null, 'Resumo da sessão'),
+      h('div', { class: 'big', id: 'q-resumo-placar' }, r.acertos + ' / ' + r.n, h('small', null, ' · ' + pct(r.aproveitamento))),
+      h('div', { class: 'grid2' }, kpi('Tempo médio', seg), kpi('Acertos com dúvida', String(r.acertosComDuvida)), kpi('Erros com certeza', String(r.errosComCerteza))),
+      r.errosComCerteza > 0 ? h('p', { class: 'note' }, 'Você errou ' + r.errosComCerteza + ' com certeza. Esses são os mais perigosos: releia as explicações.') : null,
+      r.acertosComDuvida > 0 ? h('p', { class: 'note' }, 'Acertou ' + r.acertosComDuvida + ' com dúvida ou chute. Ainda não é domínio: o assunto volta nas revisões.') : null,
+      h('div', { class: 'acoes' },
+        h('button', { id: 'btn-q-tempo', class: 'sec', disabled: q.tempoRegistrado, onclick: function () { registrarTempoQ(min); } }, q.tempoRegistrado ? 'Tempo registrado ✓' : 'Registrar ' + min + ' min de estudo'),
+        h('button', { id: 'btn-q-nova', onclick: voltarInicioQ }, 'Nova sessão'),
+        h('button', { class: 'sec', onclick: function () { estadoQ().fase = 'caderno'; render(); window.scrollTo(0, 0); } }, 'Caderno de erros')))];
+    var por = h('section', { class: 'card' }, h('h2', null, 'Por assunto'));
+    Object.keys(r.porTopico).forEach(function (id) { var t = r.porTopico[id]; por.append(h('div', { class: 'item' }, h('div', { class: 't', text: curto(titulo(id), 70) }), h('div', { class: 'm' }, t.acertos + ' de ' + t.n + ' (' + pct(t.acertos / t.n) + ')'))); });
+    nodes.push(por);
+    return nodes;
+  }
+
+  function telaCadernoQ(c) {
+    var lista = c.q.caderno; var nodes = [];
+    var cab = h('section', { class: 'card', id: 'card-q-caderno' }, h('h2', null, 'Caderno de erros'),
+      h('div', { class: 'acoes' }, h('button', { class: 'sec peq', onclick: voltarInicioQ }, '← Voltar')),
+      lista.length ? h('p', { class: 'note' }, lista.length + ' erro(s)' + (lista.length > 30 ? ', mostrando os 30 mais recentes' : '') + '. "Refazer" reabre a mesma questão.') : h('p', { class: 'note' }, 'Nenhum erro registrado. Quando errar, a questão aparece aqui.'));
+    lista.slice(0, 30).forEach(function (e) {
+      var m = Questoes.modelo(e.templateId);
+      cab.append(h('div', { class: 'item', 'data-eid': e.eventId },
+        h('div', { class: 'row' }, chip('info', 'nível ' + e.nivel), h('span', { class: 'm' }, dataBR(e.ts) + ' ' + hhmm(e.ts))),
+        h('div', { class: 't', text: m ? m.titulo : e.templateId }),
+        h('div', { class: 'm' }, (e.resposta && e.gabarito ? 'Você marcou ' + e.resposta + '; o gabarito é ' + e.gabarito + '. ' : '') + 'Errou este assunto ' + e.reincidencias + (e.reincidencias === 1 ? ' vez.' : ' vezes.') + (e.proximaRevisaoIdx !== null ? ' Próxima revisão: ' + ddmm(e.proximaRevisaoIdx) + '.' : '')),
+        e.motivo ? chip('warn', Aprendizagem.MOTIVOS[e.motivo] || e.motivo) : h('div', { class: 'm' }, 'Motivo não anotado.'),
+        h('div', { class: 'acoes' },
+          h('button', { class: 'peq', 'data-acao': 'refazer', onclick: function () { refazerQ(e); } }, 'Refazer'),
+          h('button', { class: 'peq sec', onclick: function () { praticarAssuntoQ(e.topicId); } }, 'Praticar o assunto'))));
+    });
+    nodes.push(cab);
+    return nodes;
+  }
+
+  // ---------- auditoria e regras (arquivos gerados no build, só leitura) ----------
+  function carregarAux() {
+    [['validacao', 'validacao-questoes.json'], ['regras', 'edital-regras.json']].forEach(function (par) {
+      fetch(par[1]).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (j) { S.aux[par[0]] = j; }, function () { S.aux[par[0]] = 'erro'; })
+        .then(function () { var a = document.activeElement; if (S.aba === 'mais' && (!a || a === document.body)) render(); });
+    });
+  }
+  function cardAuditoria() {
+    var v = S.aux.validacao;
+    var card = h('section', { class: 'card', id: 'card-auditoria' }, h('h2', null, 'Auditoria das questões'));
+    if (!v) { card.append(h('p', { class: 'note' }, 'Carregando o relatório…')); return card; }
+    if (v === 'erro') { card.append(h('p', { class: 'note' }, 'Relatório indisponível agora (sem conexão ou arquivo ausente). As questões continuam sendo conferidas uma a uma antes de aparecerem.')); return card; }
+    card.append(
+      h('p', { class: 'note', id: 'texto-auditoria' }, 'Relatório de ' + v.gerado_em.split('-').reverse().join('/') + ' · motor v' + v.versao_motor + ': ' + v.total.geradas.toLocaleString('pt-BR') + ' questões geradas e conferidas, ' + v.total.rejeitadas + ' rejeitadas, ' + v.total.naoGeradas + ' não geradas.'),
+      h('p', { class: 'note' }, v.metodo),
+      h('p', { class: 'note' }, 'Origem: ' + v.origem_das_questoes + '.'));
+    var cob = h('details', null, h('summary', null, 'Cobertura do edital por disciplina'));
+    v.cobertura.forEach(function (d) {
+      cob.append(h('div', { class: 'row item' }, h('span', { class: 't', text: d.nome }), d.topicosComQuestoes === d.topicos ? chip('ok', d.topicosComQuestoes + '/' + d.topicos + ' tópicos') : d.topicosComQuestoes > 0 ? chip('warn', d.topicosComQuestoes + '/' + d.topicos + ' tópicos') : chip('bad', 'sem questões')));
+    });
+    card.append(cob);
+    var mod = h('details', null, h('summary', null, 'Modelos de questão (' + v.modelos.length + ')'));
+    v.modelos.forEach(function (m) {
+      var cap = v.variacoes_max;
+      var vars = [1, 2, 3, 4, 5].map(function (n) { return m.variacoes[n] >= cap ? cap + '+' : String(m.variacoes[n]); }).join(' · ');
+      var fraco = !m.aposentado && [1, 2, 3, 4, 5].some(function (n) { return m.variacoes[n] < v.limite_variacao_baixa; });
+      mod.append(h('div', { class: 'item', 'data-modelo': m.id },
+        h('div', { class: 'row' }, h('div', { class: 't', text: m.titulo }), m.aposentado ? chip('info', 'aposentado') : fraco ? chip('warn', 'pouca variação') : null),
+        h('div', { class: 'm' }, m.validas + ' de ' + m.geradas + ' conferidas · ' + m.id),
+        h('div', { class: 'm' }, 'Variações distintas por nível (1→5): ' + vars)));
+    });
+    card.append(mod,
+      v.variacao_baixa.length ? h('p', { class: 'note', id: 'texto-variacao' }, v.variacao_baixa.length + ' combinações de modelo e nível têm menos de ' + v.limite_variacao_baixa + ' variações (' + v.variacao_baixa.map(function (x) { return x.modelo.split('-').slice(0, 2).join('-') + ' nível ' + x.nivel; }).join('; ') + '). Nelas, as questões se repetem mais; o app usa o nível vizinho antes de repetir.') : null,
+      h('ul', { class: 'limpa' }, v.limites.map(function (l) { return h('li', { text: l }); })));
+    return card;
+  }
+  var ACENTOS = { minimo: 'mínimo', nomeacao: 'nomeação', retificacao: 'retificação', inscricoes: 'inscrições', remuneracao: 'remuneração', atribuicoes: 'atribuições', duracao: 'duração', periodo: 'período', habilitacao: 'habilitação', legislacao: 'legislação', carater: 'caráter', eliminatoria: 'eliminatória', classificatorio: 'classificatório', revisao: 'revisão', portugues: 'português', unica: 'única', criterios: 'critérios', ate: 'até', nao: 'não', excluido: 'excluído', identificacao: 'identificação', bloco3: 'bloco 3', dejesp: 'DEJESP', cj: 'CJ', referencia: 'referência' };
+  function cardRegras() {
+    var r = S.aux.regras;
+    var card = h('section', { class: 'card', id: 'card-regras' }, h('h2', null, 'Regras do edital'));
+    if (!r) { card.append(h('p', { class: 'note' }, 'Carregando…')); return card; }
+    if (r === 'erro') { card.append(h('p', { class: 'note' }, 'Regras indisponíveis agora (sem conexão ou arquivo ausente).')); return card; }
+    card.append(h('p', { class: 'note' }, r.fatos.length + ' regras conferidas no PDF oficial, cada uma com a página e o trecho. Consultado em ' + r.consultado_em.split('-').reverse().join('/') + '. Em caso de dúvida, vale o edital.'));
+    var det = h('details', { id: 'regras-lista' }, h('summary', null, 'Ver as regras'));
+    var nomeArq = { edital: 'edital', retificacao: 'retificação' };
+    r.fatos.forEach(function (f) {
+      var rotulo = f.id.split('_').map(function (w) { return ACENTOS[w] || w; }).join(' '); rotulo = rotulo.charAt(0).toUpperCase() + rotulo.slice(1);
+      det.append(h('div', { class: 'item' }, h('div', { class: 't' }, h('b', null, rotulo + ': '), String(f.valor)), h('div', { class: 'm' }, (nomeArq[f.arquivo] || f.arquivo) + ', p. ' + f.pagina + ' — “' + curto(String(f.citacao), 220) + '”')));
+    });
+    card.append(det);
+    return card;
+  }
+
+  // ---------- backup ----------
+  async function exportar() {
+    try {
+      var texto = await Backup.criarBackup(S.store.exportar(), { dispositivo: plataforma() });
+      var hoje = new Date().toISOString().slice(0, 10);
+      var r = await S.dl.save({ filename: 'preparo-tjsp-' + hoje + '.json', data: texto });
+      toast(r.status === 'saved' ? 'Backup entregue ao aparelho.' : 'Backup: ' + r.status);
+    } catch (e) { toast(e && e.code === 'declined' ? 'Exportação cancelada.' : 'Não foi possível exportar: ' + ((e && (e.code || e.message)) || e)); }
+  }
+  function lerArquivo(f) {
+    if (f.text) return f.text();
+    return new Promise(function (res, rej) { var r = new FileReader(); r.onload = function () { res(String(r.result)); }; r.onerror = function () { rej(r.error); }; r.readAsText(f); });
+  }
+  async function importarArquivo(input) {
+    var f = input.files && input.files[0];
+    if (!f) return;
+    try {
+      var v = await Backup.verificarBackup(await lerArquivo(f));
+      if (!v.ok) { S.importacao = { erro: v.motivo }; }
+      else { S.importacao = { backup: v.backup, plano: Backup.planejarImportacao(S.store.exportar(), v.backup.dados) }; }
+    } catch (e) { S.importacao = { erro: 'não foi possível ler o arquivo: ' + ((e && e.message) || e) }; }
+    render();
+  }
+  function painelImportacao() {
+    var im = S.importacao;
+    if (im.erro) return h('div', { class: 'item', id: 'painel-importacao' }, chip('bad', 'Backup recusado'), h('div', { class: 't', text: im.erro }), h('div', { class: 'acoes' }, h('button', { class: 'sec peq', onclick: function () { S.importacao = null; render(); } }, 'Fechar')));
+    var p = im.plano, rot = { eventos: 'respostas', sessoes: 'sessões', marcacoes: 'marcações', revisoes: 'revisões', cancelamentos: 'cancelamentos' };
+    var novos = Object.keys(rot).map(function (k) { return p.relatorio.novos[k] ? p.relatorio.novos[k] + ' ' + rot[k] : null; }).filter(Boolean);
+    var confl = Object.keys(rot).reduce(function (s, k) { return s + p.relatorio.conflitos[k].length; }, 0);
+    return h('div', { class: 'item', id: 'painel-importacao' },
+      chip(p.tipo === 'NADA NOVO' ? 'info' : p.tipo === 'COM CONFLITOS' ? 'warn' : 'ok', 'Backup íntegro: ' + p.tipo.toLowerCase()),
+      h('div', { class: 't' }, 'Criado em ' + im.backup.criadoEm.slice(0, 10) + (im.backup.dispositivo ? ' (' + im.backup.dispositivo + ')' : '') + '. ' + (novos.length ? 'Traria: ' + novos.join(', ') + '.' : 'Não traria nada novo.')),
+      confl ? h('div', { class: 'm' }, confl + ' registro(s) com o mesmo id e conteúdo diferente: o que você já tem é mantido.') : null,
+      h('div', { class: 'acoes' },
+        h('button', { id: 'btn-confirmar-importacao', disabled: p.totalNovos === 0 && !(im.backup.dados.config && im.backup.dados.config.atualizadoEm), onclick: function () {
+          var r = S.store.adicionarItens(p.resultado); S.importacao = null; toast('Importado: ' + (r.eventos + r.sessoes + r.marcacoes + r.revisoes + r.cancelamentos + r.estudadosLegados) + ' registro(s).'); render();
+        } }, 'Juntar ao meu histórico'),
+        h('button', { class: 'sec', onclick: function () { S.importacao = null; render(); } }, 'Cancelar')));
+  }
+  async function verificarGravacao() {
+    var b = $('btn-verificar'); b.disabled = true; $('texto-verificacao').textContent = 'Testando…';
+    var r = await S.store.verificar();
+    $('texto-verificacao').textContent = r.ok ? 'Gravação, leitura e remoção funcionaram (' + r.ms + ' ms).' : 'Falhou: ' + r.motivo;
+    b.disabled = false;
+  }
+
+  // ---------- navegação e renderização ----------
+  function abaDoHash() { var a = (location.hash || '').slice(1); return ABAS.indexOf(a) >= 0 ? a : 'hoje'; }
+  function render() {
+    var v = $('view');
+    document.querySelectorAll('nav.abas a').forEach(function (a) { if (a.dataset.aba === S.aba) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    if (S.erroCarga) {
+      v.replaceChildren(h('section', { class: 'card erro-bloco' }, h('h2', null, 'Não foi possível carregar'), h('p', { class: 'note' }, 'O histórico não foi lido do banco de dados (' + (S.erroCarga.code || S.erroCarga.message || 'erro') + '). Nada foi alterado. Tente de novo.'), h('div', { class: 'acoes' }, h('button', { id: 'btn-tentar', onclick: function () { S.erroCarga = null; iniciar(); } }, 'Tentar de novo'))));
+      atualizarStatus(); return;
+    }
+    if (!S.matriz) return;
+    var c = calcular();
+    var nodes = [];
+    if (S.semBanco) nodes.push(h('section', { class: 'card erro-bloco', id: 'aviso-sem-banco' }, h('h2', null, 'Sem banco de dados'), h('p', { class: 'note' }, 'Esta visualização não tem acesso ao banco de dados da plataforma ou à sua identidade, então nada pode ser salvo. Abra o documento logada(o), pelo aplicativo ou navegador. Você ainda pode consultar o edital.')));
+    if (S.aba === 'hoje') nodes = nodes.concat(viewHoje(c));
+    else if (S.aba === 'questoes') nodes = nodes.concat(viewQuestoes(c));
+    else if (S.aba === 'painel') nodes = nodes.concat(viewPainel(c));
+    else if (S.aba === 'edital') nodes = nodes.concat(viewEdital(c));
+    else nodes = nodes.concat(viewMais(c));
+    v.replaceChildren.apply(v, nodes);
+    atualizarStatus();
+    document.body.dataset.pronto = '1';
+  }
+  function irParaAba() { S.aba = abaDoHash(); render(); window.scrollTo(0, 0); }
+
+  async function usar(nome) {
+    try {
+      if (!window.claude || !window.claude.use) return null;
+      return await Promise.race([window.claude.use(nome), new Promise(function (r) { setTimeout(function () { r(null); }, 10000); })]);
+    } catch (e) { return null; }
+  }
+  function comTempo(p, ms) { return new Promise(function (res, rej) { var t = setTimeout(function () { rej({ code: 'tempo_esgotado', message: 'tempo esgotado' }); }, ms); p.then(function (v) { clearTimeout(t); res(v); }, function (e) { clearTimeout(t); rej(e); }); }); }
+
+  async function iniciar() {
+    S.aba = abaDoHash();
+    try {
+      if (!S.matriz) { var resp = await fetch('matriz-edital.json'); if (!resp.ok) throw new Error('HTTP ' + resp.status); S.matriz = await resp.json(); indexar(); }
+    } catch (e) { $('view').replaceChildren(h('section', { class: 'card erro-bloco' }, h('p', { class: 'note' }, 'Não foi possível carregar o edital (' + ((e && e.message) || e) + ').'))); return; }
+    carregarAux();
+    var db = await usar('db'); var user = await usar('user'); S.dl = await usar('downloads');
+    S.uid = user ? await user.id() : null;
+    if (!db || !S.uid) { S.semBanco = true; render(); return; }
+    S.store = Store.criarStore({ db: db, uid: S.uid, storage: LS });
+    S.store.onStatus(atualizarStatus);
+    try { await comTempo(S.store.carregar(), 20000); } catch (e) { S.store = null; S.erroCarga = e; render(); return; }
+    render();
+  }
+
+  window.addEventListener('hashchange', irParaAba);
+  document.addEventListener('visibilitychange', function () {
+    if (!S.store) return;
+    if (document.visibilityState === 'hidden') S.store.flush();
+    else S.store.sincronizar().then(function () { var a = document.activeElement; if (!a || a === document.body) render(); }, function () { /* sem conexão: tenta na próxima vez */ });
+  });
+  window.addEventListener('pagehide', function () { if (S.store) S.store.flush(); });
+  setInterval(atualizarCronometro, 1000);
+  iniciar();
+})();
+</script>

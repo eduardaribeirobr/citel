@@ -1,0 +1,199 @@
+﻿id;bloco;disciplina;diploma;titulo;n_dispositivos;questoes_do_grupo;bloco_eliminatorio;na_discursiva;esforco_min_estimado;complexidade_derivada;status_aprendizado;cobertura;rotulo_status;fonte_pagina
+OJ26-LP-01;B1;LP;;Análise, compreensão e interpretação de diversos tipos de textos verbais, não verbais, literários e não literários;0;15;sim;não;120;3;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-02;B1;LP;;Informações literais e inferências possíveis;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-03;B1;LP;;Ponto de vista do autor;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-04;B1;LP;;Estruturação do texto;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-05;B1;LP;;Significação contextual de palavras e expressões;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-06;B1;LP;;Sinônimos e antônimos;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-07;B1;LP;;Sentido próprio e figurado das palavras;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-08;B1;LP;;Classes de palavras;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-09;B1;LP;;Concordância verbal e nominal;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-10;B1;LP;;Regência verbal e nominal;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-11;B1;LP;;Colocação pronominal;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-12;B1;LP;;Crase;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-LP-13;B1;LP;;Pontuação;0;15;sim;não;45;1;NÃO INICIADO;0;não se aplica;60
+OJ26-DPEN-CP-01;B2;DPEN;CP;Código Penal, arts. 1 a 12;12;;sim;sim;92;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-02;B2;DPEN;CP;Código Penal, arts. 100 a 106;7;;sim;sim;62;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-03;B2;DPEN;CP;Código Penal, arts. 107 a 121;15;;sim;sim;110;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-04;B2;DPEN;CP;Código Penal, art. 129;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-05;B2;DPEN;CP;Código Penal, art. 150;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-06;B2;DPEN;CP;Código Penal, art. 154;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-07;B2;DPEN;CP;Código Penal, arts. 293 a 305;13;;sim;sim;98;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-08;B2;DPEN;CP;Código Penal, art. 307;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-09;B2;DPEN;CP;Código Penal, art. 308;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-10;B2;DPEN;CP;Código Penal, art. 311-A;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-11;B2;DPEN;CP;Código Penal, arts. 312 a 317;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-12;B2;DPEN;CP;Código Penal, arts. 319 a 333;15;;sim;sim;110;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-13;B2;DPEN;CP;Código Penal, art. 336;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-14;B2;DPEN;CP;Código Penal, art. 337;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-15;B2;DPEN;CP;Código Penal, arts. 339 a 347;9;;sim;sim;74;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-16;B2;DPEN;CP;Código Penal, art. 357;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPEN-CP-17;B2;DPEN;CP;Código Penal, art. 359;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-01;B2;DPPE;CPP;Código de Processo Penal, arts. 24 a 42;19;;sim;sim;134;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-02;B2;DPPE;CPP;Código de Processo Penal, arts. 61 a 74;14;;sim;sim;104;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-03;B2;DPPE;CPP;Código de Processo Penal, art. 112;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-04;B2;DPPE;CPP;Código de Processo Penal, arts. 125 a 131;7;;sim;sim;62;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-05;B2;DPPE;CPP;Código de Processo Penal, art. 156;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-06;B2;DPPE;CPP;Código de Processo Penal, art. 185;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-07;B2;DPPE;CPP;Código de Processo Penal, arts. 202 a 204;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-08;B2;DPPE;CPP;Código de Processo Penal, arts. 218 a 225;8;;sim;sim;68;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-09;B2;DPPE;CPP;Código de Processo Penal, arts. 240 a 250;11;;sim;sim;86;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-10;B2;DPPE;CPP;Código de Processo Penal, art. 274;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-11;B2;DPPE;CPP;Código de Processo Penal, arts. 283 a 303;21;;sim;sim;146;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-12;B2;DPPE;CPP;Código de Processo Penal, arts. 351 a 363;13;;sim;sim;98;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-13;B2;DPPE;CPP;Código de Processo Penal, arts. 370 a 372;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-14;B2;DPPE;CPP;Código de Processo Penal, arts. 396 a 396-A;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-15;B2;DPPE;CPP;Código de Processo Penal, art. 406;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-16;B2;DPPE;CPP;Código de Processo Penal, arts. 436 a 446;11;;sim;sim;86;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-17;B2;DPPE;CPP;Código de Processo Penal, arts. 485 a 487;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-18;B2;DPPE;CPP;Código de Processo Penal, arts. 513 a 518;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-19;B2;DPPE;CPP;Código de Processo Penal, arts. 563 a 570;8;;sim;sim;68;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-20;B2;DPPE;CPP;Código de Processo Penal, art. 593;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-21;B2;DPPE;CPP;Código de Processo Penal, arts. 647 a 654;8;;sim;sim;68;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-22;B2;DPPE;CPP;Código de Processo Penal, arts. 762 a 763;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-23;B2;DPPE;CPP;Código de Processo Penal, art. 792;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-24;B2;DPPE;CPP;Código de Processo Penal, art. 798;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-CPP-25;B2;DPPE;CPP;Código de Processo Penal, art. 798-A;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-L9099-01;B2;DPPE;L9099;Lei n.º 9.099/1995, art. 1;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-L9099-02;B2;DPPE;L9099;Lei n.º 9.099/1995, art. 2;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-L9099-03;B2;DPPE;L9099;Lei n.º 9.099/1995, arts. 60 a 62;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPPE-L9099-04;B2;DPPE;L9099;Lei n.º 9.099/1995, arts. 66 a 68;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);60
+OJ26-DPCI-CPC-01;B2;DPCI;CPC;Código de Processo Civil, arts. 1 a 11;11;;sim;sim;86;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-02;B2;DPCI;CPC;Código de Processo Civil, arts. 13 a 18;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-03;B2;DPCI;CPC;Código de Processo Civil, arts. 21 a 27;7;;sim;sim;62;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-04;B2;DPCI;CPC;Código de Processo Civil, art. 36;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-05;B2;DPCI;CPC;Código de Processo Civil, arts. 42 a 53;12;;sim;sim;92;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-06;B2;DPCI;CPC;Código de Processo Civil, arts. 64 a 66;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-07;B2;DPCI;CPC;Código de Processo Civil, arts. 70 a 85;16;;sim;sim;116;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-08;B2;DPCI;CPC;Código de Processo Civil, arts. 98 a 102;5;;sim;sim;50;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-09;B2;DPCI;CPC;Código de Processo Civil, arts. 110 a 111;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-10;B2;DPCI;CPC;Código de Processo Civil, arts. 125 a 135;11;;sim;sim;86;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-11;B2;DPCI;CPC;Código de Processo Civil, arts. 139 a 143;5;;sim;sim;50;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-12;B2;DPCI;CPC;Código de Processo Civil, arts. 149 a 155;7;;sim;sim;62;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-13;B2;DPCI;CPC;Código de Processo Civil, arts. 159 a 161;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-14;B2;DPCI;CPC;Código de Processo Civil, arts. 176 a 199;24;;sim;sim;164;4;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-15;B2;DPCI;CPC;Código de Processo Civil, arts. 203 a 259;57;;sim;sim;362;5;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-16;B2;DPCI;CPC;Código de Processo Civil, arts. 269 a 275;7;;sim;sim;62;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-17;B2;DPCI;CPC;Código de Processo Civil, arts. 447 a 449;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-18;B2;DPCI;CPC;Código de Processo Civil, arts. 453 a 454;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-19;B2;DPCI;CPC;Código de Processo Civil, art. 502;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-20;B2;DPCI;CPC;Código de Processo Civil, art. 528;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-21;B2;DPCI;CPC;Código de Processo Civil, arts. 535 a 536;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-22;B2;DPCI;CPC;Código de Processo Civil, art. 538;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-23;B2;DPCI;CPC;Código de Processo Civil, art. 554;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-24;B2;DPCI;CPC;Código de Processo Civil, arts. 560 a 563;4;;sim;sim;44;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-25;B2;DPCI;CPC;Código de Processo Civil, art. 626;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-26;B2;DPCI;CPC;Código de Processo Civil, art. 695;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-27;B2;DPCI;CPC;Código de Processo Civil, art. 751;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-28;B2;DPCI;CPC;Código de Processo Civil, art. 782;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-29;B2;DPCI;CPC;Código de Processo Civil, art. 795;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-30;B2;DPCI;CPC;Código de Processo Civil, arts. 806 a 807;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-31;B2;DPCI;CPC;Código de Processo Civil, arts. 827 a 846;20;;sim;sim;140;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-32;B2;DPCI;CPC;Código de Processo Civil, arts. 870 a 875;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-33;B2;DPCI;CPC;Código de Processo Civil, art. 994;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-34;B2;DPCI;CPC;Código de Processo Civil, art. 1.001;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-35;B2;DPCI;CPC;Código de Processo Civil, art. 1.003;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-36;B2;DPCI;CPC;Código de Processo Civil, art. 1.009;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-37;B2;DPCI;CPC;Código de Processo Civil, art. 1.010;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-38;B2;DPCI;CPC;Código de Processo Civil, art. 1.015;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-CPC-39;B2;DPCI;CPC;Código de Processo Civil, art. 1.022;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-L9099-01;B2;DPCI;L9099;Lei n.º 9.099/1995, art. 8;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-L9099-02;B2;DPCI;L9099;Lei n.º 9.099/1995, art. 9;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-L9099-03;B2;DPCI;L9099;Lei n.º 9.099/1995, art. 18;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DPCI-L9099-04;B2;DPCI;L9099;Lei n.º 9.099/1995, art. 19;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCON-CF-01;B2;DCON;CF;Constituição Federal, arts. 1 a 16;16;;sim;sim;116;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCON-CF-02;B2;DCON;CF;Constituição Federal, art. 18;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCON-CF-03;B2;DCON;CF;Constituição Federal, arts. 37 a 41;5;;sim;sim;50;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCON-CF-04;B2;DCON;CF;Constituição Federal, arts. 92 a 99;8;;sim;sim;68;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCON-CF-05;B2;DCON;CF;Constituição Federal, art. 125;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCON-CF-06;B2;DCON;CF;Constituição Federal, art. 127;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCON-CF-07;B2;DCON;CF;Constituição Federal, art. 134;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-01;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 1;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-02;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 3;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-03;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 4;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-04;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 11;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-05;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 13;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-06;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 14;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-07;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 46;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-08;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 47;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-09;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 57;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-10;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 78;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-11;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 110;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-12;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 120;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-13;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 127;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-14;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 176;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-15;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), arts. 241 a 243;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L10261-16;B2;DADM;L10261;Estatuto dos Funcionários Públicos Civis do Estado de São Paulo (Lei n.º 10.261/68), art. 251;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L8429-01;B2;DADM;L8429;Lei de Improbidade Administrativa (Lei n.º 8.429/92), art. 9;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DADM-L8429-02;B2;DADM;L8429;Lei de Improbidade Administrativa (Lei n.º 8.429/92), art. 13;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-01;B2;DCIV;CC;Código Civil, arts. 1 a 25;25;;sim;sim;170;4;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-02;B2;DCIV;CC;Código Civil, arts. 40 a 45;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-03;B2;DCIV;CC;Código Civil, arts. 49 a 50;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-04;B2;DCIV;CC;Código Civil, art. 53;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-05;B2;DCIV;CC;Código Civil, art. 62;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-06;B2;DCIV;CC;Código Civil, arts. 70 a 103;34;;sim;sim;224;4;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-07;B2;DCIV;CC;Código Civil, arts. 115 a 120;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-08;B2;DCIV;CC;Código Civil, arts. 138 a 159;22;;sim;sim;152;4;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-09;B2;DCIV;CC;Código Civil, arts. 166 a 201;36;;sim;sim;236;4;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-10;B2;DCIV;CC;Código Civil, arts. 212 a 215;4;;sim;sim;44;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-11;B2;DCIV;CC;Código Civil, arts. 653 a 666;14;;sim;sim;104;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-12;B2;DCIV;CC;Código Civil, arts. 1.169 a 1.173;5;;sim;sim;50;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-13;B2;DCIV;CC;Código Civil, arts. 1.196 a 1.203;8;;sim;sim;68;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-14;B2;DCIV;CC;Código Civil, arts. 1.431 a 1.432;2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-15;B2;DCIV;CC;Código Civil, art. 1.442;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-16;B2;DCIV;CC;Código Civil, arts. 1.444 a 1.447;4;;sim;sim;44;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-17;B2;DCIV;CC;Código Civil, art. 1.451;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-18;B2;DCIV;CC;Código Civil, art. 1.461;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-19;B2;DCIV;CC;Código Civil, arts. 1.467 a 1.472;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-20;B2;DCIV;CC;Código Civil, art. 1.728;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-21;B2;DCIV;CC;Código Civil, art. 1.767;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-22;B2;DCIV;CC;Código Civil, arts. 1.775 a 1.778;4;;sim;sim;44;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-CC-23;B2;DCIV;CC;Código Civil, art. 1.997;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-DCIV-LINDB-01;B2;DCIV;LINDB;Decreto-Lei n.º 4.657/1942 (diploma integral);0;;sim;sim;120;3;NÃO INICIADO;0;"pendente: o edital não indica os artigos; conferir o texto integral na fonte oficial";61
+OJ26-LESP-L6830-01;B2;LESP;L6830;Lei n.º 6.830/1980, art. 1;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-L6830-02;B2;LESP;L6830;Lei n.º 6.830/1980, art. 2;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-L6830-03;B2;LESP;L6830;Lei n.º 6.830/1980, art. 7;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-L6830-04;B2;LESP;L6830;Lei n.º 6.830/1980, art. 8;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-L6830-05;B2;LESP;L6830;Lei n.º 6.830/1980, art. 11;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-L6830-06;B2;LESP;L6830;Lei n.º 6.830/1980, art. 37;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-CNJ354-01;B2;LESP;CNJ354;Resolução CNJ n.º 354/2020, art. 1;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-CNJ354-02;B2;LESP;CNJ354;Resolução CNJ n.º 354/2020, arts. 8 a 10;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-L11608-01;B2;LESP;L11608;Lei n.º 11.608/2003 (diploma integral);0;;sim;sim;120;3;NÃO INICIADO;0;"pendente: o edital não indica os artigos; conferir o texto integral na fonte oficial";61
+OJ26-LESP-NSCGJ-01;B2;LESP;NSCGJ;Tomo I – Capítulo I, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 1 a 4;4;;sim;sim;44;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-02;B2;LESP;NSCGJ;Tomo I – Capítulo III – Seção III, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 33;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-03;B2;LESP;NSCGJ;"Tomo I – Capítulo III – Seção V, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 47; 49";2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-04;B2;LESP;NSCGJ;Tomo I – Capítulo III – Seção XI, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 105 a 110;6;;sim;sim;56;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-05;B2;LESP;NSCGJ;Tomo I – Capítulo IV – Seção III, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 196, inciso XX;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-06;B2;LESP;NSCGJ;Tomo I – Capítulo IV – Seção IV, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 282, § 1º;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-07;B2;LESP;NSCGJ;"Tomo I – Capítulo IV – Seção VI, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 310; 315";2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-08;B2;LESP;NSCGJ;Tomo I – Capítulo IV – Seção XII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), art. 410;1;;sim;sim;26;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-09;B2;LESP;NSCGJ;"Tomo I – Capítulo IV – Seção XIII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 436; 436-A";2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-10;B2;LESP;NSCGJ;"Tomo I – Capítulo IV – Seção XIV, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 439; 440; 440-A";3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-11;B2;LESP;NSCGJ;Tomo I – Capítulo VII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 994 a 1.091-A;99;;sim;sim;614;5;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-12;B2;LESP;NSCGJ;Tomo I – Capítulo X – Seção III, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 1.137 a 1.139;3;;sim;sim;38;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-LESP-NSCGJ-13;B2;LESP;NSCGJ;"Tomo I – Capítulo XI – Seção VII, Normas Judiciais da Corregedoria Geral da Justiça (Tomo I), arts. 1.245; 1.247";2;;sim;sim;32;1;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-ATUA-01;B3;ATUA;;Fatos políticos, econômicos, sociais e culturais divulgados a partir do 1º semestre de 2026;0;3;não;não;120;3;NÃO INICIADO;0;não se aplica;61
+OJ26-ATUA-L13146-01;B3;ATUA;L13146;Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015), arts. 1 a 13;13;3;não;não;98;3;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-ATUA-L13146-02;B3;ATUA;L13146;Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015), arts. 34 a 38;5;3;não;não;50;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-ATUA-L13146-03;B3;ATUA;L13146;Estatuto da Pessoa com Deficiência (Lei n.º 13.146/2015), arts. 79 a 87;9;3;não;não;74;2;NÃO INICIADO;0;pendente: conferir o tema do dispositivo na fonte oficial (Planalto/ALESP/CNJ/TJSP);61
+OJ26-MAT-01;B3;MAT;;Operações com números reais;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-02;B3;MAT;;Mínimo múltiplo comum e máximo divisor comum;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-03;B3;MAT;;Razão e proporção;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-04;B3;MAT;;Porcentagem;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-05;B3;MAT;;Regra de três simples e composta;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-06;B3;MAT;;Média aritmética simples e ponderada;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-07;B3;MAT;;Juros simples;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-08;B3;MAT;;Equação do 1.º e 2.º graus;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-09;B3;MAT;;Sistema de equações do 1.º grau;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-10;B3;MAT;;Relação entre grandezas;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-11;B3;MAT;;Sistemas de medidas usuais;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-12;B3;MAT;;Noções de geometria;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-MAT-13;B3;MAT;;Resolução de situações-problema;0;3;não;não;45;1;NÃO INICIADO;0;não se aplica;62
+OJ26-RLOG-01;B3;RLOG;;Raciocínio Lógico;0;4;não;não;180;4;NÃO INICIADO;0;não se aplica;62
+OJ26-INFO-01;B3;INFO;;MS-Windows 10 ou superior;0;5;não;não;30;1;NÃO INICIADO;0;não se aplica;62
+OJ26-INFO-02;B3;INFO;;MS-Word;0;5;não;não;30;1;NÃO INICIADO;0;não se aplica;62
+OJ26-INFO-03;B3;INFO;;MS-Excel;0;5;não;não;30;1;NÃO INICIADO;0;não se aplica;62
+OJ26-INFO-04;B3;INFO;;MS-Teams;0;5;não;não;30;1;NÃO INICIADO;0;não se aplica;62
+OJ26-INFO-05;B3;INFO;;OneDrive;0;5;não;não;30;1;NÃO INICIADO;0;não se aplica;62
+OJ26-INFO-06;B3;INFO;;Correio Eletrônico;0;5;não;não;30;1;NÃO INICIADO;0;não se aplica;62
+OJ26-INFO-07;B3;INFO;;Internet;0;5;não;não;30;1;NÃO INICIADO;0;não se aplica;62
