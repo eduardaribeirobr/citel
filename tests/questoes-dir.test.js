@@ -179,3 +179,57 @@ test('o histórico de uma questão de Direito segue as mesmas regras: id válido
   assert.deepEqual(Q.gerarQuestao(Q.lerId(c[0].questionId).templateId, Q.lerId(c[0].questionId).semente, Q.lerId(c[0].questionId).nivel), q, 'refazer reproduz a mesma questão');
   assert.equal(A.paraMotor([resp, Object.assign({ id: 'p1', ts: 2 }, A.eventoProblema(resp, 'gabarito', 'x'))]).length, 1);
 });
+
+test('limpeza de marcas de nota de rodapé: só some número colado ao fim de frase, nunca número de dentro do texto', () => {
+  assert.equal(M.limpar('cumprimento dos mandados.3 Outro texto;12 fim'), 'cumprimento dos mandados. Outro texto; fim');
+  assert.equal(M.limpar('prazo de 10 (dez) dias. Art. 5º, 2 vezes; 30%.'), 'prazo de 10 (dez) dias. Art. 5º, 2 vezes; 30%.');
+  assert.equal(M.norm('a  b\n c.7 '), 'a b c.');
+});
+
+test('alternativa errada que COINCIDE com outro trecho do diploma é descartada (lacuna e reprodução)', () => {
+  const t = Q.modelo('DIR-LESP-L11608'); const fid = 'alesp-lei-11608-2003'; const art = require('../data/dir-dados.json').fontes[fid].artigos;   // a MESMA instância que o módulo usa
+  const poluir = (texto) => { art['9999'] = { topicId: 'OJ26-LESP-L11608-01', texto: 'Artigo 9999 - ' + texto }; M._testes.limparCaches(); };
+  const limpar = () => { delete art['9999']; M._testes.limparCaches(); };
+  try {
+    // lacuna (nível 1): a opção errada que existiria noutro trecho do diploma não pode aparecer
+    let achou = 0;
+    for (let s = 1; s <= 25; s++) {
+      const sem = t.ajustarSemente('OJ26-LESP-L11608-01', 2000 + s * t.modulo); const q = Q.gerarQuestao(t.id, sem, 1); if (q.params.forma !== 'lacuna') continue;
+      const alvo = q.params.distratores[0]; poluir(alvo.texto);
+      const q2 = Q.gerarQuestao(t.id, sem, 1); limpar();
+      assert.ok(!q2.alternativas.some((a) => a.texto === alvo.valor), 'a opção "' + alvo.valor + '" existiria noutro trecho do diploma e não pode ser alternativa errada'); achou++;
+    }
+    assert.ok(achou >= 10, 'poucas lacunas testadas: ' + achou);
+    // reprodução (nível 2): a versão alterada que existe noutro trecho não pode aparecer
+    achou = 0;
+    for (let s = 1; s <= 25; s++) {
+      const sem = t.ajustarSemente('OJ26-LESP-L11608-01', 5000 + s * t.modulo); const q = Q.gerarQuestao(t.id, sem, 2); if (q.params.forma !== 'reproducao') continue;
+      const alvo = q.params.distratores[0]; poluir(alvo.texto);
+      const q2 = Q.gerarQuestao(t.id, sem, 2); limpar();
+      assert.ok(!q2.alternativas.some((a) => a.texto === alvo.texto), 'uma versão alterada que já existe no diploma não pode ser alternativa errada'); achou++;
+    }
+    assert.ok(achou >= 10, 'poucas reproduções testadas: ' + achou);
+  } finally { limpar(); }
+  assert.equal(art['9999'], undefined);
+});
+
+test('o segundo método rejeita artigo de outro tópico', () => {
+  const t = Q.modelo('DIR-LESP-NSCGJ'); const q = Q.gerarQuestao(t.id, t.ajustarSemente(t.topicIds[0], 800), 2);
+  assert.equal(t.resolver(q.params), q.params.corpo);
+  const outro = t.topicIds.find((x) => x !== q.params.topicId);
+  assert.throws(() => t.resolver(Object.assign({}, q.params, { topicId: outro })), /não pertence ao tópico/);
+});
+
+test('sessão filtrada por um tópico que NÃO é o primeiro do modelo funciona, e o nível sugerido é o desse tópico', () => {
+  const t = Q.modelo('DIR-LESP-NSCGJ'); const ultimo = t.topicIds[t.topicIds.length - 1]; const primeiro = t.topicIds[0];
+  assert.notEqual(ultimo, primeiro); assert.notEqual(ultimo, t.topicId, 'o último tópico não é o topicId padrão do modelo');
+  const BASE = Date.UTC(2026, 11, 1, 15);
+  const itens = A.montarSessao({ n: 6, topicIds: [ultimo], nivel: 'auto', eventos: [], hojeIdx: 1, semente: 21 });
+  assert.equal(itens.length, 6); for (const it of itens) { assert.equal(it.topicId, ultimo); assert.equal(Q.gerarQuestao(it.templateId, it.semente, it.nivel).topicId, ultimo); }
+  // 3 acertos seguros no nível 1 SÓ no último tópico: o nível sugerido para ele sobe para 2; o primeiro tópico continua no nível 1
+  const evs = [1, 2, 3].map((i) => ({ id: 'n' + i, ts: BASE + i, topicId: ultimo, questionId: Q.idQuestao(t.id, t.ajustarSemente(ultimo, 100 + i * t.modulo), 1), correct: true, conf: 'seguro', nivel: 1 }));
+  const comNivel = A.montarSessao({ n: 4, topicIds: [ultimo], nivel: 'auto', eventos: evs, hojeIdx: Math.floor(BASE / 86400000) + 3, semente: 22 });
+  assert.ok(comNivel.every((i) => i.nivel === 2), 'o nível do tópico acertado deveria subir para 2: ' + comNivel.map((i) => i.nivel));
+  const outroTopico = A.montarSessao({ n: 4, topicIds: [primeiro], nivel: 'auto', eventos: evs, hojeIdx: Math.floor(BASE / 86400000) + 3, semente: 22 });
+  assert.ok(outroTopico.every((i) => i.nivel === 1), 'o outro tópico não tem histórico: continua no nível 1: ' + outroTopico.map((i) => i.nivel));
+});

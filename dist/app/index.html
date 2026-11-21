@@ -3196,7 +3196,8 @@ function descobrirTopicosComQuestao(dados) {
   }
   void dados; return out.sort();
 }
-const API = { extenso, pontos, aplicar, segmentos, rotuloArtigo, descobrirTopicosComQuestao, norm, limpar };
+const _testes = { limparCaches() { for (const k of Object.keys(cacheCorpus)) delete cacheCorpus[k]; for (const k of Object.keys(cacheCand)) delete cacheCand[k]; } };
+const API = { _testes, extenso, pontos, aplicar, segmentos, rotuloArtigo, descobrirTopicosComQuestao, norm, limpar };
 if (typeof module !== 'undefined' && module.exports) module.exports = API;
 if (typeof globalThis !== 'undefined') globalThis.QuestoesDir = API;
 

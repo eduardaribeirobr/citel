@@ -22,7 +22,7 @@
 | Lei 11.608/2003 | integral | 1 |
 
 ## Cobertura hoje
-14 de 198 tópicos têm questões (Matemática 13 + Raciocínio Lógico 1), todas de nível B. **Nenhum tópico jurídico, de Português, de Informática ou de Atualidades.**
+**24 de 198 tópicos** têm questões: Matemática 13 + Raciocínio Lógico 1 (nível B) e 10 de Direito (nível A): Estatuto dos Funcionários 5, Lei 11.608/2003 1, Normas da Corregedoria 4. As de Direito são de **reprodução fiel do texto oficial** (lacuna numérica e "qual alternativa reproduz o dispositivo"), geradas por alteração mecânica de número, unidade de tempo, termo oposto, negação ou advérbio, e só onde o trecho permite isso objetivamente. Não testam interpretação nem jurisprudência. Dos 30 tópicos desses 3 diplomas, 20 não geram questão por esse método (trechos definicionais). **Nenhum tópico dos outros 11 diplomas, de Português, de Informática ou de Atualidades.**
 
 ## Fontes: situação em 21/11/2026
 | Diploma | Fonte | Situação |
@@ -39,7 +39,7 @@
 - **F0 Fundação (em andamento):** feito: ingestão com hash (HTML e PDF), conferência literal de citação com trava de artigo vetado/revogado, mapa de fontes por diploma na auditoria, botão "reportar problema". Falta: textos dos diplomas federais e da Res. CNJ.
   Plano original: ingestão de fontes com hash e `tools/` de conferência de citação; matriz de cobertura por tópico na tela;
   botão "reportar problema" na questão (grava no banco da aluna). *Saída:* 3 diplomas ingeridos e verificados; cobertura visível no app.
-- **F1 Direito, por peso:** CPC, CC, CPP, Corregedoria, CP, CF, demais. Por diploma: texto-fonte, resumo teórico citando artigos, questões
+- **F1 Direito, por peso (iniciada com os 3 diplomas já ingeridos):** CPC, CC, CPP, Corregedoria, CP, CF, demais. Por diploma: texto-fonte, resumo teórico citando artigos, questões
   de nível A ligadas ao trecho (geradas a partir do texto oficial com alteração controlada de prazo/número/termo, conferindo por script que a
   versão alterada não ocorre no texto). *Saída por diploma:* todos os artigos citados no edital com itens, portão verde.
 - **F2 Português, Informática, Atualidades:** só com fonte aprovada pela aluna; senão ficam como "não coberto" ou nível D rotulado.

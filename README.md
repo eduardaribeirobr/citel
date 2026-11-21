@@ -26,8 +26,14 @@ celular ou no computador.
 ## Fontes oficiais
 `tools/ingerir-fonte.js` guarda o arquivo bruto (HTML ou PDF) com URL, data e SHA-256 em `data/fontes/`; `src/fontes.js` extrai os artigos e
 confere citações LITERAIS (e recusa artigo vetado/revogado). A auditoria mostra, por diploma, se a fonte foi ingerida e quantos artigos do
-edital foram conferidos. Hoje: 3 de 14 diplomas ingeridos (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria). **Ainda não
-há questão jurídica**: a ingestão é a base para elas.
+edital foram conferidos. Hoje: 3 de 14 diplomas ingeridos (Estatuto dos Funcionários, Lei 11.608/2003, Normas da Corregedoria).
+
+## Questões de Direito (nível A)
+`tools/build-dir-dados.js` extrai só os artigos que o edital cita e que estão vigentes, ligados ao tópico (`data/dir-dados.json`, embutido no app).
+`src/questoes-dir.js` gera (1) lacuna numérica e (2) "qual alternativa reproduz o dispositivo": a correta é trecho literal do artigo; cada errada é o mesmo
+trecho com uma alteração rastreável (número com extenso e percentual coerentes, unidade de tempo, termo oposto, negação, advérbio omitido) e é
+recusada se existir em qualquer artigo citado do diploma. Os testes conferem 4.500 questões contra o texto bruto oficial inteiro. **Treina a leitura
+precisa da lei; não testa interpretação nem jurisprudência.** 10 dos 30 tópicos desses diplomas geram questão; os demais ficam declarados sem questões.
 
 ## Regra dos ids imutáveis
 O histórico guarda só o id da questão (`MODELO:semente:nível`); ao refazer, a questão é gerada de novo. Por isso **um modelo
@@ -64,8 +70,8 @@ NODE_PATH=$(npm root -g) node tests/diag.e2e.js
 ```
 
 ## Como foi testado
-- 201 testes de unidade e de propriedades (sorteios com semente fixa; 12.000 questões geradas e validadas por rodada).
-- 228 verificações ponta a ponta no Chromium com tela de celular (390 px), tema claro e escuro, banco **simulado**, incluindo
+- 218 testes de unidade e de propriedades (sorteios com semente fixa; 12.000 questões geradas e validadas por rodada).
+- 254 verificações ponta a ponta no Chromium com tela de celular (390 px), tema claro e escuro, banco **simulado**, incluindo
   o histórico real de uso (respostas de um aparelho de verdade) aberto na interface.
 - Verificação por mutação: defeitos injetados de propósito nos módulos de progresso, plano, armazenamento, questões e
   aprendizagem; cada um precisa derrubar ao menos um teste. Os que sobreviveram revelaram lacunas de teste (fechadas) ou eram

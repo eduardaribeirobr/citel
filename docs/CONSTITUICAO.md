@@ -21,7 +21,7 @@ Regras que valem para qualquer sessão de trabalho, inclusive futuras. Quem cons
 | **C** | Redigido por IA e conferido contra fonte que a aluna indicou ou aprovou | sim, com aviso |
 | **D** | Rascunho de IA sem conferência | **nunca**; só em estudo livre, sempre rotulado "não conferido" |
 
-Hoje existem apenas conteúdos de nível B.
+Hoje existem conteúdos de nível B (Matemática e Raciocínio Lógico) e de nível A (Direito: Estatuto dos Funcionários, Lei 11.608/2003 e Normas da Corregedoria, só reprodução do texto oficial).
 
 ## 3. Portão de publicação (todos verdes, sempre)
 - testes de unidade e ponta a ponta sem falha; teste dourado sem divergência;
